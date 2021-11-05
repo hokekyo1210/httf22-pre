@@ -9,7 +9,7 @@ import (
 )
 
 const (
-	MIN_ESTIMATE_HISTORY_LEN = 25  //良さそうなのは30
+	MIN_ESTIMATE_HISTORY_LEN = 20  //良さそうなのは30
 	HC_LOOP_COUNT            = 100 //増やせばスコアは伸びるか？
 )
 
@@ -112,7 +112,13 @@ func main() {
 		}
 
 		fmt.Printf("#day%d\n", day)
-		fmt.Printf("#longestEndTimeMem = %d\n", longestEndTimeMem)
+		canAssignNum := 0
+		for t := 0; t < N; t++ {
+			if canAssign(t) {
+				canAssignNum++
+			}
+		}
+		fmt.Printf("#canAssignNum = %d\n", canAssignNum)
 
 		for _, i := range sortedMembers {
 			if memberStatus[i] == 1 {
@@ -187,7 +193,6 @@ func main() {
 			t := memberHistory[f][len(memberHistory[f])-1]
 			taskStatus[t] = 2 //taskをdoneに
 			taskEnd[t] = day
-			fmt.Printf("#task end = %d\n", f)
 			if f == longestEndTimeMem {
 				longestEndTime = -1
 				longestEndTimeMem = -1
