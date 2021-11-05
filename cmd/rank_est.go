@@ -53,11 +53,11 @@ func main() {
 	}
 
 	//デバッグ用, memberの真のスキルを読み込む
-	for i := 0; i < M; i++ {
-		for k := 0; k < K; k++ {
-			fmt.Scanf("%d", &sTrue[i][k])
-		}
-	}
+	// for i := 0; i < M; i++ {
+	// 	for k := 0; k < K; k++ {
+	// 		fmt.Scanf("%d", &sTrue[i][k])
+	// 	}
+	// }
 
 	//rank計算
 	for t := 0; t < N; t++ { //初期化
@@ -240,19 +240,15 @@ func estimate(member int) {
 	var add bool
 	var error int
 	var success bool
-	for l := 0; l < HC_LOOP_COUNT; l++ {
+	l := 0
+	for {
 		targetK = rand.Intn(K)
 		add = rand.Intn(2) == 0
+		v = rand.Intn(2) + 1 // 1 or 2
 		if add {
-			if now[targetK] == sMax {
-				continue
-			}
-			now[targetK] = now[targetK] + 1
+			now[targetK] = min(sMax, now[targetK]+v)
 		} else {
-			if now[targetK] == 0 {
-				continue
-			}
-			now[targetK] = now[targetK] - 1
+			now[targetK] = max(0, now[targetK]-v)
 		}
 
 		success = false
@@ -271,10 +267,15 @@ func estimate(member int) {
 			}
 		} else { //巻き戻す
 			if add {
-				now[targetK] = max(0, now[targetK]-1)
+				now[targetK] = max(0, now[targetK]-v)
 			} else {
-				now[targetK] = min(sMax, now[targetK]+1)
+				now[targetK] = min(sMax, now[targetK]+v)
 			}
+		}
+
+		l++
+		if l == HC_LOOP_COUNT { //最終的にはタイマーにしたい
+			break
 		}
 	}
 
