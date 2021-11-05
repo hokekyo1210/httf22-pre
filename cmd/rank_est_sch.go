@@ -6,39 +6,41 @@ import (
 	"math/rand"
 	"os"
 	"sort"
-	"time"
 )
 
 const (
-	MIN_ESTIMATE_HISTORY_LEN = 20  //良さそうなのは30
+	MIN_ESTIMATE_HISTORY_LEN = 25  //良さそうなのは30
 	HC_LOOP_COUNT            = 100 //増やせばスコアは伸びるか？
 )
 
 var (
-	N               int
-	M               int
-	K               int
-	R               int
-	u, v            int
-	d               [1000][20]int
-	V               [1000][]int //依存関係を管理
-	taskStatus      [1000]int   //タスクステータス管理, 0:not yet, 1:working, 2:done
-	memberStatus    [20]int     //メンバーステータス管理, 0:free, 1:working
-	memberHistory   [20][]int   //タスク実行履歴
-	memberEstimated [20]int     //メンバーのスキル推定がされているかどうか
-	ps              [20][20]int //メンバーのスキルの推定値
-	sTrue           [20][20]int //メンバーのスキル(本物)
-	taskStart       [1000]int   //タスクを開始した時刻
-	taskEnd         [1000]int   //タスクを終了した時刻
-	taskSize        [1000]int   //タスクの大きさ
-	rank            [1000]int   //タスクの依存関係の深さ
-	sMax            int         //sの取りうる上限
-	sortedTasks     []int       //rank順にソートされたタスク
-	tmpScores       [1000]int   //一時計算用のテーブル
+	day               int //現在日時
+	N                 int
+	M                 int
+	K                 int
+	R                 int
+	u, v              int
+	d                 [1000][20]int
+	V                 [1000][]int //依存関係を管理
+	taskStatus        [1000]int   //タスクステータス管理, 0:not yet, 1:working, 2:done
+	taskIsBookedBy    [1000]int   //タスクが誰に予約されているか
+	memberStatus      [20]int     //メンバーステータス管理, 0:free, 1:working, 2:waiting
+	memberHistory     [20][]int   //タスク実行履歴
+	memberEstimated   [20]int     //メンバーのスキル推定がされているかどうか
+	memberBookingTask [20]int     //メンバーが予約しているタスク
+	ps                [20][20]int //メンバーのスキルの推定値
+	sTrue             [20][20]int //メンバーのスキル(本物)
+	taskStart         [1000]int   //タスクを開始した時刻
+	taskEnd           [1000]int   //タスクを終了した時刻
+	taskEndEstimate   [1000]int   //タスクを終了するであろう時刻
+	taskSize          [1000]int   //タスクの大きさ
+	rank              [1000]int   //タスクの依存関係の深さ
+	sMax              int         //sの取りうる上限
+	sortedTasks       []int       //rank順にソートされたタスク
+	tmpScores         [1000]int   //一時計算用のテーブル
 )
 
 func main() {
-	rand.Seed(time.Now().UnixNano())
 	fmt.Scanf("%d %d %d %d", &N, &M, &K, &R)
 	for i := 0; i < N; i++ {
 		for j := 0; j < K; j++ {
@@ -46,6 +48,8 @@ func main() {
 			sMax = max(sMax, d[i][j])
 		}
 		taskSize[i] = size(i)
+		taskEndEstimate[i] = -1
+		taskIsBookedBy[i] = -1
 	}
 	for i := 0; i < R; i++ {
 		fmt.Scanf("%d %d", &u, &v)
@@ -54,12 +58,17 @@ func main() {
 		V[v] = append(V[v], u) //タスクvはタスクuに依存している
 	}
 
+	//初期化
+	for i := 0; i < M; i++ {
+		memberBookingTask[i] = -1
+	}
+
 	//デバッグ用, memberの真のスキルを読み込む
-	// for i := 0; i < M; i++ {
-	// 	for k := 0; k < K; k++ {
-	// 		fmt.Scanf("%d", &sTrue[i][k])
-	// 	}
-	// }
+	for i := 0; i < M; i++ {
+		for k := 0; k < K; k++ {
+			fmt.Scanf("%d", &sTrue[i][k])
+		}
+	}
 
 	//rank計算
 	for t := 0; t < N; t++ { //初期化
@@ -86,7 +95,6 @@ func main() {
 	var wtr = bufio.NewWriter(os.Stdout)
 	var n int
 	var f int
-	day := 0
 	for {
 		var nexta []int
 		var nextb []int
@@ -115,7 +123,30 @@ func main() {
 				continue
 			}
 
-			bestTask := findTask(i)
+			bestTask := -1
+
+			if memberStatus[i] == 2 {
+				if canAssign(memberBookingTask[i]) {
+					bestTask = memberBookingTask[i]
+				} else {
+					continue
+				}
+			} else {
+				if memberEstimated[i] == 1 {
+					//終了予定時間を推定できる場合は区間スケジューリング問題を解く
+					bestTask = findTaskScheduling(i)
+					if bestTask != -1 {
+						bestEndTime := day + scoreTrue(ps[i], bestTask)
+						taskIsBookedBy[bestTask] = i
+						memberStatus[i] = 2
+						memberBookingTask[i] = bestTask
+						fmt.Printf("# %d booked %d (now = %d, endTime = %d)\n", i, bestTask, day, bestEndTime)
+					}
+					continue
+				} else {
+					bestTask = findTask(i)
+				}
+			}
 
 			if bestTask == -1 {
 				continue
@@ -126,6 +157,9 @@ func main() {
 			memberStatus[i] = 1
 			memberHistory[i] = append(memberHistory[i], bestTask)
 			taskStart[bestTask] = day
+			if memberEstimated[i] == 1 {
+				taskEndEstimate[bestTask] = day + scoreTrue(ps[i], bestTask)
+			}
 		}
 
 		fmt.Fprintf(wtr, "%d", len(nexta))
@@ -175,6 +209,9 @@ func findTask(member int) int { //最適なタスクを選定する
 	//終了していないタスクの中から最適なタスクにアサインする
 	//rankが高い順に処理されることに注意(sortedTasksが既にrank順でソート済み)
 	for _, t := range sortedTasks {
+		if taskIsBookedBy[t] != -1 { //タスクが予約されている場合はだめ
+			continue
+		}
 		if !canAssign(t) {
 			continue
 		}
@@ -210,6 +247,49 @@ func findTask(member int) int { //最適なタスクを選定する
 	return bestTask
 }
 
+func findTaskScheduling(member int) int {
+	//終了していないタスクの中から最適なタスクにアサインする
+	//rankが高い順に処理されることに注意(sortedTasksが既にrank順でソート済み)
+	bestRank := -1
+	var targets []int
+	for _, t := range sortedTasks {
+		if taskIsBookedBy[t] != -1 { //タスクが予約されている場合はだめ
+			continue
+		}
+		if memberEstimated[member] == 1 {
+			//スキルが推定されている場合はrankが同じやつリストを一旦作る
+			if bestRank <= rank[t] {
+				targets = append(targets, t)
+				tmpScores[t] = scoreTrue(ps[member], t)
+				bestRank = rank[t]
+			}
+		}
+	}
+
+	if len(targets) == 0 {
+		return -1
+	}
+
+	// 区間スケジューリングにより最適なタスクを求める
+
+	var waitT int
+	var endTime int
+	bookingTask := -1
+	bestEndTime := 1000000
+	for _, t := range targets {
+		waitT = waitTime(t)
+		if waitT == -1 || waitT == day {
+			continue
+		}
+		endTime = waitT + scoreTrue(ps[member], t)
+		if endTime < bestEndTime {
+			bestEndTime = endTime
+			bookingTask = t
+		}
+	}
+	return bookingTask
+}
+
 func canAssign(task int) bool {
 	if taskStatus[task] != 0 {
 		//タスクが終わったか誰かやってる
@@ -224,6 +304,34 @@ func canAssign(task int) bool {
 		}
 	}
 	return canAssign
+}
+
+func waitTime(task int) int {
+	if taskStatus[task] != 0 {
+		//タスクが終わったか誰かやってる
+		return -1
+	}
+
+	//依存するタスクの中で未着手のものがある場合はだめ
+	for k := 0; k < len(V[task]); k++ {
+		if taskStatus[V[task][k]] == 0 {
+			return -1
+		}
+	}
+
+	waitTime := day
+	for k := 0; k < len(V[task]); k++ {
+		t := V[task][k]
+		if taskStatus[t] == 1 {
+			if taskEndEstimate[t] == -1 {
+				return -1 //依存するタスクの中で着手中だが終了時刻が予測できない場合はだめ
+			}
+			waitTime = max(waitTime, day+taskEndEstimate[k]-taskStart[t])
+		} else if taskStatus[t] == 2 {
+			waitTime = max(waitTime, day) //終わっているのでまちなし
+		}
+	}
+	return waitTime
 }
 
 // 山登り法により推定する

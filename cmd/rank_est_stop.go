@@ -10,11 +10,12 @@ import (
 )
 
 const (
-	MIN_ESTIMATE_HISTORY_LEN = 20  //良さそうなのは30
+	MIN_ESTIMATE_HISTORY_LEN = 30  //良さそうなのは30
 	HC_LOOP_COUNT            = 100 //増やせばスコアは伸びるか？
 )
 
 var (
+	day             int //現在の日時
 	N               int
 	M               int
 	K               int
@@ -35,6 +36,9 @@ var (
 	sMax            int         //sの取りうる上限
 	sortedTasks     []int       //rank順にソートされたタスク
 	tmpScores       [1000]int   //一時計算用のテーブル
+
+	longestEndTime    = -1 //推定出来ているタスクの中から最も遅い終了時刻
+	longestEndTimeMem = -1 //↑を誰がやっているか
 )
 
 func main() {
@@ -86,7 +90,6 @@ func main() {
 	var wtr = bufio.NewWriter(os.Stdout)
 	var n int
 	var f int
-	day := 0
 	for {
 		var nexta []int
 		var nextb []int
@@ -128,6 +131,24 @@ func main() {
 			taskStart[bestTask] = day
 		}
 
+		//推定できているメンバーのタスクの中から終了時間が最も遅いものを選ぶ
+		if longestEndTimeMem == -1 {
+			longest := day
+			longestMem := -1
+			for _, i := range sortedMembers {
+				if memberEstimated[i] == -1 {
+					continue
+				}
+				endDay := day + scoreTrue(ps[i], memberHistory[i][len(memberHistory[i])-1])
+				if longest < endDay {
+					longest = endDay
+					longestMem = i
+				}
+			}
+			longestEndTime = longest
+			longestEndTimeMem = longestMem
+		}
+
 		fmt.Fprintf(wtr, "%d", len(nexta))
 		for i := 0; i < len(nexta); i++ {
 			fmt.Fprintf(wtr, " %d %d", nexta[i]+1, nextb[i]+1) //+1しておかないとインデックスがずれる
@@ -162,6 +183,10 @@ func main() {
 			t := memberHistory[f][len(memberHistory[f])-1]
 			taskStatus[t] = 2 //taskをdoneに
 			taskEnd[t] = day
+			if f == longestEndTimeMem {
+				longestEndTime = -1
+				longestEndTimeMem = -1
+			}
 		}
 	}
 }
@@ -179,6 +204,12 @@ func findTask(member int) int { //最適なタスクを選定する
 			continue
 		}
 		if memberEstimated[member] == 1 {
+			if longestEndTimeMem != -1 {
+				estEnd := day + scoreTrue(ps[member], t)
+				if longestEndTime < estEnd { //終わるのが遅いやつはだめ
+					continue
+				}
+			}
 			//スキルが推定されている場合はrankが同じやつリストを一旦作る
 			if bestRank <= rank[t] {
 				targets = append(targets, t)
