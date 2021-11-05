@@ -267,7 +267,7 @@ func estimate(member int) {
 		}
 
 		l++
-		if l == 100 { //最終的にはタイマーにしたい
+		if l == 80 { //最終的にはタイマーにしたい
 			break
 		}
 	}
