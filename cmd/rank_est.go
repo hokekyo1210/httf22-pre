@@ -8,6 +8,11 @@ import (
 	"sort"
 )
 
+const (
+	MIN_ESTIMATE_HISTORY_LEN = 30  //良さそうなのは30
+	HC_LOOP_COUNT            = 300 //増やせばスコアは伸びるか？
+)
+
 var (
 	N               int
 	M               int
@@ -95,7 +100,7 @@ func main() {
 
 		// 学習データが溜まったらパラメータを推定する
 		for _, i := range sortedMembers {
-			if len(memberHistory[i]) > 25 { //良さそうなのは30
+			if len(memberHistory[i]) > MIN_ESTIMATE_HISTORY_LEN {
 				//ここの数値は要調整, ある程度学習データがないと推定がかなり甘くなる
 				estimate(i)
 				memberEstimated[i] = 1
@@ -267,7 +272,7 @@ func estimate(member int) {
 		}
 
 		l++
-		if l == 80 { //最終的にはタイマーにしたい
+		if l == HC_LOOP_COUNT { //最終的にはタイマーにしたい
 			break
 		}
 	}
