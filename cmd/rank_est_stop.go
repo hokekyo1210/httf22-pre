@@ -9,7 +9,7 @@ import (
 )
 
 const (
-	MIN_ESTIMATE_HISTORY_LEN = 0   //良さそうなのは30
+	MIN_ESTIMATE_HISTORY_LEN = 25  //良さそうなのは30
 	HC_LOOP_COUNT            = 100 //増やせばスコアは伸びるか？
 )
 
@@ -205,7 +205,6 @@ func findTask(member int) int { //最適なタスクを選定する
 			if longestEndTimeMem != -1 {
 				estEnd := day + scoreTrue(ps[member], t)
 				if longestEndTime < estEnd+3 { //終わるのが遅いやつはだめ
-					fmt.Printf("#dame\n")
 					continue
 				}
 			}
