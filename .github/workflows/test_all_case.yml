@@ -42,4 +42,4 @@ jobs:
         with:
           path: all-result
       - name: Show result
-        run: cat ./all-result/* | awk '{s += $1} END {print s}'
+        run: find ./all-result -type f | grep ".txt" | xargs cat | awk '{s += $1} END {print s}'
