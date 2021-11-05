@@ -59,11 +59,11 @@ func main() {
 	}
 
 	//デバッグ用, memberの真のスキルを読み込む
-	// for i := 0; i < M; i++ {
-	// 	for k := 0; k < K; k++ {
-	// 		fmt.Scanf("%d", &sTrue[i][k])
-	// 	}
-	// }
+	for i := 0; i < M; i++ {
+		for k := 0; k < K; k++ {
+			fmt.Scanf("%d", &sTrue[i][k])
+		}
+	}
 
 	//rank計算
 	for t := 0; t < N; t++ { //初期化
