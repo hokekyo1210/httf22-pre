@@ -122,6 +122,10 @@ fn exec(command: &str, args: &Vec<String>) {
 				n as i64
 			};
 			eprintln!("Score = {}", score);
+			let mut file = std::fs::File::create("./score.txt").expect("create failed");
+			let stri: String = score.to_string();
+			file.write_all(stri.as_bytes()).expect("write failed");
+			file.write_all("\n".as_bytes()).expect("write failed");
 			return;
 		}
 		write!(stdin, "{}", f.len()).unwrap_or_else(|_| err());
