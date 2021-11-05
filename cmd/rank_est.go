@@ -10,7 +10,7 @@ import (
 
 const (
 	MIN_ESTIMATE_HISTORY_LEN = 30  //良さそうなのは30
-	HC_LOOP_COUNT            = 300 //増やせばスコアは伸びるか？
+	HC_LOOP_COUNT            = 100 //増やせばスコアは伸びるか？
 )
 
 var (
@@ -99,10 +99,8 @@ func main() {
 		})
 
 		// 学習データが溜まったらパラメータを推定する
+		// working中のメンバーであっても計算を行う, 何度も山登りすることで精度が上がる
 		for _, i := range sortedMembers {
-			if memberStatus[i] == 1 {
-				continue
-			}
 			if len(memberHistory[i]) > MIN_ESTIMATE_HISTORY_LEN {
 				//ここの数値は要調整, ある程度学習データがないと推定がかなり甘くなる
 				estimate(i)
@@ -242,14 +240,19 @@ func estimate(member int) {
 	var add bool
 	var error int
 	var success bool
-	l := 0
-	for {
+	for l := 0; l < HC_LOOP_COUNT; l++ {
 		targetK = rand.Intn(K)
 		add = rand.Intn(2) == 0
 		if add {
-			now[targetK] = min(sMax, now[targetK]+1)
+			if now[targetK] == sMax {
+				continue
+			}
+			now[targetK] = now[targetK] + 1
 		} else {
-			now[targetK] = max(0, now[targetK]-1)
+			if now[targetK] == 0 {
+				continue
+			}
+			now[targetK] = now[targetK] - 1
 		}
 
 		success = false
@@ -272,11 +275,6 @@ func estimate(member int) {
 			} else {
 				now[targetK] = min(sMax, now[targetK]+1)
 			}
-		}
-
-		l++
-		if l == HC_LOOP_COUNT { //最終的にはタイマーにしたい
-			break
 		}
 	}
 
