@@ -27,11 +27,12 @@ jobs:
           go-version: 1.17
       - name: Run tests
         run: cargo run --manifest-path ./tools/Cargo.toml --release --bin tester go run ./cmd/rank_est.go < ./tools/in/${{matrix.cases}}.txt > ./out.txt
-      - name: ls
-        run: ls
+      - name: set-output
+        run: echo "::set-output name=SCORE::`cat ./score.txt`"
+        id: score
       - uses: actions/upload-artifact@v2
         with:
-          name: score-${{matrix.cases}}
+          name: score-${{matrix.cases}}-${{steps.score.outputs.SCORE}}
           path: ./score.txt
   check-result:
     runs-on: ubuntu-latest
@@ -41,5 +42,14 @@ jobs:
       - uses: actions/download-artifact@v2
         with:
           path: all-result
-      - name: Show result
-        run: find ./all-result -type f | grep ".txt" | xargs cat | awk '{s += $1} END {print s}'
+      - name: calc all score
+        run: find ./all-result -type f | grep ".txt" | xargs cat | awk '{s += $1} END {print s}' > all_score.txt
+      - name: set-output
+        run: echo "::set-output name=ALL_SCORE::`cat ./all_score.txt`"
+        id: all-score
+      - uses: actions/upload-artifact@v2
+        with:
+          name: allscore-${{steps.all-score.outputs.ALL_SCORE}}
+          path: ./all_score.txt
+      - name: show all score
+        run: cat ./all_score.txt
