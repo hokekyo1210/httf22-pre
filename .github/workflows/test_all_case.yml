@@ -27,6 +27,8 @@ jobs:
           go-version: 1.17
       - name: Run tests
         run: cargo run --manifest-path ./tools/Cargo.toml --release --bin tester go run ./cmd/rank_est.go < ./tools/in/${{matrix.cases}}.txt > ./out.txt
+      - name: ls
+        run: ls
       - uses: actions/upload-artifact@v2
         with:
           name: outputs-${{matrix.cases}}
