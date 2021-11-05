@@ -1,0 +1,12 @@
+name: Test All Case
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+
+  test1:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
