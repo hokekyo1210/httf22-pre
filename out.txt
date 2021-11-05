@@ -1,3787 +1,3903 @@
-# 0 rank = 35
-# 1 rank = 32
-# 2 rank = 31
-# 3 rank = 1
-# 4 rank = 34
-# 5 rank = 32
-# 6 rank = 0
-# 7 rank = 31
-# 8 rank = 32
-# 9 rank = 31
-# 10 rank = 34
-# 11 rank = 34
-# 12 rank = 33
-# 13 rank = 34
-# 14 rank = 33
-# 15 rank = 30
-# 16 rank = 34
-# 17 rank = 34
-# 18 rank = 34
-# 19 rank = 31
-# 20 rank = 1
-# 21 rank = 31
-# 22 rank = 30
-# 23 rank = 33
-# 24 rank = 30
-# 25 rank = 0
-# 26 rank = 30
-# 27 rank = 33
-# 28 rank = 31
-# 29 rank = 0
-# 30 rank = 31
-# 31 rank = 34
-# 32 rank = 32
+# 0 rank = 0
+# 1 rank = 0
+# 2 rank = 25
+# 3 rank = 28
+# 4 rank = 0
+# 5 rank = 31
+# 6 rank = 1
+# 7 rank = 28
+# 8 rank = 0
+# 9 rank = 0
+# 10 rank = 30
+# 11 rank = 28
+# 12 rank = 3
+# 13 rank = 27
+# 14 rank = 26
+# 15 rank = 2
+# 16 rank = 29
+# 17 rank = 30
+# 18 rank = 28
+# 19 rank = 27
+# 20 rank = 2
+# 21 rank = 0
+# 22 rank = 1
+# 23 rank = 1
+# 24 rank = 22
+# 25 rank = 28
+# 26 rank = 29
+# 27 rank = 0
+# 28 rank = 27
+# 29 rank = 23
+# 30 rank = 1
+# 31 rank = 0
+# 32 rank = 27
 # 33 rank = 30
-# 34 rank = 32
-# 35 rank = 29
-# 36 rank = 33
-# 37 rank = 1
-# 38 rank = 30
-# 39 rank = 30
-# 40 rank = 0
-# 41 rank = 32
-# 42 rank = 32
-# 43 rank = 31
-# 44 rank = 30
-# 45 rank = 29
-# 46 rank = 33
-# 47 rank = 30
-# 48 rank = 29
-# 49 rank = 31
-# 50 rank = 33
-# 51 rank = 29
-# 52 rank = 30
-# 53 rank = 0
-# 54 rank = 30
-# 55 rank = 30
-# 56 rank = 28
-# 57 rank = 31
-# 58 rank = 31
-# 59 rank = 33
-# 60 rank = 0
-# 61 rank = 31
-# 62 rank = 32
-# 63 rank = 2
-# 64 rank = 29
-# 65 rank = 30
-# 66 rank = 30
-# 67 rank = 28
-# 68 rank = 30
-# 69 rank = 32
-# 70 rank = 32
-# 71 rank = 31
-# 72 rank = 29
-# 73 rank = 28
-# 74 rank = 31
-# 75 rank = 29
-# 76 rank = 31
-# 77 rank = 0
-# 78 rank = 30
-# 79 rank = 33
-# 80 rank = 1
-# 81 rank = 28
-# 82 rank = 1
-# 83 rank = 30
-# 84 rank = 30
-# 85 rank = 29
-# 86 rank = 25
-# 87 rank = 32
-# 88 rank = 29
-# 89 rank = 31
-# 90 rank = 28
-# 91 rank = 1
-# 92 rank = 27
-# 93 rank = 31
-# 94 rank = 1
-# 95 rank = 0
-# 96 rank = 1
-# 97 rank = 29
-# 98 rank = 29
-# 99 rank = 29
-# 100 rank = 29
-# 101 rank = 30
-# 102 rank = 31
-# 103 rank = 29
-# 104 rank = 30
-# 105 rank = 29
-# 106 rank = 30
-# 107 rank = 29
-# 108 rank = 29
-# 109 rank = 25
-# 110 rank = 0
+# 34 rank = 28
+# 35 rank = 27
+# 36 rank = 22
+# 37 rank = 28
+# 38 rank = 6
+# 39 rank = 1
+# 40 rank = 22
+# 41 rank = 23
+# 42 rank = 1
+# 43 rank = 27
+# 44 rank = 28
+# 45 rank = 22
+# 46 rank = 25
+# 47 rank = 22
+# 48 rank = 1
+# 49 rank = 1
+# 50 rank = 0
+# 51 rank = 23
+# 52 rank = 0
+# 53 rank = 22
+# 54 rank = 0
+# 55 rank = 29
+# 56 rank = 4
+# 57 rank = 26
+# 58 rank = 28
+# 59 rank = 1
+# 60 rank = 26
+# 61 rank = 25
+# 62 rank = 29
+# 63 rank = 22
+# 64 rank = 0
+# 65 rank = 0
+# 66 rank = 1
+# 67 rank = 21
+# 68 rank = 27
+# 69 rank = 26
+# 70 rank = 28
+# 71 rank = 1
+# 72 rank = 26
+# 73 rank = 29
+# 74 rank = 0
+# 75 rank = 22
+# 76 rank = 27
+# 77 rank = 3
+# 78 rank = 5
+# 79 rank = 0
+# 80 rank = 3
+# 81 rank = 4
+# 82 rank = 24
+# 83 rank = 22
+# 84 rank = 29
+# 85 rank = 1
+# 86 rank = 0
+# 87 rank = 27
+# 88 rank = 2
+# 89 rank = 28
+# 90 rank = 1
+# 91 rank = 23
+# 92 rank = 22
+# 93 rank = 0
+# 94 rank = 24
+# 95 rank = 21
+# 96 rank = 0
+# 97 rank = 26
+# 98 rank = 25
+# 99 rank = 24
+# 100 rank = 23
+# 101 rank = 0
+# 102 rank = 26
+# 103 rank = 1
+# 104 rank = 26
+# 105 rank = 26
+# 106 rank = 2
+# 107 rank = 0
+# 108 rank = 21
+# 109 rank = 1
+# 110 rank = 26
 # 111 rank = 0
-# 112 rank = 28
-# 113 rank = 28
-# 114 rank = 28
-# 115 rank = 0
-# 116 rank = 30
-# 117 rank = 2
-# 118 rank = 27
-# 119 rank = 28
-# 120 rank = 29
-# 121 rank = 26
+# 112 rank = 0
+# 113 rank = 22
+# 114 rank = 24
+# 115 rank = 25
+# 116 rank = 25
+# 117 rank = 0
+# 118 rank = 25
+# 119 rank = 27
+# 120 rank = 0
+# 121 rank = 0
 # 122 rank = 24
 # 123 rank = 28
-# 124 rank = 28
-# 125 rank = 1
-# 126 rank = 30
-# 127 rank = 30
-# 128 rank = 28
-# 129 rank = 0
-# 130 rank = 28
-# 131 rank = 20
-# 132 rank = 27
-# 133 rank = 0
-# 134 rank = 1
-# 135 rank = 27
-# 136 rank = 19
-# 137 rank = 27
+# 124 rank = 0
+# 125 rank = 26
+# 126 rank = 1
+# 127 rank = 1
+# 128 rank = 22
+# 129 rank = 27
+# 130 rank = 21
+# 131 rank = 21
+# 132 rank = 26
+# 133 rank = 21
+# 134 rank = 25
+# 135 rank = 0
+# 136 rank = 21
+# 137 rank = 24
 # 138 rank = 27
 # 139 rank = 25
-# 140 rank = 0
-# 141 rank = 29
-# 142 rank = 0
-# 143 rank = 29
-# 144 rank = 29
-# 145 rank = 26
-# 146 rank = 29
-# 147 rank = 29
-# 148 rank = 27
+# 140 rank = 26
+# 141 rank = 20
+# 142 rank = 24
+# 143 rank = 26
+# 144 rank = 27
+# 145 rank = 23
+# 146 rank = 26
+# 147 rank = 25
+# 148 rank = 24
 # 149 rank = 0
-# 150 rank = 23
+# 150 rank = 20
 # 151 rank = 24
-# 152 rank = 28
-# 153 rank = 28
+# 152 rank = 24
+# 153 rank = 25
 # 154 rank = 0
-# 155 rank = 0
-# 156 rank = 24
-# 157 rank = 28
-# 158 rank = 28
-# 159 rank = 19
-# 160 rank = 25
-# 161 rank = 27
-# 162 rank = 27
-# 163 rank = 19
-# 164 rank = 24
-# 165 rank = 25
-# 166 rank = 29
-# 167 rank = 28
-# 168 rank = 27
-# 169 rank = 27
-# 170 rank = 0
+# 155 rank = 21
+# 156 rank = 0
+# 157 rank = 0
+# 158 rank = 25
+# 159 rank = 23
+# 160 rank = 26
+# 161 rank = 19
+# 162 rank = 23
+# 163 rank = 20
+# 164 rank = 25
+# 165 rank = 22
+# 166 rank = 20
+# 167 rank = 2
+# 168 rank = 0
+# 169 rank = 25
+# 170 rank = 1
 # 171 rank = 0
-# 172 rank = 0
-# 173 rank = 27
-# 174 rank = 25
-# 175 rank = 24
-# 176 rank = 1
-# 177 rank = 25
-# 178 rank = 28
-# 179 rank = 28
-# 180 rank = 28
-# 181 rank = 4
-# 182 rank = 27
-# 183 rank = 26
-# 184 rank = 24
-# 185 rank = 26
-# 186 rank = 26
-# 187 rank = 27
-# 188 rank = 24
-# 189 rank = 23
-# 190 rank = 27
-# 191 rank = 25
-# 192 rank = 26
+# 172 rank = 21
+# 173 rank = 24
+# 174 rank = 24
+# 175 rank = 2
+# 176 rank = 22
+# 177 rank = 0
+# 178 rank = 25
+# 179 rank = 1
+# 180 rank = 3
+# 181 rank = 20
+# 182 rank = 0
+# 183 rank = 21
+# 184 rank = 18
+# 185 rank = 24
+# 186 rank = 21
+# 187 rank = 22
+# 188 rank = 0
+# 189 rank = 24
+# 190 rank = 21
+# 191 rank = 20
+# 192 rank = 22
 # 193 rank = 0
-# 194 rank = 0
-# 195 rank = 26
-# 196 rank = 26
-# 197 rank = 27
-# 198 rank = 24
-# 199 rank = 28
-# 200 rank = 23
-# 201 rank = 24
-# 202 rank = 28
-# 203 rank = 27
-# 204 rank = 24
-# 205 rank = 25
-# 206 rank = 24
-# 207 rank = 0
-# 208 rank = 25
-# 209 rank = 24
-# 210 rank = 26
+# 194 rank = 23
+# 195 rank = 0
+# 196 rank = 20
+# 197 rank = 24
+# 198 rank = 22
+# 199 rank = 3
+# 200 rank = 3
+# 201 rank = 1
+# 202 rank = 20
+# 203 rank = 26
+# 204 rank = 21
+# 205 rank = 0
+# 206 rank = 1
+# 207 rank = 1
+# 208 rank = 0
+# 209 rank = 25
+# 210 rank = 19
 # 211 rank = 24
-# 212 rank = 26
-# 213 rank = 26
-# 214 rank = 26
-# 215 rank = 22
-# 216 rank = 23
-# 217 rank = 24
-# 218 rank = 24
-# 219 rank = 24
-# 220 rank = 26
-# 221 rank = 25
-# 222 rank = 23
+# 212 rank = 24
+# 213 rank = 20
+# 214 rank = 23
+# 215 rank = 24
+# 216 rank = 19
+# 217 rank = 19
+# 218 rank = 0
+# 219 rank = 2
+# 220 rank = 0
+# 221 rank = 23
+# 222 rank = 19
 # 223 rank = 22
-# 224 rank = 0
-# 225 rank = 18
-# 226 rank = 0
-# 227 rank = 27
-# 228 rank = 23
-# 229 rank = 0
-# 230 rank = 23
-# 231 rank = 0
-# 232 rank = 23
-# 233 rank = 22
-# 234 rank = 24
-# 235 rank = 18
-# 236 rank = 22
-# 237 rank = 4
-# 238 rank = 23
-# 239 rank = 23
-# 240 rank = 24
-# 241 rank = 1
-# 242 rank = 1
-# 243 rank = 1
-# 244 rank = 3
-# 245 rank = 24
-# 246 rank = 23
-# 247 rank = 0
-# 248 rank = 23
-# 249 rank = 0
-# 250 rank = 23
-# 251 rank = 25
-# 252 rank = 22
-# 253 rank = 26
-# 254 rank = 0
-# 255 rank = 23
-# 256 rank = 26
-# 257 rank = 22
-# 258 rank = 26
-# 259 rank = 0
-# 260 rank = 23
-# 261 rank = 0
+# 224 rank = 22
+# 225 rank = 0
+# 226 rank = 21
+# 227 rank = 0
+# 228 rank = 0
+# 229 rank = 22
+# 230 rank = 19
+# 231 rank = 19
+# 232 rank = 1
+# 233 rank = 18
+# 234 rank = 20
+# 235 rank = 22
+# 236 rank = 21
+# 237 rank = 20
+# 238 rank = 22
+# 239 rank = 21
+# 240 rank = 19
+# 241 rank = 19
+# 242 rank = 0
+# 243 rank = 20
+# 244 rank = 15
+# 245 rank = 0
+# 246 rank = 19
+# 247 rank = 2
+# 248 rank = 18
+# 249 rank = 19
+# 250 rank = 18
+# 251 rank = 0
+# 252 rank = 0
+# 253 rank = 0
+# 254 rank = 18
+# 255 rank = 17
+# 256 rank = 2
+# 257 rank = 18
+# 258 rank = 23
+# 259 rank = 18
+# 260 rank = 22
+# 261 rank = 7
 # 262 rank = 0
-# 263 rank = 25
-# 264 rank = 23
-# 265 rank = 22
+# 263 rank = 1
+# 264 rank = 7
+# 265 rank = 20
 # 266 rank = 0
-# 267 rank = 25
-# 268 rank = 3
-# 269 rank = 25
-# 270 rank = 21
-# 271 rank = 17
-# 272 rank = 24
-# 273 rank = 24
-# 274 rank = 0
-# 275 rank = 20
-# 276 rank = 17
-# 277 rank = 24
-# 278 rank = 0
-# 279 rank = 3
-# 280 rank = 0
+# 267 rank = 18
+# 268 rank = 22
+# 269 rank = 6
+# 270 rank = 23
+# 271 rank = 1
+# 272 rank = 20
+# 273 rank = 2
+# 274 rank = 21
+# 275 rank = 21
+# 276 rank = 21
+# 277 rank = 17
+# 278 rank = 2
+# 279 rank = 22
+# 280 rank = 19
 # 281 rank = 0
-# 282 rank = 20
-# 283 rank = 23
-# 284 rank = 25
-# 285 rank = 20
-# 286 rank = 0
-# 287 rank = 24
-# 288 rank = 23
-# 289 rank = 22
-# 290 rank = 22
-# 291 rank = 19
-# 292 rank = 21
-# 293 rank = 23
-# 294 rank = 25
+# 282 rank = 0
+# 283 rank = 19
+# 284 rank = 17
+# 285 rank = 21
+# 286 rank = 19
+# 287 rank = 21
+# 288 rank = 21
+# 289 rank = 0
+# 290 rank = 19
+# 291 rank = 5
+# 292 rank = 18
+# 293 rank = 20
+# 294 rank = 20
 # 295 rank = 21
-# 296 rank = 23
-# 297 rank = 22
-# 298 rank = 21
-# 299 rank = 24
-# 300 rank = 20
-# 301 rank = 22
-# 302 rank = 24
-# 303 rank = 22
-# 304 rank = 23
-# 305 rank = 23
-# 306 rank = 1
-# 307 rank = 20
-# 308 rank = 22
-# 309 rank = 0
-# 310 rank = 22
-# 311 rank = 23
-# 312 rank = 24
-# 313 rank = 22
-# 314 rank = 21
-# 315 rank = 23
-# 316 rank = 21
-# 317 rank = 22
-# 318 rank = 20
-# 319 rank = 19
-# 320 rank = 0
-# 321 rank = 21
-# 322 rank = 23
-# 323 rank = 23
-# 324 rank = 23
-# 325 rank = 0
-# 326 rank = 20
-# 327 rank = 21
-# 328 rank = 16
-# 329 rank = 22
-# 330 rank = 17
-# 331 rank = 20
-# 332 rank = 0
+# 296 rank = 20
+# 297 rank = 1
+# 298 rank = 19
+# 299 rank = 16
+# 300 rank = 19
+# 301 rank = 19
+# 302 rank = 2
+# 303 rank = 0
+# 304 rank = 0
+# 305 rank = 0
+# 306 rank = 0
+# 307 rank = 18
+# 308 rank = 0
+# 309 rank = 18
+# 310 rank = 19
+# 311 rank = 18
+# 312 rank = 1
+# 313 rank = 19
+# 314 rank = 19
+# 315 rank = 16
+# 316 rank = 20
+# 317 rank = 0
+# 318 rank = 17
+# 319 rank = 16
+# 320 rank = 19
+# 321 rank = 16
+# 322 rank = 17
+# 323 rank = 17
+# 324 rank = 0
+# 325 rank = 18
+# 326 rank = 1
+# 327 rank = 19
+# 328 rank = 17
+# 329 rank = 14
+# 330 rank = 0
+# 331 rank = 17
+# 332 rank = 17
 # 333 rank = 0
-# 334 rank = 16
-# 335 rank = 22
-# 336 rank = 2
-# 337 rank = 20
-# 338 rank = 20
-# 339 rank = 2
-# 340 rank = 21
-# 341 rank = 23
-# 342 rank = 21
+# 334 rank = 18
+# 335 rank = 5
+# 336 rank = 0
+# 337 rank = 0
+# 338 rank = 0
+# 339 rank = 16
+# 340 rank = 19
+# 341 rank = 14
+# 342 rank = 18
 # 343 rank = 17
-# 344 rank = 19
-# 345 rank = 0
-# 346 rank = 22
-# 347 rank = 22
-# 348 rank = 21
-# 349 rank = 1
-# 350 rank = 22
+# 344 rank = 17
+# 345 rank = 17
+# 346 rank = 18
+# 347 rank = 16
+# 348 rank = 0
+# 349 rank = 17
+# 350 rank = 3
 # 351 rank = 0
-# 352 rank = 19
-# 353 rank = 23
-# 354 rank = 19
-# 355 rank = 19
-# 356 rank = 20
-# 357 rank = 21
-# 358 rank = 14
-# 359 rank = 20
-# 360 rank = 24
-# 361 rank = 0
-# 362 rank = 21
-# 363 rank = 21
-# 364 rank = 22
+# 352 rank = 16
+# 353 rank = 18
+# 354 rank = 0
+# 355 rank = 16
+# 356 rank = 18
+# 357 rank = 18
+# 358 rank = 4
+# 359 rank = 4
+# 360 rank = 15
+# 361 rank = 17
+# 362 rank = 1
+# 363 rank = 1
+# 364 rank = 0
 # 365 rank = 0
-# 366 rank = 23
-# 367 rank = 2
-# 368 rank = 0
-# 369 rank = 19
-# 370 rank = 20
-# 371 rank = 2
-# 372 rank = 19
-# 373 rank = 21
-# 374 rank = 21
-# 375 rank = 18
-# 376 rank = 20
-# 377 rank = 19
-# 378 rank = 16
-# 379 rank = 1
-# 380 rank = 1
-# 381 rank = 22
-# 382 rank = 19
-# 383 rank = 5
-# 384 rank = 22
-# 385 rank = 21
+# 366 rank = 17
+# 367 rank = 17
+# 368 rank = 16
+# 369 rank = 0
+# 370 rank = 19
+# 371 rank = 1
+# 372 rank = 18
+# 373 rank = 17
+# 374 rank = 17
+# 375 rank = 4
+# 376 rank = 0
+# 377 rank = 14
+# 378 rank = 2
+# 379 rank = 0
+# 380 rank = 16
+# 381 rank = 16
+# 382 rank = 0
+# 383 rank = 0
+# 384 rank = 16
+# 385 rank = 15
 # 386 rank = 14
-# 387 rank = 1
-# 388 rank = 20
-# 389 rank = 19
-# 390 rank = 20
-# 391 rank = 20
-# 392 rank = 19
-# 393 rank = 20
-# 394 rank = 0
-# 395 rank = 15
-# 396 rank = 0
-# 397 rank = 18
-# 398 rank = 18
-# 399 rank = 20
-# 400 rank = 1
+# 387 rank = 17
+# 388 rank = 16
+# 389 rank = 15
+# 390 rank = 16
+# 391 rank = 0
+# 392 rank = 17
+# 393 rank = 17
+# 394 rank = 1
+# 395 rank = 3
+# 396 rank = 13
+# 397 rank = 15
+# 398 rank = 12
+# 399 rank = 16
+# 400 rank = 15
 # 401 rank = 14
-# 402 rank = 4
-# 403 rank = 19
-# 404 rank = 20
-# 405 rank = 21
+# 402 rank = 14
+# 403 rank = 16
+# 404 rank = 15
+# 405 rank = 0
 # 406 rank = 1
-# 407 rank = 19
+# 407 rank = 15
 # 408 rank = 14
-# 409 rank = 19
-# 410 rank = 19
-# 411 rank = 0
-# 412 rank = 18
-# 413 rank = 21
-# 414 rank = 20
-# 415 rank = 14
-# 416 rank = 0
-# 417 rank = 18
-# 418 rank = 0
-# 419 rank = 4
-# 420 rank = 14
-# 421 rank = 19
+# 409 rank = 16
+# 410 rank = 16
+# 411 rank = 18
+# 412 rank = 12
+# 413 rank = 14
+# 414 rank = 14
+# 415 rank = 2
+# 416 rank = 12
+# 417 rank = 17
+# 418 rank = 16
+# 419 rank = 0
+# 420 rank = 1
+# 421 rank = 15
 # 422 rank = 0
-# 423 rank = 13
-# 424 rank = 0
-# 425 rank = 20
-# 426 rank = 4
-# 427 rank = 15
-# 428 rank = 18
-# 429 rank = 18
+# 423 rank = 15
+# 424 rank = 17
+# 425 rank = 16
+# 426 rank = 16
+# 427 rank = 17
+# 428 rank = 1
+# 429 rank = 0
 # 430 rank = 15
-# 431 rank = 0
-# 432 rank = 18
-# 433 rank = 12
-# 434 rank = 18
-# 435 rank = 18
-# 436 rank = 0
-# 437 rank = 17
-# 438 rank = 14
-# 439 rank = 20
-# 440 rank = 20
+# 431 rank = 16
+# 432 rank = 17
+# 433 rank = 4
+# 434 rank = 13
+# 435 rank = 16
+# 436 rank = 16
+# 437 rank = 11
+# 438 rank = 15
+# 439 rank = 16
+# 440 rank = 0
 # 441 rank = 0
-# 442 rank = 3
-# 443 rank = 2
-# 444 rank = 17
-# 445 rank = 19
+# 442 rank = 1
+# 443 rank = 13
+# 444 rank = 15
+# 445 rank = 16
 # 446 rank = 13
-# 447 rank = 0
-# 448 rank = 17
-# 449 rank = 18
-# 450 rank = 0
-# 451 rank = 13
-# 452 rank = 18
-# 453 rank = 18
-# 454 rank = 19
-# 455 rank = 1
-# 456 rank = 1
+# 447 rank = 1
+# 448 rank = 0
+# 449 rank = 15
+# 450 rank = 15
+# 451 rank = 16
+# 452 rank = 3
+# 453 rank = 14
+# 454 rank = 0
+# 455 rank = 15
+# 456 rank = 0
 # 457 rank = 13
-# 458 rank = 19
-# 459 rank = 0
-# 460 rank = 0
-# 461 rank = 19
-# 462 rank = 18
-# 463 rank = 17
-# 464 rank = 19
-# 465 rank = 2
-# 466 rank = 14
+# 458 rank = 1
+# 459 rank = 14
+# 460 rank = 14
+# 461 rank = 17
+# 462 rank = 14
+# 463 rank = 0
+# 464 rank = 16
+# 465 rank = 15
+# 466 rank = 0
 # 467 rank = 0
-# 468 rank = 19
-# 469 rank = 13
+# 468 rank = 0
+# 469 rank = 0
 # 470 rank = 0
-# 471 rank = 17
-# 472 rank = 19
-# 473 rank = 18
+# 471 rank = 12
+# 472 rank = 0
+# 473 rank = 15
 # 474 rank = 15
-# 475 rank = 11
-# 476 rank = 12
-# 477 rank = 15
-# 478 rank = 18
-# 479 rank = 20
-# 480 rank = 4
-# 481 rank = 19
-# 482 rank = 0
-# 483 rank = 1
-# 484 rank = 19
-# 485 rank = 17
-# 486 rank = 13
-# 487 rank = 18
-# 488 rank = 0
-# 489 rank = 13
-# 490 rank = 11
-# 491 rank = 17
-# 492 rank = 14
-# 493 rank = 0
-# 494 rank = 12
-# 495 rank = 17
-# 496 rank = 12
-# 497 rank = 1
-# 498 rank = 12
-# 499 rank = 16
+# 475 rank = 15
+# 476 rank = 15
+# 477 rank = 14
+# 478 rank = 14
+# 479 rank = 14
+# 480 rank = 0
+# 481 rank = 14
+# 482 rank = 1
+# 483 rank = 13
+# 484 rank = 12
+# 485 rank = 12
+# 486 rank = 12
+# 487 rank = 2
+# 488 rank = 14
+# 489 rank = 11
+# 490 rank = 13
+# 491 rank = 2
+# 492 rank = 0
+# 493 rank = 1
+# 494 rank = 14
+# 495 rank = 15
+# 496 rank = 14
+# 497 rank = 13
+# 498 rank = 14
+# 499 rank = 14
 # 500 rank = 0
-# 501 rank = 18
-# 502 rank = 17
-# 503 rank = 0
-# 504 rank = 0
-# 505 rank = 11
-# 506 rank = 13
-# 507 rank = 4
-# 508 rank = 13
-# 509 rank = 11
-# 510 rank = 16
-# 511 rank = 14
-# 512 rank = 17
-# 513 rank = 13
-# 514 rank = 0
-# 515 rank = 0
-# 516 rank = 10
-# 517 rank = 14
-# 518 rank = 13
-# 519 rank = 17
-# 520 rank = 0
-# 521 rank = 1
-# 522 rank = 14
-# 523 rank = 13
-# 524 rank = 13
-# 525 rank = 3
-# 526 rank = 2
-# 527 rank = 12
-# 528 rank = 14
+# 501 rank = 11
+# 502 rank = 13
+# 503 rank = 13
+# 504 rank = 1
+# 505 rank = 12
+# 506 rank = 0
+# 507 rank = 16
+# 508 rank = 15
+# 509 rank = 12
+# 510 rank = 2
+# 511 rank = 0
+# 512 rank = 12
+# 513 rank = 11
+# 514 rank = 15
+# 515 rank = 12
+# 516 rank = 14
+# 517 rank = 12
+# 518 rank = 4
+# 519 rank = 13
+# 520 rank = 12
+# 521 rank = 13
+# 522 rank = 1
+# 523 rank = 14
+# 524 rank = 0
+# 525 rank = 13
+# 526 rank = 0
+# 527 rank = 11
+# 528 rank = 13
 # 529 rank = 12
 # 530 rank = 0
-# 531 rank = 13
+# 531 rank = 0
 # 532 rank = 11
-# 533 rank = 16
-# 534 rank = 0
-# 535 rank = 16
+# 533 rank = 10
+# 534 rank = 10
+# 535 rank = 1
 # 536 rank = 0
-# 537 rank = 12
-# 538 rank = 16
-# 539 rank = 11
-# 540 rank = 16
-# 541 rank = 10
-# 542 rank = 4
-# 543 rank = 3
-# 544 rank = 10
-# 545 rank = 2
-# 546 rank = 12
-# 547 rank = 11
-# 548 rank = 15
-# 549 rank = 17
-# 550 rank = 0
+# 537 rank = 14
+# 538 rank = 10
+# 539 rank = 13
+# 540 rank = 12
+# 541 rank = 12
+# 542 rank = 14
+# 543 rank = 13
+# 544 rank = 12
+# 545 rank = 0
+# 546 rank = 13
+# 547 rank = 13
+# 548 rank = 2
+# 549 rank = 14
+# 550 rank = 11
 # 551 rank = 12
-# 552 rank = 16
-# 553 rank = 12
-# 554 rank = 1
+# 552 rank = 12
+# 553 rank = 0
+# 554 rank = 0
 # 555 rank = 12
-# 556 rank = 10
-# 557 rank = 0
-# 558 rank = 0
-# 559 rank = 13
-# 560 rank = 10
-# 561 rank = 0
+# 556 rank = 13
+# 557 rank = 1
+# 558 rank = 1
+# 559 rank = 0
+# 560 rank = 0
+# 561 rank = 5
 # 562 rank = 0
-# 563 rank = 14
-# 564 rank = 10
+# 563 rank = 1
+# 564 rank = 12
 # 565 rank = 10
 # 566 rank = 13
-# 567 rank = 13
-# 568 rank = 10
-# 569 rank = 10
-# 570 rank = 12
-# 571 rank = 10
-# 572 rank = 16
-# 573 rank = 11
-# 574 rank = 11
+# 567 rank = 1
+# 568 rank = 11
+# 569 rank = 11
+# 570 rank = 13
+# 571 rank = 13
+# 572 rank = 13
+# 573 rank = 12
+# 574 rank = 10
 # 575 rank = 10
-# 576 rank = 3
-# 577 rank = 10
-# 578 rank = 10
-# 579 rank = 11
-# 580 rank = 9
-# 581 rank = 11
-# 582 rank = 11
-# 583 rank = 11
-# 584 rank = 2
-# 585 rank = 15
+# 576 rank = 10
+# 577 rank = 11
+# 578 rank = 11
+# 579 rank = 13
+# 580 rank = 11
+# 581 rank = 10
+# 582 rank = 0
+# 583 rank = 10
+# 584 rank = 0
+# 585 rank = 13
 # 586 rank = 13
-# 587 rank = 9
+# 587 rank = 11
 # 588 rank = 0
-# 589 rank = 12
-# 590 rank = 0
-# 591 rank = 12
-# 592 rank = 12
+# 589 rank = 10
+# 590 rank = 4
+# 591 rank = 0
+# 592 rank = 10
 # 593 rank = 0
-# 594 rank = 12
-# 595 rank = 15
-# 596 rank = 2
-# 597 rank = 12
-# 598 rank = 8
-# 599 rank = 9
-# 600 rank = 0
-# 601 rank = 10
-# 602 rank = 11
-# 603 rank = 3
-# 604 rank = 9
-# 605 rank = 1
-# 606 rank = 15
-# 607 rank = 14
-# 608 rank = 13
+# 594 rank = 3
+# 595 rank = 11
+# 596 rank = 10
+# 597 rank = 11
+# 598 rank = 12
+# 599 rank = 11
+# 600 rank = 11
+# 601 rank = 1
+# 602 rank = 9
+# 603 rank = 1
+# 604 rank = 11
+# 605 rank = 10
+# 606 rank = 0
+# 607 rank = 9
+# 608 rank = 9
 # 609 rank = 0
 # 610 rank = 11
-# 611 rank = 12
+# 611 rank = 9
 # 612 rank = 0
-# 613 rank = 11
-# 614 rank = 10
-# 615 rank = 9
+# 613 rank = 0
+# 614 rank = 0
+# 615 rank = 0
 # 616 rank = 0
-# 617 rank = 0
-# 618 rank = 9
-# 619 rank = 1
-# 620 rank = 9
-# 621 rank = 1
-# 622 rank = 1
-# 623 rank = 11
-# 624 rank = 2
+# 617 rank = 10
+# 618 rank = 12
+# 619 rank = 0
+# 620 rank = 11
+# 621 rank = 10
+# 622 rank = 12
+# 623 rank = 9
+# 624 rank = 12
 # 625 rank = 9
 # 626 rank = 11
-# 627 rank = 7
-# 628 rank = 0
-# 629 rank = 10
+# 627 rank = 12
+# 628 rank = 7
+# 629 rank = 2
 # 630 rank = 0
-# 631 rank = 11
-# 632 rank = 11
-# 633 rank = 0
-# 634 rank = 0
-# 635 rank = 1
-# 636 rank = 12
-# 637 rank = 1
-# 638 rank = 9
-# 639 rank = 1
-# 640 rank = 1
-# 641 rank = 0
-# 642 rank = 10
-# 643 rank = 2
-# 644 rank = 10
-# 645 rank = 10
-# 646 rank = 1
-# 647 rank = 7
-# 648 rank = 9
-# 649 rank = 11
-# 650 rank = 11
-# 651 rank = 9
+# 631 rank = 1
+# 632 rank = 9
+# 633 rank = 9
+# 634 rank = 10
+# 635 rank = 12
+# 636 rank = 9
+# 637 rank = 0
+# 638 rank = 2
+# 639 rank = 10
+# 640 rank = 9
+# 641 rank = 12
+# 642 rank = 9
+# 643 rank = 9
+# 644 rank = 9
+# 645 rank = 8
+# 646 rank = 12
+# 647 rank = 0
+# 648 rank = 11
+# 649 rank = 13
+# 650 rank = 9
+# 651 rank = 2
 # 652 rank = 10
 # 653 rank = 11
-# 654 rank = 8
-# 655 rank = 0
-# 656 rank = 1
-# 657 rank = 8
-# 658 rank = 0
-# 659 rank = 9
-# 660 rank = 6
-# 661 rank = 10
-# 662 rank = 10
-# 663 rank = 1
-# 664 rank = 10
-# 665 rank = 10
-# 666 rank = 0
+# 654 rank = 2
+# 655 rank = 1
+# 656 rank = 0
+# 657 rank = 12
+# 658 rank = 9
+# 659 rank = 0
+# 660 rank = 9
+# 661 rank = 0
+# 662 rank = 6
+# 663 rank = 0
+# 664 rank = 1
+# 665 rank = 2
+# 666 rank = 1
 # 667 rank = 8
-# 668 rank = 9
-# 669 rank = 1
-# 670 rank = 4
-# 671 rank = 9
-# 672 rank = 9
-# 673 rank = 8
-# 674 rank = 11
-# 675 rank = 11
-# 676 rank = 8
-# 677 rank = 10
+# 668 rank = 2
+# 669 rank = 8
+# 670 rank = 8
+# 671 rank = 0
+# 672 rank = 8
+# 673 rank = 0
+# 674 rank = 10
+# 675 rank = 10
+# 676 rank = 9
+# 677 rank = 9
 # 678 rank = 8
-# 679 rank = 4
-# 680 rank = 8
-# 681 rank = 1
-# 682 rank = 7
-# 683 rank = 9
-# 684 rank = 0
-# 685 rank = 9
-# 686 rank = 10
-# 687 rank = 0
-# 688 rank = 1
-# 689 rank = 2
-# 690 rank = 7
-# 691 rank = 9
-# 692 rank = 1
-# 693 rank = 1
-# 694 rank = 0
-# 695 rank = 7
-# 696 rank = 8
+# 679 rank = 9
+# 680 rank = 0
+# 681 rank = 11
+# 682 rank = 5
+# 683 rank = 6
+# 684 rank = 11
+# 685 rank = 10
+# 686 rank = 0
+# 687 rank = 1
+# 688 rank = 0
+# 689 rank = 8
+# 690 rank = 0
+# 691 rank = 4
+# 692 rank = 6
+# 693 rank = 11
+# 694 rank = 8
+# 695 rank = 1
+# 696 rank = 0
 # 697 rank = 8
-# 698 rank = 0
-# 699 rank = 7
-# 700 rank = 9
-# 701 rank = 6
-# 702 rank = 6
-# 703 rank = 0
-# 704 rank = 8
-# 705 rank = 8
-# 706 rank = 0
-# 707 rank = 5
-# 708 rank = 5
-# 709 rank = 8
-# 710 rank = 3
-# 711 rank = 8
-# 712 rank = 0
-# 713 rank = 5
-# 714 rank = 0
-# 715 rank = 4
-# 716 rank = 7
-# 717 rank = 0
-# 718 rank = 9
-# 719 rank = 1
+# 698 rank = 9
+# 699 rank = 0
+# 700 rank = 8
+# 701 rank = 7
+# 702 rank = 0
+# 703 rank = 6
+# 704 rank = 0
+# 705 rank = 10
+# 706 rank = 11
+# 707 rank = 7
+# 708 rank = 0
+# 709 rank = 0
+# 710 rank = 8
+# 711 rank = 0
+# 712 rank = 7
+# 713 rank = 6
+# 714 rank = 8
+# 715 rank = 10
+# 716 rank = 9
+# 717 rank = 4
+# 718 rank = 0
+# 719 rank = 0
 # 720 rank = 0
 # 721 rank = 0
-# 722 rank = 7
-# 723 rank = 0
-# 724 rank = 7
-# 725 rank = 3
-# 726 rank = 1
-# 727 rank = 0
-# 728 rank = 6
-# 729 rank = 8
-# 730 rank = 5
-# 731 rank = 0
-# 732 rank = 8
-# 733 rank = 3
-# 734 rank = 0
-# 735 rank = 0
-# 736 rank = 9
-# 737 rank = 5
-# 738 rank = 8
+# 722 rank = 8
+# 723 rank = 8
+# 724 rank = 6
+# 725 rank = 10
+# 726 rank = 7
+# 727 rank = 9
+# 728 rank = 7
+# 729 rank = 0
+# 730 rank = 0
+# 731 rank = 7
+# 732 rank = 2
+# 733 rank = 10
+# 734 rank = 10
+# 735 rank = 8
+# 736 rank = 7
+# 737 rank = 8
+# 738 rank = 0
 # 739 rank = 5
-# 740 rank = 0
-# 741 rank = 9
-# 742 rank = 3
-# 743 rank = 0
-# 744 rank = 0
-# 745 rank = 5
-# 746 rank = 0
-# 747 rank = 7
-# 748 rank = 9
-# 749 rank = 7
-# 750 rank = 7
+# 740 rank = 9
+# 741 rank = 0
+# 742 rank = 7
+# 743 rank = 4
+# 744 rank = 6
+# 745 rank = 7
+# 746 rank = 7
+# 747 rank = 6
+# 748 rank = 0
+# 749 rank = 3
+# 750 rank = 5
 # 751 rank = 0
-# 752 rank = 5
-# 753 rank = 0
+# 752 rank = 7
+# 753 rank = 9
 # 754 rank = 6
-# 755 rank = 8
+# 755 rank = 0
 # 756 rank = 8
-# 757 rank = 7
-# 758 rank = 0
-# 759 rank = 8
-# 760 rank = 0
-# 761 rank = 7
-# 762 rank = 5
-# 763 rank = 7
-# 764 rank = 7
-# 765 rank = 1
-# 766 rank = 3
-# 767 rank = 7
-# 768 rank = 1
-# 769 rank = 6
-# 770 rank = 0
-# 771 rank = 6
-# 772 rank = 7
-# 773 rank = 6
-# 774 rank = 5
-# 775 rank = 2
-# 776 rank = 0
-# 777 rank = 5
+# 757 rank = 0
+# 758 rank = 7
+# 759 rank = 1
+# 760 rank = 8
+# 761 rank = 0
+# 762 rank = 0
+# 763 rank = 6
+# 764 rank = 2
+# 765 rank = 9
+# 766 rank = 7
+# 767 rank = 2
+# 768 rank = 0
+# 769 rank = 7
+# 770 rank = 8
+# 771 rank = 0
+# 772 rank = 6
+# 773 rank = 0
+# 774 rank = 3
+# 775 rank = 0
+# 776 rank = 7
+# 777 rank = 6
 # 778 rank = 6
-# 779 rank = 1
-# 780 rank = 5
-# 781 rank = 8
-# 782 rank = 4
-# 783 rank = 8
-# 784 rank = 5
-# 785 rank = 2
-# 786 rank = 4
-# 787 rank = 6
-# 788 rank = 7
-# 789 rank = 0
+# 779 rank = 0
+# 780 rank = 3
+# 781 rank = 3
+# 782 rank = 6
+# 783 rank = 7
+# 784 rank = 6
+# 785 rank = 6
+# 786 rank = 5
+# 787 rank = 0
+# 788 rank = 6
+# 789 rank = 2
 # 790 rank = 6
-# 791 rank = 5
-# 792 rank = 4
-# 793 rank = 4
-# 794 rank = 3
-# 795 rank = 7
-# 796 rank = 0
-# 797 rank = 4
-# 798 rank = 3
-# 799 rank = 3
-# 800 rank = 6
+# 791 rank = 6
+# 792 rank = 0
+# 793 rank = 2
+# 794 rank = 0
+# 795 rank = 5
+# 796 rank = 5
+# 797 rank = 6
+# 798 rank = 0
+# 799 rank = 2
+# 800 rank = 7
 # 801 rank = 6
-# 802 rank = 3
-# 803 rank = 2
-# 804 rank = 6
-# 805 rank = 0
-# 806 rank = 7
-# 807 rank = 1
-# 808 rank = 2
+# 802 rank = 8
+# 803 rank = 5
+# 804 rank = 0
+# 805 rank = 5
+# 806 rank = 0
+# 807 rank = 3
+# 808 rank = 7
 # 809 rank = 4
-# 810 rank = 6
-# 811 rank = 6
-# 812 rank = 5
-# 813 rank = 6
-# 814 rank = 1
-# 815 rank = 2
-# 816 rank = 6
-# 817 rank = 2
-# 818 rank = 5
-# 819 rank = 5
-# 820 rank = 4
-# 821 rank = 0
-# 822 rank = 4
-# 823 rank = 0
-# 824 rank = 0
+# 810 rank = 4
+# 811 rank = 0
+# 812 rank = 7
+# 813 rank = 0
+# 814 rank = 0
+# 815 rank = 1
+# 816 rank = 0
+# 817 rank = 5
+# 818 rank = 4
+# 819 rank = 8
+# 820 rank = 0
+# 821 rank = 4
+# 822 rank = 2
+# 823 rank = 2
+# 824 rank = 4
 # 825 rank = 4
-# 826 rank = 7
+# 826 rank = 0
 # 827 rank = 6
-# 828 rank = 6
-# 829 rank = 0
-# 830 rank = 3
-# 831 rank = 1
-# 832 rank = 2
-# 833 rank = 3
-# 834 rank = 3
-# 835 rank = 3
-# 836 rank = 2
-# 837 rank = 2
-# 838 rank = 6
-# 839 rank = 0
-# 840 rank = 5
-# 841 rank = 5
-# 842 rank = 0
-# 843 rank = 5
+# 828 rank = 4
+# 829 rank = 5
+# 830 rank = 4
+# 831 rank = 5
+# 832 rank = 4
+# 833 rank = 1
+# 834 rank = 5
+# 835 rank = 6
+# 836 rank = 0
+# 837 rank = 4
+# 838 rank = 0
+# 839 rank = 3
+# 840 rank = 6
+# 841 rank = 4
+# 842 rank = 2
+# 843 rank = 4
 # 844 rank = 3
-# 845 rank = 4
-# 846 rank = 2
-# 847 rank = 4
-# 848 rank = 0
-# 849 rank = 5
-# 850 rank = 3
-# 851 rank = 5
-# 852 rank = 3
-# 853 rank = 3
-# 854 rank = 0
-# 855 rank = 2
-# 856 rank = 0
-# 857 rank = 3
-# 858 rank = 2
-# 859 rank = 3
-# 860 rank = 3
-# 861 rank = 3
-# 862 rank = 4
-# 863 rank = 5
-# 864 rank = 1
-# 865 rank = 4
-# 866 rank = 3
-# 867 rank = 1
-# 868 rank = 2
-# 869 rank = 1
+# 845 rank = 8
+# 846 rank = 6
+# 847 rank = 0
+# 848 rank = 3
+# 849 rank = 2
+# 850 rank = 7
+# 851 rank = 0
+# 852 rank = 5
+# 853 rank = 2
+# 854 rank = 5
+# 855 rank = 6
+# 856 rank = 5
+# 857 rank = 2
+# 858 rank = 4
+# 859 rank = 0
+# 860 rank = 0
+# 861 rank = 5
+# 862 rank = 2
+# 863 rank = 1
+# 864 rank = 2
+# 865 rank = 6
+# 866 rank = 0
+# 867 rank = 4
+# 868 rank = 5
+# 869 rank = 0
 # 870 rank = 3
-# 871 rank = 3
-# 872 rank = 0
+# 871 rank = 5
+# 872 rank = 3
 # 873 rank = 1
 # 874 rank = 0
-# 875 rank = 4
-# 876 rank = 4
-# 877 rank = 1
-# 878 rank = 1
-# 879 rank = 0
-# 880 rank = 3
-# 881 rank = 2
-# 882 rank = 0
-# 883 rank = 3
-# 884 rank = 2
-# 885 rank = 1
-# 886 rank = 2
-# 887 rank = 0
-# 888 rank = 4
-# 889 rank = 3
-# 890 rank = 2
-# 891 rank = 3
-# 892 rank = 2
+# 875 rank = 3
+# 876 rank = 1
+# 877 rank = 4
+# 878 rank = 2
+# 879 rank = 4
+# 880 rank = 1
+# 881 rank = 1
+# 882 rank = 3
+# 883 rank = 2
+# 884 rank = 5
+# 885 rank = 6
+# 886 rank = 5
+# 887 rank = 4
+# 888 rank = 3
+# 889 rank = 4
+# 890 rank = 1
+# 891 rank = 4
+# 892 rank = 4
 # 893 rank = 2
-# 894 rank = 3
-# 895 rank = 0
+# 894 rank = 0
+# 895 rank = 1
 # 896 rank = 2
 # 897 rank = 2
-# 898 rank = 3
-# 899 rank = 1
-# 900 rank = 1
-# 901 rank = 0
-# 902 rank = 1
-# 903 rank = 1
-# 904 rank = 1
+# 898 rank = 0
+# 899 rank = 2
+# 900 rank = 3
+# 901 rank = 1
+# 902 rank = 0
+# 903 rank = 4
+# 904 rank = 0
 # 905 rank = 2
 # 906 rank = 3
-# 907 rank = 2
-# 908 rank = 1
-# 909 rank = 2
-# 910 rank = 0
-# 911 rank = 1
-# 912 rank = 0
-# 913 rank = 2
-# 914 rank = 1
-# 915 rank = 1
-# 916 rank = 1
-# 917 rank = 1
-# 918 rank = 0
-# 919 rank = 2
-# 920 rank = 0
-# 921 rank = 1
-# 922 rank = 0
-# 923 rank = 0
-# 924 rank = 0
-# 925 rank = 2
-# 926 rank = 3
-# 927 rank = 2
-# 928 rank = 3
-# 929 rank = 2
-# 930 rank = 0
-# 931 rank = 1
-# 932 rank = 0
-# 933 rank = 2
-# 934 rank = 2
-# 935 rank = 1
+# 907 rank = 5
+# 908 rank = 4
+# 909 rank = 4
+# 910 rank = 1
+# 911 rank = 4
+# 912 rank = 1
+# 913 rank = 3
+# 914 rank = 2
+# 915 rank = 0
+# 916 rank = 2
+# 917 rank = 0
+# 918 rank = 1
+# 919 rank = 3
+# 920 rank = 3
+# 921 rank = 0
+# 922 rank = 4
+# 923 rank = 3
+# 924 rank = 1
+# 925 rank = 0
+# 926 rank = 1
+# 927 rank = 0
+# 928 rank = 0
+# 929 rank = 0
+# 930 rank = 3
+# 931 rank = 2
+# 932 rank = 1
+# 933 rank = 1
+# 934 rank = 0
+# 935 rank = 0
 # 936 rank = 0
-# 937 rank = 1
-# 938 rank = 1
-# 939 rank = 1
-# 940 rank = 2
+# 937 rank = 0
+# 938 rank = 2
+# 939 rank = 2
+# 940 rank = 1
 # 941 rank = 0
-# 942 rank = 2
-# 943 rank = 0
+# 942 rank = 0
+# 943 rank = 1
 # 944 rank = 0
 # 945 rank = 0
 # 946 rank = 0
-# 947 rank = 2
-# 948 rank = 1
+# 947 rank = 0
+# 948 rank = 0
 # 949 rank = 0
-# 950 rank = 1
-# 951 rank = 1
+# 950 rank = 0
+# 951 rank = 0
 # 952 rank = 1
-# 953 rank = 2
-# 954 rank = 1
+# 953 rank = 0
+# 954 rank = 0
 # 955 rank = 0
-# 956 rank = 1
-# 957 rank = 1
-# 958 rank = 0
+# 956 rank = 0
+# 957 rank = 2
+# 958 rank = 1
 # 959 rank = 0
-# 960 rank = 1
-# 961 rank = 0
+# 960 rank = 2
+# 961 rank = 2
 # 962 rank = 1
 # 963 rank = 0
 # 964 rank = 0
 # 965 rank = 2
-# 966 rank = 0
+# 966 rank = 1
 # 967 rank = 0
 # 968 rank = 0
-# 969 rank = 0
-# 970 rank = 0
-# 971 rank = 1
-# 972 rank = 0
-# 973 rank = 1
+# 969 rank = 1
+# 970 rank = 1
+# 971 rank = 0
+# 972 rank = 1
+# 973 rank = 0
 # 974 rank = 0
 # 975 rank = 0
-# 976 rank = 1
+# 976 rank = 2
 # 977 rank = 0
-# 978 rank = 1
+# 978 rank = 0
 # 979 rank = 0
 # 980 rank = 0
-# 981 rank = 1
+# 981 rank = 0
 # 982 rank = 0
-# 983 rank = 0
+# 983 rank = 1
 # 984 rank = 0
 # 985 rank = 0
 # 986 rank = 0
 # 987 rank = 0
 # 988 rank = 0
-# 989 rank = 0
+# 989 rank = 1
 # 990 rank = 0
-# 991 rank = 0
+# 991 rank = 1
 # 992 rank = 0
 # 993 rank = 0
-# 994 rank = 0
+# 994 rank = 1
 # 995 rank = 0
 # 996 rank = 0
 # 997 rank = 0
 # 998 rank = 0
 # 999 rank = 0
-# 0 rank = 35 size = 66
-# 18 rank = 34 size = 57
-# 13 rank = 34 size = 93
-# 11 rank = 34 size = 98
-# 4 rank = 34 size = 91
-# 10 rank = 34 size = 57
-# 17 rank = 34 size = 104
-# 31 rank = 34 size = 113
-# 16 rank = 34 size = 72
-# 23 rank = 33 size = 66
-# 79 rank = 33 size = 36
-# 36 rank = 33 size = 65
-# 12 rank = 33 size = 85
-# 59 rank = 33 size = 93
-# 14 rank = 33 size = 59
-# 50 rank = 33 size = 105
-# 27 rank = 33 size = 63
-# 46 rank = 33 size = 37
-# 32 rank = 32 size = 98
-# 42 rank = 32 size = 94
-# 5 rank = 32 size = 76
-# 41 rank = 32 size = 51
-# 1 rank = 32 size = 94
-# 34 rank = 32 size = 49
-# 62 rank = 32 size = 68
-# 70 rank = 32 size = 97
-# 69 rank = 32 size = 42
-# 8 rank = 32 size = 73
-# 87 rank = 32 size = 71
-# 93 rank = 31 size = 34
-# 30 rank = 31 size = 76
-# 7 rank = 31 size = 61
-# 28 rank = 31 size = 84
-# 74 rank = 31 size = 78
-# 9 rank = 31 size = 48
-# 61 rank = 31 size = 89
-# 89 rank = 31 size = 81
-# 2 rank = 31 size = 81
-# 57 rank = 31 size = 86
-# 102 rank = 31 size = 70
-# 76 rank = 31 size = 44
-# 21 rank = 31 size = 87
-# 19 rank = 31 size = 50
-# 43 rank = 31 size = 86
-# 49 rank = 31 size = 66
-# 58 rank = 31 size = 72
-# 71 rank = 31 size = 76
-# 104 rank = 30 size = 101
-# 22 rank = 30 size = 91
-# 44 rank = 30 size = 86
-# 101 rank = 30 size = 63
-# 83 rank = 30 size = 79
-# 52 rank = 30 size = 48
-# 84 rank = 30 size = 49
-# 54 rank = 30 size = 30
-# 55 rank = 30 size = 42
-# 39 rank = 30 size = 84
-# 15 rank = 30 size = 54
-# 47 rank = 30 size = 45
-# 106 rank = 30 size = 94
-# 116 rank = 30 size = 58
-# 127 rank = 30 size = 70
-# 33 rank = 30 size = 58
-# 126 rank = 30 size = 99
-# 78 rank = 30 size = 91
-# 65 rank = 30 size = 74
-# 66 rank = 30 size = 55
-# 24 rank = 30 size = 67
-# 68 rank = 30 size = 38
-# 26 rank = 30 size = 58
-# 38 rank = 30 size = 68
-# 144 rank = 29 size = 76
-# 72 rank = 29 size = 65
-# 108 rank = 29 size = 106
-# 98 rank = 29 size = 60
-# 75 rank = 29 size = 102
-# 166 rank = 29 size = 60
-# 107 rank = 29 size = 79
-# 64 rank = 29 size = 84
-# 35 rank = 29 size = 33
-# 146 rank = 29 size = 87
-# 105 rank = 29 size = 96
-# 45 rank = 29 size = 74
-# 103 rank = 29 size = 55
-# 120 rank = 29 size = 44
-# 85 rank = 29 size = 42
-# 147 rank = 29 size = 35
-# 143 rank = 29 size = 85
-# 48 rank = 29 size = 67
-# 141 rank = 29 size = 55
-# 100 rank = 29 size = 80
-# 99 rank = 29 size = 92
-# 97 rank = 29 size = 87
-# 88 rank = 29 size = 88
-# 51 rank = 29 size = 97
-# 56 rank = 28 size = 56
-# 130 rank = 28 size = 93
-# 128 rank = 28 size = 92
-# 202 rank = 28 size = 111
-# 199 rank = 28 size = 23
-# 90 rank = 28 size = 87
-# 124 rank = 28 size = 83
-# 123 rank = 28 size = 106
-# 67 rank = 28 size = 51
-# 119 rank = 28 size = 31
-# 81 rank = 28 size = 30
-# 178 rank = 28 size = 40
-# 179 rank = 28 size = 101
-# 73 rank = 28 size = 55
-# 158 rank = 28 size = 86
-# 157 rank = 28 size = 99
-# 153 rank = 28 size = 45
-# 112 rank = 28 size = 48
-# 113 rank = 28 size = 81
-# 114 rank = 28 size = 107
-# 152 rank = 28 size = 104
-# 180 rank = 28 size = 82
-# 167 rank = 28 size = 82
-# 148 rank = 27 size = 26
-# 173 rank = 27 size = 39
-# 182 rank = 27 size = 93
-# 187 rank = 27 size = 59
-# 190 rank = 27 size = 83
-# 137 rank = 27 size = 85
-# 169 rank = 27 size = 66
-# 135 rank = 27 size = 44
-# 168 rank = 27 size = 87
-# 161 rank = 27 size = 73
-# 92 rank = 27 size = 64
-# 203 rank = 27 size = 44
-# 162 rank = 27 size = 48
-# 227 rank = 27 size = 35
-# 132 rank = 27 size = 31
-# 138 rank = 27 size = 53
-# 118 rank = 27 size = 54
-# 197 rank = 27 size = 83
-# 210 rank = 26 size = 33
-# 192 rank = 26 size = 41
-# 214 rank = 26 size = 79
-# 213 rank = 26 size = 30
-# 212 rank = 26 size = 49
-# 196 rank = 26 size = 35
-# 186 rank = 26 size = 45
-# 195 rank = 26 size = 66
-# 185 rank = 26 size = 86
-# 145 rank = 26 size = 31
-# 183 rank = 26 size = 95
-# 121 rank = 26 size = 91
-# 253 rank = 26 size = 36
-# 256 rank = 26 size = 56
-# 258 rank = 26 size = 43
-# 220 rank = 26 size = 78
-# 208 rank = 25 size = 60
-# 267 rank = 25 size = 85
-# 269 rank = 25 size = 34
-# 294 rank = 25 size = 39
-# 177 rank = 25 size = 95
-# 251 rank = 25 size = 67
-# 109 rank = 25 size = 83
-# 191 rank = 25 size = 106
-# 160 rank = 25 size = 95
-# 139 rank = 25 size = 74
-# 284 rank = 25 size = 102
-# 221 rank = 25 size = 58
-# 174 rank = 25 size = 60
-# 165 rank = 25 size = 36
-# 86 rank = 25 size = 73
-# 263 rank = 25 size = 82
-# 205 rank = 25 size = 73
-# 273 rank = 24 size = 71
-# 360 rank = 24 size = 47
-# 217 rank = 24 size = 29
-# 164 rank = 24 size = 93
-# 240 rank = 24 size = 83
-# 245 rank = 24 size = 67
-# 175 rank = 24 size = 40
-# 312 rank = 24 size = 67
-# 156 rank = 24 size = 49
-# 211 rank = 24 size = 69
-# 151 rank = 24 size = 96
-# 209 rank = 24 size = 56
-# 219 rank = 24 size = 91
-# 206 rank = 24 size = 62
-# 122 rank = 24 size = 49
-# 184 rank = 24 size = 67
-# 272 rank = 24 size = 61
-# 302 rank = 24 size = 55
-# 277 rank = 24 size = 78
-# 188 rank = 24 size = 56
-# 204 rank = 24 size = 96
-# 201 rank = 24 size = 96
-# 299 rank = 24 size = 71
-# 287 rank = 24 size = 74
-# 198 rank = 24 size = 45
-# 218 rank = 24 size = 37
-# 234 rank = 24 size = 35
-# 324 rank = 23 size = 70
-# 366 rank = 23 size = 28
-# 264 rank = 23 size = 65
-# 250 rank = 23 size = 42
-# 246 rank = 23 size = 80
-# 341 rank = 23 size = 70
-# 150 rank = 23 size = 64
-# 296 rank = 23 size = 82
-# 189 rank = 23 size = 92
-# 315 rank = 23 size = 52
-# 260 rank = 23 size = 69
-# 248 rank = 23 size = 85
-# 238 rank = 23 size = 89
-# 311 rank = 23 size = 31
-# 305 rank = 23 size = 67
-# 232 rank = 23 size = 108
-# 353 rank = 23 size = 67
-# 304 rank = 23 size = 75
-# 230 rank = 23 size = 102
-# 322 rank = 23 size = 92
-# 216 rank = 23 size = 93
-# 288 rank = 23 size = 85
-# 200 rank = 23 size = 89
-# 228 rank = 23 size = 51
-# 323 rank = 23 size = 90
-# 255 rank = 23 size = 46
-# 222 rank = 23 size = 64
-# 239 rank = 23 size = 57
-# 283 rank = 23 size = 73
-# 293 rank = 23 size = 51
-# 313 rank = 22 size = 39
-# 297 rank = 22 size = 66
-# 329 rank = 22 size = 44
-# 257 rank = 22 size = 65
-# 289 rank = 22 size = 51
-# 290 rank = 22 size = 43
-# 350 rank = 22 size = 52
-# 233 rank = 22 size = 55
-# 215 rank = 22 size = 57
-# 301 rank = 22 size = 69
-# 236 rank = 22 size = 65
-# 347 rank = 22 size = 32
-# 346 rank = 22 size = 82
-# 303 rank = 22 size = 44
-# 384 rank = 22 size = 85
-# 381 rank = 22 size = 58
-# 310 rank = 22 size = 89
-# 252 rank = 22 size = 83
-# 308 rank = 22 size = 73
-# 364 rank = 22 size = 108
-# 335 rank = 22 size = 101
-# 265 rank = 22 size = 44
-# 317 rank = 22 size = 79
-# 223 rank = 22 size = 81
-# 405 rank = 21 size = 86
-# 314 rank = 21 size = 100
-# 316 rank = 21 size = 101
-# 321 rank = 21 size = 61
-# 385 rank = 21 size = 102
-# 363 rank = 21 size = 53
-# 373 rank = 21 size = 47
-# 357 rank = 21 size = 36
-# 348 rank = 21 size = 56
-# 327 rank = 21 size = 69
-# 295 rank = 21 size = 64
-# 342 rank = 21 size = 34
-# 270 rank = 21 size = 54
-# 413 rank = 21 size = 65
-# 340 rank = 21 size = 30
-# 292 rank = 21 size = 54
-# 374 rank = 21 size = 74
-# 362 rank = 21 size = 23
-# 298 rank = 21 size = 31
-# 414 rank = 20 size = 30
-# 307 rank = 20 size = 52
-# 370 rank = 20 size = 41
-# 439 rank = 20 size = 33
-# 479 rank = 20 size = 33
-# 440 rank = 20 size = 28
-# 275 rank = 20 size = 41
-# 318 rank = 20 size = 69
-# 131 rank = 20 size = 79
-# 300 rank = 20 size = 32
-# 425 rank = 20 size = 52
-# 388 rank = 20 size = 37
-# 399 rank = 20 size = 51
-# 282 rank = 20 size = 52
-# 326 rank = 20 size = 79
-# 390 rank = 20 size = 94
-# 285 rank = 20 size = 35
-# 338 rank = 20 size = 69
-# 391 rank = 20 size = 26
-# 359 rank = 20 size = 86
-# 356 rank = 20 size = 87
-# 404 rank = 20 size = 73
-# 331 rank = 20 size = 65
-# 337 rank = 20 size = 84
-# 376 rank = 20 size = 51
-# 393 rank = 20 size = 41
-# 445 rank = 19 size = 99
-# 291 rank = 19 size = 80
-# 392 rank = 19 size = 63
-# 421 rank = 19 size = 33
-# 468 rank = 19 size = 36
-# 389 rank = 19 size = 98
-# 382 rank = 19 size = 73
-# 472 rank = 19 size = 98
-# 377 rank = 19 size = 62
-# 464 rank = 19 size = 69
-# 372 rank = 19 size = 31
-# 369 rank = 19 size = 60
-# 344 rank = 19 size = 56
-# 403 rank = 19 size = 84
-# 159 rank = 19 size = 33
-# 163 rank = 19 size = 38
-# 481 rank = 19 size = 47
-# 461 rank = 19 size = 36
-# 458 rank = 19 size = 51
-# 355 rank = 19 size = 93
-# 354 rank = 19 size = 38
-# 454 rank = 19 size = 47
-# 352 rank = 19 size = 84
-# 409 rank = 19 size = 68
-# 319 rank = 19 size = 57
-# 410 rank = 19 size = 29
-# 136 rank = 19 size = 67
-# 407 rank = 19 size = 29
-# 484 rank = 19 size = 111
-# 375 rank = 18 size = 52
-# 225 rank = 18 size = 70
-# 434 rank = 18 size = 25
-# 432 rank = 18 size = 20
-# 397 rank = 18 size = 41
-# 478 rank = 18 size = 94
-# 417 rank = 18 size = 36
-# 462 rank = 18 size = 97
-# 501 rank = 18 size = 86
-# 412 rank = 18 size = 58
-# 487 rank = 18 size = 57
-# 398 rank = 18 size = 75
-# 235 rank = 18 size = 76
-# 453 rank = 18 size = 29
-# 449 rank = 18 size = 88
-# 473 rank = 18 size = 37
-# 429 rank = 18 size = 66
-# 428 rank = 18 size = 46
-# 452 rank = 18 size = 54
-# 435 rank = 18 size = 104
-# 502 rank = 17 size = 86
-# 444 rank = 17 size = 68
-# 276 rank = 17 size = 74
-# 463 rank = 17 size = 31
-# 491 rank = 17 size = 36
-# 549 rank = 17 size = 48
-# 471 rank = 17 size = 110
-# 495 rank = 17 size = 45
-# 330 rank = 17 size = 31
-# 512 rank = 17 size = 29
-# 448 rank = 17 size = 66
-# 437 rank = 17 size = 98
-# 485 rank = 17 size = 30
-# 519 rank = 17 size = 45
-# 343 rank = 17 size = 111
-# 271 rank = 17 size = 45
-# 334 rank = 16 size = 67
-# 378 rank = 16 size = 69
-# 510 rank = 16 size = 37
-# 538 rank = 16 size = 87
-# 535 rank = 16 size = 83
-# 572 rank = 16 size = 42
-# 540 rank = 16 size = 96
-# 328 rank = 16 size = 56
-# 552 rank = 16 size = 43
-# 533 rank = 16 size = 88
-# 499 rank = 16 size = 42
-# 595 rank = 15 size = 58
-# 548 rank = 15 size = 29
-# 477 rank = 15 size = 81
-# 474 rank = 15 size = 107
-# 430 rank = 15 size = 44
-# 395 rank = 15 size = 42
-# 606 rank = 15 size = 48
-# 585 rank = 15 size = 103
-# 427 rank = 15 size = 97
-# 466 rank = 14 size = 48
-# 415 rank = 14 size = 69
-# 401 rank = 14 size = 103
-# 511 rank = 14 size = 38
-# 492 rank = 14 size = 26
-# 438 rank = 14 size = 32
+# 5 rank = 31 size = 104
+# 10 rank = 30 size = 82
+# 17 rank = 30 size = 82
+# 33 rank = 30 size = 75
+# 16 rank = 29 size = 31
+# 26 rank = 29 size = 59
+# 55 rank = 29 size = 126
+# 84 rank = 29 size = 53
+# 62 rank = 29 size = 35
+# 73 rank = 29 size = 99
+# 89 rank = 28 size = 38
+# 11 rank = 28 size = 88
+# 7 rank = 28 size = 90
+# 37 rank = 28 size = 55
+# 44 rank = 28 size = 46
+# 123 rank = 28 size = 42
+# 3 rank = 28 size = 117
+# 58 rank = 28 size = 103
+# 18 rank = 28 size = 71
+# 25 rank = 28 size = 43
+# 70 rank = 28 size = 108
+# 34 rank = 28 size = 98
+# 119 rank = 27 size = 73
+# 43 rank = 27 size = 123
+# 76 rank = 27 size = 33
+# 19 rank = 27 size = 37
+# 129 rank = 27 size = 72
+# 13 rank = 27 size = 85
+# 28 rank = 27 size = 60
+# 68 rank = 27 size = 114
+# 138 rank = 27 size = 58
+# 87 rank = 27 size = 87
+# 32 rank = 27 size = 112
+# 144 rank = 27 size = 113
+# 35 rank = 27 size = 55
+# 140 rank = 26 size = 47
+# 203 rank = 26 size = 91
+# 97 rank = 26 size = 45
+# 102 rank = 26 size = 91
+# 104 rank = 26 size = 34
+# 105 rank = 26 size = 34
+# 72 rank = 26 size = 84
+# 110 rank = 26 size = 47
+# 125 rank = 26 size = 95
+# 14 rank = 26 size = 94
+# 69 rank = 26 size = 84
+# 132 rank = 26 size = 97
+# 146 rank = 26 size = 97
+# 60 rank = 26 size = 92
+# 160 rank = 26 size = 100
+# 57 rank = 26 size = 102
+# 143 rank = 26 size = 90
+# 209 rank = 25 size = 49
+# 46 rank = 25 size = 67
+# 118 rank = 25 size = 91
+# 116 rank = 25 size = 101
+# 115 rank = 25 size = 40
+# 178 rank = 25 size = 50
+# 158 rank = 25 size = 85
+# 147 rank = 25 size = 65
+# 164 rank = 25 size = 61
+# 61 rank = 25 size = 89
+# 134 rank = 25 size = 33
+# 2 rank = 25 size = 45
+# 169 rank = 25 size = 63
+# 98 rank = 25 size = 79
+# 139 rank = 25 size = 62
+# 153 rank = 25 size = 90
+# 142 rank = 24 size = 91
+# 82 rank = 24 size = 33
+# 197 rank = 24 size = 74
+# 99 rank = 24 size = 120
+# 122 rank = 24 size = 47
+# 152 rank = 24 size = 121
+# 137 rank = 24 size = 63
+# 94 rank = 24 size = 111
+# 151 rank = 24 size = 56
+# 174 rank = 24 size = 44
+# 215 rank = 24 size = 78
+# 189 rank = 24 size = 112
+# 173 rank = 24 size = 105
+# 212 rank = 24 size = 63
+# 148 rank = 24 size = 110
+# 185 rank = 24 size = 111
+# 211 rank = 24 size = 56
+# 114 rank = 24 size = 112
+# 100 rank = 23 size = 94
+# 162 rank = 23 size = 106
+# 51 rank = 23 size = 116
+# 214 rank = 23 size = 78
+# 29 rank = 23 size = 66
+# 91 rank = 23 size = 52
+# 159 rank = 23 size = 67
+# 221 rank = 23 size = 124
+# 194 rank = 23 size = 109
+# 145 rank = 23 size = 111
+# 270 rank = 23 size = 90
+# 258 rank = 23 size = 37
+# 41 rank = 23 size = 99
+# 24 rank = 22 size = 54
+# 224 rank = 22 size = 44
+# 260 rank = 22 size = 77
+# 45 rank = 22 size = 62
+# 223 rank = 22 size = 133
+# 198 rank = 22 size = 66
+# 238 rank = 22 size = 103
+# 75 rank = 22 size = 107
+# 192 rank = 22 size = 103
+# 229 rank = 22 size = 114
+# 63 rank = 22 size = 103
+# 176 rank = 22 size = 117
+# 47 rank = 22 size = 105
+# 235 rank = 22 size = 98
+# 113 rank = 22 size = 88
+# 92 rank = 22 size = 97
+# 165 rank = 22 size = 59
+# 268 rank = 22 size = 102
+# 187 rank = 22 size = 36
+# 83 rank = 22 size = 94
+# 279 rank = 22 size = 83
+# 128 rank = 22 size = 88
+# 53 rank = 22 size = 43
+# 36 rank = 22 size = 63
+# 40 rank = 22 size = 84
+# 95 rank = 21 size = 46
+# 236 rank = 21 size = 37
+# 239 rank = 21 size = 62
+# 108 rank = 21 size = 119
+# 186 rank = 21 size = 48
+# 287 rank = 21 size = 94
+# 130 rank = 21 size = 125
+# 131 rank = 21 size = 51
+# 288 rank = 21 size = 117
+# 133 rank = 21 size = 58
+# 190 rank = 21 size = 124
+# 276 rank = 21 size = 28
+# 136 rank = 21 size = 90
+# 155 rank = 21 size = 111
+# 172 rank = 21 size = 105
+# 275 rank = 21 size = 104
+# 295 rank = 21 size = 120
+# 67 rank = 21 size = 112
+# 285 rank = 21 size = 110
+# 204 rank = 21 size = 66
+# 274 rank = 21 size = 58
+# 183 rank = 21 size = 122
+# 226 rank = 21 size = 72
+# 191 rank = 20 size = 45
+# 296 rank = 20 size = 73
+# 213 rank = 20 size = 88
+# 150 rank = 20 size = 77
+# 265 rank = 20 size = 65
+# 196 rank = 20 size = 58
+# 141 rank = 20 size = 48
+# 293 rank = 20 size = 75
+# 272 rank = 20 size = 37
+# 234 rank = 20 size = 52
+# 166 rank = 20 size = 92
+# 243 rank = 20 size = 34
+# 181 rank = 20 size = 87
+# 316 rank = 20 size = 103
+# 163 rank = 20 size = 92
+# 237 rank = 20 size = 86
+# 202 rank = 20 size = 96
+# 294 rank = 20 size = 59
+# 222 rank = 19 size = 76
+# 327 rank = 19 size = 79
+# 314 rank = 19 size = 125
+# 231 rank = 19 size = 71
+# 230 rank = 19 size = 60
+# 280 rank = 19 size = 42
+# 246 rank = 19 size = 109
+# 310 rank = 19 size = 40
+# 249 rank = 19 size = 100
+# 340 rank = 19 size = 95
+# 216 rank = 19 size = 40
+# 161 rank = 19 size = 42
+# 298 rank = 19 size = 52
+# 217 rank = 19 size = 104
+# 313 rank = 19 size = 87
+# 240 rank = 19 size = 37
+# 290 rank = 19 size = 49
+# 370 rank = 19 size = 46
+# 283 rank = 19 size = 48
+# 301 rank = 19 size = 123
+# 286 rank = 19 size = 119
+# 241 rank = 19 size = 81
+# 320 rank = 19 size = 118
+# 210 rank = 19 size = 92
+# 300 rank = 19 size = 92
+# 346 rank = 18 size = 78
+# 356 rank = 18 size = 39
+# 411 rank = 18 size = 50
+# 342 rank = 18 size = 94
+# 353 rank = 18 size = 37
+# 372 rank = 18 size = 60
+# 325 rank = 18 size = 78
+# 307 rank = 18 size = 54
+# 267 rank = 18 size = 63
+# 357 rank = 18 size = 99
+# 334 rank = 18 size = 102
+# 257 rank = 18 size = 38
+# 292 rank = 18 size = 54
+# 309 rank = 18 size = 91
+# 259 rank = 18 size = 80
+# 248 rank = 18 size = 115
+# 254 rank = 18 size = 96
+# 233 rank = 18 size = 67
+# 184 rank = 18 size = 42
+# 311 rank = 18 size = 30
+# 250 rank = 18 size = 109
+# 361 rank = 17 size = 105
+# 345 rank = 17 size = 80
+# 328 rank = 17 size = 80
+# 427 rank = 17 size = 55
+# 343 rank = 17 size = 121
+# 344 rank = 17 size = 33
+# 424 rank = 17 size = 67
+# 349 rank = 17 size = 115
+# 323 rank = 17 size = 54
+# 322 rank = 17 size = 107
+# 255 rank = 17 size = 121
+# 331 rank = 17 size = 48
+# 366 rank = 17 size = 101
+# 367 rank = 17 size = 97
+# 318 rank = 17 size = 47
+# 373 rank = 17 size = 60
+# 374 rank = 17 size = 130
+# 284 rank = 17 size = 106
+# 387 rank = 17 size = 125
+# 392 rank = 17 size = 57
+# 393 rank = 17 size = 52
+# 461 rank = 17 size = 104
+# 277 rank = 17 size = 92
+# 332 rank = 17 size = 57
+# 432 rank = 17 size = 73
+# 417 rank = 17 size = 71
+# 347 rank = 16 size = 59
+# 436 rank = 16 size = 82
+# 435 rank = 16 size = 63
+# 464 rank = 16 size = 69
+# 319 rank = 16 size = 98
+# 439 rank = 16 size = 57
+# 445 rank = 16 size = 80
+# 321 rank = 16 size = 98
+# 431 rank = 16 size = 64
+# 426 rank = 16 size = 51
+# 299 rank = 16 size = 92
+# 425 rank = 16 size = 31
+# 339 rank = 16 size = 36
+# 315 rank = 16 size = 53
+# 451 rank = 16 size = 36
+# 352 rank = 16 size = 43
+# 418 rank = 16 size = 73
+# 355 rank = 16 size = 118
+# 409 rank = 16 size = 122
+# 368 rank = 16 size = 115
+# 380 rank = 16 size = 35
+# 381 rank = 16 size = 52
+# 384 rank = 16 size = 100
+# 388 rank = 16 size = 100
+# 390 rank = 16 size = 130
+# 403 rank = 16 size = 102
+# 399 rank = 16 size = 64
+# 507 rank = 16 size = 44
+# 410 rank = 16 size = 57
+# 389 rank = 15 size = 91
+# 430 rank = 15 size = 43
+# 476 rank = 15 size = 40
+# 475 rank = 15 size = 47
+# 474 rank = 15 size = 119
+# 473 rank = 15 size = 65
+# 508 rank = 15 size = 116
+# 397 rank = 15 size = 50
+# 465 rank = 15 size = 32
+# 400 rank = 15 size = 103
+# 438 rank = 15 size = 41
+# 407 rank = 15 size = 41
+# 360 rank = 15 size = 113
+# 444 rank = 15 size = 99
+# 244 rank = 15 size = 33
+# 385 rank = 15 size = 87
+# 495 rank = 15 size = 96
+# 423 rank = 15 size = 57
+# 421 rank = 15 size = 114
+# 449 rank = 15 size = 55
+# 450 rank = 15 size = 117
+# 404 rank = 15 size = 34
+# 455 rank = 15 size = 51
+# 514 rank = 15 size = 62
+# 537 rank = 14 size = 46
+# 453 rank = 14 size = 96
+# 523 rank = 14 size = 61
+# 494 rank = 14 size = 58
+# 488 rank = 14 size = 39
+# 477 rank = 14 size = 88
 # 386 rank = 14 size = 52
-# 408 rank = 14 size = 57
-# 522 rank = 14 size = 63
-# 607 rank = 14 size = 55
-# 528 rank = 14 size = 80
-# 517 rank = 14 size = 33
-# 420 rank = 14 size = 35
-# 358 rank = 14 size = 30
-# 563 rank = 14 size = 43
-# 489 rank = 13 size = 65
-# 586 rank = 13 size = 68
-# 559 rank = 13 size = 90
-# 486 rank = 13 size = 30
-# 506 rank = 13 size = 28
-# 451 rank = 13 size = 65
-# 518 rank = 13 size = 61
-# 457 rank = 13 size = 63
-# 566 rank = 13 size = 88
-# 567 rank = 13 size = 43
-# 608 rank = 13 size = 36
-# 469 rank = 13 size = 26
-# 508 rank = 13 size = 94
-# 446 rank = 13 size = 40
-# 423 rank = 13 size = 30
-# 524 rank = 13 size = 69
-# 523 rank = 13 size = 101
-# 513 rank = 13 size = 67
-# 531 rank = 13 size = 49
-# 597 rank = 12 size = 97
-# 494 rank = 12 size = 49
-# 570 rank = 12 size = 76
-# 529 rank = 12 size = 44
-# 496 rank = 12 size = 59
-# 546 rank = 12 size = 32
-# 537 rank = 12 size = 85
-# 611 rank = 12 size = 43
-# 551 rank = 12 size = 69
-# 476 rank = 12 size = 71
-# 553 rank = 12 size = 49
-# 555 rank = 12 size = 96
-# 498 rank = 12 size = 79
-# 589 rank = 12 size = 55
-# 591 rank = 12 size = 28
-# 592 rank = 12 size = 107
-# 594 rank = 12 size = 37
-# 433 rank = 12 size = 41
-# 527 rank = 12 size = 55
-# 636 rank = 12 size = 44
-# 505 rank = 11 size = 87
-# 490 rank = 11 size = 37
-# 602 rank = 11 size = 50
-# 649 rank = 11 size = 105
-# 650 rank = 11 size = 45
-# 610 rank = 11 size = 97
-# 583 rank = 11 size = 38
-# 582 rank = 11 size = 55
-# 613 rank = 11 size = 54
-# 675 rank = 11 size = 94
-# 547 rank = 11 size = 58
-# 581 rank = 11 size = 58
-# 509 rank = 11 size = 106
-# 532 rank = 11 size = 81
-# 579 rank = 11 size = 89
-# 623 rank = 11 size = 25
-# 653 rank = 11 size = 32
-# 574 rank = 11 size = 57
-# 626 rank = 11 size = 68
-# 573 rank = 11 size = 101
-# 631 rank = 11 size = 55
-# 475 rank = 11 size = 42
-# 632 rank = 11 size = 54
-# 674 rank = 11 size = 84
-# 539 rank = 11 size = 78
-# 571 rank = 10 size = 59
-# 629 rank = 10 size = 100
-# 686 rank = 10 size = 43
-# 642 rank = 10 size = 80
-# 644 rank = 10 size = 56
-# 645 rank = 10 size = 48
-# 614 rank = 10 size = 83
-# 601 rank = 10 size = 26
-# 541 rank = 10 size = 58
-# 556 rank = 10 size = 34
-# 544 rank = 10 size = 41
-# 578 rank = 10 size = 45
-# 652 rank = 10 size = 36
-# 677 rank = 10 size = 77
-# 577 rank = 10 size = 75
-# 575 rank = 10 size = 41
-# 569 rank = 10 size = 96
-# 568 rank = 10 size = 73
-# 661 rank = 10 size = 60
-# 565 rank = 10 size = 29
-# 664 rank = 10 size = 61
-# 564 rank = 10 size = 60
-# 665 rank = 10 size = 100
-# 560 rank = 10 size = 84
-# 516 rank = 10 size = 41
-# 662 rank = 10 size = 25
-# 672 rank = 9 size = 59
-# 668 rank = 9 size = 31
-# 683 rank = 9 size = 83
-# 659 rank = 9 size = 67
-# 651 rank = 9 size = 64
-# 648 rank = 9 size = 62
-# 604 rank = 9 size = 48
-# 638 rank = 9 size = 64
-# 685 rank = 9 size = 41
-# 620 rank = 9 size = 109
-# 618 rank = 9 size = 68
-# 615 rank = 9 size = 34
-# 691 rank = 9 size = 95
-# 599 rank = 9 size = 84
-# 700 rank = 9 size = 60
-# 718 rank = 9 size = 41
-# 736 rank = 9 size = 33
-# 741 rank = 9 size = 63
-# 748 rank = 9 size = 39
-# 587 rank = 9 size = 55
-# 580 rank = 9 size = 30
-# 671 rank = 9 size = 58
-# 625 rank = 9 size = 87
-# 783 rank = 8 size = 84
-# 704 rank = 8 size = 76
-# 705 rank = 8 size = 49
-# 676 rank = 8 size = 103
-# 598 rank = 8 size = 83
-# 657 rank = 8 size = 63
-# 654 rank = 8 size = 38
-# 680 rank = 8 size = 46
-# 697 rank = 8 size = 89
-# 696 rank = 8 size = 28
-# 781 rank = 8 size = 45
-# 729 rank = 8 size = 28
-# 738 rank = 8 size = 47
-# 732 rank = 8 size = 37
-# 755 rank = 8 size = 55
-# 678 rank = 8 size = 55
-# 673 rank = 8 size = 39
-# 759 rank = 8 size = 67
-# 711 rank = 8 size = 84
-# 756 rank = 8 size = 84
-# 709 rank = 8 size = 88
-# 667 rank = 8 size = 53
-# 757 rank = 7 size = 58
-# 788 rank = 7 size = 39
-# 627 rank = 7 size = 47
-# 826 rank = 7 size = 72
-# 695 rank = 7 size = 51
-# 647 rank = 7 size = 105
-# 682 rank = 7 size = 41
-# 772 rank = 7 size = 96
-# 761 rank = 7 size = 46
-# 722 rank = 7 size = 31
-# 749 rank = 7 size = 45
-# 750 rank = 7 size = 89
-# 724 rank = 7 size = 69
-# 795 rank = 7 size = 98
-# 764 rank = 7 size = 27
-# 806 rank = 7 size = 35
-# 699 rank = 7 size = 97
-# 690 rank = 7 size = 69
-# 716 rank = 7 size = 46
-# 747 rank = 7 size = 94
-# 763 rank = 7 size = 92
-# 767 rank = 7 size = 74
-# 702 rank = 6 size = 74
-# 701 rank = 6 size = 93
-# 778 rank = 6 size = 51
-# 813 rank = 6 size = 64
-# 771 rank = 6 size = 38
-# 838 rank = 6 size = 80
-# 804 rank = 6 size = 65
-# 773 rank = 6 size = 55
-# 828 rank = 6 size = 29
-# 816 rank = 6 size = 51
-# 810 rank = 6 size = 38
-# 787 rank = 6 size = 36
-# 827 rank = 6 size = 81
-# 790 rank = 6 size = 31
-# 800 rank = 6 size = 100
-# 801 rank = 6 size = 78
-# 769 rank = 6 size = 65
-# 660 rank = 6 size = 36
-# 811 rank = 6 size = 30
-# 754 rank = 6 size = 37
-# 728 rank = 6 size = 65
-# 708 rank = 5 size = 81
-# 774 rank = 5 size = 83
-# 777 rank = 5 size = 71
-# 745 rank = 5 size = 95
-# 752 rank = 5 size = 58
-# 762 rank = 5 size = 38
-# 780 rank = 5 size = 56
-# 818 rank = 5 size = 82
-# 707 rank = 5 size = 69
-# 841 rank = 5 size = 63
-# 812 rank = 5 size = 114
-# 843 rank = 5 size = 58
-# 840 rank = 5 size = 71
-# 819 rank = 5 size = 87
-# 739 rank = 5 size = 35
-# 784 rank = 5 size = 64
-# 737 rank = 5 size = 112
-# 730 rank = 5 size = 32
-# 863 rank = 5 size = 74
-# 791 rank = 5 size = 58
-# 713 rank = 5 size = 60
-# 849 rank = 5 size = 70
-# 383 rank = 5 size = 62
-# 851 rank = 5 size = 86
-# 875 rank = 4 size = 74
-# 845 rank = 4 size = 66
-# 797 rank = 4 size = 81
-# 679 rank = 4 size = 95
-# 480 rank = 4 size = 93
-# 825 rank = 4 size = 103
-# 793 rank = 4 size = 53
-# 792 rank = 4 size = 67
-# 847 rank = 4 size = 53
-# 862 rank = 4 size = 52
-# 865 rank = 4 size = 23
-# 822 rank = 4 size = 66
-# 820 rank = 4 size = 66
-# 786 rank = 4 size = 41
-# 237 rank = 4 size = 51
-# 888 rank = 4 size = 73
-# 715 rank = 4 size = 77
-# 507 rank = 4 size = 93
-# 809 rank = 4 size = 33
-# 670 rank = 4 size = 83
-# 419 rank = 4 size = 60
-# 181 rank = 4 size = 35
-# 402 rank = 4 size = 60
-# 782 rank = 4 size = 104
-# 426 rank = 4 size = 66
-# 542 rank = 4 size = 107
-# 876 rank = 4 size = 97
-# 871 rank = 3 size = 63
-# 725 rank = 3 size = 86
-# 543 rank = 3 size = 46
-# 710 rank = 3 size = 52
-# 742 rank = 3 size = 22
-# 880 rank = 3 size = 96
-# 928 rank = 3 size = 25
-# 835 rank = 3 size = 78
-# 870 rank = 3 size = 34
-# 442 rank = 3 size = 52
-# 883 rank = 3 size = 29
-# 894 rank = 3 size = 79
-# 279 rank = 3 size = 38
-# 830 rank = 3 size = 70
-# 866 rank = 3 size = 29
-# 889 rank = 3 size = 33
-# 576 rank = 3 size = 60
-# 833 rank = 3 size = 27
-# 733 rank = 3 size = 94
-# 525 rank = 3 size = 43
-# 834 rank = 3 size = 64
-# 244 rank = 3 size = 64
-# 844 rank = 3 size = 104
-# 603 rank = 3 size = 26
-# 861 rank = 3 size = 57
-# 860 rank = 3 size = 24
-# 891 rank = 3 size = 83
-# 859 rank = 3 size = 87
-# 794 rank = 3 size = 54
-# 268 rank = 3 size = 101
-# 898 rank = 3 size = 43
-# 857 rank = 3 size = 93
-# 766 rank = 3 size = 58
-# 798 rank = 3 size = 88
-# 799 rank = 3 size = 70
-# 853 rank = 3 size = 28
-# 802 rank = 3 size = 73
-# 852 rank = 3 size = 45
-# 906 rank = 3 size = 42
-# 926 rank = 3 size = 52
-# 850 rank = 3 size = 95
-# 803 rank = 2 size = 104
-# 855 rank = 2 size = 50
-# 117 rank = 2 size = 80
-# 858 rank = 2 size = 91
-# 643 rank = 2 size = 104
-# 868 rank = 2 size = 29
-# 624 rank = 2 size = 96
-# 817 rank = 2 size = 53
-# 881 rank = 2 size = 71
-# 884 rank = 2 size = 35
-# 886 rank = 2 size = 41
-# 890 rank = 2 size = 37
-# 63 rank = 2 size = 87
-# 815 rank = 2 size = 79
-# 892 rank = 2 size = 41
-# 893 rank = 2 size = 94
-# 596 rank = 2 size = 86
-# 896 rank = 2 size = 93
-# 846 rank = 2 size = 61
-# 897 rank = 2 size = 58
-# 905 rank = 2 size = 102
-# 584 rank = 2 size = 93
-# 907 rank = 2 size = 78
-# 909 rank = 2 size = 41
-# 913 rank = 2 size = 36
-# 336 rank = 2 size = 87
-# 339 rank = 2 size = 33
-# 832 rank = 2 size = 44
-# 367 rank = 2 size = 99
-# 919 rank = 2 size = 45
-# 371 rank = 2 size = 103
-# 925 rank = 2 size = 89
-# 443 rank = 2 size = 39
-# 927 rank = 2 size = 53
-# 929 rank = 2 size = 29
-# 837 rank = 2 size = 85
-# 775 rank = 2 size = 30
-# 808 rank = 2 size = 34
-# 836 rank = 2 size = 81
-# 933 rank = 2 size = 64
-# 934 rank = 2 size = 83
-# 940 rank = 2 size = 58
-# 942 rank = 2 size = 83
-# 947 rank = 2 size = 84
-# 785 rank = 2 size = 72
-# 953 rank = 2 size = 36
-# 526 rank = 2 size = 103
-# 465 rank = 2 size = 88
-# 965 rank = 2 size = 24
-# 689 rank = 2 size = 73
-# 545 rank = 2 size = 44
-# 656 rank = 1 size = 61
-# 692 rank = 1 size = 29
-# 831 rank = 1 size = 54
-# 719 rank = 1 size = 31
-# 37 rank = 1 size = 78
-# 688 rank = 1 size = 43
-# 681 rank = 1 size = 38
-# 80 rank = 1 size = 27
-# 82 rank = 1 size = 97
-# 91 rank = 1 size = 86
-# 726 rank = 1 size = 35
-# 669 rank = 1 size = 60
-# 94 rank = 1 size = 34
-# 96 rank = 1 size = 32
-# 663 rank = 1 size = 74
-# 134 rank = 1 size = 83
-# 646 rank = 1 size = 104
-# 864 rank = 1 size = 61
-# 640 rank = 1 size = 35
-# 639 rank = 1 size = 73
-# 20 rank = 1 size = 37
-# 637 rank = 1 size = 98
-# 867 rank = 1 size = 102
-# 635 rank = 1 size = 51
-# 869 rank = 1 size = 37
-# 176 rank = 1 size = 73
-# 873 rank = 1 size = 60
-# 622 rank = 1 size = 33
-# 621 rank = 1 size = 83
-# 878 rank = 1 size = 47
-# 693 rank = 1 size = 72
-# 885 rank = 1 size = 80
-# 3 rank = 1 size = 96
-# 814 rank = 1 size = 42
-# 241 rank = 1 size = 62
-# 242 rank = 1 size = 55
-# 243 rank = 1 size = 96
-# 605 rank = 1 size = 97
-# 125 rank = 1 size = 37
-# 899 rank = 1 size = 44
-# 900 rank = 1 size = 62
-# 902 rank = 1 size = 62
-# 903 rank = 1 size = 93
-# 904 rank = 1 size = 33
-# 306 rank = 1 size = 29
-# 908 rank = 1 size = 45
-# 911 rank = 1 size = 27
-# 914 rank = 1 size = 74
-# 915 rank = 1 size = 56
-# 765 rank = 1 size = 47
-# 349 rank = 1 size = 85
-# 916 rank = 1 size = 44
-# 768 rank = 1 size = 45
-# 917 rank = 1 size = 51
-# 379 rank = 1 size = 100
-# 380 rank = 1 size = 102
-# 921 rank = 1 size = 105
-# 387 rank = 1 size = 31
-# 554 rank = 1 size = 81
-# 400 rank = 1 size = 84
-# 406 rank = 1 size = 86
-# 931 rank = 1 size = 28
-# 935 rank = 1 size = 79
-# 779 rank = 1 size = 95
-# 937 rank = 1 size = 72
-# 938 rank = 1 size = 29
-# 939 rank = 1 size = 90
-# 948 rank = 1 size = 53
-# 950 rank = 1 size = 48
-# 951 rank = 1 size = 76
-# 952 rank = 1 size = 92
-# 455 rank = 1 size = 73
-# 456 rank = 1 size = 101
-# 807 rank = 1 size = 44
-# 954 rank = 1 size = 72
-# 956 rank = 1 size = 81
-# 521 rank = 1 size = 91
-# 957 rank = 1 size = 76
-# 960 rank = 1 size = 51
-# 962 rank = 1 size = 84
-# 483 rank = 1 size = 47
-# 971 rank = 1 size = 81
-# 973 rank = 1 size = 46
-# 976 rank = 1 size = 71
-# 497 rank = 1 size = 81
-# 978 rank = 1 size = 65
-# 981 rank = 1 size = 84
-# 619 rank = 1 size = 82
-# 877 rank = 1 size = 92
-# 805 rank = 0 size = 53
-# 796 rank = 0 size = 53
-# 789 rank = 0 size = 53
-# 776 rank = 0 size = 73
-# 770 rank = 0 size = 30
-# 760 rank = 0 size = 91
-# 758 rank = 0 size = 83
-# 753 rank = 0 size = 76
-# 751 rank = 0 size = 87
-# 999 rank = 0 size = 71
-# 746 rank = 0 size = 52
-# 744 rank = 0 size = 64
-# 743 rank = 0 size = 37
-# 6 rank = 0 size = 110
-# 740 rank = 0 size = 74
-# 735 rank = 0 size = 61
-# 821 rank = 0 size = 107
-# 734 rank = 0 size = 63
-# 823 rank = 0 size = 59
-# 824 rank = 0 size = 91
-# 731 rank = 0 size = 101
-# 727 rank = 0 size = 68
-# 723 rank = 0 size = 91
-# 721 rank = 0 size = 62
-# 829 rank = 0 size = 85
-# 720 rank = 0 size = 33
-# 25 rank = 0 size = 30
-# 717 rank = 0 size = 39
-# 714 rank = 0 size = 40
-# 712 rank = 0 size = 39
-# 706 rank = 0 size = 42
-# 703 rank = 0 size = 32
-# 29 rank = 0 size = 68
-# 698 rank = 0 size = 76
-# 839 rank = 0 size = 58
-# 694 rank = 0 size = 90
-# 687 rank = 0 size = 62
-# 842 rank = 0 size = 54
-# 40 rank = 0 size = 36
-# 53 rank = 0 size = 63
-# 684 rank = 0 size = 38
-# 60 rank = 0 size = 56
-# 77 rank = 0 size = 43
-# 848 rank = 0 size = 83
-# 666 rank = 0 size = 59
-# 95 rank = 0 size = 68
-# 110 rank = 0 size = 93
-# 111 rank = 0 size = 36
-# 115 rank = 0 size = 113
-# 854 rank = 0 size = 73
-# 658 rank = 0 size = 75
-# 856 rank = 0 size = 27
-# 655 rank = 0 size = 97
-# 129 rank = 0 size = 33
-# 133 rank = 0 size = 39
-# 140 rank = 0 size = 104
-# 142 rank = 0 size = 72
-# 149 rank = 0 size = 52
-# 154 rank = 0 size = 85
-# 155 rank = 0 size = 28
-# 641 rank = 0 size = 62
-# 170 rank = 0 size = 85
-# 171 rank = 0 size = 31
-# 634 rank = 0 size = 27
-# 633 rank = 0 size = 43
-# 172 rank = 0 size = 31
-# 630 rank = 0 size = 65
-# 872 rank = 0 size = 74
-# 628 rank = 0 size = 55
-# 193 rank = 0 size = 77
-# 500 rank = 0 size = 88
-# 194 rank = 0 size = 82
-# 874 rank = 0 size = 89
-# 207 rank = 0 size = 50
-# 879 rank = 0 size = 52
-# 224 rank = 0 size = 59
-# 617 rank = 0 size = 90
-# 882 rank = 0 size = 85
-# 616 rank = 0 size = 71
-# 226 rank = 0 size = 57
-# 229 rank = 0 size = 36
-# 231 rank = 0 size = 50
-# 887 rank = 0 size = 106
-# 612 rank = 0 size = 79
-# 609 rank = 0 size = 116
-# 247 rank = 0 size = 67
-# 249 rank = 0 size = 79
-# 600 rank = 0 size = 82
-# 254 rank = 0 size = 101
-# 259 rank = 0 size = 43
-# 895 rank = 0 size = 74
-# 261 rank = 0 size = 25
-# 262 rank = 0 size = 67
-# 593 rank = 0 size = 49
-# 266 rank = 0 size = 81
-# 590 rank = 0 size = 75
-# 901 rank = 0 size = 69
-# 274 rank = 0 size = 102
-# 588 rank = 0 size = 101
-# 278 rank = 0 size = 74
-# 280 rank = 0 size = 85
-# 281 rank = 0 size = 76
-# 286 rank = 0 size = 99
-# 309 rank = 0 size = 30
-# 320 rank = 0 size = 64
-# 910 rank = 0 size = 98
-# 325 rank = 0 size = 85
-# 912 rank = 0 size = 57
-# 332 rank = 0 size = 82
-# 333 rank = 0 size = 94
-# 345 rank = 0 size = 56
-# 351 rank = 0 size = 27
-# 365 rank = 0 size = 96
-# 918 rank = 0 size = 57
-# 368 rank = 0 size = 47
-# 920 rank = 0 size = 47
-# 562 rank = 0 size = 61
-# 922 rank = 0 size = 68
-# 923 rank = 0 size = 94
-# 924 rank = 0 size = 66
-# 561 rank = 0 size = 93
-# 558 rank = 0 size = 38
-# 557 rank = 0 size = 95
-# 394 rank = 0 size = 78
-# 396 rank = 0 size = 81
-# 930 rank = 0 size = 73
-# 550 rank = 0 size = 108
-# 932 rank = 0 size = 39
-# 411 rank = 0 size = 33
-# 416 rank = 0 size = 62
-# 418 rank = 0 size = 91
-# 936 rank = 0 size = 57
-# 422 rank = 0 size = 101
-# 424 rank = 0 size = 91
-# 431 rank = 0 size = 101
-# 436 rank = 0 size = 60
-# 941 rank = 0 size = 45
-# 441 rank = 0 size = 63
-# 943 rank = 0 size = 38
-# 944 rank = 0 size = 38
-# 945 rank = 0 size = 38
-# 946 rank = 0 size = 53
-# 536 rank = 0 size = 45
-# 534 rank = 0 size = 38
-# 949 rank = 0 size = 93
-# 447 rank = 0 size = 69
-# 450 rank = 0 size = 29
-# 530 rank = 0 size = 31
-# 459 rank = 0 size = 46
-# 460 rank = 0 size = 67
-# 955 rank = 0 size = 26
-# 467 rank = 0 size = 58
-# 520 rank = 0 size = 45
-# 958 rank = 0 size = 68
-# 959 rank = 0 size = 37
-# 470 rank = 0 size = 70
-# 961 rank = 0 size = 49
-# 482 rank = 0 size = 56
-# 963 rank = 0 size = 91
-# 964 rank = 0 size = 90
-# 515 rank = 0 size = 81
-# 966 rank = 0 size = 43
-# 967 rank = 0 size = 35
-# 968 rank = 0 size = 71
-# 969 rank = 0 size = 37
-# 970 rank = 0 size = 31
-# 514 rank = 0 size = 90
-# 972 rank = 0 size = 49
-# 488 rank = 0 size = 80
-# 974 rank = 0 size = 65
-# 975 rank = 0 size = 31
-# 493 rank = 0 size = 98
-# 977 rank = 0 size = 50
-# 503 rank = 0 size = 96
-# 979 rank = 0 size = 113
-# 980 rank = 0 size = 51
-# 504 rank = 0 size = 66
-# 982 rank = 0 size = 35
-# 983 rank = 0 size = 62
-# 984 rank = 0 size = 97
-# 985 rank = 0 size = 25
-# 986 rank = 0 size = 46
-# 987 rank = 0 size = 84
-# 988 rank = 0 size = 31
-# 989 rank = 0 size = 71
-# 990 rank = 0 size = 72
-# 991 rank = 0 size = 61
-# 992 rank = 0 size = 29
-# 993 rank = 0 size = 82
-# 994 rank = 0 size = 79
-# 995 rank = 0 size = 89
-# 996 rank = 0 size = 116
-# 997 rank = 0 size = 62
-# 998 rank = 0 size = 65
-# 361 rank = 0 size = 36
-20 1 1 2 19 3 12 4 5 5 11 6 18 7 32 8 17 9 24 10 13 11 60 12 15 13 28 14 43 15 6 16 2 17 9 18 8 19 29 20 10
-#s 1 0 0 0 0 0 0 0 0 0 0
-#s 2 0 0 0 0 0 0 0 0 0 0
-#s 3 0 0 0 0 0 0 0 0 0 0
-#s 4 0 0 0 0 0 0 0 0 0 0
-#s 5 0 0 0 0 0 0 0 0 0 0
-#s 6 0 0 0 0 0 0 0 0 0 0
-#s 7 0 0 0 0 0 0 0 0 0 0
-#s 8 0 0 0 0 0 0 0 0 0 0
-#s 9 0 0 0 0 0 0 0 0 0 0
-#s 10 0 0 0 0 0 0 0 0 0 0
-#s 11 0 0 0 0 0 0 0 0 0 0
-#s 12 0 0 0 0 0 0 0 0 0 0
-#s 13 0 0 0 0 0 0 0 0 0 0
-#s 14 0 0 0 0 0 0 0 0 0 0
-#s 15 0 0 0 0 0 0 0 0 0 0
-#s 16 0 0 0 0 0 0 0 0 0 0
-#s 17 0 0 0 0 0 0 0 0 0 0
-#s 18 0 0 0 0 0 0 0 0 0 0
-#s 19 0 0 0 0 0 0 0 0 0 0
-#s 20 0 0 0 0 0 0 0 0 0 0
+# 329 rank = 14 size = 47
+# 459 rank = 14 size = 102
+# 496 rank = 14 size = 70
+# 549 rank = 14 size = 90
+# 402 rank = 14 size = 95
+# 498 rank = 14 size = 114
+# 460 rank = 14 size = 111
+# 542 rank = 14 size = 107
+# 401 rank = 14 size = 99
+# 499 rank = 14 size = 58
+# 481 rank = 14 size = 97
+# 462 rank = 14 size = 42
+# 341 rank = 14 size = 104
+# 516 rank = 14 size = 35
+# 414 rank = 14 size = 43
+# 413 rank = 14 size = 36
+# 478 rank = 14 size = 40
+# 377 rank = 14 size = 47
+# 408 rank = 14 size = 64
+# 479 rank = 14 size = 50
+# 446 rank = 13 size = 104
+# 556 rank = 13 size = 105
+# 570 rank = 13 size = 35
+# 546 rank = 13 size = 107
+# 571 rank = 13 size = 124
+# 503 rank = 13 size = 58
+# 502 rank = 13 size = 111
+# 434 rank = 13 size = 32
+# 519 rank = 13 size = 87
+# 497 rank = 13 size = 53
+# 521 rank = 13 size = 66
+# 547 rank = 13 size = 46
+# 443 rank = 13 size = 109
+# 490 rank = 13 size = 43
+# 525 rank = 13 size = 121
+# 649 rank = 13 size = 40
+# 457 rank = 13 size = 69
+# 579 rank = 13 size = 107
+# 528 rank = 13 size = 49
+# 585 rank = 13 size = 105
+# 396 rank = 13 size = 66
+# 539 rank = 13 size = 50
+# 586 rank = 13 size = 69
+# 483 rank = 13 size = 73
+# 566 rank = 13 size = 95
+# 543 rank = 13 size = 107
+# 572 rank = 13 size = 130
+# 505 rank = 12 size = 60
+# 618 rank = 12 size = 67
+# 540 rank = 12 size = 85
+# 541 rank = 12 size = 74
+# 398 rank = 12 size = 49
+# 624 rank = 12 size = 79
+# 529 rank = 12 size = 113
+# 641 rank = 12 size = 117
+# 544 rank = 12 size = 73
+# 635 rank = 12 size = 57
+# 622 rank = 12 size = 68
+# 520 rank = 12 size = 97
+# 484 rank = 12 size = 45
+# 485 rank = 12 size = 113
+# 552 rank = 12 size = 38
+# 416 rank = 12 size = 37
+# 517 rank = 12 size = 32
+# 471 rank = 12 size = 63
+# 515 rank = 12 size = 87
+# 486 rank = 12 size = 63
+# 573 rank = 12 size = 65
+# 412 rank = 12 size = 60
+# 555 rank = 12 size = 92
+# 512 rank = 12 size = 83
+# 646 rank = 12 size = 123
+# 657 rank = 12 size = 68
+# 598 rank = 12 size = 106
+# 627 rank = 12 size = 37
+# 564 rank = 12 size = 68
+# 509 rank = 12 size = 67
+# 551 rank = 12 size = 76
+# 568 rank = 11 size = 92
+# 569 rank = 11 size = 61
+# 626 rank = 11 size = 31
+# 684 rank = 11 size = 66
+# 595 rank = 11 size = 63
+# 437 rank = 11 size = 59
+# 597 rank = 11 size = 94
+# 501 rank = 11 size = 37
+# 681 rank = 11 size = 87
+# 599 rank = 11 size = 102
+# 600 rank = 11 size = 100
+# 653 rank = 11 size = 112
+# 693 rank = 11 size = 41
+# 577 rank = 11 size = 49
+# 489 rank = 11 size = 136
+# 578 rank = 11 size = 48
+# 648 rank = 11 size = 56
+# 513 rank = 11 size = 122
+# 604 rank = 11 size = 76
+# 610 rank = 11 size = 110
+# 550 rank = 11 size = 111
+# 620 rank = 11 size = 60
+# 527 rank = 11 size = 114
+# 706 rank = 11 size = 37
+# 532 rank = 11 size = 35
+# 580 rank = 11 size = 68
+# 587 rank = 11 size = 43
+# 574 rank = 10 size = 58
+# 639 rank = 10 size = 51
+# 617 rank = 10 size = 37
+# 533 rank = 10 size = 64
+# 675 rank = 10 size = 25
+# 652 rank = 10 size = 38
+# 583 rank = 10 size = 47
+# 734 rank = 10 size = 118
+# 733 rank = 10 size = 49
+# 592 rank = 10 size = 81
+# 581 rank = 10 size = 120
+# 575 rank = 10 size = 89
+# 538 rank = 10 size = 85
+# 674 rank = 10 size = 53
+# 605 rank = 10 size = 90
+# 576 rank = 10 size = 56
+# 534 rank = 10 size = 91
+# 725 rank = 10 size = 116
+# 596 rank = 10 size = 49
+# 715 rank = 10 size = 86
+# 685 rank = 10 size = 96
+# 565 rank = 10 size = 102
+# 634 rank = 10 size = 101
+# 705 rank = 10 size = 78
+# 589 rank = 10 size = 42
+# 621 rank = 10 size = 65
+# 650 rank = 9 size = 68
+# 640 rank = 9 size = 107
+# 642 rank = 9 size = 91
+# 623 rank = 9 size = 90
+# 633 rank = 9 size = 104
+# 632 rank = 9 size = 73
+# 643 rank = 9 size = 97
+# 644 rank = 9 size = 124
+# 679 rank = 9 size = 49
+# 716 rank = 9 size = 95
+# 676 rank = 9 size = 57
+# 625 rank = 9 size = 112
+# 660 rank = 9 size = 57
+# 658 rank = 9 size = 30
+# 636 rank = 9 size = 33
+# 753 rank = 9 size = 118
+# 608 rank = 9 size = 61
+# 611 rank = 9 size = 63
+# 727 rank = 9 size = 75
+# 602 rank = 9 size = 27
+# 677 rank = 9 size = 81
+# 698 rank = 9 size = 46
+# 740 rank = 9 size = 102
+# 607 rank = 9 size = 120
+# 765 rank = 9 size = 119
+# 802 rank = 8 size = 88
+# 845 rank = 8 size = 62
+# 672 rank = 8 size = 127
+# 697 rank = 8 size = 82
+# 723 rank = 8 size = 113
+# 760 rank = 8 size = 104
+# 689 rank = 8 size = 99
+# 819 rank = 8 size = 69
+# 722 rank = 8 size = 63
+# 670 rank = 8 size = 37
+# 645 rank = 8 size = 87
+# 714 rank = 8 size = 112
+# 770 rank = 8 size = 100
+# 700 rank = 8 size = 88
+# 669 rank = 8 size = 82
+# 710 rank = 8 size = 108
+# 735 rank = 8 size = 44
+# 756 rank = 8 size = 113
+# 737 rank = 8 size = 40
+# 678 rank = 8 size = 57
+# 667 rank = 8 size = 62
+# 694 rank = 8 size = 114
+# 766 rank = 7 size = 72
+# 736 rank = 7 size = 69
+# 769 rank = 7 size = 61
+# 731 rank = 7 size = 48
+# 264 rank = 7 size = 105
+# 776 rank = 7 size = 108
+# 728 rank = 7 size = 104
+# 783 rank = 7 size = 48
+# 726 rank = 7 size = 106
+# 261 rank = 7 size = 121
+# 812 rank = 7 size = 93
+# 758 rank = 7 size = 44
+# 808 rank = 7 size = 42
+# 742 rank = 7 size = 83
+# 712 rank = 7 size = 71
+# 707 rank = 7 size = 123
+# 752 rank = 7 size = 83
+# 701 rank = 7 size = 103
+# 628 rank = 7 size = 36
+# 745 rank = 7 size = 62
+# 800 rank = 7 size = 61
+# 850 rank = 7 size = 88
+# 746 rank = 7 size = 52
+# 885 rank = 6 size = 83
+# 724 rank = 6 size = 83
+# 865 rank = 6 size = 89
+# 827 rank = 6 size = 32
+# 801 rank = 6 size = 74
+# 785 rank = 6 size = 32
+# 777 rank = 6 size = 39
+# 855 rank = 6 size = 42
+# 747 rank = 6 size = 91
+# 782 rank = 6 size = 85
+# 754 rank = 6 size = 67
+# 744 rank = 6 size = 60
+# 784 rank = 6 size = 109
+# 683 rank = 6 size = 91
+# 788 rank = 6 size = 85
+# 778 rank = 6 size = 93
+# 846 rank = 6 size = 108
+# 790 rank = 6 size = 100
+# 692 rank = 6 size = 97
+# 763 rank = 6 size = 74
+# 797 rank = 6 size = 60
+# 38 rank = 6 size = 76
+# 713 rank = 6 size = 105
+# 791 rank = 6 size = 47
+# 662 rank = 6 size = 63
+# 703 rank = 6 size = 62
+# 269 rank = 6 size = 93
+# 840 rank = 6 size = 67
+# 835 rank = 6 size = 62
+# 772 rank = 6 size = 80
+# 829 rank = 5 size = 41
+# 884 rank = 5 size = 97
+# 803 rank = 5 size = 111
+# 886 rank = 5 size = 79
+# 335 rank = 5 size = 119
+# 805 rank = 5 size = 80
+# 786 rank = 5 size = 99
+# 834 rank = 5 size = 94
+# 795 rank = 5 size = 136
+# 796 rank = 5 size = 105
+# 739 rank = 5 size = 72
+# 817 rank = 5 size = 37
+# 871 rank = 5 size = 127
+# 831 rank = 5 size = 42
+# 868 rank = 5 size = 123
+# 852 rank = 5 size = 64
+# 854 rank = 5 size = 43
+# 856 rank = 5 size = 52
+# 682 rank = 5 size = 119
+# 291 rank = 5 size = 113
+# 907 rank = 5 size = 54
+# 861 rank = 5 size = 114
+# 750 rank = 5 size = 40
+# 561 rank = 5 size = 113
+# 78 rank = 5 size = 30
+# 908 rank = 4 size = 89
+# 821 rank = 4 size = 93
+# 909 rank = 4 size = 39
+# 818 rank = 4 size = 74
+# 911 rank = 4 size = 113
+# 824 rank = 4 size = 84
+# 825 rank = 4 size = 32
+# 828 rank = 4 size = 73
+# 903 rank = 4 size = 82
+# 810 rank = 4 size = 75
+# 717 rank = 4 size = 82
+# 922 rank = 4 size = 112
+# 433 rank = 4 size = 64
+# 830 rank = 4 size = 93
+# 809 rank = 4 size = 65
+# 892 rank = 4 size = 62
+# 891 rank = 4 size = 106
+# 832 rank = 4 size = 110
+# 889 rank = 4 size = 76
+# 887 rank = 4 size = 88
+# 879 rank = 4 size = 60
+# 837 rank = 4 size = 87
+# 81 rank = 4 size = 117
+# 841 rank = 4 size = 45
+# 843 rank = 4 size = 113
+# 867 rank = 4 size = 79
+# 359 rank = 4 size = 35
+# 518 rank = 4 size = 114
+# 877 rank = 4 size = 95
+# 691 rank = 4 size = 33
+# 743 rank = 4 size = 81
+# 590 rank = 4 size = 63
+# 56 rank = 4 size = 61
+# 858 rank = 4 size = 76
+# 358 rank = 4 size = 91
+# 375 rank = 4 size = 102
+# 807 rank = 3 size = 89
+# 888 rank = 3 size = 96
+# 882 rank = 3 size = 95
+# 774 rank = 3 size = 54
+# 200 rank = 3 size = 40
+# 594 rank = 3 size = 117
+# 199 rank = 3 size = 80
+# 780 rank = 3 size = 57
+# 875 rank = 3 size = 51
+# 781 rank = 3 size = 107
+# 749 rank = 3 size = 108
+# 180 rank = 3 size = 96
+# 395 rank = 3 size = 54
+# 77 rank = 3 size = 35
+# 872 rank = 3 size = 68
+# 870 rank = 3 size = 117
+# 900 rank = 3 size = 98
+# 350 rank = 3 size = 112
+# 452 rank = 3 size = 103
+# 839 rank = 3 size = 44
+# 12 rank = 3 size = 92
+# 906 rank = 3 size = 76
+# 913 rank = 3 size = 46
+# 848 rank = 3 size = 35
+# 919 rank = 3 size = 74
+# 920 rank = 3 size = 41
+# 844 rank = 3 size = 64
+# 923 rank = 3 size = 118
+# 80 rank = 3 size = 108
+# 930 rank = 3 size = 102
+# 219 rank = 2 size = 35
+# 938 rank = 2 size = 132
+# 302 rank = 2 size = 43
+# 822 rank = 2 size = 94
+# 931 rank = 2 size = 127
+# 510 rank = 2 size = 78
+# 939 rank = 2 size = 101
+# 823 rank = 2 size = 74
+# 106 rank = 2 size = 97
+# 88 rank = 2 size = 121
+# 629 rank = 2 size = 113
+# 732 rank = 2 size = 58
+# 842 rank = 2 size = 86
+# 167 rank = 2 size = 54
+# 491 rank = 2 size = 84
+# 487 rank = 2 size = 105
+# 897 rank = 2 size = 48
+# 278 rank = 2 size = 51
+# 957 rank = 2 size = 49
+# 638 rank = 2 size = 44
+# 273 rank = 2 size = 63
+# 916 rank = 2 size = 80
+# 914 rank = 2 size = 54
+# 799 rank = 2 size = 68
+# 849 rank = 2 size = 99
+# 853 rank = 2 size = 72
+# 857 rank = 2 size = 88
+# 862 rank = 2 size = 45
+# 960 rank = 2 size = 102
+# 905 rank = 2 size = 114
+# 961 rank = 2 size = 34
+# 548 rank = 2 size = 39
+# 651 rank = 2 size = 31
+# 965 rank = 2 size = 61
+# 415 rank = 2 size = 93
+# 654 rank = 2 size = 131
+# 864 rank = 2 size = 72
+# 793 rank = 2 size = 108
+# 175 rank = 2 size = 106
+# 899 rank = 2 size = 83
+# 896 rank = 2 size = 105
+# 256 rank = 2 size = 33
+# 893 rank = 2 size = 132
+# 15 rank = 2 size = 58
+# 789 rank = 2 size = 58
+# 247 rank = 2 size = 38
+# 665 rank = 2 size = 74
+# 976 rank = 2 size = 49
+# 378 rank = 2 size = 87
+# 668 rank = 2 size = 71
+# 878 rank = 2 size = 62
+# 767 rank = 2 size = 99
+# 764 rank = 2 size = 39
+# 883 rank = 2 size = 60
+# 20 rank = 2 size = 78
+# 447 rank = 1 size = 58
+# 406 rank = 1 size = 77
+# 30 rank = 1 size = 38
+# 23 rank = 1 size = 86
+# 394 rank = 1 size = 115
+# 22 rank = 1 size = 104
+# 420 rank = 1 size = 50
+# 881 rank = 1 size = 83
+# 880 rank = 1 size = 38
+# 890 rank = 1 size = 95
+# 428 rank = 1 size = 96
+# 39 rank = 1 size = 71
+# 876 rank = 1 size = 95
+# 687 rank = 1 size = 82
+# 666 rank = 1 size = 89
+# 371 rank = 1 size = 79
+# 664 rank = 1 size = 111
+# 873 rank = 1 size = 39
+# 895 rank = 1 size = 68
+# 42 rank = 1 size = 89
+# 363 rank = 1 size = 108
+# 695 rank = 1 size = 58
+# 442 rank = 1 size = 99
+# 362 rank = 1 size = 123
+# 48 rank = 1 size = 53
+# 49 rank = 1 size = 92
+# 655 rank = 1 size = 59
+# 901 rank = 1 size = 87
+# 863 rank = 1 size = 75
+# 458 rank = 1 size = 90
+# 6 rank = 1 size = 74
+# 59 rank = 1 size = 64
+# 910 rank = 1 size = 89
+# 66 rank = 1 size = 111
+# 71 rank = 1 size = 126
+# 912 rank = 1 size = 70
+# 918 rank = 1 size = 73
+# 482 rank = 1 size = 93
+# 631 rank = 1 size = 96
+# 326 rank = 1 size = 30
+# 924 rank = 1 size = 86
+# 85 rank = 1 size = 109
+# 312 rank = 1 size = 103
+# 759 rank = 1 size = 128
+# 493 rank = 1 size = 66
+# 90 rank = 1 size = 109
+# 833 rank = 1 size = 48
+# 103 rank = 1 size = 113
+# 504 rank = 1 size = 101
+# 109 rank = 1 size = 72
+# 926 rank = 1 size = 102
+# 522 rank = 1 size = 60
+# 932 rank = 1 size = 38
+# 297 rank = 1 size = 87
+# 815 rank = 1 size = 79
+# 126 rank = 1 size = 80
+# 127 rank = 1 size = 119
+# 933 rank = 1 size = 76
+# 940 rank = 1 size = 110
+# 943 rank = 1 size = 65
+# 952 rank = 1 size = 107
+# 958 rank = 1 size = 57
+# 271 rank = 1 size = 98
+# 535 rank = 1 size = 86
+# 962 rank = 1 size = 94
+# 263 rank = 1 size = 90
+# 966 rank = 1 size = 112
+# 969 rank = 1 size = 49
+# 603 rank = 1 size = 71
+# 557 rank = 1 size = 104
+# 601 rank = 1 size = 72
+# 179 rank = 1 size = 43
+# 558 rank = 1 size = 47
+# 970 rank = 1 size = 114
+# 972 rank = 1 size = 77
+# 563 rank = 1 size = 64
+# 567 rank = 1 size = 124
+# 983 rank = 1 size = 75
+# 201 rank = 1 size = 55
+# 232 rank = 1 size = 117
+# 989 rank = 1 size = 67
+# 206 rank = 1 size = 41
+# 207 rank = 1 size = 82
+# 991 rank = 1 size = 101
+# 994 rank = 1 size = 124
+# 170 rank = 1 size = 36
+# 588 rank = 0 size = 74
+# 761 rank = 0 size = 44
+# 762 rank = 0 size = 52
+# 220 rank = 0 size = 34
+# 225 rank = 0 size = 50
+# 218 rank = 0 size = 73
+# 208 rank = 0 size = 79
+# 757 rank = 0 size = 62
+# 768 rank = 0 size = 85
+# 227 rank = 0 size = 47
+# 755 rank = 0 size = 86
+# 771 rank = 0 size = 118
+# 205 rank = 0 size = 98
+# 773 rank = 0 size = 96
+# 228 rank = 0 size = 121
+# 775 rank = 0 size = 55
+# 242 rank = 0 size = 47
+# 751 rank = 0 size = 88
+# 245 rank = 0 size = 91
+# 779 rank = 0 size = 35
+# 999 rank = 0 size = 101
+# 748 rank = 0 size = 36
+# 195 rank = 0 size = 33
+# 193 rank = 0 size = 70
+# 188 rank = 0 size = 67
+# 182 rank = 0 size = 28
+# 0 rank = 0 size = 114
+# 787 rank = 0 size = 110
+# 251 rank = 0 size = 43
+# 252 rank = 0 size = 45
+# 177 rank = 0 size = 49
+# 741 rank = 0 size = 34
+# 792 rank = 0 size = 96
+# 262 rank = 0 size = 69
+# 253 rank = 0 size = 85
+# 171 rank = 0 size = 53
+# 738 rank = 0 size = 92
+# 168 rank = 0 size = 52
+# 798 rank = 0 size = 86
+# 266 rank = 0 size = 51
+# 281 rank = 0 size = 83
+# 157 rank = 0 size = 118
+# 156 rank = 0 size = 115
+# 154 rank = 0 size = 73
+# 804 rank = 0 size = 37
+# 149 rank = 0 size = 41
+# 806 rank = 0 size = 48
+# 282 rank = 0 size = 108
+# 135 rank = 0 size = 106
+# 730 rank = 0 size = 52
+# 729 rank = 0 size = 101
+# 811 rank = 0 size = 42
+# 124 rank = 0 size = 48
+# 813 rank = 0 size = 82
+# 814 rank = 0 size = 28
+# 289 rank = 0 size = 45
+# 816 rank = 0 size = 132
+# 121 rank = 0 size = 84
+# 120 rank = 0 size = 38
+# 117 rank = 0 size = 101
+# 820 rank = 0 size = 101
+# 112 rank = 0 size = 78
+# 303 rank = 0 size = 44
+# 304 rank = 0 size = 45
+# 111 rank = 0 size = 39
+# 305 rank = 0 size = 114
+# 826 rank = 0 size = 98
+# 107 rank = 0 size = 37
+# 306 rank = 0 size = 81
+# 721 rank = 0 size = 90
+# 101 rank = 0 size = 62
+# 96 rank = 0 size = 72
+# 93 rank = 0 size = 51
+# 720 rank = 0 size = 95
+# 719 rank = 0 size = 84
+# 718 rank = 0 size = 96
+# 836 rank = 0 size = 89
+# 86 rank = 0 size = 65
+# 838 rank = 0 size = 60
+# 308 rank = 0 size = 70
+# 317 rank = 0 size = 105
+# 324 rank = 0 size = 108
+# 330 rank = 0 size = 58
+# 79 rank = 0 size = 40
+# 711 rank = 0 size = 137
+# 794 rank = 0 size = 125
+# 74 rank = 0 size = 68
+# 847 rank = 0 size = 48
+# 333 rank = 0 size = 72
+# 709 rank = 0 size = 131
+# 708 rank = 0 size = 131
+# 851 rank = 0 size = 45
+# 336 rank = 0 size = 105
+# 337 rank = 0 size = 54
+# 65 rank = 0 size = 95
+# 64 rank = 0 size = 62
+# 338 rank = 0 size = 85
+# 704 rank = 0 size = 36
+# 54 rank = 0 size = 72
+# 859 rank = 0 size = 49
+# 860 rank = 0 size = 126
+# 52 rank = 0 size = 103
+# 348 rank = 0 size = 34
+# 702 rank = 0 size = 106
+# 351 rank = 0 size = 56
+# 50 rank = 0 size = 74
+# 866 rank = 0 size = 53
+# 699 rank = 0 size = 68
+# 354 rank = 0 size = 79
+# 869 rank = 0 size = 69
+# 696 rank = 0 size = 94
+# 364 rank = 0 size = 118
+# 365 rank = 0 size = 100
+# 369 rank = 0 size = 125
+# 690 rank = 0 size = 121
+# 688 rank = 0 size = 68
+# 686 rank = 0 size = 84
+# 376 rank = 0 size = 39
+# 379 rank = 0 size = 77
+# 31 rank = 0 size = 34
+# 382 rank = 0 size = 75
+# 383 rank = 0 size = 82
+# 680 rank = 0 size = 120
+# 391 rank = 0 size = 91
+# 405 rank = 0 size = 118
+# 27 rank = 0 size = 73
+# 673 rank = 0 size = 126
+# 419 rank = 0 size = 55
+# 671 rank = 0 size = 63
+# 21 rank = 0 size = 82
+# 422 rank = 0 size = 58
+# 663 rank = 0 size = 59
+# 429 rank = 0 size = 32
+# 661 rank = 0 size = 78
+# 894 rank = 0 size = 50
+# 440 rank = 0 size = 73
+# 659 rank = 0 size = 116
+# 874 rank = 0 size = 53
+# 898 rank = 0 size = 69
+# 441 rank = 0 size = 68
+# 656 rank = 0 size = 38
+# 448 rank = 0 size = 33
+# 902 rank = 0 size = 128
+# 454 rank = 0 size = 71
+# 904 rank = 0 size = 131
+# 456 rank = 0 size = 129
+# 647 rank = 0 size = 71
+# 9 rank = 0 size = 92
+# 8 rank = 0 size = 69
+# 463 rank = 0 size = 119
+# 466 rank = 0 size = 109
+# 4 rank = 0 size = 87
+# 467 rank = 0 size = 56
+# 468 rank = 0 size = 33
+# 469 rank = 0 size = 34
+# 915 rank = 0 size = 112
+# 470 rank = 0 size = 52
+# 917 rank = 0 size = 112
+# 472 rank = 0 size = 65
+# 637 rank = 0 size = 69
+# 480 rank = 0 size = 133
+# 921 rank = 0 size = 45
+# 1 rank = 0 size = 35
+# 492 rank = 0 size = 60
+# 630 rank = 0 size = 89
+# 925 rank = 0 size = 76
+# 506 rank = 0 size = 38
+# 927 rank = 0 size = 81
+# 928 rank = 0 size = 105
+# 929 rank = 0 size = 57
+# 500 rank = 0 size = 113
+# 511 rank = 0 size = 86
+# 524 rank = 0 size = 93
+# 526 rank = 0 size = 29
+# 934 rank = 0 size = 38
+# 935 rank = 0 size = 55
+# 936 rank = 0 size = 109
+# 937 rank = 0 size = 84
+# 619 rank = 0 size = 34
+# 530 rank = 0 size = 117
+# 531 rank = 0 size = 109
+# 941 rank = 0 size = 102
+# 942 rank = 0 size = 80
+# 616 rank = 0 size = 120
+# 944 rank = 0 size = 67
+# 945 rank = 0 size = 101
+# 946 rank = 0 size = 96
+# 947 rank = 0 size = 49
+# 615 rank = 0 size = 80
+# 949 rank = 0 size = 125
+# 950 rank = 0 size = 119
+# 951 rank = 0 size = 112
+# 614 rank = 0 size = 94
+# 953 rank = 0 size = 85
+# 954 rank = 0 size = 72
+# 955 rank = 0 size = 83
+# 956 rank = 0 size = 131
+# 613 rank = 0 size = 112
+# 612 rank = 0 size = 95
+# 959 rank = 0 size = 71
+# 536 rank = 0 size = 54
+# 609 rank = 0 size = 90
+# 545 rank = 0 size = 93
+# 963 rank = 0 size = 65
+# 964 rank = 0 size = 57
+# 606 rank = 0 size = 96
+# 553 rank = 0 size = 68
+# 967 rank = 0 size = 80
+# 968 rank = 0 size = 78
+# 554 rank = 0 size = 72
+# 559 rank = 0 size = 114
+# 971 rank = 0 size = 81
+# 560 rank = 0 size = 58
+# 973 rank = 0 size = 113
+# 974 rank = 0 size = 105
+# 975 rank = 0 size = 99
+# 562 rank = 0 size = 49
+# 977 rank = 0 size = 48
+# 978 rank = 0 size = 66
+# 979 rank = 0 size = 71
+# 980 rank = 0 size = 78
+# 981 rank = 0 size = 49
+# 982 rank = 0 size = 33
+# 593 rank = 0 size = 57
+# 984 rank = 0 size = 68
+# 985 rank = 0 size = 72
+# 986 rank = 0 size = 49
+# 987 rank = 0 size = 125
+# 988 rank = 0 size = 122
+# 582 rank = 0 size = 112
+# 990 rank = 0 size = 66
+# 591 rank = 0 size = 107
+# 992 rank = 0 size = 83
+# 993 rank = 0 size = 113
+# 584 rank = 0 size = 90
+# 995 rank = 0 size = 54
+# 996 rank = 0 size = 98
+# 997 rank = 0 size = 42
+# 998 rank = 0 size = 76
+# 948 rank = 0 size = 50
+20 1 6 2 34 3 17 4 56 5 85 6 63 7 90 8 12 9 8 10 45 11 4 12 26 13 44 14 77 15 14 16 29 17 139 18 33 19 204 20 111
+#s 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+#s 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+#s 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+#s 4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+#s 5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+#s 6 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+#s 7 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+#s 8 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+#s 9 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+#s 10 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+#s 11 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+#s 12 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+#s 13 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+#s 14 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+#s 15 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+#s 16 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+#s 17 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+#s 18 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+#s 19 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+#s 20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+1 14 15
+#s 14 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
 0
 0
 0
+2 3 19 6 133
+#s 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+#s 6 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+2 5 61 7 62
+#s 5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+#s 7 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
 0
+1 12 3
+#s 12 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+1 19 143
+#s 19 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+1 17 140
+#s 17 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
 0
+1 9 123
+#s 9 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+1 2 74
+#s 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
 0
-2 2 37 9 35
-#s 2 0 0 0 0 0 0 0 0 0 0
-#s 9 0 0 0 0 0 0 0 0 0 0
-0
-1 20 31
-#s 20 0 0 0 0 0 0 0 0 0 0
-0
-0
-2 2 42 5 90
-#s 2 0 0 0 0 0 0 0 0 0 0
-#s 5 0 0 0 0 0 0 0 0 0 0
-1 2 3
-#s 2 0 0 0 0 0 0 0 0 0 0
-1 2 20
-#s 2 0 0 0 0 0 0 0 0 0 0
-2 2 50 9 102
-#s 2 0 0 0 0 0 0 0 0 0 0
-#s 9 0 0 0 0 0 0 0 0 0 0
-0
-3 10 63 15 58 17 44
-#s 10 0 0 0 0 0 0 0 0 0 0
-#s 15 0 0 0 0 0 0 0 0 0 0
-#s 17 0 0 0 0 0 0 0 0 0 0
-1 12 53
-#s 12 0 0 0 0 0 0 0 0 0 0
-1 10 56
-#s 10 0 0 0 0 0 0 0 0 0 0
-0
-0
-1 8 40
-#s 8 0 0 0 0 0 0 0 0 0 0
-1 10 16
-#s 10 0 0 0 0 0 0 0 0 0 0
-0
-2 2 33 13 84
-#s 2 0 0 0 0 0 0 0 0 0 0
-#s 13 0 0 0 0 0 0 0 0 0 0
-1 4 51
-#s 4 0 0 0 0 0 0 0 0 0 0
-0
-0
-2 10 34 19 127
-#s 10 0 0 0 0 0 0 0 0 0 0
-#s 19 0 0 0 0 0 0 0 0 0 0
-1 18 45
-#s 18 0 0 0 0 0 0 0 0 0 0
-1 9 79
-#s 9 0 0 0 0 0 0 0 0 0 0
-1 10 25
-#s 10 0 0 0 0 0 0 0 0 0 0
-0
-2 11 14 1 71
-#s 11 0 0 0 0 0 0 0 0 0 0
-#s 1 0 0 0 0 0 0 0 0 0 0
-0
-1 12 69
-#s 12 0 0 0 0 0 0 0 0 0 0
-0
-0
-5 2 80 10 62 15 22 16 72 3 23
-#s 2 0 0 0 0 0 0 0 0 0 0
-#s 10 0 0 0 0 0 0 0 0 0 0
-#s 15 0 0 0 0 0 0 0 0 0 0
-#s 16 0 0 0 0 0 0 0 0 0 0
-#s 3 0 0 0 0 0 0 0 0 0 0
-1 2 67
-#s 2 0 0 0 0 0 0 0 0 0 0
-2 12 59 14 39
-#s 12 0 0 0 0 0 0 0 0 0 0
-#s 14 0 0 0 0 0 0 0 0 0 0
-1 13 145
-#s 13 0 0 0 0 0 0 0 0 0 0
-0
-1 6 77
-#s 6 0 0 0 0 0 0 0 0 0 0
-0
-0
-1 8 65
-#s 8 0 0 0 0 0 0 0 0 0 0
-1 20 55
-#s 20 0 0 0 0 0 0 0 0 0 0
-0
-1 17 36
-#s 17 0 0 0 0 0 0 0 0 0 0
-2 17 46 7 104
-#s 17 0 0 0 0 0 0 0 0 0 0
-#s 7 0 0 0 0 0 0 0 0 0 0
-0
-1 11 47
-#s 11 0 0 0 0 0 0 0 0 0 0
-1 2 144
-#s 2 0 0 0 0 0 0 0 0 0 0
-1 20 76
-#s 20 0 0 0 0 0 0 0 0 0 0
-0
-1 10 105
-#s 10 0 0 0 0 0 0 0 0 0 0
-0
-1 2 101
-#s 2 0 0 0 0 0 0 0 0 0 0
-1 2 98
-#s 2 0 0 0 0 0 0 0 0 0 0
-4 17 85 9 73 5 106 16 52
-#s 17 0 0 0 0 0 0 0 0 0 0
-#s 9 0 0 0 0 0 0 0 0 0 0
-#s 5 0 0 0 0 0 0 0 0 0 0
-#s 16 0 0 0 0 0 0 0 0 0 0
-0
-2 7 57 6 131
-#s 7 0 0 0 0 0 0 0 0 0 0
-#s 6 0 0 0 0 0 0 0 0 0 0
-2 13 200 14 68
-#s 13 0 0 0 0 0 0 0 0 0 0
-#s 14 0 0 0 0 0 0 0 0 0 0
-0
-2 17 88 11 89
-#s 17 0 0 0 0 0 0 0 0 0 0
-#s 11 0 0 0 0 0 0 0 0 0 0
-2 12 70 4 120
-#s 12 0 0 0 0 0 0 0 0 0 0
-#s 4 0 0 0 0 0 0 0 0 0 0
-0
-0
-1 19 147
-#s 19 0 0 0 0 0 0 0 0 0 0
-2 2 82 13 113
-#s 2 0 0 0 0 0 0 0 0 0 0
-#s 13 0 0 0 0 0 0 0 0 0 0
-1 2 181
-#s 2 0 0 0 0 0 0 0 0 0 0
-0
-0
-0
-0
-3 12 75 4 168 3 191
-#s 12 0 0 0 0 0 0 0 0 0 0
-#s 4 0 0 0 0 0 0 0 0 0 0
-#s 3 0 0 0 0 0 0 0 0 0 0
-0
+2 14 47 20 179
+#s 14 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+#s 20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+1 10 120
+#s 10 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+1 16 126
+#s 16 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+1 9 95
+#s 9 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+1 12 152
+#s 12 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
 1 14 138
-#s 14 0 0 0 0 0 0 0 0 0 0
-0
-1 15 48
-#s 15 0 0 0 0 0 0 0 0 0 0
-2 13 66 15 27
-#s 13 0 0 0 0 0 0 0 0 0 0
-#s 15 0 0 0 0 0 0 0 0 0 0
-0
-4 2 94 17 100 9 74 8 114
-#s 2 0 0 0 0 0 0 0 0 0 0
-#s 17 0 0 0 0 0 0 0 0 0 0
-#s 9 0 0 0 0 0 0 0 0 0 0
-#s 8 0 0 0 0 0 0 0 0 0 0
-2 2 128 16 108
-#s 2 0 0 0 0 0 0 0 0 0 0
-#s 16 0 0 0 0 0 0 0 0 0 0
-0
-2 2 109 10 121
-#s 2 0 0 0 0 0 0 0 0 0 0
-#s 10 0 0 0 0 0 0 0 0 0 0
+#s 14 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
 0
 0
-2 15 148 7 49
-#s 15 0 0 0 0 0 0 0 0 0 0
-#s 7 0 0 0 0 0 0 0 0 0 0
-1 18 86
-#s 18 0 0 0 0 0 0 0 0 0 0
-1 10 91
-#s 10 0 0 0 0 0 0 0 0 0 0
-1 15 154
-#s 15 0 0 0 0 0 0 0 0 0 0
-1 13 136
-#s 13 0 0 0 0 0 0 0 0 0 0
+0
+1 17 115
+#s 17 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+1 15 73
+#s 15 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+1 3 52
+#s 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0
+4 12 124 5 36 2 30 11 92
+#s 12 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+#s 5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+#s 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+#s 11 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+1 11 271
+#s 11 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+1 20 42
+#s 20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0
+1 8 20
+#s 8 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+1 6 25
+#s 6 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+1 14 225
+#s 14 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+2 14 145 12 46
+#s 14 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+#s 12 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0
+2 2 106 8 83
+#s 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+#s 8 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+1 2 100
+#s 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0
+1 5 103
+#s 5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+4 6 58 8 154 9 163 15 76
+#s 6 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+#s 8 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+#s 9 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+#s 15 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+2 11 160 19 64
+#s 11 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+#s 19 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+1 7 114
+#s 7 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0
+1 10 141
+#s 10 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+1 18 93
+#s 18 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0
+1 11 177
+#s 11 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+1 4 71
+#s 4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
 0
 0
-1 13 93
-#s 13 0 0 0 0 0 0 0 0 0 0
-1 11 204
-#s 11 0 0 0 0 0 0 0 0 0 0
-1 15 139
-#s 15 0 0 0 0 0 0 0 0 0 0
-1 6 197
-#s 6 0 0 0 0 0 0 0 0 0 0
-2 6 146 3 259
-#s 6 0 0 0 0 0 0 0 0 0 0
-#s 3 0 0 0 0 0 0 0 0 0 0
-2 12 103 1 107
-#s 12 0 0 0 0 0 0 0 0 0 0
-#s 1 0 0 0 0 0 0 0 0 0 0
-2 9 99 19 158
-#s 9 0 0 0 0 0 0 0 0 0 0
-#s 19 0 0 0 0 0 0 0 0 0 0
-1 11 163
-#s 11 0 0 0 0 0 0 0 0 0 0
 0
-3 2 153 3 213 18 110
-#s 2 0 0 0 0 0 0 0 0 0 0
-#s 3 0 0 0 0 0 0 0 0 0 0
-#s 18 0 0 0 0 0 0 0 0 0 0
-2 6 214 4 178
-#s 6 0 0 0 0 0 0 0 0 0 0
-#s 4 0 0 0 0 0 0 0 0 0 0
-0
-2 6 129 7 295
-#s 6 0 0 0 0 0 0 0 0 0 0
-#s 7 0 0 0 0 0 0 0 0 0 0
-1 13 140
-#s 13 0 0 0 0 0 0 0 0 0 0
-2 20 115 14 174
-#s 20 0 0 0 0 0 0 0 0 0 0
-#s 14 0 0 0 0 0 0 0 0 0 0
-1 11 211
-#s 11 0 0 0 0 0 0 0 0 0 0
-1 11 221
-#s 11 0 0 0 0 0 0 0 0 0 0
-0
-1 17 124
-#s 17 0 0 0 0 0 0 0 0 0 0
-1 5 125
-#s 5 0 0 0 0 0 0 0 0 0 0
-2 7 175 3 166
-#s 7 0 0 0 0 0 0 0 0 0 0
-#s 3 0 0 0 0 0 0 0 0 0 0
-1 3 87
-#s 3 0 0 0 0 0 0 0 0 0 0
-0
-2 10 149 15 218
-#s 10 0 0 0 0 0 0 0 0 0 0
-#s 15 0 0 0 0 0 0 0 0 0 0
-3 10 241 13 246 15 176
-#s 10 0 0 0 0 0 0 0 0 0 0
-#s 13 0 0 0 0 0 0 0 0 0 0
-#s 15 0 0 0 0 0 0 0 0 0 0
-2 7 157 14 212
-#s 7 0 0 0 0 0 0 0 0 0 0
-#s 14 0 0 0 0 0 0 0 0 0 0
-1 16 180
-#s 16 0 0 0 0 0 0 0 0 0 0
-0
-1 8 170
-#s 8 0 0 0 0 0 0 0 0 0 0
-1 9 179
-#s 9 0 0 0 0 0 0 0 0 0 0
-3 2 169 15 122 7 220
-#s 2 0 0 0 0 0 0 0 0 0 0
-#s 15 0 0 0 0 0 0 0 0 0 0
-#s 7 0 0 0 0 0 0 0 0 0 0
-1 2 207
-#s 2 0 0 0 0 0 0 0 0 0 0
-1 12 117
-#s 12 0 0 0 0 0 0 0 0 0 0
+1 1 11
+#s 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
 0
 0
-1 10 123
-#s 10 0 0 0 0 0 0 0 0 0 0
+1 10 18
+#s 10 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+1 16 159
+#s 16 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+1 2 166
+#s 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+1 17 129
+#s 17 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
 0
-3 10 198 9 257 11 185
-#s 10 0 0 0 0 0 0 0 0 0 0
-#s 9 0 0 0 0 0 0 0 0 0 0
-#s 11 0 0 0 0 0 0 0 0 0 0
-1 14 205
-#s 14 0 0 0 0 0 0 0 0 0 0
-1 13 235
-#s 13 0 0 0 0 0 0 0 0 0 0
-1 12 142
-#s 12 0 0 0 0 0 0 0 0 0 0
-1 2 251
-#s 2 0 0 0 0 0 0 0 0 0 0
-1 2 247
-#s 2 0 0 0 0 0 0 0 0 0 0
-1 19 183
-#s 19 0 0 0 0 0 0 0 0 0 0
-2 13 165 4 151
-#s 13 0 0 0 0 0 0 0 0 0 0
-#s 4 0 0 0 0 0 0 0 0 0 0
+1 20 48
+#s 20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+2 14 161 9 261
+#s 14 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+#s 9 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+1 2 37
+#s 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
 0
-1 3 190
-#s 3 0 0 0 0 0 0 0 0 0 0
+2 12 41 19 96
+#s 12 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+#s 19 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+2 2 237 18 109
+#s 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+#s 18 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+1 13 105
+#s 13 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
 0
-1 17 261
-#s 17 0 0 0 0 0 0 0 0 0 0
+1 5 70
+#s 5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+3 2 119 6 187 8 191
+#s 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+#s 6 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+#s 8 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+1 19 156
+#s 19 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+2 17 276 7 68
+#s 17 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+#s 7 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
 0
+1 4 88
+#s 4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+1 13 286
+#s 13 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+1 3 84
+#s 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0
+0
+1 9 297
+#s 9 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+1 6 151
+#s 6 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+1 15 137
+#s 15 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+2 11 240 1 266
+#s 11 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+#s 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0
+0
+0
+1 14 210
+#s 14 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0
+1 9 167
+#s 9 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0
+1 10 27
+#s 10 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0
+1 14 38
+#s 14 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+1 9 35
+#s 9 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+2 2 216 4 213
+#s 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+#s 4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0
+0
+2 11 146 1 173
+#s 11 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+#s 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0
+1 5 170
+#s 5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+3 6 184 19 244 3 182
+#s 6 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+#s 19 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+#s 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+1 19 328
+#s 19 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+1 14 315
+#s 14 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+2 12 134 17 281
+#s 12 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+#s 17 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0
+0
+0
+1 15 250
+#s 15 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+3 17 212 4 311 16 341
+#s 17 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+#s 4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+#s 16 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+2 17 162 4 218
+#s 17 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+#s 4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+1 18 142
+#s 18 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+1 7 164
+#s 7 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+2 2 59 10 116
+#s 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+#s 10 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+2 17 239 11 230
+#s 17 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+#s 11 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+1 8 235
+#s 8 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0
+0
+0
+1 8 284
+#s 8 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+3 9 130 10 135 20 174
+#s 9 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+#s 10 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+#s 20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0
+1 12 54
+#s 12 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0
+2 14 131 18 287
+#s 14 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+#s 18 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+1 12 132
+#s 12 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0
+1 10 242
+#s 10 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+2 19 199 5 301
+#s 19 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+#s 5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+1 9 144
+#s 9 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0
+1 8 412
+#s 8 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0
+1 12 203
+#s 12 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+1 15 335
+#s 15 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+1 11 293
+#s 11 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+1 3 260
+#s 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0
+0
+0
+2 8 314 13 185
+#s 8 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+#s 13 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+1 4 345
+#s 4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+1 19 205
+#s 19 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0
+1 11 425
+#s 11 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+1 4 324
+#s 4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+2 2 69 9 165
+#s 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+#s 9 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+3 17 198 16 101 1 192
+#s 17 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+#s 16 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+#s 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+1 11 354
+#s 11 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0
+1 3 323
+#s 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+2 11 332 6 367
+#s 11 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+#s 6 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0
+2 19 214 7 375
+#s 19 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+#s 7 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0
+1 9 190
+#s 9 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+1 1 217
+#s 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+1 13 285
+#s 13 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+1 15 462
+#s 15 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+1 11 333
+#s 11 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+3 11 433 4 348 5 437
+#s 11 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+#s 4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+#s 5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0
+1 10 427
+#s 10 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0
+1 18 300
+#s 18 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0
+0
+2 14 197 1 426
+#s 14 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+#s 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+2 11 446 8 322
+#s 11 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+#s 8 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0
+1 17 340
+#s 17 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+3 17 419 19 356 4 385
+#s 17 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+#s 19 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+#s 4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+1 20 215
+#s 20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+2 2 98 1 147
+#s 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+#s 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+1 2 117
+#s 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0
+0
+0
+2 9 99 12 153
+#s 9 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+#s 12 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0
+2 11 223 5 258
+#s 11 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+#s 5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0
+1 10 234
+#s 10 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0
+1 17 508
+#s 17 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0
+0
+1 14 247
+#s 14 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+1 8 398
+#s 8 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0
+2 9 149 17 509
+#s 9 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+#s 17 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+1 11 251
+#s 11 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+3 5 401 3 245 16 386
+#s 5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+#s 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+#s 16 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+1 6 496
+#s 6 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0
+0
+0
+1 2 175
+#s 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+1 3 451
+#s 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+2 2 195 7 193
+#s 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+#s 7 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+1 18 390
+#s 18 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+2 8 319 10 495
+#s 8 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+#s 10 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+2 15 269 20 249
+#s 15 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+#s 20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0
+0
+0
+0
+2 14 347 19 256
+#s 14 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+#s 19 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0
+0
+0
+1 8 465
+#s 8 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0
+1 17 330
+#s 17 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+2 10 543 4 500
+#s 10 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+#s 4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0
+1 13 369
+#s 13 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+2 11 350 18 482
+#s 11 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+#s 18 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+1 9 241
+#s 9 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0
+1 1 148
+#s 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
 1 9 268
-#s 9 0 0 0 0 0 0 0 0 0 0
-3 15 161 11 354 8 305
-#s 15 0 0 0 0 0 0 0 0 0 0
-#s 11 0 0 0 0 0 0 0 0 0 0
-#s 8 0 0 0 0 0 0 0 0 0 0
-0
-0
-2 2 152 18 210
-#s 2 0 0 0 0 0 0 0 0 0 0
-#s 18 0 0 0 0 0 0 0 0 0 0
-1 6 162
-#s 6 0 0 0 0 0 0 0 0 0 0
-0
-0
-0
-1 5 133
-#s 5 0 0 0 0 0 0 0 0 0 0
-2 10 231 14 323
-#s 10 0 0 0 0 0 0 0 0 0 0
-#s 14 0 0 0 0 0 0 0 0 0 0
-0
-0
-2 12 167 1 159
-#s 12 0 0 0 0 0 0 0 0 0 0
-#s 1 0 0 0 0 0 0 0 0 0 0
-0
-1 5 193
-#s 5 0 0 0 0 0 0 0 0 0 0
-2 11 187 17 217
-#s 11 0 0 0 0 0 0 0 0 0 0
-#s 17 0 0 0 0 0 0 0 0 0 0
-2 11 289 4 201
-#s 11 0 0 0 0 0 0 0 0 0 0
-#s 4 0 0 0 0 0 0 0 0 0 0
-0
-0
-0
-0
-3 13 196 7 265 6 229
-#s 13 0 0 0 0 0 0 0 0 0 0
-#s 7 0 0 0 0 0 0 0 0 0 0
-#s 6 0 0 0 0 0 0 0 0 0 0
-0
-0
-2 2 233 18 324
-#s 2 0 0 0 0 0 0 0 0 0 0
-#s 18 0 0 0 0 0 0 0 0 0 0
-1 15 189
-#s 15 0 0 0 0 0 0 0 0 0 0
-0
-2 8 119 20 256
-#s 8 0 0 0 0 0 0 0 0 0 0
-#s 20 0 0 0 0 0 0 0 0 0 0
-2 7 294 3 290
-#s 7 0 0 0 0 0 0 0 0 0 0
-#s 3 0 0 0 0 0 0 0 0 0 0
-0
-1 10 351
-#s 10 0 0 0 0 0 0 0 0 0 0
-2 15 203 12 192
-#s 15 0 0 0 0 0 0 0 0 0 0
-#s 12 0 0 0 0 0 0 0 0 0 0
-1 9 361
-#s 9 0 0 0 0 0 0 0 0 0 0
-4 3 186 5 222 16 239 19 240
-#s 3 0 0 0 0 0 0 0 0 0 0
-#s 5 0 0 0 0 0 0 0 0 0 0
-#s 16 0 0 0 0 0 0 0 0 0 0
-#s 19 0 0 0 0 0 0 0 0 0 0
-1 6 302
-#s 6 0 0 0 0 0 0 0 0 0 0
-0
-1 11 237
-#s 11 0 0 0 0 0 0 0 0 0 0
-1 11 304
-#s 11 0 0 0 0 0 0 0 0 0 0
-1 14 253
-#s 14 0 0 0 0 0 0 0 0 0 0
-0
-2 3 184 8 206
-#s 3 0 0 0 0 0 0 0 0 0 0
-#s 8 0 0 0 0 0 0 0 0 0 0
-1 10 199
-#s 10 0 0 0 0 0 0 0 0 0 0
-0
-2 2 249 7 258
-#s 2 0 0 0 0 0 0 0 0 0 0
-#s 7 0 0 0 0 0 0 0 0 0 0
-1 13 270
-#s 13 0 0 0 0 0 0 0 0 0 0
-3 10 284 11 309 19 336
-#s 10 0 0 0 0 0 0 0 0 0 0
-#s 11 0 0 0 0 0 0 0 0 0 0
-#s 19 0 0 0 0 0 0 0 0 0 0
-0
-0
-0
-0
-1 4 224
-#s 4 0 0 0 0 0 0 0 0 0 0
-0
-3 13 188 20 209 1 252
-#s 13 0 0 0 0 0 0 0 0 0 0
-#s 20 0 0 0 0 0 0 0 0 0 0
-#s 1 0 0 0 0 0 0 0 0 0 0
-0
-0
-0
-2 9 278 6 315
-#s 9 0 0 0 0 0 0 0 0 0 0
-#s 6 0 0 0 0 0 0 0 0 0 0
-1 7 343
-#s 7 0 0 0 0 0 0 0 0 0 0
-2 7 313 5 293
-#s 7 0 0 0 0 0 0 0 0 0 0
-#s 5 0 0 0 0 0 0 0 0 0 0
-0
-0
-0
-2 13 215 17 266
-#s 13 0 0 0 0 0 0 0 0 0 0
-#s 17 0 0 0 0 0 0 0 0 0 0
-0
-1 2 311
-#s 2 0 0 0 0 0 0 0 0 0 0
-2 11 322 14 375
-#s 11 0 0 0 0 0 0 0 0 0 0
-#s 14 0 0 0 0 0 0 0 0 0 0
-1 17 317
-#s 17 0 0 0 0 0 0 0 0 0 0
-1 15 228
-#s 15 0 0 0 0 0 0 0 0 0 0
-0
-1 16 291
-#s 16 0 0 0 0 0 0 0 0 0 0
-1 10 318
-#s 10 0 0 0 0 0 0 0 0 0 0
-3 2 274 12 288 20 341
-#s 2 0 0 0 0 0 0 0 0 0 0
-#s 12 0 0 0 0 0 0 0 0 0 0
-#s 20 0 0 0 0 0 0 0 0 0 0
-1 15 254
-#s 15 0 0 0 0 0 0 0 0 0 0
-2 7 325 16 328
-#s 7 0 0 0 0 0 0 0 0 0 0
-#s 16 0 0 0 0 0 0 0 0 0 0
-1 2 363
-#s 2 0 0 0 0 0 0 0 0 0 0
-3 2 219 8 349 19 480
-#s 2 0 0 0 0 0 0 0 0 0 0
-#s 8 0 0 0 0 0 0 0 0 0 0
-#s 19 0 0 0 0 0 0 0 0 0 0
-1 2 234
-#s 2 0 0 0 0 0 0 0 0 0 0
-0
-1 15 276
-#s 15 0 0 0 0 0 0 0 0 0 0
-2 3 264 20 202
-#s 3 0 0 0 0 0 0 0 0 0 0
-#s 20 0 0 0 0 0 0 0 0 0 0
-0
-2 2 296 11 132
-#s 2 0 0 0 0 0 0 0 0 0 0
-#s 11 0 0 0 0 0 0 0 0 0 0
-0
-3 14 348 19 415 18 301
-#s 14 0 0 0 0 0 0 0 0 0 0
-#s 19 0 0 0 0 0 0 0 0 0 0
-#s 18 0 0 0 0 0 0 0 0 0 0
-0
-2 12 367 4 271
-#s 12 0 0 0 0 0 0 0 0 0 0
-#s 4 0 0 0 0 0 0 0 0 0 0
-0
-3 12 273 19 385 1 426
-#s 12 0 0 0 0 0 0 0 0 0 0
-#s 19 0 0 0 0 0 0 0 0 0 0
-#s 1 0 0 0 0 0 0 0 0 0 0
-3 14 283 8 327 5 391
-#s 14 0 0 0 0 0 0 0 0 0 0
-#s 8 0 0 0 0 0 0 0 0 0 0
-#s 5 0 0 0 0 0 0 0 0 0 0
-0
-0
-1 2 377
-#s 2 12 15 18 13 6 13 10 16 17 13
-2 9 297 18 339
-#s 9 0 0 0 0 0 0 0 0 0 0
-#s 18 0 0 0 0 0 0 0 0 0 0
-0
-1 2 405
-#s 2 12 17 18 12 6 13 9 19 16 15
-2 13 285 16 216
-#s 13 0 0 0 0 0 0 0 0 0 0
-#s 16 0 0 0 0 0 0 0 0 0 0
-1 15 400
-#s 15 0 0 0 0 0 0 0 0 0 0
-0
-1 17 319
-#s 17 0 0 0 0 0 0 0 0 0 0
-0
-3 2 386 10 286 7 392
-#s 2 14 17 19 12 5 14 9 19 16 13
-#s 10 0 0 0 0 0 0 0 0 0 0
-#s 7 0 0 0 0 0 0 0 0 0 0
-2 7 300 3 332
-#s 7 0 0 0 0 0 0 0 0 0 0
-#s 3 0 0 0 0 0 0 0 0 0 0
-0
-2 12 342 6 371
-#s 12 0 0 0 0 0 0 0 0 0 0
-#s 6 0 0 0 0 0 0 0 0 0 0
-1 10 393
-#s 10 0 0 0 0 0 0 0 0 0 0
-0
-3 14 338 4 292 1 469
-#s 14 0 0 0 0 0 0 0 0 0 0
-#s 4 0 0 0 0 0 0 0 0 0 0
-#s 1 0 0 0 0 0 0 0 0 0 0
-1 11 378
-#s 11 0 0 0 0 0 0 0 0 0 0
-1 15 373
-#s 15 0 0 0 0 0 0 0 0 0 0
-0
-1 16 299
-#s 16 0 0 0 0 0 0 0 0 0 0
-0
-1 15 160
-#s 15 0 0 0 0 0 0 0 0 0 0
-0
-1 19 164
-#s 19 0 0 0 0 0 0 0 0 0 0
-1 15 482
-#s 15 0 0 0 0 0 0 0 0 0 0
-5 2 459 15 462 11 356 17 355 6 137
-#s 2 11 18 19 7 15 12 9 17 15 13
-#s 15 0 0 0 0 0 0 0 0 0 0
-#s 11 0 0 0 0 0 0 0 0 0 0
-#s 17 0 0 0 0 0 0 0 0 0 0
-#s 6 0 0 0 0 0 0 0 0 0 0
-3 2 453 15 479 10 236
-#s 2 13 17 19 9 9 13 9 19 17 10
-#s 15 0 0 0 0 0 0 0 0 0 0
-#s 10 0 0 0 0 0 0 0 0 0 0
-2 16 357 1 450
-#s 16 0 0 0 0 0 0 0 0 0 0
-#s 1 0 0 0 0 0 0 0 0 0 0
-2 2 454 17 436
-#s 2 12 18 20 12 6 12 9 19 18 14
-#s 17 0 0 0 0 0 0 0 0 0 0
-2 2 312 7 445
-#s 2 12 18 20 12 6 12 9 19 18 14
-#s 7 0 0 0 0 0 0 0 0 0 0
-1 2 347
-#s 2 12 18 20 12 6 12 9 19 18 14
-0
-1 8 410
-#s 8 0 0 0 0 0 0 0 0 0 0
-0
-1 12 550
-#s 12 0 0 0 0 0 0 0 0 0 0
-1 19 449
-#s 19 0 0 0 0 0 0 0 0 0 0
-1 9 553
-#s 9 0 0 0 0 0 0 0 0 0 0
-2 2 406 3 429
-#s 2 12 17 20 12 4 12 12 22 19 13
-#s 3 0 0 0 0 0 0 0 0 0 0
-1 18 345
-#s 18 0 0 0 0 0 0 0 0 0 0
-1 12 573
-#s 12 0 0 0 0 0 0 0 0 0 0
-0
-2 10 331 3 549
-#s 10 0 0 0 0 0 0 0 0 0 0
-#s 3 0 0 0 0 0 0 0 0 0 0
-1 3 478
-#s 3 0 0 0 0 0 0 0 0 0 0
-0
-0
-4 15 303 13 306 12 330 9 308
-#s 15 0 0 0 0 0 0 0 0 0 0
-#s 13 0 0 0 0 0 0 0 0 0 0
-#s 12 0 0 0 0 0 0 0 0 0 0
-#s 9 0 0 0 0 0 0 0 0 0 0
-0
-4 2 441 10 226 6 335 19 431
-#s 2 12 19 20 13 5 12 9 25 19 15
-#s 10 0 0 0 0 0 0 0 0 0 0
-#s 6 0 0 0 0 0 0 0 0 0 0
-#s 19 0 0 0 0 0 0 0 0 0 0
-0
-1 2 485
-#s 2 11 16 20 13 6 12 9 25 18 14
-1 11 396
-#s 11 0 0 0 0 0 0 0 0 0 0
-2 12 364 5 422
-#s 12 0 0 0 0 0 0 0 0 0 0
-#s 5 0 0 0 0 0 0 0 0 0 0
-0
-0
-2 14 370 4 353
-#s 14 0 0 0 0 0 0 0 0 0 0
-#s 4 0 0 0 0 0 0 0 0 0 0
-2 7 223 20 277
-#s 7 0 0 0 0 0 0 0 0 0 0
-#s 20 0 0 0 0 0 0 0 0 0 0
-2 15 316 19 382
-#s 15 0 0 0 0 0 0 0 0 0 0
-#s 19 0 0 0 0 0 0 0 0 0 0
-1 15 365
-#s 15 0 0 0 0 0 0 0 0 0 0
-0
-2 8 344 18 586
-#s 8 0 0 0 0 0 0 0 0 0 0
-#s 18 0 0 0 0 0 0 0 0 0 0
-1 3 402
-#s 3 0 0 0 0 0 0 0 0 0 0
-0
-3 10 314 13 474 5 272
-#s 10 0 0 0 0 0 0 0 0 0 0
-#s 13 0 0 0 0 0 0 0 0 0 0
-#s 5 0 0 0 0 0 0 0 0 0 0
-1 10 320
-#s 10 0 0 0 0 0 0 0 0 0 0
-1 13 493
-#s 13 0 0 0 0 0 0 0 0 0 0
-1 13 409
-#s 13 0 0 0 0 0 0 0 0 0 0
-2 11 523 12 421
-#s 11 0 0 0 0 0 0 0 0 0 0
-#s 12 0 0 0 0 0 0 0 0 0 0
-1 5 359
-#s 5 0 0 0 0 0 0 0 0 0 0
-1 13 587
-#s 13 0 0 0 0 0 0 0 0 0 0
-1 16 455
-#s 16 0 0 0 0 0 0 0 0 0 0
-0
-2 14 376 5 487
-#s 14 0 0 0 0 0 0 0 0 0 0
-#s 5 0 0 0 0 0 0 0 0 0 0
-3 2 298 11 452 7 568
-#s 2 11 21 22 12 8 13 5 25 17 14
-#s 11 0 0 0 0 0 0 0 0 0 0
-#s 7 0 0 0 0 0 0 0 0 0 0
-4 9 414 17 404 19 464 1 439
-#s 9 0 0 0 0 0 0 0 0 0 0
-#s 17 0 0 0 0 0 0 0 0 0 0
-#s 19 0 0 0 0 0 0 0 0 0 0
-#s 1 0 0 0 0 0 0 0 0 0 0
-0
-2 10 424 6 525
-#s 10 0 0 0 0 0 0 0 0 0 0
-#s 6 0 0 0 0 0 0 0 0 0 0
-2 10 514 7 532
-#s 10 0 0 0 0 0 0 0 0 0 0
-#s 7 0 0 0 0 0 0 0 0 0 0
-1 5 530
-#s 5 0 0 0 0 0 0 0 0 0 0
-0
-1 12 538
-#s 12 0 0 0 0 0 0 0 0 0 0
-2 19 554 16 499
-#s 19 0 0 0 0 0 0 0 0 0 0
-#s 16 0 0 0 0 0 0 0 0 0 0
-2 2 358 10 360
-#s 2 12 16 25 11 9 12 8 25 17 9
-#s 10 0 0 0 0 0 0 0 0 0 0
-1 2 389
-#s 2 12 14 24 13 6 12 9 25 18 12
-3 2 473 11 590 4 593
-#s 2 12 15 20 12 6 12 9 25 18 14
-#s 11 0 0 0 0 0 0 0 0 0 0
-#s 4 0 0 0 0 0 0 0 0 0 0
-1 13 434
-#s 13 0 0 0 0 0 0 0 0 0 0
-1 1 509
-#s 1 0 0 0 0 0 0 0 0 0 0
-1 14 438
-#s 14 0 0 0 0 0 0 0 0 0 0
-0
-1 7 506
-#s 7 0 0 0 0 0 0 0 0 0 0
-0
-1 19 491
-#s 19 0 0 0 0 0 0 0 0 0 0
-1 6 650
-#s 6 0 0 0 0 0 0 0 0 0 0
-1 11 611
-#s 11 0 0 0 0 0 0 0 0 0 0
-0
-1 13 676
-#s 13 0 0 0 0 0 0 0 0 0 0
-0
-0
-3 15 374 9 440 5 582
-#s 15 0 0 0 0 0 0 0 0 0 0
-#s 9 0 0 0 0 0 0 0 0 0 0
-#s 5 0 0 0 0 0 0 0 0 0 0
-1 14 624
-#s 14 0 0 0 0 0 0 0 0 0 0
-2 19 329 20 654
-#s 19 0 0 0 0 0 0 0 0 0 0
-#s 20 0 0 0 0 0 0 0 0 0 0
-0
-0
-0
-1 15 394
-#s 15 0 0 0 0 0 0 0 0 0 0
-2 14 383 20 602
-#s 14 0 0 0 0 0 0 0 0 0 0
-#s 20 0 0 0 0 0 0 0 0 0 0
-1 17 430
-#s 17 0 0 0 0 0 0 0 0 0 0
-0
-3 15 446 12 465 9 408
-#s 15 0 0 0 0 0 0 0 0 0 0
-#s 12 0 0 0 0 0 0 0 0 0 0
-#s 9 0 0 0 0 0 0 0 0 0 0
-2 5 399 20 467
-#s 5 0 0 0 0 0 0 0 0 0 0
-#s 20 0 0 0 0 0 0 0 0 0 0
-0
-0
-2 10 390 8 411
-#s 10 0 0 0 0 0 0 0 0 0 0
-#s 8 0 0 0 0 0 0 0 0 0 0
-1 2 379
-#s 2 12 18 25 7 16 11 8 25 18 8
-3 2 418 12 502 9 541
-#s 2 12 15 25 10 10 13 8 25 17 9
-#s 12 0 0 0 0 0 0 0 0 0 0
-#s 9 0 0 0 0 0 0 0 0 0 0
-1 2 492
-#s 2 13 14 23 12 6 13 9 25 17 11
-2 2 536 19 428
-#s 2 12 14 20 12 6 13 9 25 17 14
-#s 19 0 0 0 0 0 0 0 0 0 0
-2 3 533 16 557
-#s 3 0 0 0 0 0 0 0 0 0 0
-#s 16 0 0 0 0 0 0 0 0 0 0
-2 17 458 18 545
-#s 17 0 0 0 0 0 0 0 0 0 0
-#s 18 0 0 0 0 0 0 0 0 0 0
-0
-1 8 435
-#s 8 0 0 0 0 0 0 0 0 0 0
-2 14 433 8 413
-#s 14 0 0 0 0 0 0 0 0 0 0
-#s 8 0 0 0 0 0 0 0 0 0 0
-1 14 520
-#s 14 0 0 0 0 0 0 0 0 0 0
-0
-1 14 416
-#s 14 0 0 0 0 0 0 0 0 0 0
-0
-0
-2 7 387 16 447
-#s 7 0 0 0 0 0 0 0 0 0 0
-#s 16 0 0 0 0 0 0 0 0 0 0
-0
-0
-3 11 503 12 477 8 575
-#s 11 0 0 0 0 0 0 0 0 0 0
-#s 12 0 0 0 0 0 0 0 0 0 0
-#s 8 0 0 0 0 0 0 0 0 0 0
-0
-2 2 627 4 570
-#s 2 15 14 25 9 18 13 6 25 17 8
-#s 4 0 0 0 0 0 0 0 0 0 0
-0
-2 7 470 20 569
-#s 7 0 0 0 0 0 0 0 0 0 0
-#s 20 0 0 0 0 0 0 0 0 0 0
-0
-1 3 542
-#s 3 0 0 0 0 0 0 0 0 0 0
-2 13 662 3 566
-#s 13 0 0 0 0 0 0 0 0 0 0
-#s 3 0 0 0 0 0 0 0 0 0 0
-1 3 561
-#s 3 0 0 0 0 0 0 0 0 0 0
-2 7 495 17 556
-#s 7 0 0 0 0 0 0 0 0 0 0
-#s 17 0 0 0 0 0 0 0 0 0 0
-0
-1 16 497
-#s 16 0 0 0 0 0 0 0 0 0 0
-3 15 488 18 528 1 652
-#s 15 0 0 0 0 0 0 0 0 0 0
-#s 18 0 0 0 0 0 0 0 0 0 0
-#s 1 0 0 0 0 0 0 0 0 0 0
-0
-1 19 476
-#s 19 0 0 0 0 0 0 0 0 0 0
-3 13 496 14 507 5 686
-#s 13 0 0 0 0 0 0 0 0 0 0
-#s 14 0 0 0 0 0 0 0 0 0 0
-#s 5 0 0 0 0 0 0 0 0 0 0
-2 7 540 3 621
-#s 7 0 0 0 0 0 0 0 0 0 0
-#s 3 0 0 0 0 0 0 0 0 0 0
-1 12 574
-#s 12 0 0 0 0 0 0 0 0 0 0
-1 10 398
-#s 10 0 0 0 0 0 0 0 0 0 0
-0
-1 2 463
-#s 2 22 12 25 8 18 15 7 25 17 6
-1 8 692
-#s 8 0 0 0 0 0 0 0 0 0 0
-0
-1 19 517
-#s 19 0 0 0 0 0 0 0 0 0 0
-2 14 598 6 742
-#s 14 0 0 0 0 0 0 0 0 0 0
-#s 6 0 0 0 0 0 0 0 0 0 0
-3 2 486 13 511 5 518
-#s 2 11 14 18 12 6 14 9 25 17 20
-#s 13 0 0 0 0 0 0 0 0 0 0
-#s 5 0 0 0 0 0 0 0 0 0 0
-1 2 500
-#s 2 12 14 18 13 5 14 9 25 17 20
-1 10 472
-#s 10 7 7 16 17 8 7 4 19 4 13
-1 5 475
-#s 5 0 0 0 0 0 0 0 0 0 0
-1 2 564
-#s 2 12 14 19 13 5 13 9 25 18 20
-2 2 513 15 519
-#s 2 12 14 19 13 5 13 9 25 18 20
-#s 15 0 0 0 0 0 0 0 0 0 0
-1 2 510
-#s 2 12 14 19 13 5 13 9 25 18 20
-1 20 749
-#s 20 0 0 0 0 0 0 0 0 0 0
-1 19 588
-#s 19 0 0 0 0 0 0 0 0 0 0
-2 9 784 4 705
-#s 9 0 0 0 0 0 0 0 0 0 0
-#s 4 0 0 0 0 0 0 0 0 0 0
-1 15 595
-#s 15 1 11 17 11 11 7 19 6 10 12
-0
-1 11 539
-#s 11 0 0 0 0 0 0 0 0 0 0
-1 2 512
-#s 2 12 14 19 13 5 13 10 24 18 20
-3 2 560 13 524 18 580
-#s 2 12 14 19 13 5 13 9 25 18 20
-#s 13 0 0 0 0 0 0 0 0 0 0
-#s 18 0 0 0 0 0 0 0 0 0 0
-0
-2 3 576 6 565
-#s 3 0 0 0 0 0 0 0 0 0 0
-#s 6 0 0 0 0 0 0 0 0 0 0
-1 3 605
-#s 3 0 0 0 0 0 0 0 0 0 0
-1 19 706
-#s 19 0 0 0 0 0 0 0 0 0 0
-0
-1 1 599
-#s 1 0 0 0 0 0 0 0 0 0 0
-1 15 651
-#s 15 3 13 21 14 12 3 19 6 6 11
-0
-1 3 698
-#s 3 0 0 0 0 0 0 0 0 0 0
-3 11 607 12 584 16 663
-#s 11 0 0 0 0 0 0 0 0 0 0
-#s 12 0 0 0 0 0 0 0 0 0 0
-#s 16 0 0 0 0 0 0 0 0 0 0
-1 15 666
-#s 15 2 12 22 13 12 3 19 6 8 11
-4 7 782 17 679 8 712 20 789
-#s 7 0 0 0 0 0 0 0 0 0 0
-#s 17 0 0 0 0 0 0 0 0 0 0
-#s 8 0 0 0 0 0 0 0 0 0 0
-#s 20 0 0 0 0 0 0 0 0 0 0
-1 11 655
-#s 11 0 0 0 0 0 0 0 0 0 0
-1 11 628
-#s 11 0 0 0 0 0 0 0 0 0 0
-0
-0
-1 4 648
-#s 4 0 0 0 0 0 0 0 0 0 0
-0
-5 11 645 12 683 7 725 19 807 17 717
-#s 11 0 0 0 0 0 0 0 0 0 0
-#s 12 0 0 0 0 0 0 0 0 0 0
-#s 7 0 0 0 0 0 0 0 0 0 0
-#s 19 0 0 0 0 0 0 0 0 0 0
-#s 17 0 0 0 0 0 0 0 0 0 0
-0
-1 2 637
-#s 2 11 14 18 11 4 15 20 20 16 20
-1 16 579
-#s 16 0 0 0 0 0 0 0 0 0 0
-1 14 603
-#s 14 0 0 0 0 0 0 0 0 0 0
-1 11 674
-#s 11 0 0 0 0 0 0 0 0 0 0
-1 17 772
-#s 17 0 0 0 0 0 0 0 0 0 0
-1 20 839
-#s 20 0 0 0 0 0 0 0 0 0 0
-1 2 812
-#s 2 11 15 19 12 6 13 9 25 17 21
-1 11 729
-#s 11 8 1 15 4 13 16 10 12 16 15
-1 3 805
-#s 3 0 0 0 0 0 0 0 0 0 0
-2 2 792 19 709
-#s 2 11 14 19 12 6 13 9 25 17 20
-#s 19 0 0 0 0 0 0 0 0 0 0
-5 2 534 10 619 17 626 6 668 16 775
-#s 2 11 14 19 12 6 13 9 25 17 20
-#s 10 18 10 13 18 7 2 6 22 8 7
-#s 17 0 0 0 0 0 0 0 0 0 0
-#s 6 0 0 0 0 0 0 0 0 0 0
-#s 16 0 0 0 0 0 0 0 0 0 0
-1 9 827
-#s 9 0 0 0 0 0 0 0 0 0 0
-0
-1 12 753
-#s 12 0 0 0 0 0 0 0 0 0 0
-1 13 552
-#s 13 0 0 0 0 0 0 0 0 0 0
-0
-0
-0
-0
-0
-4 7 572 14 687 6 696 1 723
-#s 7 0 0 0 0 0 0 0 0 0 0
-#s 14 0 0 0 0 0 0 0 0 0 0
-#s 6 0 0 0 0 0 0 0 0 0 0
-#s 1 0 0 0 0 0 0 0 0 0 0
-2 11 529 5 490
-#s 11 8 6 17 1 13 21 13 9 16 8
-#s 5 0 0 0 0 0 0 0 0 0 0
-1 10 740
-#s 10 9 11 10 16 10 6 1 20 5 12
-3 10 684 15 763 12 384
-#s 10 8 11 11 18 9 6 1 20 4 13
-#s 15 3 17 17 10 9 9 18 4 8 6
-#s 12 0 0 0 0 0 0 0 0 0 0
-1 15 238
-#s 15 2 12 18 11 10 9 19 4 8 11
-1 14 798
-#s 14 0 0 0 0 0 0 0 0 0 0
-3 15 633 13 680 3 481
-#s 15 2 12 22 12 11 4 19 6 9 11
-#s 13 0 0 0 0 0 0 0 0 0 0
-#s 3 0 0 0 0 0 0 0 0 0 0
-1 7 616
-#s 7 0 0 0 0 0 0 0 0 0 0
-1 7 863
-#s 7 0 0 0 0 0 0 0 0 0 0
-0
-1 1 866
-#s 1 0 0 0 0 0 0 0 0 0 0
-1 8 768
-#s 8 0 0 0 0 0 0 0 0 0 0
-2 15 665 1 716
-#s 15 2 12 22 12 12 3 19 6 9 11
-#s 1 0 0 0 0 0 0 0 0 0 0
-0
-1 19 508
-#s 19 0 0 0 0 0 0 0 0 0 0
-1 6 671
-#s 6 0 0 0 0 0 0 0 0 0 0
-0
-4 2 596 12 571 9 600 5 829
-#s 2 18 12 16 8 11 16 8 25 14 24
-#s 12 0 0 0 0 0 0 0 0 0 0
-#s 9 0 0 0 0 0 0 0 0 0 0
-#s 5 0 0 0 0 0 0 0 0 0 0
-1 2 608
-#s 2 12 15 16 9 8 14 8 25 16 23
-1 11 567
-#s 11 7 0 21 11 13 12 12 10 14 16
-2 7 547 18 420
-#s 7 0 0 0 0 0 0 0 0 0 0
-#s 18 0 0 0 0 0 0 0 0 0 0
-1 17 697
-#s 17 0 0 0 0 0 0 0 0 0 0
-0
-1 14 182
-#s 14 0 0 0 0 0 0 0 0 0 0
-2 15 719 16 403
-#s 15 2 13 22 14 14 2 19 11 6 12
-#s 16 0 0 0 0 0 0 0 0 0 0
-3 15 427 5 543 4 872
-#s 15 3 13 21 14 13 2 19 6 6 12
-#s 5 0 0 0 0 0 0 0 0 0 0
-#s 4 0 0 0 0 0 0 0 0 0 0
-1 17 700
-#s 17 0 0 0 0 0 0 0 0 0 0
-2 7 548 8 578
-#s 7 5 8 11 9 6 6 4 4 5 11
-#s 8 0 0 0 0 0 0 0 0 0 0
-1 14 814
-#s 14 0 0 0 0 0 0 0 0 0 0
-0
-1 12 583
-#s 12 0 0 0 0 0 0 0 0 0 0
-1 20 770
-#s 20 0 0 0 0 0 0 0 0 0 0
-1 2 609
-#s 2 12 14 17 10 5 16 13 18 16 20
-1 2 612
-#s 2 12 14 17 11 5 15 10 23 17 20
-2 2 614 4 675
-#s 2 12 15 17 11 5 15 9 25 17 20
-#s 4 0 0 0 0 0 0 0 0 0 0
-2 2 643 3 630
-#s 2 12 15 17 11 5 15 9 25 17 20
-#s 3 0 0 0 0 0 0 0 0 0 0
-1 2 673
-#s 2 12 14 18 12 5 14 9 25 17 19
-1 2 672
-#s 2 12 14 18 13 5 14 9 25 17 20
-1 2 649
-#s 2 12 14 18 13 5 14 9 25 17 20
-1 10 765
-#s 10 8 2 6 15 9 15 10 21 15 10
-0
-3 2 646 15 844 12 778
-#s 2 12 15 18 12 6 14 8 25 17 20
-#s 15 0 12 22 14 15 4 19 20 6 12
-#s 12 13 1 12 18 6 13 5 22 4 12
-2 2 701 1 730
-#s 2 12 15 18 12 6 14 8 25 17 20
-#s 1 0 0 0 0 0 0 0 0 0 0
-4 10 592 11 658 13 802 9 819
-#s 10 8 11 11 19 7 8 1 20 5 13
-#s 11 6 3 11 5 8 13 13 13 16 11
-#s 13 0 0 0 0 0 0 0 0 0 0
-#s 9 0 0 0 0 0 0 0 0 0 0
-3 7 615 6 581 18 726
-#s 7 11 8 12 9 10 0 8 4 5 11
-#s 6 0 0 0 0 0 0 0 0 0 0
-#s 18 0 0 0 0 0 0 0 0 0 0
-0
-0
-1 10 632
-#s 10 7 9 13 19 7 8 2 19 4 13
-1 1 743
-#s 1 0 0 0 0 0 0 0 0 0 0
-1 14 929
-#s 14 0 0 0 0 0 0 0 0 0 0
-1 14 836
-#s 14 0 0 0 0 0 0 0 0 0 0
-1 6 677
-#s 6 0 0 0 0 0 0 0 0 0 0
-1 19 871
-#s 19 0 0 0 0 0 0 0 0 0 0
-1 2 739
-#s 2 12 15 17 12 5 15 9 25 17 20
-1 2 757
-#s 2 12 14 18 13 5 14 9 25 17 20
-2 7 669 16 703
-#s 7 7 8 11 10 13 5 5 3 4 9
-#s 16 0 0 0 0 0 0 0 0 0 0
-1 8 443
-#s 8 0 0 0 0 0 0 0 0 0 0
-1 1 280
-#s 1 0 0 0 0 0 0 0 0 0 0
-2 15 785 20 831
-#s 15 6 13 23 16 7 3 19 6 4 10
-#s 20 0 0 0 0 0 0 0 0 0 0
-3 10 653 19 661 5 544
-#s 10 8 12 11 19 8 5 2 19 4 13
-#s 19 0 0 0 0 0 0 0 0 0 0
-#s 5 0 0 0 0 0 0 0 0 0 0
-1 3 639
-#s 3 0 0 0 0 0 0 0 0 0 0
-1 2 803
-#s 2 12 14 18 12 4 15 11 23 18 19
-4 2 660 10 746 12 787 19 711
-#s 2 13 14 18 13 4 15 9 25 18 20
-#s 10 8 9 13 19 7 7 2 19 4 13
-#s 12 8 9 15 14 11 19 3 16 4 3
-#s 19 0 0 0 0 0 0 0 0 0 0
-1 11 751
-#s 11 7 8 20 5 15 11 13 6 16 3
-1 14 867
-#s 14 0 0 0 0 0 0 0 0 0 0
-2 7 681 3 760
-#s 7 5 6 13 12 14 4 5 3 5 13
-#s 3 0 0 0 0 0 0 0 0 0 0
-1 2 733
-#s 2 12 15 17 11 6 14 9 25 16 20
-2 2 710 14 748
-#s 2 12 15 18 12 5 14 9 25 17 20
-#s 14 12 1 6 3 11 14 13 14 4 20
-2 15 796 3 877
-#s 15 3 14 22 16 13 3 19 7 3 12
-#s 3 0 0 0 0 0 0 0 0 0 0
-2 19 788 17 708
-#s 19 0 0 0 0 0 0 0 0 0 0
-#s 17 0 0 0 0 0 0 0 0 0 0
-1 13 854
-#s 13 9 4 11 15 4 2 15 11 10 11
-2 11 604 19 577
-#s 11 2 0 14 12 15 24 17 10 14 16
-#s 19 0 0 0 0 0 0 0 0 0 0
-1 13 861
-#s 13 9 13 11 15 1 2 15 9 9 21
-1 13 834
-#s 13 9 13 11 15 1 2 15 9 9 21
-3 11 245 5 734 1 526
-#s 11 4 1 15 5 14 23 15 12 16 16
-#s 5 0 0 0 0 0 0 0 0 0 0
-#s 1 0 0 0 0 0 0 0 0 0 0
-2 8 678 4 835
-#s 8 0 0 0 0 0 0 0 0 0 0
-#s 4 0 0 0 0 0 0 0 0 0 0
-1 12 892
-#s 12 10 9 15 20 9 17 4 17 0 9
-4 2 762 7 691 13 764 9 773
-#s 2 15 14 19 12 5 14 8 25 18 20
-#s 7 6 6 16 12 14 4 3 6 3 12
-#s 13 16 15 11 14 1 3 10 4 11 25
-#s 9 0 0 0 0 0 0 0 0 0 0
-1 2 755
-#s 2 13 14 18 12 5 14 9 25 17 20
-0
-2 2 801 19 781
-#s 2 13 14 18 12 5 14 9 25 17 20
-#s 19 3 3 14 0 20 6 20 14 7 10
-0
-0
-1 17 793
-#s 17 0 0 0 0 0 0 0 0 0 0
-1 12 800
-#s 12 13 11 15 20 8 19 2 12 0 12
-1 7 779
-#s 7 6 6 14 12 13 5 4 3 3 11
-0
-1 15 828
-#s 15 2 13 20 20 13 3 15 5 7 12
-3 10 731 11 927 20 845
-#s 10 5 8 13 14 15 6 11 21 1 13
-#s 11 4 8 20 3 15 25 14 6 16 10
-#s 20 0 0 0 0 0 0 0 0 0 0
-0
-0
-1 17 860
-#s 17 0 0 0 0 0 0 0 0 0 0
-4 2 817 14 714 16 269 1 858
-#s 2 13 14 18 12 5 14 9 25 16 20
-#s 14 15 20 3 1 10 20 9 14 4 9
-#s 16 0 0 0 0 0 0 0 0 0 0
-#s 1 0 0 0 0 0 0 0 0 0 0
-1 2 841
-#s 2 12 15 18 12 5 14 9 25 17 20
-2 10 737 8 702
-#s 10 6 8 14 18 9 7 2 19 4 13
-#s 8 0 0 0 0 0 0 0 0 0 0
-0
-6 11 842 7 821 12 823 13 767 19 799 18 851
-#s 11 1 3 17 5 15 25 15 11 16 12
-#s 7 7 7 15 12 14 2 2 6 5 12
-#s 12 11 7 9 20 12 14 8 11 0 9
-#s 13 13 19 11 11 6 1 9 4 9 19
-#s 19 1 7 12 1 15 10 21 16 12 2
-#s 18 0 0 0 0 0 0 0 0 0 0
-0
-0
-1 3 818
-#s 3 16 6 12 5 12 11 14 8 3 16
-2 3 930 4 804
-#s 3 21 11 11 3 19 14 10 8 2 16
-#s 4 0 0 0 0 0 0 0 0 0 0
-3 3 750 14 783 6 856
-#s 3 23 14 14 4 18 16 4 8 3 17
-#s 14 15 3 5 3 10 20 10 14 3 15
-#s 6 0 0 0 0 0 0 0 0 0 0
-1 2 846
-#s 2 12 15 17 10 10 14 6 25 17 24
-2 2 928 13 966
-#s 2 13 15 17 11 6 15 8 25 17 21
-#s 13 16 16 12 13 2 2 10 4 11 24
-2 2 756 10 813
-#s 2 12 14 18 11 6 14 9 25 17 20
-#s 10 8 9 14 19 6 8 2 19 4 14
-1 13 546
-#s 13 16 16 12 13 1 2 12 4 11 25
-2 2 758 13 776
-#s 2 12 14 18 11 6 14 9 25 17 20
-#s 13 16 16 12 13 1 2 12 4 11 25
-0
-0
-0
-0
-0
-2 11 811 3 895
-#s 11 3 9 21 1 13 25 15 8 16 10
-#s 3 23 15 14 6 17 11 4 9 3 15
-0
-3 13 890 7 809 12 444
-#s 13 16 17 11 14 1 2 12 4 11 25
-#s 7 5 6 11 10 14 4 7 3 4 12
-#s 12 10 16 14 20 8 12 6 12 0 9
-2 13 954 17 118
-#s 13 16 16 11 14 1 2 12 4 11 25
-#s 17 0 0 0 0 0 0 0 0 0 0
-3 2 791 15 852 6 810
-#s 2 13 15 18 11 6 14 8 25 17 21
-#s 15 3 8 17 16 8 1 20 21 10 12
-#s 6 0 0 0 0 0 0 0 0 0 0
-1 2 820
-#s 2 12 15 18 12 5 14 9 25 17 20
-1 7 826
-#s 7 6 6 14 13 14 4 5 3 3 13
-2 13 948 3 837
-#s 13 16 16 11 14 1 2 12 4 11 25
-#s 3 23 15 11 2 20 20 2 6 8 18
-1 6 853
-#s 6 0 0 0 0 0 0 0 0 0 0
-1 12 838
-#s 12 12 4 12 18 10 19 4 20 1 12
-1 19 887
-#s 19 11 7 10 6 16 2 14 16 1 11
-1 5 859
-#s 5 0 0 0 0 0 0 0 0 0 0
-3 13 833 3 908 19 882
-#s 13 16 16 12 13 3 1 12 3 11 24
-#s 3 23 15 14 2 20 20 2 8 7 18
-#s 19 5 8 19 1 19 4 19 15 2 11
-1 11 850
-#s 11 8 3 14 1 11 25 12 14 16 14
-2 12 774 9 644
-#s 12 12 3 13 19 10 19 5 22 1 12
-#s 9 0 0 0 0 0 0 0 0 0 0
-0
-1 2 848
-#s 2 13 15 18 12 5 14 9 25 18 20
-0
-0
-1 13 934
-#s 13 16 17 15 11 1 3 12 3 11 26
-1 2 881
-#s 2 12 14 17 12 5 15 9 25 17 19
-1 6 625
-#s 6 0 0 0 0 0 0 0 0 0 0
-1 3 893
-#s 3 23 15 15 3 19 19 3 9 5 18
-2 11 738 8 64
-#s 11 5 1 17 3 13 25 14 15 16 16
-#s 8 0 0 0 0 0 0 0 0 0 0
-0
-0
-3 13 864 12 340 16 816
-#s 13 16 16 13 13 1 3 12 3 11 26
-#s 12 11 7 14 19 9 19 3 21 1 11
-#s 16 0 0 0 0 0 0 0 0 0 0
-1 19 914
-#s 19 5 7 20 1 20 5 16 15 1 12
-1 12 898
-#s 12 12 4 12 19 10 19 4 20 1 12
-2 3 786 17 894
-#s 3 23 15 12 4 17 20 3 8 5 16
-#s 17 0 0 0 0 0 0 0 0 0 0
-0
-1 10 889
-#s 10 5 8 22 6 13 7 5 19 4 10
-0
-2 2 337 4 597
-#s 2 13 15 19 10 6 15 8 25 17 24
-#s 4 0 0 0 0 0 0 0 0 0 0
-2 11 794 3 585
-#s 11 6 0 9 6 13 25 17 11 14 16
-#s 3 21 15 11 4 19 16 2 7 7 17
-1 1 897
-#s 1 0 0 0 0 0 0 0 0 0 0
-1 2 466
-#s 2 12 15 17 12 5 14 9 25 17 20
-1 14 795
-#s 14 24 13 7 0 5 20 8 11 13 15
-1 20 906
-#s 20 0 0 0 0 0 0 0 0 0 0
-2 15 862 19 941
-#s 15 6 13 20 10 7 6 22 6 10 2
-#s 19 2 10 15 1 20 4 21 13 6 9
-0
-0
-1 18 869
-#s 18 0 0 0 0 0 0 0 0 0 0
-1 12 368
-#s 12 12 1 9 19 11 19 7 22 1 12
-0
-1 2 690
-#s 2 12 15 17 12 5 14 9 25 17 20
-2 15 884 11 910
-#s 15 3 14 23 12 10 3 21 6 7 10
-#s 11 2 2 16 6 15 23 17 10 16 13
-1 3 926
-#s 3 23 15 14 3 20 17 4 9 4 16
-2 7 527 18 372
-#s 7 16 3 11 4 12 6 5 3 14 10
-#s 18 0 0 0 0 0 0 0 0 0 0
-0
-3 2 847 19 727 14 932
-#s 2 12 14 17 16 5 14 8 25 17 20
-#s 19 6 7 17 2 19 3 18 14 2 11
-#s 14 15 5 3 5 10 20 5 14 3 14
-1 10 899
-#s 10 8 10 12 19 5 7 9 20 2 12
-1 16 935
-#s 16 0 0 0 0 0 0 0 0 0 0
-1 5 657
-#s 5 0 0 0 0 0 0 0 0 0 0
-1 11 917
-#s 11 5 3 17 1 13 25 15 13 16 14
-5 13 876 19 623 14 689 17 832 4 720
-#s 13 5 17 13 13 18 1 15 4 4 20
-#s 19 6 7 17 2 19 3 19 14 2 11
-#s 14 11 2 5 3 10 20 14 14 3 16
-#s 17 0 0 0 0 0 0 0 0 0 0
-#s 4 0 0 0 0 0 0 0 0 0 0
-4 11 808 19 97 14 81 9 38
-#s 11 5 3 17 1 13 25 15 13 16 14
-#s 19 6 7 17 2 19 3 19 14 2 11
-#s 14 11 2 5 3 10 20 14 14 3 16
-#s 9 0 0 0 0 0 0 0 0 0 0
-2 19 307 8 682
-#s 19 6 7 17 2 19 3 19 14 2 11
-#s 8 0 0 0 0 0 0 0 0 0 0
-3 15 891 3 912 14 879
-#s 15 3 11 23 14 10 4 20 3 10 12
-#s 3 21 21 11 2 20 20 2 8 7 20
-#s 14 12 1 5 4 10 20 13 14 3 16
-1 3 903
-#s 3 23 19 14 2 20 20 2 8 7 18
-1 3 874
-#s 3 23 19 14 2 20 20 2 8 7 18
-3 13 907 3 885 6 693
-#s 13 15 15 11 13 1 1 14 7 10 22
-#s 3 23 19 14 2 20 20 3 8 6 18
-#s 6 0 0 0 0 0 0 0 0 0 0
-2 11 920 10 484
-#s 11 5 2 18 1 13 25 14 15 16 15
-#s 10 6 8 13 17 9 8 3 19 3 13
-1 19 21
-#s 19 5 7 18 1 19 4 19 15 2 11
-2 12 95 14 909
-#s 12 3 5 14 13 14 19 2 19 5 12
-#s 14 12 1 5 5 10 20 12 14 3 16
-2 12 815 19 916
-#s 12 6 5 14 15 13 19 3 19 2 12
-#s 19 6 5 17 2 20 4 18 14 2 11
-2 2 401 4 83
-#s 2 12 14 22 11 9 12 7 25 18 24
-#s 4 0 0 0 0 0 0 0 0 0 0
-1 8 92
-#s 8 0 0 0 0 0 0 0 0 0 0
-5 10 126 12 769 14 939 17 974 6 670
-#s 10 7 10 14 19 7 8 2 19 3 13
-#s 12 12 3 11 18 11 19 3 20 2 12
-#s 14 11 2 4 3 10 20 13 15 4 16
-#s 17 9 17 6 10 4 5 9 10 8 4
-#s 6 0 0 0 0 0 0 0 0 0 0
-2 15 943 13 918
-#s 15 2 11 23 11 10 8 19 3 10 12
-#s 13 14 15 15 12 1 4 11 3 10 27
-1 19 905
-#s 19 6 5 17 2 20 4 18 14 2 11
-2 10 972 14 456
-#s 10 7 9 14 19 6 9 2 19 4 14
-#s 14 11 2 4 3 11 20 14 15 4 16
-4 13 938 3 243 7 870 17 766
-#s 13 16 15 11 14 1 3 11 4 11 25
-#s 3 23 19 13 4 20 15 3 8 5 16
-#s 7 10 7 14 7 13 1 6 12 3 13
-#s 17 10 17 6 9 5 4 9 9 8 4
-1 11 664
-#s 11 4 1 16 5 15 25 16 11 16 14
-3 2 963 11 979 3 641
-#s 2 12 14 18 12 5 14 9 25 17 20
-#s 11 4 0 16 5 15 25 15 13 16 14
-#s 3 23 19 14 2 20 20 3 8 6 18
-4 2 640 11 915 7 900 17 694
-#s 2 12 14 16 12 5 15 9 25 17 19
-#s 11 4 0 16 5 15 25 15 13 16 15
-#s 7 11 7 15 14 14 2 7 3 3 12
-#s 17 10 17 6 10 5 4 9 10 8 3
-3 2 636 13 498 12 952
-#s 2 12 14 16 12 5 15 9 25 17 19
-#s 13 16 16 11 13 1 2 12 5 10 24
-#s 12 12 3 12 19 10 19 5 21 1 12
-3 2 242 19 865 14 958
-#s 2 12 14 16 12 5 15 9 25 17 19
-#s 19 3 7 18 0 20 5 18 14 4 12
-#s 14 12 2 5 4 10 18 13 14 2 19
-2 2 951 1 135
-#s 2 12 14 16 12 5 15 9 25 17 19
-#s 1 0 0 0 0 0 0 0 0 0 0
-3 2 350 7 977 5 647
-#s 2 12 14 16 12 5 15 9 25 17 19
-#s 7 11 7 15 12 14 2 5 3 4 12
-#s 5 0 0 0 0 0 0 0 0 0 0
-2 11 606 3 638
-#s 11 4 0 15 7 14 25 14 12 16 15
-#s 3 23 19 13 2 20 20 3 8 6 18
-0
-1 10 620
-#s 10 7 9 14 19 6 9 2 19 4 14
-1 17 936
-#s 17 11 15 6 12 5 3 9 10 8 3
-1 2 955
-#s 2 12 14 16 12 5 15 9 25 17 20
-1 12 555
-#s 12 12 4 11 18 12 19 3 20 1 12
-0
-0
-1 11 380
-#s 11 2 2 16 5 15 25 17 12 16 14
-0
-0
-3 13 901 14 177 6 868
-#s 13 12 14 11 12 3 1 14 8 8 18
-#s 14 9 1 6 4 10 18 9 15 5 20
-#s 6 0 0 0 0 0 0 0 0 0 0
-2 2 878 3 953
-#s 2 12 15 17 11 5 14 9 25 18 20
-#s 3 23 20 14 2 20 20 4 8 5 17
-0
-1 7 622
-#s 7 8 6 13 12 14 2 5 3 7 13
-3 10 982 17 940 9 886
-#s 10 8 10 12 19 6 9 1 20 5 14
-#s 17 8 14 4 11 6 5 9 11 9 4
-#s 9 0 0 0 0 0 0 0 0 0 0
-2 11 904 19 407
-#s 11 3 0 15 7 15 22 14 12 15 14
-#s 19 3 8 22 2 20 3 17 14 3 12
-0
-2 2 957 16 4
-#s 2 12 14 16 12 5 15 9 25 16 19
-#s 16 0 0 0 0 0 0 0 0 0 0
-1 13 244
-#s 13 12 16 11 23 0 2 14 5 11 23
-1 20 381
-#s 20 0 0 0 0 0 0 0 0 0 0
-0
-2 3 949 15 961
-#s 3 23 18 12 4 19 16 2 7 6 16
-#s 15 15 6 18 16 8 0 20 9 6 12
-1 12 922
-#s 12 15 3 9 18 11 19 5 21 0 19
-0
-4 2 522 3 780 14 457 8 806
-#s 2 12 14 16 12 5 15 9 25 17 19
-#s 3 20 19 12 4 19 18 3 7 5 18
-#s 14 9 6 4 2 10 19 10 14 4 15
-#s 8 0 0 0 0 0 0 0 0 0 0
-0
-0
-0
-0
-1 7 521
-#s 7 5 17 16 10 15 2 5 4 4 12
-3 11 41 7 260 1 797
-#s 11 1 2 17 5 14 25 16 13 16 13
-#s 7 6 17 16 9 16 2 5 4 4 12
-#s 1 0 0 0 0 0 0 0 0 0 0
-2 11 130 7 945
-#s 11 4 0 16 5 14 25 14 12 16 14
-#s 7 6 17 16 9 16 2 5 4 4 12
-1 11 531
-#s 11 4 0 16 5 14 25 14 12 16 15
-2 11 156 7 946
-#s 11 5 0 16 5 15 25 14 13 16 15
-#s 7 6 17 16 9 16 2 5 4 4 12
-3 11 857 13 707 7 704
-#s 11 5 0 16 5 15 25 14 13 16 15
-#s 13 16 14 2 24 0 12 13 5 9 30
-#s 7 6 17 16 9 16 2 5 4 4 12
-1 7 173
-#s 7 6 17 16 9 16 2 5 4 4 12
-3 11 635 7 971 17 718
-#s 11 5 0 16 5 15 25 14 13 16 15
-#s 7 6 17 16 9 16 2 5 4 4 12
-#s 17 12 15 6 10 4 7 10 7 9 2
-4 2 275 11 976 7 989 15 369
-#s 2 12 14 16 12 5 23 9 25 16 17
-#s 11 5 0 16 5 14 25 14 13 16 15
-#s 7 6 17 16 9 16 2 5 4 4 12
-#s 15 5 11 23 14 9 6 20 1 10 12
-5 11 956 7 771 3 54 17 987 4 790
-#s 11 5 0 16 5 14 25 14 13 16 15
-#s 7 6 17 16 9 16 2 5 4 4 12
-#s 3 23 15 12 1 20 17 2 7 14 18
-#s 17 10 14 6 9 5 6 10 9 8 2
-#s 4 0 0 0 0 0 0 0 0 0 0
-3 7 310 10 713 17 973
-#s 7 6 17 16 9 16 2 5 4 4 12
-#s 10 7 17 11 18 1 13 9 21 3 13
-#s 17 10 15 6 9 5 5 10 9 8 3
-3 15 388 19 721 18 777
-#s 15 3 11 23 13 11 2 19 6 9 12
-#s 19 1 10 12 1 19 4 21 17 7 10
-#s 18 0 0 0 0 0 0 0 0 0 0
-6 11 262 7 451 13 227 15 688 10 505 19 933
-#s 11 5 0 15 5 14 25 14 13 16 15
-#s 7 6 17 16 9 16 2 5 4 4 12
-#s 13 14 16 11 24 1 3 12 3 12 26
-#s 15 3 11 23 13 11 2 19 6 9 12
-#s 10 8 10 13 19 5 10 2 19 4 14
-#s 19 2 10 12 0 19 4 20 15 6 11
-4 11 986 7 352 12 559 19 412
-#s 11 5 0 15 5 14 25 14 13 16 15
-#s 7 6 17 16 9 16 2 5 4 4 12
-#s 12 19 10 10 19 19 13 6 20 0 8
-#s 19 2 10 12 0 19 4 20 15 6 11
-6 11 715 7 967 13 983 12 172 17 134 8 761
-#s 11 5 0 15 5 14 25 14 13 16 15
-#s 7 6 17 16 9 16 2 5 4 4 12
-#s 13 16 16 11 24 1 3 12 3 12 26
-#s 12 15 9 9 16 15 16 3 19 0 10
-#s 17 10 15 6 9 5 5 10 9 8 3
-#s 8 0 0 0 0 0 0 0 0 0 0
-6 2 267 13 594 3 631 12 685 19 993 17 944
-#s 2 12 14 16 12 5 18 9 25 16 18
-#s 13 16 16 11 24 1 3 12 3 12 26
-#s 3 19 18 11 2 20 19 3 7 7 21
-#s 12 14 9 9 16 15 16 3 19 0 10
-#s 19 3 11 16 0 19 3 20 12 5 12
-#s 17 10 15 6 9 5 5 10 9 8 3
-4 2 741 11 483 10 537 17 968
-#s 2 12 14 16 12 5 15 9 25 17 18
-#s 11 5 0 15 5 15 25 14 12 16 15
-#s 10 8 10 12 19 5 9 2 18 4 14
-#s 17 10 15 6 9 5 5 10 9 8 3
-3 2 855 13 744 17 962
-#s 2 12 14 16 12 5 15 9 25 17 19
-#s 13 16 16 11 23 2 3 12 2 12 26
-#s 17 10 15 6 9 5 5 10 9 8 3
-6 2 143 7 921 10 960 12 937 17 460 5 759
-#s 2 12 14 16 12 5 15 9 25 17 19
-#s 7 9 17 16 9 16 2 5 3 4 11
-#s 10 8 10 12 19 5 9 2 18 4 14
-#s 12 14 3 11 19 10 18 5 21 1 11
-#s 17 10 15 6 9 5 5 10 9 8 3
-#s 5 0 0 0 0 0 0 0 0 0 0
-3 11 667 7 942 3 437
-#s 11 6 0 14 5 15 25 14 12 16 15
-#s 7 9 17 16 9 16 2 5 3 4 11
-#s 3 19 19 11 2 20 19 3 7 7 20
-5 3 208 15 78 19 629 17 230 1 754
-#s 3 19 19 11 2 20 19 3 7 7 20
-#s 15 3 13 23 12 12 2 19 6 8 11
-#s 19 2 10 16 0 19 3 21 12 8 10
-#s 17 10 15 5 9 5 5 10 10 8 3
-#s 1 0 0 0 0 0 0 0 0 0 0
-3 13 981 3 634 17 150
-#s 13 16 16 11 24 1 3 12 3 12 26
-#s 3 19 19 11 2 20 19 3 7 7 20
-#s 17 10 15 5 9 5 5 10 10 8 3
-3 2 969 12 735 17 26
-#s 2 12 14 16 12 5 15 9 25 17 19
-#s 12 14 2 10 19 11 19 5 21 1 12
-#s 17 10 15 5 9 5 5 10 10 8 3
-5 2 448 13 362 15 970 17 745 9 752
-#s 2 12 14 16 12 5 15 9 25 17 19
-#s 13 18 15 11 23 2 1 12 4 12 24
-#s 15 3 13 23 12 12 2 19 6 8 11
-#s 17 10 15 5 9 5 5 10 10 8 3
-#s 9 0 0 0 0 0 0 0 0 0 0
-2 2 959 10 112
-#s 2 12 14 16 12 5 15 9 25 17 19
-#s 10 8 10 12 19 5 9 2 18 4 14
-4 2 999 11 824 10 978 6 1000
-#s 2 12 14 16 12 5 15 9 25 17 19
-#s 11 7 0 14 4 14 25 13 12 16 14
-#s 10 8 10 12 19 5 9 2 18 4 14
-#s 6 0 0 0 0 0 0 0 0 0 0
-5 2 442 3 321 15 728 19 992 17 843
-#s 2 12 14 16 12 5 15 9 25 17 19
-#s 3 19 19 11 2 20 19 3 7 7 20
-#s 15 3 13 23 12 12 2 19 6 8 11
-#s 19 1 10 15 2 21 3 20 12 6 10
-#s 17 10 17 6 9 5 4 9 10 8 4
-3 2 998 3 61 15 747
-#s 2 12 14 16 12 5 15 9 25 17 19
-#s 3 19 19 11 2 20 19 3 7 7 20
-#s 15 3 13 23 12 12 2 19 6 8 11
-4 2 225 13 346 3 642 19 461
-#s 2 12 14 16 12 5 15 9 25 17 19
-#s 13 18 16 11 23 3 1 12 3 12 24
-#s 3 19 19 11 2 20 19 3 7 7 20
-#s 19 3 8 16 0 22 3 20 14 5 11
-3 2 913 7 880 12 736
-#s 2 12 14 16 12 5 15 9 25 17 19
-#s 7 11 16 16 10 17 2 4 4 3 11
-#s 12 15 3 9 19 11 19 5 21 0 15
-2 2 947 4 7
-#s 2 12 14 16 12 5 15 9 25 17 19
-#s 4 0 0 0 0 0 0 0 0 0 0
-2 2 232 15 563
-#s 2 12 14 16 12 5 15 9 25 17 19
-#s 15 2 12 23 12 11 3 19 6 8 11
-5 2 195 11 923 10 471 17 468 16 822
-#s 2 12 14 16 12 5 15 9 25 17 19
-#s 11 4 0 17 5 15 25 15 12 16 14
-#s 10 8 10 12 19 5 9 2 18 4 14
-#s 17 10 18 4 10 5 5 9 9 9 4
-#s 16 0 0 0 0 0 0 0 0 0 0
-3 2 333 7 601 10 96
-#s 2 12 14 16 12 5 15 9 25 17 19
-#s 7 11 7 16 13 20 2 4 4 3 12
-#s 10 8 10 12 19 5 9 2 18 4 14
-4 2 990 13 896 15 395 12 250
-#s 2 12 14 16 12 5 15 9 25 17 19
-#s 13 18 16 11 24 1 3 12 3 11 26
-#s 15 1 11 23 12 11 4 19 6 10 11
-#s 12 14 2 10 19 11 18 8 22 0 12
-2 2 263 3 931
-#s 2 12 14 16 12 5 15 9 25 17 19
-#s 3 23 20 14 2 20 18 3 8 6 18
-2 2 873 11 925
-#s 2 12 14 16 12 5 15 9 25 17 19
-#s 11 3 2 17 4 13 25 14 13 16 14
-1 19 613
-#s 19 9 9 13 0 23 4 19 8 6 10
-1 17 902
-#s 17 11 14 3 10 6 6 10 10 8 3
-0
-2 3 489 20 825
-#s 3 23 19 14 3 20 18 3 8 5 17
-#s 20 0 0 0 0 0 0 0 0 0 0
-4 2 515 11 991 15 30 10 281
-#s 2 12 14 16 12 5 15 9 25 17 19
-#s 11 2 1 18 6 14 25 14 14 16 14
-#s 15 4 12 23 14 11 3 20 3 8 12
-#s 10 7 10 12 17 7 9 1 19 5 14
-2 12 883 14 417
-#s 12 15 3 10 19 11 19 4 21 1 11
-#s 14 21 1 7 11 10 20 2 10 12 21
-2 2 535 13 397
-#s 2 12 14 16 12 5 15 9 25 17 19
-#s 13 15 13 11 25 1 3 11 4 12 25
-1 2 830
-#s 2 12 14 16 12 5 15 9 25 17 19
-1 17 840
-#s 17 11 14 4 10 6 9 8 10 8 2
-0
-4 2 326 11 984 7 722 3 279
-#s 2 12 14 16 12 5 15 9 25 17 19
-#s 11 3 2 17 5 14 22 14 12 16 14
-#s 7 10 8 16 12 20 3 4 1 5 12
-#s 3 20 18 11 3 19 18 3 8 6 17
-0
-2 3 282 18 732
-#s 3 18 19 11 3 19 19 3 7 6 23
-#s 18 0 0 0 0 0 0 0 0 0 0
-2 3 591 10 919
-#s 3 18 19 13 3 19 19 3 7 6 23
-#s 10 8 10 13 19 8 5 2 18 3 13
-1 6 617
-#s 6 6 4 8 6 12 6 4 3 14 5
-1 15 975
-#s 15 3 13 23 12 12 2 19 5 8 13
-3 2 419 14 849 1 724
-#s 2 12 14 16 13 5 15 9 24 16 19
-#s 14 10 1 4 2 11 19 15 17 6 18
-#s 1 0 0 0 0 0 0 0 0 0 0
-1 8 699
-#s 8 0 0 0 0 0 0 0 0 0 0
-3 12 562 19 988 9 695
-#s 12 16 1 10 19 10 19 3 21 3 12
-#s 19 9 10 15 2 23 1 20 8 4 11
-#s 9 0 0 0 0 0 0 0 0 0 0
-1 13 875
-#s 13 12 13 11 26 1 2 11 5 12 24
-0
-2 11 116 10 516
-#s 11 4 3 17 3 13 25 14 12 16 14
-#s 10 7 9 9 18 10 7 0 21 14 11
-0
-3 2 888 3 964 17 995
-#s 2 12 14 16 12 5 15 9 24 17 19
-#s 3 18 18 13 3 19 19 3 7 6 23
-#s 17 11 18 4 9 5 7 9 9 8 3
-0
-1 7 996
-#s 7 9 6 13 13 20 1 5 3 6 13
-1 5 111
-#s 5 0 0 0 0 0 0 0 0 0 0
-1 14 171
-#s 14 11 4 3 1 10 18 15 15 5 20
-0
-2 13 659 15 589
-#s 13 18 15 11 21 3 1 14 3 12 24
-#s 15 1 11 23 16 11 4 16 6 8 15
-3 2 366 3 558 6 425
-#s 2 12 14 17 12 5 14 9 22 17 19
-#s 3 19 19 15 3 20 19 3 8 5 23
-#s 6 5 3 2 4 10 12 9 7 15 5
-0
-0
-1 10 287
-#s 10 7 10 11 19 9 7 0 21 8 12
-1 12 334
-#s 12 14 3 10 21 10 17 5 22 1 11
-1 19 985
-#s 19 7 7 15 2 19 4 17 18 1 11
-0
-0
-3 2 924 11 155 4 656
-#s 2 12 14 16 12 5 14 10 23 17 19
-#s 11 2 2 15 7 15 22 14 9 16 11
-#s 4 0 0 0 0 0 0 0 0 0 0
-1 3 965
-#s 3 19 20 16 1 20 20 4 8 6 25
-0
-0
-0
-1 17 994
-#s 17 10 18 6 9 5 5 8 10 8 3
-0
-3 3 423 7 194 15 432
-#s 3 20 19 18 2 21 19 2 8 7 25
-#s 7 6 6 15 13 20 3 4 3 5 16
-#s 15 1 13 21 14 14 4 19 9 5 13
-2 14 248 16 141
-#s 14 6 1 5 1 12 19 17 21 18 20
-#s 16 0 0 0 0 0 0 0 0 0 0
-2 13 551 12 911
-#s 13 12 13 11 21 0 3 23 4 11 25
-#s 12 13 4 10 16 16 19 2 22 1 12
-0
-0
-1 2 997
-#s 2 12 14 17 12 4 15 14 21 17 19
-1 9 501
-#s 9 0 0 0 0 0 0 0 0 0 0
-0
-1 8 618
-#s 8 0 0 0 0 0 0 0 0 0 0
-1 10 980
-#s 10 10 9 11 20 8 5 1 20 5 13
-0
-1 11 494
-#s 11 4 0 23 4 14 23 14 14 20 16
-1 3 610
-#s 3 19 18 17 7 22 19 1 8 4 25
-0
-1 2 950
-#s 2 12 14 17 12 5 15 10 22 17 20
+#s 9 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+1 17 342
+#s 17 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0
+0
+1 8 415
+#s 8 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+4 2 236 8 368 14 445 4 479
+#s 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+#s 8 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+#s 14 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+#s 4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0
+0
+2 4 275 7 378
+#s 4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+#s 7 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+1 6 557
+#s 6 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0
+1 9 346
+#s 9 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+1 7 447
+#s 7 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+1 12 222
+#s 12 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+2 14 232 18 231
+#s 14 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+#s 18 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+1 5 211
+#s 5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+2 19 186 1 188
+#s 19 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+#s 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0
+0
+0
+1 15 277
+#s 15 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+2 15 353 18 402
+#s 15 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+#s 18 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+3 14 227 1 326 16 547
+#s 14 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+#s 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+#s 16 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+3 2 289 4 520 3 650
+#s 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+#s 4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+#s 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0
+4 11 278 9 381 15 382 20 439
+#s 11 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+#s 9 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+#s 15 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+#s 20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+1 9 586
+#s 9 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0
+0
+0
+1 3 573
+#s 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0
+0
+1 14 273
+#s 14 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
 1 20 255
-#s 20 0 0 0 0 0 0 0 0 0 0
+#s 20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0
+1 15 408
+#s 15 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+1 17 399
+#s 17 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0
+2 14 625 7 530
+#s 14 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+#s 7 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+2 4 572 10 545
+#s 4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+#s 10 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+1 11 316
+#s 11 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0
+1 15 489
+#s 15 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+1 15 491
+#s 15 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+3 9 432 17 636 8 485
+#s 9 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+#s 17 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+#s 8 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+1 13 450
+#s 13 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+1 18 435
+#s 18 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+1 11 361
+#s 11 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+1 8 486
+#s 8 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+1 18 553
+#s 18 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+3 14 259 15 472 19 413
+#s 14 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+#s 15 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+#s 19 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+3 2 294 1 418 6 556
+#s 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+#s 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+#s 6 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+2 9 474 5 513
+#s 9 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+#s 5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+2 9 480 17 521
+#s 9 2 3 8 2 3 1 8 6 2 3 3 6 6 2 5
+#s 17 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+1 14 280
+#s 14 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0
+2 9 544 18 658
+#s 9 8 8 11 5 7 11 12 13 8 5 11 17 9 0 9
+#s 18 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
 0
 0
-1 19 504
-#s 19 6 3 17 1 22 4 17 18 6 11
+1 10 628
+#s 10 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+1 19 552
+#s 19 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+3 15 224 12 238 13 682
+#s 15 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+#s 12 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+#s 13 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0
+1 4 490
+#s 4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0
+0
+0
+2 14 296 2 371
+#s 14 10 0 7 9 4 8 13 10 12 8 13 14 10 19 14
+#s 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+2 17 565 16 579
+#s 17 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+#s 16 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+1 18 694
+#s 18 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+2 2 373 20 329
+#s 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+#s 20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+2 10 394 1 649
+#s 10 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+#s 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+1 17 569
+#s 17 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+1 1 605
+#s 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0
+0
+1 6 600
+#s 6 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0
+1 11 387
+#s 11 1 8 10 9 11 2 13 11 18 10 13 6 9 12 14
+1 9 460
+#s 9 15 5 2 5 7 11 12 12 13 11 15 17 9 5 5
+3 10 436 18 454 5 484
+#s 10 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+#s 18 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+#s 5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0
+0
+2 2 417 16 514
+#s 2 12 4 13 2 8 16 11 10 11 5 13 5 9 13 5
+#s 16 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+1 19 611
+#s 19 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+2 2 707 17 581
+#s 2 12 3 13 3 8 17 7 10 13 5 13 7 9 12 5
+#s 17 7 9 7 5 4 12 8 4 11 5 16 18 2 9 10
+1 15 288
+#s 15 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+3 2 438 11 584 3 735
+#s 2 12 3 13 3 8 17 7 10 13 5 13 7 9 12 5
+#s 11 7 8 11 8 8 3 16 12 18 12 13 17 15 4 2
+#s 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+1 11 539
+#s 11 7 8 13 9 8 3 16 12 18 11 13 17 14 4 2
+0
+1 12 291
+#s 12 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0
+0
+1 7 621
+#s 7 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+1 8 502
+#s 8 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0
+1 8 593
+#s 8 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+2 17 515 10 726
+#s 17 8 9 8 7 6 12 14 2 12 4 21 14 2 4 8
+#s 10 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+1 2 635
+#s 2 9 2 18 8 6 18 8 9 16 7 13 10 9 7 3
+2 1 582 5 645
+#s 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+#s 5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0
+1 17 680
+#s 17 11 9 9 9 5 12 13 2 13 3 19 12 3 4 7
+3 17 343 4 626 12 661
+#s 17 11 9 9 9 5 12 12 2 13 3 19 12 3 4 7
+#s 4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+#s 12 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0
+1 9 637
+#s 9 7 5 6 0 5 13 14 13 9 5 15 17 9 14 6
+1 13 846
+#s 13 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+2 14 317 18 357
+#s 14 8 10 5 0 8 20 13 13 14 10 16 9 14 17 11
+#s 18 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0
+2 14 321 19 320
+#s 14 8 8 8 0 1 15 16 12 11 7 13 9 18 24 14
+#s 19 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0
+2 9 640 7 771
+#s 9 8 7 7 1 7 10 14 13 11 5 15 17 9 6 6
+#s 7 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+1 9 736
+#s 9 8 7 7 1 7 11 14 13 11 5 14 17 9 6 6
+0
+4 9 389 8 409 6 676 20 770
+#s 9 9 7 10 2 9 11 17 13 13 6 12 16 9 2 6
+#s 8 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+#s 6 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+#s 20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+3 11 362 18 724 6 265
+#s 11 2 7 13 17 5 12 13 12 18 13 13 17 13 2 3
+#s 18 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+#s 6 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+1 12 711
+#s 12 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0
+1 15 295
+#s 15 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0
+0
+0
+0
+0
+1 17 302
+#s 17 9 8 14 2 4 12 10 3 13 4 23 12 9 4 6
+0
+1 4 262
+#s 4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0
+0
+0
+1 13 809
+#s 13 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+1 11 452
+#s 11 5 1 11 8 11 14 10 12 15 11 15 17 17 4 4
+1 15 299
+#s 15 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+1 9 308
+#s 9 14 13 12 5 10 4 18 8 11 4 12 17 8 2 4
+0
+1 8 477
+#s 8 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+5 9 374 11 466 2 397 8 444 20 699
+#s 9 9 12 12 5 11 10 16 11 14 5 9 16 7 0 7
+#s 11 5 6 12 8 12 15 14 12 14 9 16 17 18 2 1
+#s 2 13 16 18 3 2 18 2 6 16 14 15 9 3 7 14
+#s 8 2 4 4 6 4 2 2 5 1 5 5 4 5 1 4
+#s 20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+2 11 405 19 497
+#s 11 5 7 11 7 12 13 15 12 14 10 17 17 18 2 1
+#s 19 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+1 11 414
+#s 11 5 7 11 7 12 13 15 12 14 10 17 17 18 2 1
+0
+0
+0
+0
+0
+2 9 404 11 504
+#s 9 9 13 12 3 10 11 16 11 15 5 9 16 7 3 4
+#s 11 5 7 11 6 14 13 16 12 13 10 17 17 18 1 2
+1 15 310
+#s 15 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+1 16 702
+#s 16 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+1 19 587
+#s 19 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+2 20 723 3 629
+#s 20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+#s 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+3 2 746 4 886 13 725
+#s 2 13 2 19 3 8 19 9 10 12 7 7 7 9 9 5
+#s 4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+#s 13 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0
+1 5 646
+#s 5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+1 1 643
+#s 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0
+1 3 612
+#s 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+2 2 802 6 783
+#s 2 13 2 20 4 6 19 8 9 16 7 9 8 9 7 5
+#s 6 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+2 14 358 12 393
+#s 14 2 10 13 12 10 6 16 8 13 7 11 13 0 16 13
+#s 12 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+1 10 754
+#s 10 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+2 11 541 18 753
+#s 11 7 7 11 2 4 13 16 12 10 9 12 17 17 6 4
+#s 18 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0
+0
+2 9 476 19 463
+#s 9 9 13 6 5 7 24 14 10 11 7 8 17 6 8 1
+#s 19 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+1 9 599
+#s 9 9 13 7 3 7 24 15 11 15 6 8 17 6 6 3
+1 7 677
+#s 7 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0
+0
+2 14 428 15 388
+#s 14 14 2 12 3 7 1 16 12 7 9 14 17 9 15 14
+#s 15 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+2 3 747 20 745
+#s 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+#s 20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+2 2 503 19 785
+#s 2 13 2 19 5 6 19 9 7 15 9 9 7 9 7 4
+#s 19 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0
+2 17 312 18 391
+#s 17 10 16 4 6 10 4 4 12 13 7 21 16 16 1 7
+#s 18 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+1 17 344
+#s 17 10 12 4 2 10 6 6 10 13 6 24 18 11 2 5
+0
+1 11 836
+#s 11 3 6 13 3 4 20 16 12 11 11 9 17 17 5 6
+0
+1 3 748
+#s 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0
+3 11 411 12 684 5 791
+#s 11 4 7 13 7 7 12 16 12 16 13 16 17 16 2 2
+#s 12 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+#s 5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0
+0
+3 14 440 8 461 7 526
+#s 14 16 1 8 4 3 5 15 12 6 9 13 18 19 15 14
+#s 8 1 11 13 10 1 16 3 15 9 12 4 13 5 0 12
+#s 7 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0
+0
+0
+0
+1 4 693
+#s 4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+2 1 764 20 798
+#s 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+#s 20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0
+0
+2 6 39 16 714
+#s 6 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+#s 16 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0
+0
+3 9 475 11 510 14 627
+#s 9 5 13 4 3 8 22 18 13 10 1 12 17 12 19 3
+#s 11 4 5 12 7 3 12 16 12 13 13 16 17 10 3 11
+#s 14 15 4 10 3 3 1 17 13 6 10 15 18 19 18 14
+1 11 528
+#s 11 4 3 13 7 4 11 16 12 13 13 17 17 11 2 11
+1 13 663
+#s 13 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0
+1 17 410
+#s 17 7 7 6 2 14 11 12 7 13 2 17 16 7 5 17
+0
+0
+0
+1 14 403
+#s 14 14 5 12 1 6 1 17 12 5 9 15 16 15 18 14
+0
+0
+1 15 400
+#s 15 11 12 3 1 20 19 7 0 2 14 13 5 9 11 13
+0
+0
+2 1 422 13 478
+#s 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+#s 13 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0
+1 20 716
+#s 20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+1 9 499
+#s 9 6 12 5 2 9 27 14 13 13 4 8 20 12 4 16
+0
+1 14 498
+#s 14 18 4 9 2 10 5 16 9 2 9 14 15 9 17 14
+3 19 641 4 270 3 336
+#s 19 2 5 12 5 12 20 16 10 1 17 13 12 1 9 5
+#s 4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+#s 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+1 12 835
+#s 12 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+2 15 751 10 853
+#s 15 13 8 3 11 19 14 0 3 5 15 14 3 8 11 5
+#s 10 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+2 8 431 18 458
+#s 8 2 4 12 10 9 12 12 15 13 14 2 3 1 2 6
+#s 18 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+1 14 529
+#s 14 15 6 9 3 6 5 16 9 1 10 14 16 18 16 14
+1 14 542
+#s 14 15 6 10 3 6 5 16 9 1 10 14 17 16 15 14
+0
+2 6 588 5 857
+#s 6 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+#s 5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+1 2 518
+#s 2 13 10 20 2 7 19 10 20 16 6 1 1 9 22 8
+3 2 506 8 551 15 79
+#s 2 13 7 20 5 8 19 8 20 15 8 1 1 9 18 5
+#s 8 3 5 14 11 8 7 9 15 9 11 1 3 3 4 5
+#s 15 14 6 1 5 12 13 3 1 7 15 16 4 13 11 5
+0
+2 11 570 2 618
+#s 11 7 2 13 12 4 9 15 13 10 13 15 17 10 1 13
+#s 2 13 4 20 6 7 19 9 17 16 8 2 2 9 12 4
+1 2 535
+#s 2 13 2 20 6 7 19 8 13 15 8 2 5 9 10 4
+0
+2 11 578 14 590
+#s 11 6 3 13 7 5 10 16 10 10 13 16 17 14 1 9
+#s 14 16 5 10 4 5 4 16 12 1 10 14 18 17 15 14
+3 15 577 10 575 7 534
+#s 15 15 6 1 5 11 14 2 1 7 16 16 4 14 11 5
+#s 10 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+#s 7 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+2 11 597 6 622
+#s 11 6 5 13 6 6 10 16 11 11 13 16 17 14 0 9
+#s 6 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+2 14 516 18 651
+#s 14 15 5 11 3 6 3 16 11 2 10 14 18 15 15 14
+#s 18 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+1 11 678
+#s 11 6 5 13 6 6 10 16 11 11 13 16 17 14 0 9
+1 4 608
+#s 4 2 9 3 11 3 4 9 6 20 19 7 7 10 13 8
+0
+0
+0
+2 2 456 17 424
+#s 2 11 5 19 6 5 17 10 6 16 11 12 7 9 5 2
+#s 17 6 18 8 1 5 11 11 1 12 16 22 16 3 12 23
+2 2 538 7 550
+#s 2 12 3 19 6 5 18 10 6 15 10 11 8 9 5 4
+#s 7 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+1 17 524
+#s 17 9 11 10 1 4 12 5 2 13 13 21 18 6 8 23
+0
+3 2 540 15 580 5 487
+#s 2 13 4 19 6 5 18 9 5 16 10 10 8 9 5 4
+#s 15 15 6 3 6 13 14 3 1 7 14 14 1 12 11 6
+#s 5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0
+1 6 633
+#s 6 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0
+3 2 574 14 598 18 603
+#s 2 12 3 16 6 6 19 9 5 15 10 12 8 9 5 5
+#s 14 19 2 7 3 5 4 16 9 9 8 13 17 19 13 14
+#s 18 11 9 3 11 4 17 14 1 4 12 8 9 4 11 4
+1 20 673
+#s 20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0
+1 17 548
+#s 17 9 4 9 6 5 12 14 4 13 4 17 15 6 2 23
+4 9 567 17 695 18 562 10 683
+#s 9 6 4 8 22 2 23 14 11 6 4 4 23 12 11 19
+#s 17 9 4 9 8 5 11 14 3 13 3 16 15 7 3 23
+#s 18 12 13 3 11 3 17 17 1 7 12 11 14 4 11 1
+#s 10 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+2 11 701 16 292
+#s 11 4 8 10 4 5 9 16 12 10 13 16 17 10 2 9
+#s 16 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+1 13 522
+#s 13 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0
+1 9 642
+#s 9 9 6 7 10 12 23 14 12 3 11 4 21 12 3 14
+0
+1 12 862
+#s 12 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+1 19 679
+#s 19 1 8 7 4 13 14 7 2 4 8 11 11 16 12 6
+0
+1 5 533
+#s 5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0
+1 5 566
+#s 5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+3 15 576 8 715 6 819
+#s 15 2 16 10 2 20 16 2 13 9 6 11 8 9 11 5
+#s 8 8 9 10 2 7 12 2 10 9 14 4 4 6 3 6
+#s 6 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+1 17 727
+#s 17 9 9 9 9 4 9 16 2 13 3 10 14 6 5 23
+1 2 596
+#s 2 13 2 15 6 6 19 9 5 14 10 11 9 9 7 3
+2 2 686 19 360
+#s 2 12 2 18 7 6 19 9 6 14 10 11 9 9 5 4
+#s 19 12 13 6 4 20 12 7 8 5 10 12 4 6 3 1
+1 19 434
+#s 19 12 12 7 3 19 14 7 10 4 10 13 4 6 3 1
+1 14 675
+#s 14 17 11 12 8 5 0 17 12 0 15 14 18 19 17 14
+1 14 653
+#s 14 17 11 12 8 6 0 17 12 1 14 14 17 19 17 14
+2 11 647 7 609
+#s 11 5 6 13 14 8 12 13 10 18 13 15 17 14 1 1
+#s 7 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+2 14 728 3 741
+#s 14 14 7 13 5 6 1 16 12 1 9 14 16 17 17 14
+#s 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+1 1 517
+#s 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+1 19 829
+#s 19 12 11 6 4 21 14 8 10 3 9 14 4 5 4 1
+1 13 619
+#s 13 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+1 1 571
+#s 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0
+1 14 601
+#s 14 15 6 11 6 7 1 16 12 1 9 14 16 18 17 14
+0
+0
+1 6 761
+#s 6 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+1 1 623
+#s 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0
+0
+0
+2 18 668 7 825
+#s 18 1 12 1 11 24 12 11 13 2 8 12 8 10 7 1
+#s 7 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0
+2 9 698 4 880
+#s 9 12 2 16 9 11 23 16 10 10 11 2 22 12 2 19
+#s 4 1 5 4 7 20 15 2 2 20 19 14 12 4 14 6
+3 17 634 15 591 19 811
+#s 17 6 10 14 13 14 12 15 1 13 2 15 11 2 5 23
+#s 15 5 21 3 5 20 23 2 13 4 7 16 5 13 2 12
+#s 19 12 11 5 4 21 14 8 8 3 11 12 4 5 2 3
+0
+1 9 737
+#s 9 10 7 7 3 12 23 15 13 8 14 7 17 11 1 16
+1 11 868
+#s 11 5 2 11 7 4 11 14 12 13 13 13 17 10 5 9
+1 2 757
+#s 2 10 4 16 7 5 19 9 8 15 9 9 7 1 8 8
+0
+1 18 57
+#s 18 4 11 3 6 6 12 6 12 3 2 15 18 13 10 2
+1 13 654
+#s 13 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0
+1 15 519
+#s 15 7 21 1 8 20 18 0 13 5 15 16 5 8 7 5
+2 4 644 5 892
+#s 4 2 3 5 7 7 8 0 3 20 19 11 18 13 13 12
+#s 5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+1 9 82
+#s 9 9 8 6 3 12 22 15 13 9 14 8 14 12 1 16
+2 14 685 1 606
+#s 14 15 6 3 7 3 9 16 7 3 8 13 17 19 16 13
+#s 1 7 6 9 2 8 8 5 4 5 3 1 4 0 14 3
+1 11 624
+#s 11 4 2 13 7 5 11 16 10 12 13 13 17 10 3 10
+1 8 759
+#s 8 5 3 16 4 1 3 7 15 5 4 8 10 6 11 12
+1 12 779
+#s 12 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+1 11 806
+#s 11 4 8 10 5 14 13 15 14 12 15 15 17 19 1 3
+1 19 376
+#s 19 11 11 7 5 21 14 6 9 3 10 14 4 2 3 7
+1 20 201
+#s 20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+2 18 718 10 78
+#s 18 8 8 5 1 3 11 10 13 2 5 15 18 13 11 3
+#s 10 2 0 14 3 5 11 4 10 2 7 7 1 1 17 7
+1 8 828
+#s 8 2 9 11 15 2 13 8 13 9 10 4 2 3 4 4
+2 9 797 8 909
+#s 9 9 12 10 4 12 23 14 11 9 13 6 15 8 0 17
+#s 8 2 9 11 16 2 13 8 13 9 9 4 3 3 3 4
+0
+1 15 781
+#s 15 6 13 9 6 20 13 2 13 9 15 11 9 5 2 3
+0
+1 9 13
+#s 9 8 14 6 1 12 23 14 19 10 13 7 16 11 3 13
+0
+3 17 671 10 708 16 359
+#s 17 12 11 17 10 5 12 6 2 13 3 19 17 3 3 23
+#s 10 2 2 8 0 4 11 2 5 7 6 6 10 2 7 7
+#s 16 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+1 20 595
+#s 20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+1 11 810
+#s 11 1 7 12 4 8 10 15 16 10 15 13 17 19 5 6
+3 14 734 17 713 6 813
+#s 14 15 4 12 3 3 11 17 11 4 8 5 18 18 14 14
+#s 17 9 12 11 10 6 11 11 2 13 2 15 15 3 4 23
+#s 6 8 2 9 19 7 4 8 3 10 0 6 7 12 3 9
+1 7 692
+#s 7 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+1 2 767
+#s 2 6 1 17 5 19 13 8 8 10 9 15 11 9 6 7
+0
+0
+1 17 777
+#s 17 8 9 10 8 3 8 13 2 13 6 12 15 5 4 23
+0
+3 14 766 4 670 3 803
+#s 14 16 6 9 4 6 6 16 11 0 8 14 18 16 13 14
+#s 4 4 3 12 8 9 9 0 2 17 19 3 16 14 12 8
+#s 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0
+1 2 789
+#s 2 12 3 20 6 7 12 9 4 15 9 17 8 9 4 6
+2 11 787 18 844
+#s 11 5 8 11 8 6 9 15 15 9 15 17 10 18 7 0
+#s 18 10 6 1 6 3 3 17 13 3 6 20 14 13 16 3
+0
+2 9 775 5 453
+#s 9 8 16 9 2 12 24 14 18 9 13 8 17 10 1 10
+#s 5 3 3 2 2 2 9 10 15 8 9 3 15 3 13 6
+2 9 200 7 750
+#s 9 8 15 11 2 11 26 15 19 10 13 8 21 8 1 8
+#s 7 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+2 2 659 1 181
+#s 2 10 4 18 8 6 14 9 5 16 9 17 10 9 4 4
+#s 1 9 10 6 2 5 1 9 0 12 4 2 3 4 19 4
+2 2 690 15 901
+#s 2 10 4 18 7 6 14 9 5 16 9 17 10 9 4 4
+#s 15 4 14 12 12 20 19 5 13 10 13 11 6 3 4 0
+0
+0
+0
+0
+0
+1 19 351
+#s 19 12 7 8 8 12 8 3 4 10 11 13 7 6 7 1
+0
+0
+1 9 81
+#s 9 8 16 11 2 8 26 14 19 13 14 18 23 5 1 9
+1 17 856
+#s 17 8 3 11 17 6 8 17 2 13 6 14 15 3 5 23
+1 17 847
+#s 17 8 4 11 12 6 10 17 2 13 6 13 15 3 3 23
+0
+0
+1 12 869
+#s 12 2 2 0 2 6 12 11 3 12 7 1 10 4 9 7
+1 8 904
+#s 8 7 6 3 10 2 16 10 15 7 5 1 3 3 16 14
+1 4 743
+#s 4 1 9 23 9 1 4 5 3 20 19 6 13 14 14 8
+0
+1 13 706
+#s 13 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+1 6 704
+#s 6 2 6 13 14 17 1 4 4 11 2 7 11 1 14 8
+0
+0
+2 5 841 3 924
+#s 5 3 2 2 5 11 7 4 14 18 2 1 13 4 11 12
+#s 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+1 11 842
+#s 11 9 5 10 8 7 10 21 14 7 15 17 12 17 8 0
+0
+1 2 729
+#s 2 16 5 20 8 9 7 5 10 16 11 17 8 9 3 3
+1 15 840
+#s 15 5 9 9 8 20 16 2 14 9 19 12 5 0 5 7
+2 9 820 14 826
+#s 9 9 15 6 5 12 23 14 19 13 14 7 19 2 3 17
+#s 14 22 2 3 12 18 3 14 10 3 8 10 11 19 16 13
+0
+0
+1 16 396
+#s 16 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+1 11 303
+#s 11 4 8 12 4 11 11 15 15 10 15 15 17 19 1 5
+1 14 765
+#s 14 16 6 11 4 7 2 16 12 1 9 15 13 16 19 14
+1 15 898
+#s 15 8 13 9 8 20 17 2 14 9 15 11 5 0 5 4
+3 11 855 14 887 17 274
+#s 11 5 6 11 5 15 12 15 14 10 15 15 17 19 1 4
+#s 14 15 6 11 4 7 2 16 12 1 9 14 13 16 19 14
+#s 17 11 7 10 12 8 8 11 1 10 2 16 15 5 5 20
+2 9 851 8 220
+#s 9 4 16 14 1 9 22 16 17 10 14 9 22 7 5 9
+#s 8 10 8 9 9 2 15 16 12 5 3 3 3 7 3 5
+4 15 257 8 549 19 652 1 16
+#s 15 8 13 9 8 20 17 2 14 9 15 11 5 0 5 4
+#s 8 5 7 8 10 2 16 15 13 7 3 3 6 7 2 5
+#s 19 11 9 6 3 17 10 5 2 10 10 10 5 6 4 5
+#s 1 12 5 5 6 6 0 9 7 6 2 2 3 3 15 2
+3 15 279 8 790 19 248
+#s 15 9 15 9 8 20 17 2 14 9 15 11 5 0 4 4
+#s 8 4 7 9 10 2 15 16 13 7 3 3 6 7 2 5
+#s 19 14 12 11 3 17 12 6 4 7 10 9 4 6 4 3
+2 4 773 10 830
+#s 4 0 7 12 6 4 2 9 16 20 17 6 14 9 16 5
+#s 10 3 2 7 1 11 15 3 11 4 2 7 2 2 2 18
+2 17 717 13 778
+#s 17 10 9 11 12 5 8 15 2 13 2 16 17 5 3 23
+#s 13 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0
+1 11 792
+#s 11 5 7 10 6 15 12 14 14 11 15 17 17 20 1 2
+1 6 883
+#s 6 6 2 13 10 17 3 3 2 3 6 4 11 5 12 5
+2 5 908 7 808
+#s 5 7 1 3 3 5 12 6 14 15 8 1 10 2 5 9
+#s 7 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+2 19 863 18 958
+#s 19 14 13 11 2 20 13 5 7 5 9 12 4 6 3 3
+#s 18 2 16 1 4 0 5 20 12 8 3 20 15 13 20 8
+1 11 733
+#s 11 4 6 11 6 15 13 14 15 12 15 14 17 20 1 3
+2 9 879 8 800
+#s 9 8 15 8 2 10 26 15 19 13 12 9 21 7 1 8
+#s 8 2 8 10 12 2 15 15 15 7 5 4 5 4 1 7
+1 11 917
+#s 11 5 7 10 6 15 12 14 13 13 15 17 17 19 1 2
+0
+3 2 818 13 823 16 511
+#s 2 10 3 17 8 7 17 9 4 16 9 15 10 9 3 6
+#s 13 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+#s 16 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+2 14 639 20 824
+#s 14 20 3 10 2 14 2 13 11 3 15 14 12 11 21 14
+#s 20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+2 9 379 14 168
+#s 9 8 15 11 2 10 26 15 19 12 12 8 21 7 1 8
+#s 14 17 4 11 3 12 2 13 12 2 12 14 12 11 20 14
+2 11 21 15 669
+#s 11 5 7 10 7 15 11 13 12 14 15 19 17 18 1 2
+#s 15 9 18 7 8 20 18 0 14 7 14 11 4 2 6 5
+4 2 666 19 850 10 768 1 858
+#s 2 10 4 16 7 7 15 10 4 13 10 17 10 11 3 5
+#s 19 14 13 10 4 15 11 4 10 5 9 13 4 8 3 1
+#s 10 2 6 8 5 7 11 0 9 5 3 4 5 7 3 5
+#s 1 9 5 3 3 3 10 9 5 8 2 2 4 2 14 1
+3 9 107 14 655 5 492
+#s 9 8 16 8 2 10 26 15 18 13 13 9 20 8 1 8
+#s 14 15 5 10 4 8 2 14 12 2 9 14 13 15 19 14
+#s 5 1 2 2 9 8 8 5 15 11 7 8 14 3 2 9
+0
+0
+2 8 794 18 416
+#s 8 2 8 10 10 2 16 16 15 7 5 3 6 3 2 6
+#s 18 8 14 2 3 4 2 20 13 5 5 20 18 16 11 2
+0
+0
+1 2 488
+#s 2 8 3 19 9 6 14 9 7 16 9 17 10 12 5 3
+1 9 630
+#s 9 8 16 11 1 9 25 15 19 12 12 9 22 7 2 8
+1 11 89
+#s 11 2 6 11 6 15 12 14 12 10 15 13 17 17 1 7
+1 17 738
+#s 17 8 4 6 17 9 7 18 6 9 3 12 13 5 5 22
+2 17 732 15 784
+#s 17 8 4 10 16 8 8 18 2 10 2 13 15 5 4 23
+#s 15 12 19 8 5 20 14 0 14 7 15 14 1 7 7 3
+2 17 801 4 755
+#s 17 9 5 11 15 7 8 18 2 13 2 15 15 5 4 23
+#s 4 7 1 25 3 5 1 14 14 20 16 9 18 4 15 4
+1 15 786
+#s 15 8 17 8 2 20 17 1 14 8 14 14 5 10 9 1
+1 4 740
+#s 4 3 4 22 3 6 0 12 11 20 18 7 16 6 17 6
+1 15 832
+#s 15 6 18 9 2 20 14 1 14 8 14 11 9 10 9 1
+1 15 872
+#s 15 6 18 9 2 20 14 1 14 8 14 11 9 10 9 1
+2 17 866 3 804
+#s 17 9 9 11 14 6 8 15 2 13 1 15 15 5 5 23
+#s 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0
+1 19 796
+#s 19 11 10 10 1 21 14 6 11 2 8 15 6 3 5 5
+0
+0
+1 6 890
+#s 6 8 5 8 2 7 4 7 13 7 1 5 11 8 3 2
+0
+0
+3 9 833 4 744 1 838
+#s 9 7 16 15 2 9 27 21 19 10 10 10 15 6 1 15
+#s 4 0 5 15 6 6 1 10 9 20 18 8 14 7 17 5
+#s 1 7 1 4 4 4 16 9 4 9 4 1 9 2 8 2
+0
+1 9 878
+#s 9 7 16 13 2 9 25 16 19 11 11 9 17 7 1 12
+0
+1 14 923
+#s 14 13 4 8 7 6 0 13 8 11 6 12 12 19 16 13
+1 7 831
+#s 7 9 7 0 16 14 15 5 7 3 1 20 10 0 5 3
+2 18 845 20 871
+#s 18 9 13 0 2 2 2 20 13 15 15 16 15 15 10 3
+#s 20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+2 11 893 12 912
+#s 11 4 6 12 11 15 13 11 19 18 15 12 17 17 1 1
+#s 12 0 5 14 17 0 8 10 14 11 7 8 0 3 1 8
+2 8 897 16 932
+#s 8 9 5 3 15 3 16 16 15 6 2 3 5 5 8 3
+#s 16 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+1 10 176
+#s 10 3 11 6 2 1 12 1 1 1 9 11 14 2 9 12
+0
+0
+0
+2 2 885 17 894
+#s 2 7 1 11 14 8 14 8 8 12 7 13 12 13 13 2
+#s 17 12 12 10 8 5 16 10 3 10 1 15 15 5 5 20
+0
+0
+2 11 914 13 448
+#s 11 5 8 10 8 15 11 12 12 16 14 20 17 18 1 1
+#s 13 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+1 9 834
+#s 9 7 16 11 5 10 24 15 18 11 13 8 23 5 1 10
+2 18 884 5 523
+#s 18 8 7 1 9 7 12 10 13 3 3 7 16 13 8 3
+#s 5 1 1 4 12 11 8 0 16 11 7 15 15 5 2 14
+1 4 782
+#s 4 0 8 12 7 3 4 10 4 20 19 7 13 5 16 11
+1 11 843
+#s 11 5 7 11 8 15 11 12 12 16 14 20 17 18 1 1
+0
+2 14 931 6 31
+#s 14 18 5 9 3 3 10 16 8 3 8 14 18 16 14 14
+#s 6 9 5 17 1 17 3 1 13 3 1 5 13 6 5 6
+1 9 180
+#s 9 8 16 11 2 9 25 16 19 12 13 9 22 7 1 8
+1 9 881
+#s 9 8 16 11 2 9 26 16 19 12 13 9 22 7 1 8
+1 9 110
+#s 9 8 16 11 2 9 26 16 19 12 13 9 22 7 1 8
+2 9 888 15 49
+#s 9 8 16 11 2 9 26 16 19 12 13 9 22 7 1 8
+#s 15 3 10 11 2 20 14 4 12 10 15 13 18 10 1 3
+1 1 873
+#s 1 7 5 13 2 6 19 9 15 2 5 1 1 1 16 1
+0
+0
+1 15 327
+#s 15 6 15 10 2 20 17 3 13 9 15 11 9 10 5 0
+0
+2 5 171 6 559
+#s 5 4 0 4 9 11 10 1 13 14 8 3 14 5 2 14
+#s 6 8 5 18 2 17 8 1 13 1 1 2 12 5 7 7
+0
+1 2 910
+#s 2 11 6 20 6 9 8 6 4 18 11 13 7 13 4 6
+0
+2 15 202 13 407
+#s 15 6 17 9 3 20 16 2 13 8 15 11 9 10 5 0
+#s 13 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0
+2 2 421 5 874
+#s 2 11 3 19 8 6 14 9 5 14 11 16 9 11 3 5
+#s 5 4 1 4 8 9 13 3 13 14 7 0 12 2 6 10
+0
+2 2 896 14 656
+#s 2 11 2 19 7 6 14 10 5 14 9 16 9 10 5 5
+#s 14 19 3 8 1 6 8 14 7 4 10 14 12 18 16 13
+2 14 973 5 60
+#s 14 17 4 9 1 5 6 16 9 4 11 14 12 16 22 13
+#s 5 4 1 4 8 10 11 1 12 17 8 1 14 2 9 8
+2 14 859 3 889
+#s 14 15 4 11 2 5 4 16 9 4 11 14 12 14 21 14
+#s 3 10 10 2 7 17 11 8 10 0 1 0 2 11 7 9
+1 6 40
+#s 6 10 6 12 6 17 9 2 6 1 1 3 14 0 10 10
+2 11 864 15 602
+#s 11 8 16 8 7 14 12 15 20 3 15 19 17 20 3 2
+#s 15 8 21 7 1 20 14 0 14 6 15 12 9 11 6 4
+2 15 604 18 913
+#s 15 7 21 8 2 20 14 0 14 6 15 12 9 11 7 2
+#s 18 9 6 5 10 4 8 14 12 18 0 4 16 16 5 4
+0
+0
+2 8 696 5 208
+#s 8 3 5 6 7 11 3 16 15 6 2 6 19 3 2 6
+#s 5 1 5 3 7 10 6 1 11 18 10 0 19 3 15 8
+1 19 822
+#s 19 3 14 7 5 21 10 9 4 3 5 3 6 14 14 15
+4 11 849 2 915 7 494 20 564
+#s 11 5 9 8 7 14 12 14 12 11 15 20 17 19 1 2
+#s 2 9 2 20 8 6 13 9 8 18 9 17 11 11 5 3
+#s 7 6 4 17 14 14 20 3 4 1 2 6 7 3 12 1
+#s 20 4 7 0 0 17 11 0 5 5 11 2 6 9 18 9
+1 17 127
+#s 17 14 12 7 15 14 5 15 17 11 6 1 18 8 3 9
+2 15 920 12 966
+#s 15 6 19 8 1 20 15 1 14 7 15 11 11 11 7 2
+#s 12 8 1 3 5 2 1 2 10 14 1 12 7 9 8 1
+0
+2 11 900 18 7
+#s 11 5 8 9 7 15 11 12 12 15 15 20 17 18 1 2
+#s 18 12 3 3 11 2 7 13 13 18 6 12 18 16 0 4
+2 9 921 6 906
+#s 9 12 16 3 8 11 19 24 16 9 15 3 23 7 8 6
+#s 6 5 4 9 10 17 9 9 3 2 0 6 17 2 11 6
+2 9 940 2 944
+#s 9 12 14 4 7 12 20 24 19 10 15 4 23 7 2 7
+#s 2 7 2 20 8 6 14 9 8 15 8 17 11 12 5 4
+0
+3 5 882 1 816 16 24
+#s 5 4 2 3 7 13 6 3 8 18 8 0 19 1 16 8
+#s 1 3 3 14 9 4 20 9 4 7 3 1 4 5 1 13
+#s 16 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0
+1 20 984
+#s 20 1 2 2 4 8 3 4 1 6 9 13 2 7 18 5
+1 2 483
+#s 2 10 3 19 7 6 13 9 5 18 9 17 10 10 5 4
+1 17 877
+#s 17 10 9 11 13 8 10 12 2 13 2 17 15 4 3 21
+1 13 925
+#s 13 4 0 5 5 4 5 6 7 3 7 5 7 7 3 5
+2 18 865 4 536
+#s 18 12 3 1 11 2 6 13 13 16 7 12 18 16 4 2
+#s 4 6 14 7 6 0 10 7 1 20 19 6 18 2 12 11
+1 10 207
+#s 10 1 12 1 1 10 3 13 7 3 4 1 15 6 17 18
+0
+1 5 688
+#s 5 3 1 3 8 9 9 1 13 18 10 2 16 2 10 7
+4 15 977 8 962 12 933 3 919
+#s 15 1 14 11 5 20 13 3 13 7 12 12 9 10 3 2
+#s 8 3 5 15 11 6 4 11 11 10 9 2 8 3 2 4
+#s 12 4 4 3 7 7 5 3 4 3 2 11 4 8 20 2
+#s 3 9 8 5 9 2 16 6 2 6 1 9 3 4 4 7
+1 14 907
+#s 14 12 8 15 0 5 4 17 7 11 7 8 10 13 19 13
+2 11 934 10 372
+#s 11 2 4 11 8 13 11 10 12 18 13 16 17 17 6 3
+#s 10 1 13 3 0 5 8 1 12 4 6 4 10 7 7 7
+0
+3 2 961 14 43 7 632
+#s 2 10 3 18 7 6 13 9 5 18 9 17 10 9 5 4
+#s 14 12 5 13 3 6 3 17 12 2 10 11 13 14 20 14
+#s 7 1 5 5 16 18 21 8 5 3 4 7 2 0 6 15
+1 8 50
+#s 8 3 6 13 11 4 11 12 15 8 9 2 2 3 4 6
+2 4 298 3 264
+#s 4 1 8 8 6 6 3 6 0 20 19 9 18 10 16 7
+#s 3 2 14 8 7 3 11 6 5 9 1 8 10 4 4 3
+0
+1 12 459
+#s 12 3 2 5 7 6 6 3 5 4 2 12 3 8 19 1
+0
+1 9 891
+#s 9 10 12 6 7 11 22 24 19 9 15 6 23 1 9 12
+1 11 429
+#s 11 5 6 12 4 15 12 15 15 10 14 14 17 19 1 4
+1 17 395
+#s 17 9 9 11 15 6 9 12 3 13 1 17 15 5 4 19
+2 14 233 15 665
+#s 14 16 5 11 5 7 1 16 12 2 9 13 14 18 16 14
+#s 15 2 14 11 3 20 13 4 14 10 11 11 9 10 9 0
+1 14 911
+#s 14 15 5 11 4 7 1 16 14 2 12 14 15 16 16 14
+1 5 91
+#s 5 6 2 3 8 9 15 1 18 18 10 3 8 1 12 5
+0
+2 18 313 4 959
+#s 18 12 3 3 14 2 5 14 13 18 5 15 18 16 5 0
+#s 4 2 7 6 4 3 2 11 3 21 18 10 18 9 16 7
+2 19 876 1 854
+#s 19 6 8 2 14 21 12 10 10 4 10 8 14 0 14 1
+#s 1 8 4 8 4 8 20 9 2 7 2 3 5 1 3 2
+1 20 963
+#s 20 2 5 1 1 14 3 10 1 9 2 13 1 6 15 6
+1 11 941
+#s 11 6 6 11 11 15 11 11 9 15 14 17 17 13 0 4
+2 9 967 14 992
+#s 9 9 12 7 5 10 24 24 19 12 15 9 21 6 0 10
+#s 14 13 3 11 2 6 1 16 14 6 14 14 18 14 16 13
+1 2 970
+#s 2 9 2 18 6 8 16 10 8 13 11 17 9 10 2 5
+3 2 939 8 667 19 86
+#s 2 10 3 16 6 8 15 8 7 15 10 17 9 10 3 5
+#s 8 2 6 11 20 4 12 5 15 11 8 5 2 4 1 10
+#s 19 8 5 9 5 19 6 9 10 3 11 13 4 1 14 4
+1 16 23
+#s 16 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+1 15 505
+#s 15 6 15 9 1 20 14 2 14 9 15 10 9 10 9 1
+0
+1 4 558
+#s 4 3 3 7 6 7 2 9 4 24 18 6 15 9 13 7
+1 17 953
+#s 17 8 12 11 15 4 8 10 2 12 2 11 16 4 8 23
+2 6 272 13 971
+#s 6 5 7 5 20 2 14 8 8 3 14 2 17 0 16 13
+#s 13 4 7 5 4 2 7 12 1 0 6 6 4 8 4 6
+1 7 364
+#s 7 0 3 4 9 15 12 8 4 9 3 3 6 3 7 15
+1 10 443
+#s 10 9 15 2 6 5 1 0 12 7 5 4 2 9 9 10
+2 9 995 3 67
+#s 9 7 13 13 2 10 26 15 19 12 14 10 19 6 1 9
+#s 3 5 9 11 5 2 8 1 3 11 2 11 11 12 1 10
+1 14 927
+#s 14 13 9 10 2 5 3 17 14 3 7 14 14 18 16 15
+1 11 104
+#s 11 5 7 8 10 15 9 12 10 18 15 20 17 11 1 2
+0
+1 18 760
+#s 18 12 10 0 15 2 3 20 11 15 5 17 16 14 9 0
+0
+0
+0
+0
+1 1 902
+#s 1 10 2 13 4 1 20 9 7 7 4 0 4 7 4 3
+1 5 72
+#s 5 7 1 3 5 11 16 1 18 21 3 6 6 3 12 5
+1 15 568
+#s 15 3 15 9 4 20 17 0 14 12 11 3 6 12 10 4
+3 17 128 8 363 4 982
+#s 17 10 10 10 9 4 10 11 2 11 4 14 15 5 4 23
+#s 8 1 7 12 20 5 12 4 15 10 9 4 3 3 4 5
+#s 4 4 4 8 8 5 0 3 5 24 18 8 14 13 13 10
+2 11 282 12 936
+#s 11 5 6 12 8 16 11 12 12 18 11 17 21 15 1 2
+#s 12 2 1 5 4 12 2 1 5 6 5 11 7 7 17 4
+0
+0
+2 11 672 9 969
+#s 11 5 7 12 8 15 11 12 12 18 11 19 20 15 1 2
+#s 9 9 13 8 1 10 23 20 19 12 16 9 23 3 5 10
+1 19 338
+#s 19 3 5 7 8 12 12 8 10 2 8 13 3 6 7 4
+2 19 860 4 807
+#s 19 5 7 9 4 14 12 9 10 2 8 13 4 5 9 2
+#s 4 2 7 11 6 6 0 8 3 24 18 7 15 9 17 7
+1 19 150
+#s 19 11 7 12 3 15 11 7 10 3 8 13 4 4 9 1
+2 19 108 4 221
+#s 19 12 7 12 3 15 11 7 10 3 8 13 4 4 10 1
+#s 4 2 6 13 6 6 0 8 3 24 18 7 16 9 17 7
+2 9 194 19 983
+#s 9 8 13 9 1 10 25 17 19 13 17 9 22 7 2 8
+#s 19 13 7 12 3 15 11 8 10 3 8 13 3 4 11 1
+3 9 689 12 243 20 470
+#s 9 8 13 11 1 10 26 17 19 13 16 9 23 7 2 7
+#s 12 4 1 5 5 4 5 4 5 3 2 9 3 8 18 4
+#s 20 4 2 2 3 14 1 3 6 1 11 13 4 4 4 8
+0
+1 19 430
+#s 19 13 6 12 3 15 10 8 10 3 8 13 3 4 14 1
+4 9 594 11 172 19 852 4 449
+#s 9 8 13 11 1 10 26 17 19 13 16 9 23 7 2 7
+#s 11 6 7 12 8 15 12 12 12 18 11 19 19 16 0 2
+#s 19 13 6 12 3 15 10 8 10 3 8 13 3 4 14 1
+#s 4 1 5 13 6 6 0 10 4 24 19 7 15 8 17 7
+2 19 805 4 815
+#s 19 13 6 12 3 15 10 8 10 3 8 13 3 4 14 1
+#s 4 1 5 14 7 6 0 10 4 24 19 7 14 8 16 7
+2 9 731 19 705
+#s 9 8 13 11 1 10 26 17 19 13 16 9 23 7 2 7
+#s 19 13 6 12 3 15 10 8 10 3 8 13 3 4 14 1
+3 9 895 19 349 12 507
+#s 9 8 13 11 1 10 26 17 19 13 16 9 23 7 2 7
+#s 19 13 6 12 3 15 10 8 10 3 8 13 3 4 14 1
+#s 12 3 1 5 6 4 6 5 6 2 2 9 3 8 19 3
+3 11 948 14 493 19 763
+#s 11 6 7 12 8 15 11 12 12 18 12 20 20 16 0 2
+#s 14 13 20 9 7 5 1 18 14 1 7 13 16 19 16 14
+#s 19 13 6 12 3 15 10 8 10 3 8 13 3 4 14 1
+2 11 252 4 742
+#s 11 6 7 12 8 15 11 12 12 18 12 20 20 17 0 2
+#s 4 1 5 15 7 6 0 10 4 24 19 7 14 8 16 7
+4 14 990 2 814 4 32 20 196
+#s 14 13 13 13 4 6 1 18 14 1 9 13 16 16 16 16
+#s 2 10 10 20 3 14 6 7 6 18 13 13 3 13 6 5
+#s 4 1 5 15 7 6 0 10 4 24 19 7 14 8 16 7
+#s 20 2 2 2 2 17 2 3 3 6 9 12 1 5 15 5
+4 9 848 11 620 4 469 12 935
+#s 9 8 13 11 1 10 26 17 19 13 16 9 23 7 2 7
+#s 11 6 7 12 8 15 11 12 12 17 12 20 20 17 0 2
+#s 4 1 5 15 7 6 0 10 4 24 19 7 14 8 16 7
+#s 12 3 1 5 6 4 6 5 6 2 2 9 3 8 19 3
+2 9 762 19 949
+#s 9 8 13 11 1 10 26 17 19 13 16 9 23 7 2 7
+#s 19 12 5 12 4 15 9 8 10 3 8 13 3 4 14 1
+3 9 304 19 749 12 305
+#s 9 8 13 11 1 10 26 17 19 13 16 9 23 7 2 7
+#s 19 12 5 12 4 15 9 8 10 3 8 13 3 4 14 1
+#s 12 3 1 5 6 4 6 5 6 2 2 9 3 8 19 3
+2 15 423 20 780
+#s 15 2 19 6 2 20 18 2 14 7 4 9 13 11 11 18
+#s 20 2 2 2 1 17 3 3 3 7 9 11 1 4 14 5
+2 11 527 4 183
+#s 11 6 7 12 8 15 11 12 12 17 12 20 20 17 0 2
+#s 4 1 6 16 7 6 0 10 3 24 19 7 16 8 17 7
+2 15 875 3 812
+#s 15 2 18 8 2 20 18 2 14 6 4 8 16 12 10 11
+#s 3 4 20 5 8 4 11 4 3 6 1 10 8 6 2 3
+2 9 80 12 657
+#s 9 8 13 11 1 10 26 17 19 13 16 9 23 7 2 7
+#s 12 4 1 4 7 5 6 5 5 1 2 10 3 8 19 4
+4 9 112 11 253 12 377 1 998
+#s 9 8 13 11 1 10 26 17 19 13 16 9 23 7 2 7
+#s 11 6 7 12 8 15 11 12 12 17 12 20 20 17 0 2
+#s 12 4 1 5 6 4 6 5 5 1 2 9 4 8 18 4
+#s 1 11 3 12 1 2 20 7 8 5 2 2 1 6 4 11
+5 9 121 11 22 14 102 19 383 16 589
+#s 9 8 13 11 1 10 26 17 19 13 16 9 23 7 2 7
+#s 11 6 7 12 8 15 11 12 12 17 12 20 20 17 0 2
+#s 14 14 7 9 3 5 5 17 14 1 9 14 13 17 16 14
+#s 19 12 5 12 4 16 8 8 10 3 8 13 3 4 14 1
+#s 16 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+2 11 125 2 65
+#s 11 6 7 12 8 15 11 12 12 17 12 20 20 17 0 2
+#s 2 12 3 20 7 9 9 9 4 18 10 13 7 13 4 5
+3 9 9 17 996 4 978
+#s 9 8 13 11 1 10 26 17 19 13 16 9 23 7 2 7
+#s 17 8 14 15 14 8 12 9 3 13 1 9 13 3 4 20
+#s 4 0 6 16 6 6 0 10 4 24 19 8 16 8 17 7
+2 9 471 3 290
+#s 9 8 13 11 1 10 26 17 19 13 16 9 23 7 2 7
+#s 3 2 16 6 8 4 9 8 6 12 1 8 8 4 4 2
+4 9 922 11 687 15 228 20 987
+#s 9 8 13 11 1 10 26 17 19 13 16 9 23 7 2 7
+#s 11 6 7 12 8 15 11 12 12 18 11 19 20 15 0 2
+#s 15 4 17 9 1 20 16 0 13 7 10 11 11 13 10 4
+#s 20 2 2 0 2 17 3 5 3 7 9 13 0 5 16 5
+5 2 55 17 178 19 226 6 87 7 2
+#s 2 10 3 19 8 6 13 8 5 15 10 16 9 11 4 5
+#s 17 10 11 11 13 5 8 10 3 13 1 14 18 5 4 23
+#s 19 12 5 11 3 21 9 7 10 3 8 12 4 3 14 2
+#s 6 4 20 2 17 6 14 7 14 2 15 5 17 1 6 1
+#s 7 4 8 0 11 12 21 2 2 15 10 2 7 5 3 9
+4 14 700 17 420 19 169 4 980
+#s 14 15 6 11 3 6 3 17 14 1 11 14 13 16 17 14
+#s 17 11 11 11 13 5 8 10 3 13 1 14 18 5 4 23
+#s 19 12 5 11 3 21 9 8 10 3 8 12 4 3 14 2
+#s 4 2 5 16 6 5 0 10 4 24 18 7 15 8 16 7
+4 14 331 6 758 3 563 7 776
+#s 14 15 6 11 3 6 3 17 14 1 11 14 13 16 17 14
+#s 6 5 19 2 16 7 14 7 12 2 11 5 17 0 9 1
+#s 3 2 16 6 8 4 9 8 6 12 1 8 8 4 4 2
+#s 7 1 7 1 13 9 21 4 4 9 3 7 7 7 1 7
+1 2 309
+#s 2 10 3 19 8 6 13 8 5 15 10 16 9 11 4 5
+4 9 352 2 839 17 94 4 985
+#s 9 7 13 11 2 10 26 18 19 13 17 9 22 7 1 7
+#s 2 10 3 19 8 6 13 8 5 15 10 16 9 11 4 5
+#s 17 11 11 11 13 5 8 10 2 13 2 13 18 5 4 23
+#s 4 2 4 16 6 6 0 11 4 24 18 7 14 8 16 7
+4 17 442 15 899 18 930 20 867
+#s 17 11 11 11 13 5 8 10 2 13 2 13 18 5 4 23
+#s 15 7 20 8 1 20 15 1 14 8 15 11 11 11 9 1
+#s 18 12 7 3 12 4 0 18 6 21 7 9 17 13 5 2
+#s 20 3 1 1 1 11 7 3 1 6 9 10 2 7 16 6
+2 19 441 12 267
+#s 19 13 5 11 3 21 8 8 10 5 10 10 4 2 14 2
+#s 12 4 1 5 5 5 5 5 5 1 2 10 4 9 18 4
+3 14 720 17 991 13 965
+#s 14 15 6 11 3 6 3 17 14 1 12 14 14 16 16 14
+#s 17 11 11 11 13 4 8 10 2 13 2 14 18 5 5 23
+#s 13 2 6 10 10 1 8 12 18 3 6 3 0 5 1 4
+6 9 66 11 334 14 209 2 561 15 945 1 455
+#s 9 7 13 12 1 10 26 18 19 13 16 9 23 7 2 7
+#s 11 5 7 11 7 16 12 12 12 18 12 17 20 17 2 1
+#s 14 15 6 11 3 6 3 17 14 1 11 14 14 16 16 14
+#s 2 10 3 18 8 6 14 8 5 15 10 16 9 10 4 5
+#s 15 6 19 8 1 20 14 2 13 8 15 11 11 10 9 1
+#s 1 10 3 9 2 4 20 5 15 6 1 2 0 2 8 8
+3 15 972 4 870 7 638
+#s 15 6 19 8 1 19 14 2 12 8 15 11 11 10 12 1
+#s 4 0 3 17 5 7 4 11 5 24 18 6 14 8 15 7
+#s 7 1 4 2 16 10 21 5 8 4 2 3 7 6 4 15
+2 19 555 18 468
+#s 19 12 5 11 3 20 8 8 10 3 8 12 4 4 14 1
+#s 18 12 4 4 15 1 0 20 9 10 6 15 18 9 11 2
+4 11 10 2 307 15 739 10 537
+#s 11 4 6 11 6 17 13 13 12 18 12 16 20 16 2 2
+#s 2 10 3 19 7 6 14 9 4 15 9 17 9 9 4 6
+#s 15 6 17 9 1 18 14 3 12 9 15 11 11 10 13 0
+#s 10 2 15 9 8 5 6 4 10 4 0 2 5 8 9 1
+5 14 664 17 554 19 5 5 384 3 263
+#s 14 15 5 11 3 6 2 17 14 2 11 14 14 14 18 14
+#s 17 10 11 12 14 4 8 10 3 14 2 14 18 5 4 23
+#s 19 13 5 11 3 21 10 7 10 3 8 12 3 4 14 2
+#s 5 1 3 3 5 13 2 1 14 14 8 3 6 18 9 14
+#s 3 4 11 9 7 0 9 7 5 9 1 11 10 5 3 4
+1 14 113
+#s 14 15 5 12 3 6 2 17 14 2 12 14 13 13 18 14
+1 14 355
+#s 14 15 5 11 3 7 2 17 14 2 12 14 13 13 18 14
+1 20 648
+#s 20 2 5 2 4 5 12 2 0 5 9 12 0 8 16 5
+3 17 473 15 51 19 979
+#s 17 11 10 10 12 4 8 11 2 13 2 14 15 8 4 23
+#s 15 6 17 10 1 20 14 2 14 9 14 11 9 10 13 0
+#s 19 13 6 12 3 15 10 8 10 3 8 13 3 4 14 1
+5 9 75 2 189 17 616 18 97 6 968
+#s 9 8 13 10 1 10 25 18 19 13 16 9 23 7 2 7
+#s 2 10 3 19 7 6 13 8 5 18 9 17 9 9 5 5
+#s 17 11 10 10 12 4 8 11 2 13 2 14 16 6 5 23
+#s 18 12 4 4 10 2 1 20 13 2 13 18 13 10 14 1
+#s 6 5 11 9 13 7 14 5 8 2 4 6 17 0 12 1
+1 9 631
+#s 9 8 14 10 1 10 26 18 19 13 16 10 21 7 1 8
+1 7 964
+#s 7 1 4 6 16 14 21 3 9 4 3 4 6 1 4 15
+2 14 136 12 254
+#s 14 15 6 11 4 8 3 17 14 0 11 14 14 14 16 14
+#s 12 4 2 6 4 6 3 8 4 1 1 11 5 9 16 5
+2 9 585 1 926
+#s 9 7 13 9 1 10 26 18 19 13 17 9 19 8 2 8
+#s 1 10 2 7 3 3 19 9 14 5 2 1 3 3 8 1
+1 11 943
+#s 11 5 7 11 6 18 13 14 15 11 15 15 18 20 1 2
+2 8 955 16 219
+#s 8 4 5 1 18 18 16 6 12 9 0 2 10 4 6 13
+#s 16 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+2 2 772 4 999
+#s 2 10 3 20 8 5 14 10 4 15 8 17 9 9 4 6
+#s 4 0 4 19 8 7 0 13 5 24 19 7 13 8 15 7
+1 17 752
+#s 17 10 11 11 13 4 8 10 3 13 2 14 17 5 5 23
+4 11 730 15 365 19 206 3 928
+#s 11 5 7 11 6 17 11 14 14 11 15 17 19 20 1 2
+#s 15 5 18 9 1 20 14 2 11 8 12 14 9 11 13 1
+#s 19 12 5 11 4 14 9 10 10 4 9 10 2 4 14 1
+#s 3 6 9 9 4 0 9 7 3 9 5 11 11 5 1 7
+1 10 956
+#s 10 1 3 1 9 5 17 1 4 6 7 9 13 4 4 5
+1 14 380
+#s 14 15 4 10 3 6 3 16 12 3 13 14 12 12 21 13
+2 8 28 18 662
+#s 8 1 8 12 20 2 15 6 14 14 5 3 5 5 2 5
+#s 18 12 3 0 10 3 9 20 11 7 12 16 16 6 9 0
+3 9 697 5 546 7 960
+#s 9 8 13 9 2 10 23 17 19 13 16 9 19 7 1 8
+#s 5 3 2 1 5 10 8 2 18 18 7 2 8 4 12 8
+#s 7 3 1 7 16 15 21 2 8 4 2 7 4 5 2 15
+1 4 976
+#s 4 0 3 18 6 5 2 8 8 24 17 7 14 9 17 11
+0
+2 20 756 13 339
+#s 20 3 3 3 1 6 12 4 1 5 13 9 2 8 18 1
+#s 13 3 6 9 8 5 6 7 3 1 7 0 1 1 15 6
+2 11 986 17 938
+#s 11 5 7 12 6 16 11 14 13 12 15 18 20 20 1 2
+#s 17 10 11 11 11 5 8 10 5 13 1 14 18 5 4 21
+2 14 155 19 392
+#s 14 15 4 11 3 6 3 16 12 3 14 14 12 12 21 14
+#s 19 14 6 12 3 15 10 7 11 3 8 13 2 6 12 1
+1 2 246
+#s 2 10 3 19 6 6 14 10 5 15 9 17 9 8 5 5
+1 6 610
+#s 6 8 6 8 14 9 14 8 2 2 2 5 17 0 11 5
+4 9 929 15 946 1 981 7 769
+#s 9 7 13 8 2 10 24 20 19 12 17 8 20 7 3 7
+#s 15 6 19 9 1 20 15 1 12 8 15 14 9 10 13 1
+#s 1 10 3 8 2 5 20 9 9 6 3 2 6 5 1 1
+#s 7 0 3 5 14 11 21 2 7 5 8 7 7 5 1 10
+0
+0
+0
+3 11 229 18 942 12 122
+#s 11 9 7 10 7 15 10 13 14 12 16 22 19 18 1 1
+#s 18 9 5 0 11 2 6 20 11 6 2 18 18 8 9 4
+#s 12 3 5 6 1 6 5 4 6 1 1 14 4 9 13 5
+2 4 722 16 774
+#s 4 1 1 19 7 6 1 9 6 24 16 8 15 9 17 8
+#s 16 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+2 9 993 8 837
+#s 9 7 12 7 5 10 22 23 19 12 17 10 23 6 1 7
+#s 8 1 8 11 21 4 16 2 15 17 5 4 4 6 3 5
+3 14 954 17 821 19 975
+#s 14 15 4 9 3 6 4 16 14 3 14 12 12 16 22 11
+#s 17 10 11 11 14 6 8 10 3 14 2 13 16 2 5 23
+#s 19 13 7 12 3 16 10 6 7 2 8 13 4 5 10 3
+0
+1 3 799
+#s 3 0 10 8 4 3 12 8 3 5 11 9 11 5 6 4
+0
+2 2 532 10 1000
+#s 2 7 3 15 7 6 14 10 7 12 9 17 10 13 5 4
+#s 10 1 3 3 5 6 14 1 3 7 8 9 14 3 5 2
+0
+2 9 467 5 937
+#s 9 8 12 8 4 10 23 22 20 14 17 9 23 6 1 6
+#s 5 2 2 3 4 11 6 3 18 15 2 2 14 6 10 7
+0
+2 15 721 6 719
+#s 15 4 13 10 1 20 18 1 14 6 8 12 8 13 13 5
+#s 6 3 2 9 9 17 13 9 4 2 2 9 17 2 17 5
+0
+2 14 583 7 525
+#s 14 12 5 10 3 5 2 16 14 4 13 13 15 19 16 13
+#s 7 0 11 4 16 13 16 2 8 4 2 7 8 6 1 12
+0
+1 11 325
+#s 11 6 8 10 9 14 11 13 13 12 18 20 21 17 1 1
+0
+1 8 793
+#s 8 2 6 12 20 9 9 6 11 10 8 4 4 4 1 4
+4 2 118 4 615 18 947 20 997
+#s 2 6 4 15 9 6 15 11 7 12 8 17 9 12 5 4
+#s 4 1 7 12 7 6 1 7 3 25 16 10 17 10 16 5
+#s 18 12 4 3 15 2 5 20 11 4 5 20 12 1 10 5
+#s 20 2 1 1 9 1 19 6 2 5 13 5 2 10 18 4
+0
+1 17 531
+#s 17 9 12 13 14 7 9 5 2 13 3 11 16 3 5 23
+0
+1 19 512
+#s 19 13 5 12 3 16 10 5 8 7 9 12 3 2 10 4
+1 13 613
+#s 13 0 3 6 8 1 6 6 7 1 7 2 7 4 19 2
+0
+1 9 903
+#s 9 7 13 9 4 10 23 23 18 11 17 9 23 6 1 7
+1 11 703
+#s 11 4 6 11 7 15 11 12 15 11 16 15 22 20 5 1
+1 14 157
+#s 14 12 10 11 5 6 2 18 14 1 9 11 14 19 16 15
+0
+1 12 617
+#s 12 1 2 3 3 5 4 6 7 10 1 6 5 19 22 2
+1 17 306
+#s 17 10 10 12 15 5 8 12 3 13 3 13 18 5 1 22
+0
+3 15 952 6 283 1 607
+#s 15 2 16 10 10 18 17 0 3 6 9 14 8 11 14 4
+#s 6 3 6 8 8 9 13 7 9 1 0 2 13 8 8 8
+#s 1 9 5 8 1 12 20 9 3 6 3 2 2 4 3 0
+1 3 318
+#s 3 2 14 8 1 14 10 11 2 12 1 10 10 3 3 11
+2 2 337 8 691
+#s 2 11 3 20 7 6 13 9 4 17 11 16 7 16 4 5
+#s 8 7 8 16 21 3 7 7 11 10 11 4 2 4 1 4
+1 9 53
+#s 9 6 14 11 3 10 25 19 18 14 17 8 22 7 1 7
+0
+0
+0
+1 7 501
+#s 7 2 2 12 14 12 21 4 9 2 2 4 8 4 2 16
+0
+1 11 994
+#s 11 5 6 11 6 15 10 14 12 11 20 18 21 16 1 3
+0
+2 4 366 18 916
+#s 4 4 4 16 8 1 0 12 2 26 20 15 13 9 14 8
+#s 18 12 5 2 15 2 1 20 14 4 6 17 9 4 11 7
+1 14 957
+#s 14 12 5 14 6 4 2 17 14 2 11 10 18 18 16 16
+0
+2 17 660 19 950
+#s 17 10 7 10 12 3 8 18 2 13 11 9 15 6 4 23
+#s 19 12 11 12 2 21 10 6 7 3 8 11 4 4 13 1
+2 9 709 16 592
+#s 9 6 13 9 1 10 27 19 21 12 17 10 19 11 1 9
+#s 16 4 0 10 3 3 12 3 6 3 3 14 10 4 1 9
+1 10 974
+#s 10 20 2 6 4 3 17 0 0 10 9 6 11 0 8 5
+0
+1 20 614
+#s 20 2 15 5 1 9 15 3 1 3 14 5 0 6 11 2
+0
+0
+0
+1 5 681
+#s 5 3 1 6 7 9 8 4 19 15 2 0 19 3 9 8
+1 2 817
+#s 2 9 2 18 6 6 13 10 5 13 8 16 10 16 10 4
+0
+0
+0
+0
+2 9 481 11 861
+#s 9 8 15 9 1 10 26 18 19 21 17 9 20 7 2 7
+#s 11 2 6 12 6 17 8 14 12 10 16 17 25 15 3 4
+1 15 951
+#s 15 2 14 11 4 13 17 2 6 6 6 16 7 10 14 7
+1 6 406
+#s 6 6 7 15 15 17 13 3 4 1 1 5 17 0 4 12
+1 14 158
+#s 14 15 3 11 4 7 2 16 14 3 12 12 17 16 16 15
+2 17 1 4 788
+#s 17 9 9 11 11 3 8 15 2 12 9 9 13 6 4 23
+#s 4 2 2 18 7 13 0 8 3 26 13 7 18 9 13 15
+3 8 370 7 905 13 827
+#s 8 9 5 11 19 1 16 7 16 11 9 2 4 5 1 5
+#s 7 2 9 6 16 10 20 4 3 0 4 8 9 1 4 14
+#s 13 9 5 9 6 1 1 1 10 1 19 1 1 3 12 7
+0
+1 18 988
+#s 18 11 7 1 11 0 5 17 14 1 11 24 9 6 12 10
+2 19 918 3 989
+#s 19 12 6 8 3 19 10 7 7 2 8 16 4 5 11 3
+#s 3 6 13 4 4 17 6 8 4 12 0 12 11 4 0 9
 0
 0
 0
 0
 0
 0
+1 9 712
+#s 9 7 13 4 2 11 21 24 18 18 17 7 23 7 9 8
+0
+1 12 457
+#s 12 2 1 2 2 3 10 3 8 11 3 5 6 7 23 2
 0
 0
+3 11 710 2 674 1 464
+#s 11 1 6 9 5 17 11 12 15 12 15 15 24 18 7 4
+#s 2 9 6 16 7 5 11 12 3 14 11 16 5 14 6 4
+#s 1 12 8 13 3 2 20 9 4 7 10 1 1 4 1 2
+0
+1 17 795
+#s 17 11 7 8 14 11 8 18 1 15 3 11 14 7 4 20
 0
 0
-0
-0
-0
+1 14 560
+#s 14 15 4 11 2 6 3 16 14 3 18 15 13 13 18 12
 0
 0
 0

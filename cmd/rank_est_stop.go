@@ -6,11 +6,10 @@ import (
 	"math/rand"
 	"os"
 	"sort"
-	"time"
 )
 
 const (
-	MIN_ESTIMATE_HISTORY_LEN = 30  //良さそうなのは30
+	MIN_ESTIMATE_HISTORY_LEN = 0   //良さそうなのは30
 	HC_LOOP_COUNT            = 100 //増やせばスコアは伸びるか？
 )
 
@@ -42,7 +41,6 @@ var (
 )
 
 func main() {
-	rand.Seed(time.Now().UnixNano())
 	fmt.Scanf("%d %d %d %d", &N, &M, &K, &R)
 	for i := 0; i < N; i++ {
 		for j := 0; j < K; j++ {
@@ -206,7 +204,8 @@ func findTask(member int) int { //最適なタスクを選定する
 		if memberEstimated[member] == 1 {
 			if longestEndTimeMem != -1 {
 				estEnd := day + scoreTrue(ps[member], t)
-				if longestEndTime < estEnd { //終わるのが遅いやつはだめ
+				if longestEndTime < estEnd+3 { //終わるのが遅いやつはだめ
+					fmt.Printf("#dame\n")
 					continue
 				}
 			}
