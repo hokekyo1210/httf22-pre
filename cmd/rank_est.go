@@ -95,7 +95,7 @@ func main() {
 
 		// 学習データが溜まったらパラメータを推定する
 		for _, i := range sortedMembers {
-			if len(memberHistory[i]) > 30 { //良さそうなのは30
+			if len(memberHistory[i]) > 25 { //良さそうなのは30
 				//ここの数値は要調整, ある程度学習データがないと推定がかなり甘くなる
 				estimate(i)
 				memberEstimated[i] = 1
