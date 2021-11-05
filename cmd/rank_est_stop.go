@@ -111,6 +111,9 @@ func main() {
 			}
 		}
 
+		fmt.Printf("#day%d\n", day)
+		fmt.Printf("#longestEndTimeMem = %d\n", longestEndTimeMem)
+
 		for _, i := range sortedMembers {
 			if memberStatus[i] == 1 {
 				continue
@@ -135,6 +138,9 @@ func main() {
 			longestMem := -1
 			for _, i := range sortedMembers {
 				if memberEstimated[i] == -1 {
+					continue
+				}
+				if memberStatus[i] != 1 {
 					continue
 				}
 				endDay := day + scoreTrue(ps[i], memberHistory[i][len(memberHistory[i])-1])
@@ -181,6 +187,7 @@ func main() {
 			t := memberHistory[f][len(memberHistory[f])-1]
 			taskStatus[t] = 2 //taskをdoneに
 			taskEnd[t] = day
+			fmt.Printf("#task end = %d\n", f)
 			if f == longestEndTimeMem {
 				longestEndTime = -1
 				longestEndTimeMem = -1
