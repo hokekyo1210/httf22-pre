@@ -227,7 +227,7 @@ func findTask(member int) int { //最適なタスクを選定する
 		if !canAssign(t) {
 			continue
 		}
-		if memberEstimated[member] == 1 {
+		if memberEstimated[member] == 1 && len(memberHistory[member]) > 20 {
 			if bestRank == -1 {
 				bestRank = rank[t]
 			}
