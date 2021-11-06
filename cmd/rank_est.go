@@ -429,7 +429,7 @@ func writeEstError() error {
 	}
 	defer file.Close()
 
-	_, err = file.WriteString(strconv.Itoa(error))
+	_, err = file.WriteString(strconv.Itoa(error) + "\n")
 	if err != nil {
 		return err
 	}
