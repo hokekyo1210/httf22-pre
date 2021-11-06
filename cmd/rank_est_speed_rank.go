@@ -14,7 +14,7 @@ import (
 const (
 	DEBUG                    = true
 	MIN_ESTIMATE_HISTORY_LEN = 10 //良さそうなのは30
-	HC_LOOP_COUNT            = 50 //増やせばスコアは伸びるか？
+	HC_LOOP_COUNT            = 70 //増やせばスコアは伸びるか？
 )
 
 var (
@@ -232,7 +232,7 @@ func findTask(member int) int { //最適なタスクを選定する
 				bestRank = rank[t]
 			}
 			//スキルが推定されている場合はrankが同じやつリストを一旦作る
-			if bestRank-2 <= rank[t] { //遊びをもたせる実験
+			if bestRank-1 <= rank[t] { //遊びをもたせる実験
 				targets = append(targets, t)
 				tmpScores[t] = scoreTrue(ps[member], t)
 				// bestRank = rank[t]
