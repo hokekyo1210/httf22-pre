@@ -9,7 +9,7 @@ import (
 )
 
 const (
-	MIN_ESTIMATE_HISTORY_LEN = 20  //良さそうなのは30
+	MIN_ESTIMATE_HISTORY_LEN = 30  //良さそうなのは30
 	HC_LOOP_COUNT            = 100 //増やせばスコアは伸びるか？
 )
 
@@ -165,11 +165,10 @@ func main() {
 		}
 		fmt.Fprintf(wtr, "\n")
 
-		for i := 0; i < len(nexta); i++ {
-			m := nexta[i]
-			fmt.Fprintf(wtr, "#s %d", m+1) //予測値を出力
+		for i := 0; i < M; i++ {
+			fmt.Fprintf(wtr, "#s %d", i+1) //予測値を出力
 			for k := 0; k < K; k++ {
-				fmt.Fprintf(wtr, " %d", ps[m][k])
+				fmt.Fprintf(wtr, " %d", ps[i][k])
 			}
 			fmt.Fprintf(wtr, "\n")
 		}

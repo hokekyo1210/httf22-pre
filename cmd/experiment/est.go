@@ -1,15 +1,13 @@
 package main
 
 import (
-	"bufio"
 	"fmt"
 	"math/rand"
-	"os"
-	"sort"
+	"time"
 )
 
 const (
-	MIN_ESTIMATE_HISTORY_LEN = 20  //良さそうなのは30
+	MIN_ESTIMATE_HISTORY_LEN = 25  //良さそうなのは30
 	HC_LOOP_COUNT            = 100 //増やせばスコアは伸びるか？
 )
 
@@ -39,6 +37,7 @@ var (
 )
 
 func main() {
+	rand.Seed(time.Now().UnixNano())
 	fmt.Scanf("%d %d %d %d", &N, &M, &K, &R)
 	for i := 0; i < N; i++ {
 		for j := 0; j < K; j++ {
@@ -54,7 +53,14 @@ func main() {
 		V[v] = append(V[v], u) //タスクvはタスクuに依存している
 	}
 
-	//デバッグ用, memberの真のスキルを読み込む
+	fmt.Printf("#smax = %v\n", sMax)
+	for i := 0; i < M; i++ { //初期解を0でなくsmaxからスタート
+		for k := 0; k < K; k++ {
+			ps[i][k] = sMax[k]
+		}
+	}
+
+	//デバッグ用, memberの真のスキルとメンバーがタスクを実行するのにかかる時間を読み込む
 	for i := 0; i < M; i++ {
 		for k := 0; k < K; k++ {
 			fmt.Scanf("%d", &sTrue[i][k])
@@ -70,116 +76,80 @@ func main() {
 		}
 	}
 
-	//rank計算
-	for t := 0; t < N; t++ { //初期化
-		rank[t] = -1
-	}
-	for t := 0; t < N; t++ {
-		calcRank(t, 0)
-	}
-	for t := 0; t < N; t++ { //rank表を表示
-		fmt.Printf("# %d rank = %d\n", t, rank[t])
-	}
-
-	// rankが大きい順にtaskを並べておく(rankが大きい物はボトルネックになる)
-	for t := 0; t < N; t++ {
-		sortedTasks = append(sortedTasks, t)
-	}
-	sort.Slice(sortedTasks, func(i, j int) bool {
-		return rank[sortedTasks[i]] > rank[sortedTasks[j]]
-	})
-	for _, t := range sortedTasks { //rank表を表示
-		fmt.Printf("# %d rank = %d size = %d\n", t, rank[t], taskSize[t])
-	}
-
-	var wtr = bufio.NewWriter(os.Stdout)
-	var n int
-	var f int
-	day := 0
+	m := 2
+	limit := 100
+	l := 0
 	for {
-		var nexta []int
-		var nextb []int
-
-		//処理したタスクが多い順にmemberをソートする, 優秀なメンバーはたくさんのタスクを処理しがち
-		var sortedMembers []int
-		for i := 0; i < M; i++ {
-			sortedMembers = append(sortedMembers, i)
+		nt := rand.Intn(N)
+		if !canAssign(nt) {
+			continue
 		}
-		sort.Slice(sortedMembers, func(i, j int) bool {
-			return len(memberHistory[sortedMembers[i]]) > len(memberHistory[sortedMembers[j]])
-		})
+		taskStatus[nt] = 2 //完了扱い
 
-		// 学習データが溜まったらパラメータを推定する
-		// working中のメンバーであっても計算を行う, 何度も山登りすることで精度が上がる
-		for _, i := range sortedMembers {
-			if len(memberHistory[i]) > MIN_ESTIMATE_HISTORY_LEN {
-				//ここの数値は要調整, ある程度学習データがないと推定がかなり甘くなる
-				estimate(i)
-				memberEstimated[i] = 1
-			}
-		}
-
-		for _, i := range sortedMembers {
-			if memberStatus[i] == 1 {
-				continue
-			}
-
-			bestTask := findTask(i)
-
-			if bestTask == -1 {
-				continue
-			}
-			nexta = append(nexta, i)
-			nextb = append(nextb, bestTask)
-			taskStatus[bestTask] = 1
-			memberStatus[i] = 1
-			memberHistory[i] = append(memberHistory[i], bestTask)
-			taskStart[bestTask] = day
+		memberHistory[m] = append(memberHistory[m], nt)
+		taskStart[nt] = 0
+		taskEnd[nt] = tTrue[nt][m]
+		// if taskEnd[nt]-taskStart[nt] == 1 {
+		// 	fmt.Printf("#1\n")
+		// 	for k := 0; k < K; k++ {
+		// 		psMin[m][k] = max(psMin[m][k], d[nt][k]-3) //下限が確定
+		// 		ps[m][k] = max(psMin[m][k], d[nt][k])
+		// 	}
+		// }
+		actDay := taskEnd[nt] - taskStart[nt]
+		for k := 0; k < K; k++ {
+			psMin[m][k] = max(psMin[m][k], d[nt][k]-actDay-3) //下限が確定(下振れを考慮)
+			ps[m][k] = max(psMin[m][k], ps[m][k])
 		}
 
-		fmt.Fprintf(wtr, "%d", len(nexta))
-		for i := 0; i < len(nexta); i++ {
-			fmt.Fprintf(wtr, " %d %d", nexta[i]+1, nextb[i]+1) //+1しておかないとインデックスがずれる
-		}
-		fmt.Fprintf(wtr, "\n")
-
-		for i := 0; i < len(nexta); i++ {
-			m := nexta[i]
-			fmt.Fprintf(wtr, "#s %d", m+1) //予測値を出力
-			for k := 0; k < K; k++ {
-				fmt.Fprintf(wtr, " %d", ps[m][k])
-			}
-			fmt.Fprintf(wtr, "\n")
+		if l >= MIN_ESTIMATE_HISTORY_LEN {
+			estimate(m)
 		}
 
-		err := wtr.Flush() //flushしないとだめ
-		if err != nil {
-			fmt.Printf("error %s\n", err.Error())
-			os.Exit(1)
+		//真のスキルとのdiffを確認
+		diff := 0
+		for k := 0; k < K; k++ {
+			diff += (ps[m][k] - sTrue[m][k]) * (ps[m][k] - sTrue[m][k])
 		}
-
-		day++
-
-		fmt.Scanf("%d", &n)
-		if n == -1 {
+		if l%10 == 0 {
+			// trueError := calcError(sTrue[m], m)
+			// actError := calcError(ps[m], m)
+			fmt.Printf("#n = %d diff = %d\n", l, diff)
+			// for k := 0; k < K; k++ {
+			// 	fmt.Printf("#psMin[m][%d] = %d, sTrue[m][%d] = %d, ps[m][%d] = %d\n", k, psMin[m][k], k, sTrue[m][k], k, ps[m][k])
+			// }
+			// fmt.Printf("#trueError = %d, actError = %d\n", trueError, actError)
+		}
+		if l == limit {
 			break
 		}
-		for i := 0; i < n; i++ {
-			fmt.Scanf("%d", &f)
-			f -= 1 //indexを0に揃える
-			memberStatus[f] = 0
-			t := memberHistory[f][len(memberHistory[f])-1]
-			taskStatus[t] = 2 //taskをdoneに
-			taskEnd[t] = day
-
-			//パラメータの下限が確定(下振れを考慮)
-			actDay := taskEnd[t] - taskStart[t]
-			for k := 0; k < K; k++ {
-				psMin[f][k] = max(psMin[f][k], d[t][k]-actDay-3)
-				ps[f][k] = max(psMin[f][k], ps[f][k])
-			}
-		}
+		l++
 	}
+
+	// trueError := calcError(sTrue[m], m)
+	// bef := calcError(ps[m], m)
+	// // for v := 0; v <= 23; v++ {
+	// // 	ps[m][11] = v
+	// // 	af := calcError(ps[m], m)
+	// // 	fmt.Printf("#true = %d, bef = %d, af(%d) = %d\n", trueError, bef, v, af)
+	// // }
+	// // ps[m][0] = 4
+	// // ps[m][2] = 7
+	// ps[m][3] = 4
+	// ps[m][7] = 2
+	// // ps[m][12] = 3
+
+	// ps[m][1] = 13
+	// ps[m][5] = 18
+	// ps[m][8] = 20
+	// ps[m][9] = 23
+	// ps[m][10] = 11
+	// ps[m][11] = 18
+	// ps[m][13] = 15
+	// ps[m][14] = 11
+	// af := calcError(ps[m], m)
+	// fmt.Printf("#true = %d, bef = %d, af = %d\n", trueError, bef, af)
+
 }
 
 func findTask(member int) int { //最適なタスクを選定する
@@ -276,6 +246,14 @@ func estimate(member int) {
 			}
 		} else if error < bestError {
 			success = true
+		} else if bestError < error { //悪くなる場合
+			//学習データが少ないうちは悪い方にも確率で行ってみる
+			p := rand.Float64()
+			prob := prob(bestError, error, len(memberHistory[member]))
+			// fmt.Printf("#%d %d %f\n", bestError, error, prob)
+			if p < prob {
+				success = true
+			}
 		}
 		if success {
 			bestError = error
@@ -301,13 +279,23 @@ func estimate(member int) {
 	}
 }
 
+func prob(before int, after int, n int) float64 {
+	return 0.0
+	// return float64(100-n) / 100.0
+	// return math.Exp(float64((before - after) / (101 - n)))
+}
+
 func calcError(skill [20]int, member int) int {
 	error := 0
 	for _, t := range memberHistory[member] {
 		//今までに実行した全てのタスクから二乗誤差を算出
 		si := scoreTrue(skill, t)
 		ti := taskEnd[t] - taskStart[t]
+		// if ti != 1 && si > 5 {
+		// 	continue
+		// }
 		error += (si - ti) * (si - ti)
+		// error += int(math.Abs(float64(si - ti)))
 	}
 	return error
 }
