@@ -282,17 +282,25 @@ func estimate(member int) {
 	bestError2 = calcError2(bestSkill, member)
 
 	var targetK int
+	var targetK2 int
 	var add bool
 	var error int
 	var success bool
 	l := 0
 	for {
 		targetK = rand.Intn(K)
+		targetK2 = rand.Intn(K)
 		add = rand.Intn(2) == 0
 		if add {
 			now[targetK] = min(sMax[targetK], now[targetK]+1)
+			if targetK2 != targetK {
+				now[targetK2] = max(psMin[member][targetK2], now[targetK2]-1)
+			}
 		} else {
 			now[targetK] = max(psMin[member][targetK], now[targetK]-1)
+			if targetK2 != targetK {
+				now[targetK2] = min(sMax[targetK2], now[targetK2]+1)
+			}
 		}
 
 		success = false
@@ -318,8 +326,14 @@ func estimate(member int) {
 		} else { //巻き戻す
 			if add {
 				now[targetK] = max(psMin[member][targetK], now[targetK]-1)
+				if targetK2 != targetK {
+					now[targetK2] = min(sMax[targetK2], now[targetK2]+1)
+				}
 			} else {
 				now[targetK] = min(sMax[targetK], now[targetK]+1)
+				if targetK2 != targetK {
+					now[targetK2] = max(psMin[member][targetK2], now[targetK2]-1)
+				}
 			}
 		}
 
