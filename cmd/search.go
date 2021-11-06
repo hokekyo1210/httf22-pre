@@ -134,11 +134,13 @@ func main() {
 
 		// 学習データが溜まったらパラメータを推定する
 		// working中のメンバーであっても計算を行う, 何度も山登りすることで精度が上がる
+		estimatedMembersNum := 0
 		for _, i := range sortedMembers {
 			if len(memberHistory[i]) > MIN_ESTIMATE_HISTORY_LEN {
 				//ここの数値は要調整, ある程度学習データがないと推定がかなり甘くなる
 				estimate(i)
 				memberEstimated[i] = 1
+				estimatedMembersNum++
 			}
 		}
 
@@ -160,34 +162,41 @@ func main() {
 		fmt.Printf("#canAssign member=%d, task=%d\n", canAssignMemberNum, canAssignTaskNum)
 
 		//推定したスキルを利用してタスクを予約していく
-		for _, t := range canAssignTasks {
-			bestMember := -1
-			bestScore := 10000000
-			for i := 0; i < M; i++ {
-				if memberEstimated[i] == 0 {
-					continue
+		if estimatedMembersNum == M {
+			for _, t := range canAssignTasks {
+				bestMember := -1
+				bestScore := 10000000
+				for i := 0; i < M; i++ {
+					if memberEstimated[i] == 0 {
+						continue
+					}
+					if memberIsBooking[i] != -1 {
+						continue
+					}
+					waitTime := 0
+					if memberStatus[i] == 1 { //仕事中の場合は終わるまでの時間がかかる
+						working := memberHistory[i][len(memberHistory[i])-1]
+						startTime := taskStart[working]
+						endTime := startTime + scoreTrue(ps[i], working)
+						workTime := endTime - startTime + 3 //実際に働くであろう時間(上振れも考慮)
+						waitTime += workTime - (day - startTime)
+					}
+					score := waitTime + scoreTrue(ps[i], t)
+					if score == bestScore && bestMember != -1 {
+						if skillSize(ps[i]) < skillSize(ps[bestMember]) { //スコアが同じ場合はよりスキルが貧弱な方を選択する
+							bestMember = i
+							bestScore = score
+						}
+					} else if score < bestScore {
+						bestMember = i
+						bestScore = score
+					}
 				}
-				if memberIsBooking[i] != -1 {
-					continue
+				if bestMember != -1 {
+					//タスクを予約する
+					memberIsBooking[bestMember] = t
+					taskIsBooked[t] = bestMember
 				}
-				waitTime := 0
-				if memberStatus[i] == 1 { //仕事中の場合は終わるまでの時間がかかる
-					working := memberHistory[i][len(memberHistory[i])-1]
-					startTime := taskStart[working]
-					endTime := startTime + scoreTrue(ps[i], working)
-					workTime := endTime - startTime + 3 //実際に働くであろう時間(上振れも考慮)
-					waitTime += workTime - (day - startTime)
-				}
-				score := waitTime + scoreTrue(ps[i], t)
-				if score < bestScore {
-					bestMember = i
-					bestScore = score
-				}
-			}
-			if bestMember != -1 {
-				//タスクを予約する
-				memberIsBooking[bestMember] = t
-				taskIsBooked[t] = bestMember
 			}
 		}
 
