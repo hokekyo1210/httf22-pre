@@ -87,11 +87,11 @@ jobs:
         id: est-score
       - uses: actions/upload-artifact@v2
         with:
-          name: score-${{matrix.cases}}-${{steps.score.outputs.SCORE}}
+          name: score-${{matrix.cases}}-${{steps.score.outputs.SCORE}}-${{steps.est-score.outputs.EST_SCORE}}
           path: ./score.txt
       - uses: actions/upload-artifact@v2
         with:
-          name: estscore-${{matrix.cases}}-${{steps.est-score.outputs.EST_SCORE}}
+          name: estscore-${{matrix.cases}}
           path: ./estscore.txt
   check-result:
     runs-on: ubuntu-latest
