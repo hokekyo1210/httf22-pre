@@ -18,6 +18,7 @@ const (
 )
 
 var (
+	day             int //現在日時
 	N               int
 	M               int
 	K               int
@@ -110,7 +111,6 @@ func main() {
 	var wtr = bufio.NewWriter(os.Stdout)
 	var n int
 	var f int
-	day := 0
 	for {
 		fmt.Printf("#day %d\n", day)
 		var nexta []int
@@ -293,9 +293,10 @@ func findTask(member int) int { //最適なタスクを選定する
 			//自分以外で最適な人がいるか確認
 			score := scoreTrue(ps[i], bestTask)
 			if score < tmpScores[bestTask] {
-				fmt.Printf("#more better %d %d\n", tmpScores[bestTask], score)
 				//いるのでやらない
+				fmt.Printf("#more better %d %d\n", tmpScores[bestTask], score)
 				return -1
+				// return -1
 			}
 		}
 	}

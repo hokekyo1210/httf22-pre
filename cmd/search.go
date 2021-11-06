@@ -1,3 +1,4 @@
+// rank_est_speed_assign.goをベースに改良
 package main
 
 import (
@@ -12,12 +13,13 @@ import (
 )
 
 const (
-	DEBUG                    = false
+	DEBUG                    = true
 	MIN_ESTIMATE_HISTORY_LEN = 10 //良さそうなのは30
 	HC_LOOP_COUNT            = 50 //増やせばスコアは伸びるか？
 )
 
 var (
+	day             int //現在日時
 	N               int
 	M               int
 	K               int
@@ -26,9 +28,11 @@ var (
 	d               [1000][20]int
 	V               [1000][]int   //依存関係を管理
 	taskStatus      [1000]int     //タスクステータス管理, 0:not yet, 1:working, 2:done
+	taskIsBooked    [1000]int     //タスクが予約されている場合誰に予約されているか格納する
 	memberStatus    [20]int       //メンバーステータス管理, 0:free, 1:working
 	memberHistory   [20][]int     //タスク実行履歴
 	memberEstimated [20]int       //メンバーのスキル推定がされているかどうか
+	memberIsBooking [20]int       //メンバーがタスクを予約している場合, どのタスクを予約しているか格納する
 	ps              [20][20]int   //メンバーのスキルの推定値
 	psMin           [20][20]int   //メンバーのスキルの推定値の下限
 	sTrue           [20][20]int   //メンバーのスキル(本物)
@@ -54,12 +58,16 @@ func main() {
 			sMax[j] = max(sMax[j], d[i][j])
 		}
 		taskSize[i] = size(i)
+		taskIsBooked[i] = -1
 	}
 	for i := 0; i < R; i++ {
 		fmt.Scanf("%d %d", &u, &v)
 		u -= 1 //indexを0に揃える
 		v -= 1
 		V[v] = append(V[v], u) //タスクvはタスクuに依存している
+	}
+	for i := 0; i < M; i++ {
+		memberIsBooking[i] = -1
 	}
 
 	//デバッグ用, memberの真のスキルを読み込む
@@ -110,7 +118,6 @@ func main() {
 	var wtr = bufio.NewWriter(os.Stdout)
 	var n int
 	var f int
-	day := 0
 	for {
 		fmt.Printf("#day %d\n", day)
 		var nexta []int
@@ -138,24 +145,67 @@ func main() {
 		//そもそもassign可能なタスクとassign可能なメンバーを洗い出す
 		canAssignMemberNum := 0
 		canAssignTaskNum := 0
+		var canAssignTasks []int
 		for _, i := range sortedMembers {
 			if memberStatus[i] == 0 {
 				canAssignMemberNum++
 			}
 		}
-		for t := 0; t < N; t++ {
+		for _, t := range sortedTasks {
 			if canAssign(t) {
 				canAssignTaskNum++
+				canAssignTasks = append(canAssignTasks, t)
 			}
 		}
 		fmt.Printf("#canAssign member=%d, task=%d\n", canAssignMemberNum, canAssignTaskNum)
 
+		//推定したスキルを利用してタスクを予約していく
+		for _, t := range canAssignTasks {
+			bestMember := -1
+			bestScore := 10000000
+			for i := 0; i < M; i++ {
+				if memberEstimated[i] == 0 {
+					continue
+				}
+				if memberIsBooking[i] != -1 {
+					continue
+				}
+				waitTime := 0
+				if memberStatus[i] == 1 { //仕事中の場合は終わるまでの時間がかかる
+					working := memberHistory[i][len(memberHistory[i])-1]
+					startTime := taskStart[working]
+					endTime := startTime + scoreTrue(ps[i], working)
+					workTime := endTime - startTime + 3 //実際に働くであろう時間(上振れも考慮)
+					waitTime += workTime - (day - startTime)
+				}
+				score := waitTime + scoreTrue(ps[i], t)
+				if score < bestScore {
+					bestMember = i
+					bestScore = score
+				}
+			}
+			if bestMember != -1 {
+				//タスクを予約する
+				memberIsBooking[bestMember] = t
+				taskIsBooked[t] = bestMember
+			}
+		}
+
 		for _, i := range sortedMembers {
+			bestTask := -1
 			if memberStatus[i] == 1 {
 				continue
 			}
+			if memberIsBooking[i] != -1 {
+				//タスクを予約しているメンバーは暇になり次第実行する
+				bestTask = memberIsBooking[i]
+				memberIsBooking[i] = -1
+				taskIsBooked[bestTask] = -1
+			}
 
-			bestTask := findTask(i)
+			if bestTask == -1 {
+				bestTask = findTask(i)
+			}
 
 			if bestTask == -1 {
 				continue
@@ -293,9 +343,10 @@ func findTask(member int) int { //最適なタスクを選定する
 			//自分以外で最適な人がいるか確認
 			score := scoreTrue(ps[i], bestTask)
 			if score < tmpScores[bestTask] {
-				fmt.Printf("#more better %d %d\n", tmpScores[bestTask], score)
 				//いるのでやらない
+				fmt.Printf("#more better %d %d\n", tmpScores[bestTask], score)
 				return -1
+				// return -1
 			}
 		}
 	}
@@ -306,6 +357,10 @@ func findTask(member int) int { //最適なタスクを選定する
 func canAssign(task int) bool {
 	if taskStatus[task] != 0 {
 		//タスクが終わったか誰かやってる
+		return false
+	}
+	if taskIsBooked[task] != -1 {
+		//タスクが予約されている
 		return false
 	}
 
