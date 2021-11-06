@@ -7,12 +7,13 @@ import (
 	"math/rand"
 	"os"
 	"sort"
+	"strconv"
 )
 
 const (
 	DEBUG                    = true
 	MIN_ESTIMATE_HISTORY_LEN = 30  //良さそうなのは30
-	HC_LOOP_COUNT            = 300 //増やせばスコアは伸びるか？
+	HC_LOOP_COUNT            = 100 //増やせばスコアは伸びるか？
 )
 
 var (
@@ -179,6 +180,13 @@ func main() {
 
 		fmt.Scanf("%d", &n)
 		if n == -1 {
+			if DEBUG {
+				err := writeEstError()
+				if err != nil {
+					fmt.Printf("error %s\n", err.Error())
+					os.Exit(1)
+				}
+			}
 			break
 		}
 		for i := 0; i < n; i++ {
@@ -397,4 +405,34 @@ func skillSize(skill [20]int) int {
 		sum += skill[k]
 	}
 	return sum
+}
+
+func writeEstError() error {
+	error := 0
+	n := 0
+	for i := 0; i < M; i++ {
+		if memberEstimated[i] == 1 {
+			n++
+			for k := 0; k < K; k++ {
+				error += (ps[i][k] - sTrue[i][k]) * (ps[i][k] - sTrue[i][k])
+			}
+		}
+	}
+	if n == 0 {
+		return nil
+	}
+	error /= n
+
+	file, err := os.Create("./estscore.txt")
+	if err != nil {
+		return err
+	}
+	defer file.Close()
+
+	_, err = file.WriteString(strconv.Itoa(error))
+	if err != nil {
+		return err
+	}
+
+	return nil
 }
