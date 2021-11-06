@@ -12,7 +12,7 @@ import (
 
 const (
 	DEBUG                    = true
-	MIN_ESTIMATE_HISTORY_LEN = 0   //良さそうなのは30
+	MIN_ESTIMATE_HISTORY_LEN = 20  //良さそうなのは30
 	HC_LOOP_COUNT            = 100 //増やせばスコアは伸びるか？
 )
 
