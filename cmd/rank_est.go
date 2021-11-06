@@ -278,7 +278,7 @@ func estimate(member int) {
 		now[k] = ps[member][k]
 		bestSkill[k] = ps[member][k]
 	}
-	bestError = calcError(bestSkill, member)
+	bestError = calcError2(bestSkill, member)
 	bestError2 = calcError2(bestSkill, member)
 
 	var targetK int
