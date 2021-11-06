@@ -304,19 +304,20 @@ func estimate(member int) {
 		}
 
 		success = false
-		error = calcError(now, member)
+		error = calcError2(now, member)
 		error2 := calcError2(now, member)
 		if bestError == error {
-			// if skillSize(now) < skillSize(bestSkill) { //エラーが同じ場合はskillがより小規模なもの
-			// 	success = true
-			// }
-			success = true
+			if skillSize(now) < skillSize(bestSkill) { //エラーが同じ場合はskillがより小規模なもの
+				success = true
+			}
+			// success = true
 		} else if error < bestError {
 			success = true
 		}
-		if error2 > bestError2 { //L1エラーがより小規模なもの
-			success = false
-		}
+		_ = bestError2
+		// if error2 > bestError2 { //L1エラーがより小規模なもの
+		// 	success = false
+		// }
 		if success {
 			bestError = error
 			bestError2 = error2
