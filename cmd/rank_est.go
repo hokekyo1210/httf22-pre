@@ -290,7 +290,7 @@ func estimate(member int) {
 	for {
 		targetK = rand.Intn(K)
 		targetK2 = targetK
-		if rand.Intn(3) == 0 {
+		if rand.Intn(2) == 0 {
 			targetK2 = rand.Intn(K)
 		}
 		add = rand.Intn(2) == 0
