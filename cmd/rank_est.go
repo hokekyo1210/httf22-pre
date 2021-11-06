@@ -262,6 +262,7 @@ func canAssign(task int) bool {
 // 山登り法により推定する
 func estimate(member int) {
 	bestError := 10000000000
+	bestError2 := 10000000000
 	var bestSkill [20]int
 	var now [20]int
 	for k := 0; k < K; k++ {
@@ -270,6 +271,7 @@ func estimate(member int) {
 		bestSkill[k] = ps[member][k]
 	}
 	bestError = calcError(bestSkill, member)
+	bestError2 = calcError2(bestSkill, member)
 
 	var targetK int
 	var add bool
@@ -287,6 +289,7 @@ func estimate(member int) {
 
 		success = false
 		error = calcError(now, member)
+		error2 := calcError2(now, member)
 		if bestError == error {
 			if skillSize(now) < skillSize(bestSkill) { //エラーが同じ場合はskillがより小規模なもの
 				success = true
@@ -294,8 +297,12 @@ func estimate(member int) {
 		} else if error < bestError {
 			success = true
 		}
+		if error2 > bestError2 { //L1エラーがより小規模なもの
+			success = false
+		}
 		if success {
 			bestError = error
+			bestError2 = error2
 			for k := 0; k < K; k++ {
 				bestSkill[k] = now[k]
 			}
@@ -324,7 +331,18 @@ func calcError(skill [20]int, member int) int {
 		//今までに実行した全てのタスクから二乗誤差を算出
 		si := scoreTrue(skill, t)
 		ti := taskEnd[t] - taskStart[t]
-		error += (si - ti) * (si - ti) / 1000
+		error += (si - ti) * (si - ti)
+	}
+	return error
+}
+
+func calcError2(skill [20]int, member int) int {
+	error := 0
+	for _, t := range memberHistory[member] {
+		//今までに実行した全てのタスクから絶対値誤差を算出
+		si := scoreTrue(skill, t)
+		ti := taskEnd[t] - taskStart[t]
+		// error += (si - ti) * (si - ti) / 1000
 		error += int(math.Abs(float64(si - ti)))
 	}
 	return error
