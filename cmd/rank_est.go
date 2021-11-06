@@ -305,6 +305,7 @@ func estimate(member int) {
 		} else if error < bestError {
 			success = true
 		}
+		_ = bestError2
 		// if error2 > bestError2 { //L1エラーがより小規模なもの
 		// 	success = false
 		// }
