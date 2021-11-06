@@ -289,7 +289,10 @@ func estimate(member int) {
 	l := 0
 	for {
 		targetK = rand.Intn(K)
-		targetK2 = rand.Intn(K)
+		targetK2 = targetK
+		if rand.Intn(3) == 0 {
+			targetK2 = rand.Intn(K)
+		}
 		add = rand.Intn(2) == 0
 		if add {
 			now[targetK] = min(sMax[targetK], now[targetK]+1)
