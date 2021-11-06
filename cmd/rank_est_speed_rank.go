@@ -227,12 +227,12 @@ func findTask(member int) int { //最適なタスクを選定する
 		if !canAssign(t) {
 			continue
 		}
-		if memberEstimated[member] == 1 && len(memberHistory[member]) > 20 {
+		if memberEstimated[member] == 1 {
 			if bestRank == -1 {
 				bestRank = rank[t]
 			}
 			//スキルが推定されている場合はrankが同じやつリストを一旦作る
-			if bestRank-1 <= rank[t] { //遊びをもたせる実験
+			if bestRank-2 <= rank[t] { //遊びをもたせる実験
 				targets = append(targets, t)
 				tmpScores[t] = scoreTrue(ps[member], t)
 				// bestRank = rank[t]
