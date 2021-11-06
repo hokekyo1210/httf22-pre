@@ -278,7 +278,7 @@ func estimate(member int) {
 		now[k] = ps[member][k]
 		bestSkill[k] = ps[member][k]
 	}
-	bestError = calcError2(bestSkill, member)
+	bestError = calcError(bestSkill, member)
 	bestError2 = calcError2(bestSkill, member)
 
 	var targetK int
@@ -299,16 +299,16 @@ func estimate(member int) {
 		error = calcError(now, member)
 		error2 := calcError2(now, member)
 		if bestError == error {
-			if skillSize(now) < skillSize(bestSkill) { //エラーが同じ場合はskillがより小規模なもの
-				success = true
-			}
+			// if skillSize(now) < skillSize(bestSkill) { //エラーが同じ場合はskillがより小規模なもの
+			// 	success = true
+			// }
+			success = true
 		} else if error < bestError {
 			success = true
 		}
-		_ = bestError2
-		// if error2 > bestError2 { //L1エラーがより小規模なもの
-		// 	success = false
-		// }
+		if error2 > bestError2 { //L1エラーがより小規模なもの
+			success = false
+		}
 		if success {
 			bestError = error
 			bestError2 = error2
