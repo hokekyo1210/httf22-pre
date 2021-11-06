@@ -26,24 +26,24 @@ fn exec(command: &str, args: &Vec<String>) {
 	for i in 0..input.R {
 		writeln!(stdin, "{} {}", input.uv[i].0 + 1, input.uv[i].1 + 1).unwrap();
 	}
-	// for i in 0..input.M {
-	// 	for j in 0..input.K {
-	// 		if j > 0 {
-	// 			write!(stdin, " ").unwrap();
-	// 		}
-	// 		write!(stdin, "{}", input.s[i][j]).unwrap();
-	// 	}
-	// 	writeln!(stdin).unwrap();
-	// }
-	// for i in 0..input.N {
-	// 	for j in 0..input.M {
-	// 		if j > 0 {
-	// 			write!(stdin, " ").unwrap();
-	// 		}
-	// 		write!(stdin, "{}", input.t[i][j]).unwrap();
-	// 	}
-	// 	writeln!(stdin).unwrap();
-	// }
+	for i in 0..input.M {
+		for j in 0..input.K {
+			if j > 0 {
+				write!(stdin, " ").unwrap();
+			}
+			write!(stdin, "{}", input.s[i][j]).unwrap();
+		}
+		writeln!(stdin).unwrap();
+	}
+	for i in 0..input.N {
+		for j in 0..input.M {
+			if j > 0 {
+				write!(stdin, " ").unwrap();
+			}
+			write!(stdin, "{}", input.t[i][j]).unwrap();
+		}
+		writeln!(stdin).unwrap();
+	}
 	stdin.flush().unwrap();
 	let mut depend = vec![vec![]; input.N];
 	for &(u, v) in &input.uv {
