@@ -12,8 +12,8 @@ import (
 
 const (
 	DEBUG                    = true
-	MIN_ESTIMATE_HISTORY_LEN = 20 //良さそうなのは30
-	HC_LOOP_COUNT            = 50 //増やせばスコアは伸びるか？
+	MIN_ESTIMATE_HISTORY_LEN = 20  //良さそうなのは30
+	HC_LOOP_COUNT            = 500 //増やせばスコアは伸びるか？
 )
 
 var (
@@ -290,7 +290,7 @@ func estimate(member int) {
 	for {
 		targetK = rand.Intn(K)
 		targetK2 = targetK
-		if rand.Intn(5) == 0 {
+		if rand.Intn(3) == 0 {
 			targetK2 = rand.Intn(K)
 		}
 		add = rand.Intn(2) == 0
