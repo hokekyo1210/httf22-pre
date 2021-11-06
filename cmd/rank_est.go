@@ -3,12 +3,14 @@ package main
 import (
 	"bufio"
 	"fmt"
+	"math"
 	"math/rand"
 	"os"
 	"sort"
 )
 
 const (
+	DEBUG                    = true
 	MIN_ESTIMATE_HISTORY_LEN = 30  //良さそうなのは30
 	HC_LOOP_COUNT            = 100 //増やせばスコアは伸びるか？
 )
@@ -55,18 +57,20 @@ func main() {
 	}
 
 	//デバッグ用, memberの真のスキルを読み込む
-	for i := 0; i < M; i++ {
-		for k := 0; k < K; k++ {
-			fmt.Scanf("%d", &sTrue[i][k])
-			if sTrue[i][k] > sMax[k] {
-				sTrue[i][k] = sMax[k]
+	if DEBUG {
+		for i := 0; i < M; i++ {
+			for k := 0; k < K; k++ {
+				fmt.Scanf("%d", &sTrue[i][k])
+				if sTrue[i][k] > sMax[k] {
+					sTrue[i][k] = sMax[k]
+				}
 			}
 		}
-	}
 
-	for t := 0; t < N; t++ {
-		for i := 0; i < M; i++ {
-			fmt.Scanf("%d", &tTrue[t][i])
+		for t := 0; t < N; t++ {
+			for i := 0; i < M; i++ {
+				fmt.Scanf("%d", &tTrue[t][i])
+			}
 		}
 	}
 
@@ -143,13 +147,26 @@ func main() {
 		}
 		fmt.Fprintf(wtr, "\n")
 
-		for i := 0; i < len(nexta); i++ {
-			m := nexta[i]
-			fmt.Fprintf(wtr, "#s %d", m+1) //予測値を出力
-			for k := 0; k < K; k++ {
-				fmt.Fprintf(wtr, " %d", ps[m][k])
+		if DEBUG {
+			error := 0
+			n := 0
+			for i := 0; i < M; i++ {
+				fmt.Fprintf(wtr, "#s %d", i+1) //予測値を出力
+				for k := 0; k < K; k++ {
+					fmt.Fprintf(wtr, " %d", ps[i][k])
+				}
+				if memberEstimated[i] == 1 {
+					n++
+					for k := 0; k < K; k++ {
+						error += (ps[i][k] - sTrue[i][k]) * (ps[i][k] - sTrue[i][k])
+					}
+				}
+				fmt.Fprintf(wtr, "\n")
 			}
-			fmt.Fprintf(wtr, "\n")
+			if n != 0 {
+				error /= n
+				fmt.Printf("#estimate error = %d\n", error)
+			}
 		}
 
 		err := wtr.Flush() //flushしないとだめ
@@ -307,7 +324,8 @@ func calcError(skill [20]int, member int) int {
 		//今までに実行した全てのタスクから二乗誤差を算出
 		si := scoreTrue(skill, t)
 		ti := taskEnd[t] - taskStart[t]
-		error += (si - ti) * (si - ti)
+		error += (si - ti) * (si - ti) / 1000
+		error += int(math.Abs(float64(si - ti)))
 	}
 	return error
 }
