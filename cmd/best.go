@@ -6,6 +6,7 @@ import (
 	"math/rand"
 	"os"
 	"sort"
+	"strconv"
 )
 
 var (
@@ -145,6 +146,11 @@ func main() {
 
 		fmt.Scanf("%d", &n)
 		if n == -1 {
+			err := writeEstError()
+			if err != nil {
+				fmt.Printf("error %s\n", err.Error())
+				os.Exit(1)
+			}
 			break
 		}
 		for i := 0; i < n; i++ {
@@ -337,4 +343,34 @@ func skillSize(skill [20]int) int {
 		sum += skill[k]
 	}
 	return sum
+}
+
+func writeEstError() error {
+	error := 0
+	n := 0
+	for i := 0; i < M; i++ {
+		if memberEstimated[i] == 1 {
+			n++
+			for k := 0; k < K; k++ {
+				error += (ps[i][k] - sTrue[i][k]) * (ps[i][k] - sTrue[i][k])
+			}
+		}
+	}
+	if n == 0 {
+		return nil
+	}
+	error /= n
+
+	file, err := os.Create("./estscore.txt")
+	if err != nil {
+		return err
+	}
+	defer file.Close()
+
+	_, err = file.WriteString(strconv.Itoa(error) + "\n")
+	if err != nil {
+		return err
+	}
+
+	return nil
 }
