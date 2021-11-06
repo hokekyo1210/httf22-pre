@@ -101,9 +101,6 @@ func main() {
 	sort.Slice(sortedTasks, func(i, j int) bool {
 		a := sortedTasks[i]
 		b := sortedTasks[j]
-		if rank[a] == rank[b] {
-			return rank2[a] > rank2[b]
-		}
 		return rank[a] > rank[b]
 	})
 	for _, t := range sortedTasks { //rank表を表示
@@ -282,6 +279,24 @@ func findTask(member int) int { //最適なタスクを選定する
 			}
 		} else if tmpScores[t] < tmpScores[bestTask] { //スコアが低い方優先
 			bestTask = t
+		}
+	}
+
+	if bestTask != -1 {
+		for i := 0; i < M; i++ {
+			if memberStatus[i] == 1 || i == member {
+				continue
+			}
+			if memberEstimated[i] == 0 {
+				continue
+			}
+			//自分以外で最適な人がいるか確認
+			score := scoreTrue(ps[i], bestTask)
+			if score < tmpScores[bestTask] {
+				fmt.Printf("#more better %d %d\n", tmpScores[bestTask], score)
+				//いるのでやらない
+				return -1
+			}
 		}
 	}
 

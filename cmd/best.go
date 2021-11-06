@@ -3,10 +3,18 @@ package main
 import (
 	"bufio"
 	"fmt"
+	"math"
 	"math/rand"
 	"os"
 	"sort"
 	"strconv"
+	"time"
+)
+
+const (
+	DEBUG                    = false
+	MIN_ESTIMATE_HISTORY_LEN = 10 //良さそうなのは30
+	HC_LOOP_COUNT            = 50 //増やせばスコアは伸びるか？
 )
 
 var (
@@ -16,20 +24,25 @@ var (
 	R               int
 	u, v            int
 	d               [1000][20]int
-	V               [1000][]int //依存関係を管理
-	taskStatus      [1000]int   //タスクステータス管理, 0:not yet, 1:working, 2:done
-	memberStatus    [20]int     //メンバーステータス管理, 0:free, 1:working
-	memberHistory   [20][]int   //タスク実行履歴
-	memberEstimated [20]int     //メンバーのスキル推定がされているかどうか
-	ps              [20][20]int //メンバーのスキルの推定値
-	sTrue           [20][20]int //メンバーのスキル(本物)
-	taskStart       [1000]int   //タスクを開始した時刻
-	taskEnd         [1000]int   //タスクを終了した時刻
-	taskSize        [1000]int   //タスクの大きさ
-	rank            [1000]int   //タスクの依存関係の深さ
-	sMax            int         //sの取りうる上限
-	sortedTasks     []int       //rank順にソートされたタスク
-	tmpScores       [1000]int   //一時計算用のテーブル
+	V               [1000][]int   //依存関係を管理
+	taskStatus      [1000]int     //タスクステータス管理, 0:not yet, 1:working, 2:done
+	memberStatus    [20]int       //メンバーステータス管理, 0:free, 1:working
+	memberHistory   [20][]int     //タスク実行履歴
+	memberEstimated [20]int       //メンバーのスキル推定がされているかどうか
+	ps              [20][20]int   //メンバーのスキルの推定値
+	psMin           [20][20]int   //メンバーのスキルの推定値の下限
+	sTrue           [20][20]int   //メンバーのスキル(本物)
+	tTrue           [1000][20]int //メンバーがタスクを処理するのにかかる時間(本物)
+	taskStart       [1000]int     //タスクを開始した時刻
+	taskEnd         [1000]int     //タスクを終了した時刻
+	taskSize        [1000]int     //タスクの大きさ
+	rank            [1000]int     //タスクの依存関係の深さ
+	sMax            [20]int       //s_kの取りうる上限
+	sortedTasks     []int         //rank順にソートされたタスク
+	tmpScores       [1000]int     //一時計算用のテーブル
+
+	allTimeEst time.Duration //推定にかかってる時間
+
 )
 
 func main() {
@@ -37,7 +50,7 @@ func main() {
 	for i := 0; i < N; i++ {
 		for j := 0; j < K; j++ {
 			fmt.Scanf("%d", &d[i][j])
-			sMax = max(sMax, d[i][j])
+			sMax[j] = max(sMax[j], d[i][j])
 		}
 		taskSize[i] = size(i)
 	}
@@ -49,11 +62,22 @@ func main() {
 	}
 
 	//デバッグ用, memberの真のスキルを読み込む
-	// for i := 0; i < M; i++ {
-	// 	for k := 0; k < K; k++ {
-	// 		fmt.Scanf("%d", &sTrue[i][k])
-	// 	}
-	// }
+	if DEBUG {
+		for i := 0; i < M; i++ {
+			for k := 0; k < K; k++ {
+				fmt.Scanf("%d", &sTrue[i][k])
+				if sTrue[i][k] > sMax[k] {
+					sTrue[i][k] = sMax[k]
+				}
+			}
+		}
+
+		for t := 0; t < N; t++ {
+			for i := 0; i < M; i++ {
+				fmt.Scanf("%d", &tTrue[t][i])
+			}
+		}
+	}
 
 	//rank計算
 	for t := 0; t < N; t++ { //初期化
@@ -95,8 +119,9 @@ func main() {
 		})
 
 		// 学習データが溜まったらパラメータを推定する
+		// working中のメンバーであっても計算を行う, 何度も山登りすることで精度が上がる
 		for _, i := range sortedMembers {
-			if len(memberHistory[i]) > 30 { //良さそうなのは30
+			if len(memberHistory[i]) > MIN_ESTIMATE_HISTORY_LEN {
 				//ここの数値は要調整, ある程度学習データがないと推定がかなり甘くなる
 				estimate(i)
 				memberEstimated[i] = 1
@@ -127,13 +152,26 @@ func main() {
 		}
 		fmt.Fprintf(wtr, "\n")
 
-		for i := 0; i < len(nexta); i++ {
-			m := nexta[i]
-			fmt.Fprintf(wtr, "#s %d", m+1) //予測値を出力
-			for k := 0; k < K; k++ {
-				fmt.Fprintf(wtr, " %d", ps[m][k])
+		if DEBUG {
+			error := 0
+			n := 0
+			for i := 0; i < M; i++ {
+				fmt.Fprintf(wtr, "#s %d", i+1) //予測値を出力
+				for k := 0; k < K; k++ {
+					fmt.Fprintf(wtr, " %d", ps[i][k])
+				}
+				if memberEstimated[i] == 1 {
+					n++
+					for k := 0; k < K; k++ {
+						error += (ps[i][k] - sTrue[i][k]) * (ps[i][k] - sTrue[i][k])
+					}
+				}
+				fmt.Fprintf(wtr, "\n")
 			}
-			fmt.Fprintf(wtr, "\n")
+			if n != 0 {
+				error /= n
+				fmt.Printf("#estimate error = %d\n", error)
+			}
 		}
 
 		err := wtr.Flush() //flushしないとだめ
@@ -144,12 +182,18 @@ func main() {
 
 		day++
 
+		if DEBUG {
+			fmt.Printf("#allTimeEst = %fs\n", allTimeEst.Seconds())
+		}
+
 		fmt.Scanf("%d", &n)
 		if n == -1 {
-			err := writeEstError()
-			if err != nil {
-				fmt.Printf("error %s\n", err.Error())
-				os.Exit(1)
+			if DEBUG {
+				err := writeEstError()
+				if err != nil {
+					fmt.Printf("error %s\n", err.Error())
+					os.Exit(1)
+				}
 			}
 			break
 		}
@@ -160,6 +204,13 @@ func main() {
 			t := memberHistory[f][len(memberHistory[f])-1]
 			taskStatus[t] = 2 //taskをdoneに
 			taskEnd[t] = day
+
+			//パラメータの下限が確定(下振れを考慮)
+			actDay := taskEnd[t] - taskStart[t]
+			for k := 0; k < K; k++ {
+				psMin[f][k] = max(psMin[f][k], d[t][k]-actDay-3)
+				ps[f][k] = max(psMin[f][k], ps[f][k])
+			}
 		}
 	}
 }
@@ -226,6 +277,7 @@ func canAssign(task int) bool {
 
 // 山登り法により推定する
 func estimate(member int) {
+	startTime := time.Now()
 	bestError := 10000000000
 	var bestSkill [20]int
 	var now [20]int
@@ -237,25 +289,37 @@ func estimate(member int) {
 	bestError = calcError(bestSkill, member)
 
 	var targetK int
+	var targetK2 int
 	var add bool
 	var error int
 	var success bool
 	l := 0
 	for {
 		targetK = rand.Intn(K)
+		targetK2 = targetK
+		if rand.Intn(3) == 0 {
+			targetK2 = rand.Intn(K)
+		}
 		add = rand.Intn(2) == 0
 		if add {
-			now[targetK] = min(sMax, now[targetK]+1)
+			now[targetK] = min(sMax[targetK], now[targetK]+1)
+			if targetK2 != targetK {
+				now[targetK2] = max(psMin[member][targetK2], now[targetK2]-1)
+			}
 		} else {
-			now[targetK] = max(0, now[targetK]-1)
+			now[targetK] = max(psMin[member][targetK], now[targetK]-1)
+			if targetK2 != targetK {
+				now[targetK2] = min(sMax[targetK2], now[targetK2]+1)
+			}
 		}
 
 		success = false
-		error = calcError(now, member)
+		error = calcError2(now, member)
 		if bestError == error {
 			if skillSize(now) < skillSize(bestSkill) { //エラーが同じ場合はskillがより小規模なもの
 				success = true
 			}
+			// success = true
 		} else if error < bestError {
 			success = true
 		}
@@ -266,14 +330,20 @@ func estimate(member int) {
 			}
 		} else { //巻き戻す
 			if add {
-				now[targetK] = max(0, now[targetK]-1)
+				now[targetK] = max(psMin[member][targetK], now[targetK]-1)
+				if targetK2 != targetK {
+					now[targetK2] = min(sMax[targetK2], now[targetK2]+1)
+				}
 			} else {
-				now[targetK] = min(sMax, now[targetK]+1)
+				now[targetK] = min(sMax[targetK], now[targetK]+1)
+				if targetK2 != targetK {
+					now[targetK2] = max(psMin[member][targetK2], now[targetK2]-1)
+				}
 			}
 		}
 
 		l++
-		if l == 100 { //最終的にはタイマーにしたい
+		if l == HC_LOOP_COUNT { //最終的にはタイマーにしたい
 			break
 		}
 	}
@@ -281,6 +351,7 @@ func estimate(member int) {
 	for k := 0; k < K; k++ {
 		ps[member][k] = bestSkill[k]
 	}
+	allTimeEst += time.Now().Sub(startTime)
 }
 
 func calcError(skill [20]int, member int) int {
@@ -290,6 +361,18 @@ func calcError(skill [20]int, member int) int {
 		si := scoreTrue(skill, t)
 		ti := taskEnd[t] - taskStart[t]
 		error += (si - ti) * (si - ti)
+	}
+	return error
+}
+
+func calcError2(skill [20]int, member int) int {
+	error := 0
+	for _, t := range memberHistory[member] {
+		//今までに実行した全てのタスクから絶対値誤差を算出
+		si := scoreTrue(skill, t)
+		ti := taskEnd[t] - taskStart[t]
+		// error += (si - ti) * (si - ti) / 1000
+		error += int(math.Abs(float64(si - ti)))
 	}
 	return error
 }
