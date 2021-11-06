@@ -14,7 +14,7 @@ import (
 const (
 	DEBUG                    = true
 	MIN_ESTIMATE_HISTORY_LEN = 10 //良さそうなのは30
-	HC_LOOP_COUNT            = 70 //増やせばスコアは伸びるか？
+	HC_LOOP_COUNT            = 50 //増やせばスコアは伸びるか？
 )
 
 var (
@@ -37,6 +37,7 @@ var (
 	taskEnd         [1000]int     //タスクを終了した時刻
 	taskSize        [1000]int     //タスクの大きさ
 	rank            [1000]int     //タスクの依存関係の深さ
+	rank2           [1000]int     //タスクの依存関係の深さ2
 	sMax            [20]int       //s_kの取りうる上限
 	sortedTasks     []int         //rank順にソートされたタスク
 	tmpScores       [1000]int     //一時計算用のテーブル
@@ -85,9 +86,12 @@ func main() {
 	}
 	for t := 0; t < N; t++ {
 		calcRank(t, 0)
+		for _, u := range V[t] {
+			rank2[u]++
+		}
 	}
 	for t := 0; t < N; t++ { //rank表を表示
-		fmt.Printf("# %d rank = %d\n", t, rank[t])
+		fmt.Printf("# %d rank = %d, rank2 = %d\n", t, rank[t], rank2[t])
 	}
 
 	// rankが大きい順にtaskを並べておく(rankが大きい物はボトルネックになる)
@@ -95,10 +99,15 @@ func main() {
 		sortedTasks = append(sortedTasks, t)
 	}
 	sort.Slice(sortedTasks, func(i, j int) bool {
-		return rank[sortedTasks[i]] > rank[sortedTasks[j]]
+		a := sortedTasks[i]
+		b := sortedTasks[j]
+		if rank[a] == rank[b] {
+			return rank2[a] > rank2[b]
+		}
+		return rank[a] > rank[b]
 	})
 	for _, t := range sortedTasks { //rank表を表示
-		fmt.Printf("# %d rank = %d size = %d\n", t, rank[t], taskSize[t])
+		fmt.Printf("# %d rank = %d, rank2 = %d, size = %d\n", t, rank[t], rank2[t], taskSize[t])
 	}
 
 	var wtr = bufio.NewWriter(os.Stdout)
@@ -106,6 +115,7 @@ func main() {
 	var f int
 	day := 0
 	for {
+		fmt.Printf("#day %d\n", day)
 		var nexta []int
 		var nextb []int
 
@@ -127,6 +137,21 @@ func main() {
 				memberEstimated[i] = 1
 			}
 		}
+
+		//そもそもassign可能なタスクとassign可能なメンバーを洗い出す
+		canAssignMemberNum := 0
+		canAssignTaskNum := 0
+		for _, i := range sortedMembers {
+			if memberStatus[i] == 0 {
+				canAssignMemberNum++
+			}
+		}
+		for t := 0; t < N; t++ {
+			if canAssign(t) {
+				canAssignTaskNum++
+			}
+		}
+		fmt.Printf("#canAssign member=%d, task=%d\n", canAssignMemberNum, canAssignTaskNum)
 
 		for _, i := range sortedMembers {
 			if memberStatus[i] == 1 {
@@ -228,14 +253,11 @@ func findTask(member int) int { //最適なタスクを選定する
 			continue
 		}
 		if memberEstimated[member] == 1 {
-			if bestRank == -1 {
-				bestRank = rank[t]
-			}
 			//スキルが推定されている場合はrankが同じやつリストを一旦作る
-			if bestRank-1 <= rank[t] { //遊びをもたせる実験
+			if bestRank <= rank[t] {
 				targets = append(targets, t)
 				tmpScores[t] = scoreTrue(ps[member], t)
-				// bestRank = rank[t]
+				bestRank = rank[t]
 			}
 		} else {
 			//スキルが推定されていない場合はrankが高い順に処理
@@ -244,13 +266,17 @@ func findTask(member int) int { //最適なタスクを選定する
 		}
 	}
 
+	if memberEstimated[member] == 1 {
+		fmt.Printf("#len(targets) = %d\n", len(targets))
+	}
+
 	for _, t := range targets {
 		if bestTask == -1 {
 			bestTask = t
 			continue
 		}
-		if tmpScores[t] == tmpScores[bestTask] { //推定値からスコアが低いものを選ぶ
-			if taskSize[bestTask] < taskSize[t] { //スコアが同じ場合はより重たいタスク優先
+		if tmpScores[t] == tmpScores[bestTask] {
+			if taskSize[bestTask] < taskSize[t] { //スコアが同じ場合はより重たいもの
 				bestTask = t
 				continue
 			}
