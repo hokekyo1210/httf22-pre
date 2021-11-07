@@ -132,6 +132,9 @@ func main() {
 				//ここの数値は要調整, ある程度学習データがないと推定がかなり甘くなる
 				estimate(i)
 				memberEstimated[i] = 1
+				for k := 0; k < K; k++ {
+					ps[i][k] = sTrue[i][k]
+				}
 			}
 		}
 

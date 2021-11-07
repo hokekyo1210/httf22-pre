@@ -141,6 +141,9 @@ func main() {
 				estimate(i)
 				memberEstimated[i] = 1
 				estimatedMembersNum++
+				for k := 0; k < K; k++ {
+					ps[i][k] = sTrue[i][k]
+				}
 			}
 		}
 
