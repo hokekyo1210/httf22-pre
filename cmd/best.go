@@ -13,8 +13,8 @@ import (
 
 const (
 	DEBUG                    = true
-	MIN_ESTIMATE_HISTORY_LEN = 10 //良さそうなのは30
-	HC_LOOP_COUNT            = 50 //増やせばスコアは伸びるか？
+	MIN_ESTIMATE_HISTORY_LEN = 10  //良さそうなのは30
+	HC_LOOP_COUNT            = 100 //増やせばスコアは伸びるか？
 )
 
 var (
@@ -330,7 +330,7 @@ func estimate(member int) {
 		now[k] = ps[member][k]
 		bestSkill[k] = ps[member][k]
 	}
-	bestError = calcError2(bestSkill, member)
+	bestError = calcError(bestSkill, member)
 
 	var targetK int
 	var targetK2 int
@@ -358,7 +358,7 @@ func estimate(member int) {
 		}
 
 		success = false
-		error = calcError2(now, member)
+		error = calcError(now, member)
 		if bestError == error {
 			if skillSize(now) < skillSize(bestSkill) { //エラーが同じ場合はskillがより小規模なもの
 				success = true
