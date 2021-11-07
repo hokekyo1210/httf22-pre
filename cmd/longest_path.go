@@ -429,16 +429,16 @@ func calcError2(skill [20]int, member int) int {
 	return error
 }
 
-func calcRank(task int, depth int) {
-	if depth < rank[task] {
+func calcRank(task int, cost int) {
+	if cost < rank[task] {
 		//計算済みのrankの方が上の場合無駄なので省略
 		return
 	}
-	rank[task] = depth
+	rank[task] = cost
 
 	next := V[task]
 	for _, nextT := range next {
-		calcRank(nextT, depth+1)
+		calcRank(nextT, cost+taskSize[nextT])
 	}
 }
 
