@@ -395,7 +395,11 @@ func findTask(member int) int { //最適なタスクを選定する
 			continue
 		}
 		if tmpScores[t] == tmpScores[bestTask] {
-			if taskSize[bestTask] < taskSize[t] { //スコアが同じ場合はより重たいもの
+			// if taskSize[bestTask] < taskSize[t] { //スコアが同じ場合はより重たいもの
+			// 	bestTask = t
+			// 	continue
+			// }
+			if rank2[bestTask] < rank2[t] { //スコアが同じ場合はrank2が大きいもの
 				bestTask = t
 				continue
 			}
