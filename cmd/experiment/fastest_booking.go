@@ -89,13 +89,13 @@ func main() {
 		rank[t] = -1
 	}
 	for t := 0; t < N; t++ {
-		calcRank(t, 0)
+		calcRank2(t, taskSize[t])
 		for _, u := range V[t] {
 			rank2[u]++
 		}
 	}
 	for t := 0; t < N; t++ { //rank表を表示
-		fmt.Printf("# %d rank = %d, rank2 = %d\n", t, rank[t], rank2[t])
+		fmt.Printf("# %d size = %d, rank = %d, rank2 = %d\n", t, taskSize[t], rank[t], rank2[t])
 	}
 
 	// rankが大きい順にtaskを並べておく(rankが大きい物はボトルネックになる)
@@ -152,7 +152,7 @@ func main() {
 				canAssignMemberNum++
 			}
 		}
-		for t := 0; t < N; t++ {
+		for _, t := range sortedTasks {
 			if canAssign(t) {
 				canAssignTaskNum++
 				canAssignTasks = append(canAssignTasks, t)
@@ -160,13 +160,12 @@ func main() {
 		}
 		fmt.Printf("#canAssign member=%d, task=%d\n", canAssignMemberNum, canAssignTaskNum)
 
-		// タスクが極端に少ないときは最適な割り当てを全探索する
-		if estimatedNum == M && canAssignTaskNum < 5 {
-			dfsTargetTasks = canAssignTasks
-			fmt.Printf("#bestAssign score=%d\n", dfsBestAssignMembersEndTime)
+		// ランク高いやつ上位7個から最適な割り当てを全探索する
+		if estimatedNum == M {
+			right := min(5, canAssignTaskNum)
+			dfsTargetTasks = canAssignTasks[:right]
 			dfsBestAssignMembersEndTime = 10000000
-			fmt.Printf("#bestAssign score=%d\n", dfsBestAssignMembersEndTime)
-			for idx := range canAssignTasks {
+			for idx := range dfsTargetTasks {
 				dfsAssignMembers[idx] = -1
 				dfsBestAssignMembers[idx] = -1
 			}
@@ -175,36 +174,43 @@ func main() {
 					continue
 				}
 				for t := 0; t < N; t++ {
+					if taskStatus[t] == 2 {
+						continue
+					}
 					dfsTmpScores[i][t] = scoreTrue(ps[i], t)
 				}
 			}
 			dfsFindBestAssignMembers(0)
 			fmt.Printf("#bestAssign score=%d\n", dfsBestAssignMembersEndTime)
-			for i := 0; i < canAssignTaskNum; i++ {
+			for i := 0; i < len(dfsTargetTasks); i++ {
 				fmt.Printf("#bestAssign task=%d, member=%d\n", dfsTargetTasks[i], dfsBestAssignMembers[i])
 				m := dfsBestAssignMembers[i]
 				t := dfsTargetTasks[i]
+				if m == -1 {
+					continue
+				}
 				memberBookingTask[m] = append(memberBookingTask[m], t)
 				taskIsBookedBy[t] = m
 			}
-		} else {
-			for _, i := range sortedMembers {
-				if memberStatus[i] == 1 {
-					continue
-				}
-				if len(memberBookingTask[i]) != 0 {
-					//タスク予約中なので飛ばす
-					continue
-				}
+		}
 
-				bestTask := findTask(i)
-
-				if bestTask == -1 {
-					continue
-				}
-				memberBookingTask[i] = append(memberBookingTask[i], bestTask)
-				taskIsBookedBy[bestTask] = i
+		//通常の場合
+		for _, i := range sortedMembers {
+			if memberStatus[i] == 1 {
+				continue
 			}
+			if len(memberBookingTask[i]) != 0 {
+				//タスク予約中なので飛ばす
+				continue
+			}
+
+			bestTask := findTask(i)
+
+			if bestTask == -1 {
+				continue
+			}
+			memberBookingTask[i] = append(memberBookingTask[i], bestTask)
+			taskIsBookedBy[bestTask] = i
 		}
 
 		for m := 0; m < M; m++ {
@@ -403,6 +409,9 @@ func findTask(member int) int { //最適なタスクを選定する
 			if memberEstimated[i] == 0 {
 				continue
 			}
+			if len(memberBookingTask[i]) != 0 {
+				continue
+			}
 			//自分以外で最適な人がいるか確認
 			score := scoreTrue(ps[i], bestTask)
 			if score < tmpScores[bestTask] {
@@ -437,6 +446,7 @@ func canAssign(task int) bool {
 }
 
 // 山登り法により推定する
+// 山登り法により推定する
 func estimate(member int) {
 	startTime := time.Now()
 	bestError := 10000000000
@@ -454,7 +464,6 @@ func estimate(member int) {
 	var add bool
 	var error int
 	var success bool
-	var value int
 	l := 0
 	for {
 		targetK = rand.Intn(K)
@@ -463,16 +472,15 @@ func estimate(member int) {
 			targetK2 = rand.Intn(K)
 		}
 		add = rand.Intn(2) == 0
-		value = rand.Intn(2) + 1
 		if add {
-			now[targetK] = min(sMax[targetK], now[targetK]+value)
+			now[targetK] = min(sMax[targetK], now[targetK]+1)
 			if targetK2 != targetK {
-				now[targetK2] = max(psMin[member][targetK2], now[targetK2]-value)
+				now[targetK2] = max(psMin[member][targetK2], now[targetK2]-1)
 			}
 		} else {
-			now[targetK] = max(psMin[member][targetK], now[targetK]-value)
+			now[targetK] = max(psMin[member][targetK], now[targetK]-1)
 			if targetK2 != targetK {
-				now[targetK2] = min(sMax[targetK2], now[targetK2]+value)
+				now[targetK2] = min(sMax[targetK2], now[targetK2]+1)
 			}
 		}
 
@@ -493,14 +501,14 @@ func estimate(member int) {
 			}
 		} else { //巻き戻す
 			if add {
-				now[targetK] = max(psMin[member][targetK], now[targetK]-value)
+				now[targetK] = max(psMin[member][targetK], now[targetK]-1)
 				if targetK2 != targetK {
-					now[targetK2] = min(sMax[targetK2], now[targetK2]+value)
+					now[targetK2] = min(sMax[targetK2], now[targetK2]+1)
 				}
 			} else {
-				now[targetK] = min(sMax[targetK], now[targetK]+value)
+				now[targetK] = min(sMax[targetK], now[targetK]+1)
 				if targetK2 != targetK {
-					now[targetK2] = max(psMin[member][targetK2], now[targetK2]-value)
+					now[targetK2] = max(psMin[member][targetK2], now[targetK2]-1)
 				}
 			}
 		}
@@ -556,6 +564,19 @@ func calcRank(task int, depth int) {
 	next := V[task]
 	for _, nextT := range next {
 		calcRank(nextT, depth+1)
+	}
+}
+
+func calcRank2(task int, cost int) {
+	if cost < rank[task] {
+		//計算済みのrankの方が上の場合無駄なので省略
+		return
+	}
+	rank[task] = cost
+
+	next := V[task]
+	for _, nextT := range next {
+		calcRank2(nextT, cost+taskSize[nextT])
 	}
 }
 
