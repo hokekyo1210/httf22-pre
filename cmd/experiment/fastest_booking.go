@@ -197,7 +197,8 @@ func main() {
 			}
 		}
 
-		//通常の場合
+		//軽そうなやつだけ先に探す
+		foundLightest := false
 		for _, i := range sortedMembers {
 			if memberStatus[i] == 1 {
 				continue
@@ -206,14 +207,37 @@ func main() {
 				//タスク予約中なので飛ばす
 				continue
 			}
-
-			bestTask := findTask(i)
-
-			if bestTask == -1 {
-				continue
+			for _, t := range canAssignTasks {
+				if !canAssign(t) {
+					continue
+				}
+				score := scoreTrue(ps[i], t)
+				if score < 5 {
+					foundLightest = true
+					memberBookingTask[i] = append(memberBookingTask[i], t)
+					taskIsBookedBy[t] = i
+				}
 			}
-			memberBookingTask[i] = append(memberBookingTask[i], bestTask)
-			taskIsBookedBy[bestTask] = i
+		}
+		if !foundLightest {
+			//通常の場合
+			for _, i := range sortedMembers {
+				if memberStatus[i] == 1 {
+					continue
+				}
+				if len(memberBookingTask[i]) != 0 {
+					//タスク予約中なので飛ばす
+					continue
+				}
+
+				bestTask := findTask(i)
+
+				if bestTask == -1 {
+					continue
+				}
+				memberBookingTask[i] = append(memberBookingTask[i], bestTask)
+				taskIsBookedBy[bestTask] = i
+			}
 		}
 
 		for m := 0; m < M; m++ {
@@ -437,36 +461,36 @@ func findTask(member int) int { //最適なタスクを選定する
 				return -1
 			}
 		}
-		// bestWaitMember := -1
-		// bestWaitTimeDiff := 0
-		// for i := 0; i < M; i++ { //workingメンバー用の処理
-		// 	if memberStatus[i] != 1 || i == member {
-		// 		continue
-		// 	}
-		// 	if memberEstimated[i] == 0 {
-		// 		continue
-		// 	}
-		// 	//自分以外で最適な人がいるか確認
-		// 	score := day + calcWaitTime(i) + scoreTrue(ps[i], bestTask)
-		// 	if score < day+tmpScores[bestTask] {
-		// 		diff := day + tmpScores[bestTask] - score
-		// 		if bestWaitTimeDiff < diff {
-		// 			bestWaitMember = i
-		// 			bestWaitTimeDiff = diff
-		// 		}
-		// 		fmt.Printf("#god task = %d, beforeMember = %d, godMember = %d, endDay = %d, before = %d, diff = %d\n", bestTask, member, i, score, day+tmpScores[bestTask], day+tmpScores[bestTask]-score)
-		// 		//いるらしい
-		// 	}
-		// }
-		// if bestWaitMember != -1 {
-		// 	fmt.Printf("#final god task = %d, beforeMember = %d, godMember = %d, bestDiff = %d\n", bestTask, member, bestWaitMember, bestWaitTimeDiff)
-		// 	if bestWaitTimeDiff > 10 {
-		// 		// かなり良さそうなので予約する
-		// 		memberBookingTask[bestWaitMember] = append(memberBookingTask[bestWaitMember], bestTask)
-		// 		taskIsBookedBy[bestTask] = bestWaitMember
-		// 		return -1
-		// 	}
-		// }
+		bestWaitMember := -1
+		bestWaitTimeDiff := 0
+		for i := 0; i < M; i++ { //workingメンバー用の処理
+			if memberStatus[i] != 1 || i == member {
+				continue
+			}
+			if memberEstimated[i] == 0 {
+				continue
+			}
+			//自分以外で最適な人がいるか確認
+			score := day + calcWaitTime(i) + scoreTrue(ps[i], bestTask)
+			if score < day+tmpScores[bestTask] {
+				diff := day + tmpScores[bestTask] - score
+				if bestWaitTimeDiff < diff {
+					bestWaitMember = i
+					bestWaitTimeDiff = diff
+				}
+				fmt.Printf("#god task = %d, beforeMember = %d, godMember = %d, endDay = %d, before = %d, diff = %d\n", bestTask, member, i, score, day+tmpScores[bestTask], day+tmpScores[bestTask]-score)
+				//いるらしい
+			}
+		}
+		if bestWaitMember != -1 {
+			fmt.Printf("#final god task = %d, beforeMember = %d, godMember = %d, bestDiff = %d\n", bestTask, member, bestWaitMember, bestWaitTimeDiff)
+			if bestWaitTimeDiff > 10 {
+				// かなり良さそうなので予約する
+				memberBookingTask[bestWaitMember] = append(memberBookingTask[bestWaitMember], bestTask)
+				taskIsBookedBy[bestTask] = bestWaitMember
+				return -1
+			}
+		}
 	}
 
 	return bestTask
