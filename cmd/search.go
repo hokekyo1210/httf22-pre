@@ -109,6 +109,9 @@ func main() {
 	sort.Slice(sortedTasks, func(i, j int) bool {
 		a := sortedTasks[i]
 		b := sortedTasks[j]
+		if rank[a] == rank[b] {
+			return taskSize[a] > taskSize[b] //ランクが同じ場合は重たいタスク優先
+		}
 		return rank[a] > rank[b]
 	})
 	for _, t := range sortedTasks { //rank表を表示
