@@ -14,8 +14,8 @@ import (
 
 const (
 	DEBUG                    = true
-	MIN_ESTIMATE_HISTORY_LEN = 10 //良さそうなのは30
-	HC_LOOP_COUNT            = 50 //増やせばスコアは伸びるか？
+	MIN_ESTIMATE_HISTORY_LEN = 10  //良さそうなのは30
+	HC_LOOP_COUNT            = 100 //増やせばスコアは伸びるか？
 )
 
 var (
@@ -422,7 +422,7 @@ func estimate(member int) {
 		}
 
 		success = false
-		error = calcError2(now, member)
+		error = calcError(now, member)
 		if bestError == error {
 			if skillSize(now) < skillSize(bestSkill) { //エラーが同じ場合はskillがより小規模なもの
 				success = true
@@ -466,6 +466,9 @@ func calcError(skill [20]int, member int) int {
 	error := 0
 	for _, t := range memberHistory[member] {
 		//今までに実行した全てのタスクから二乗誤差を算出
+		if taskStatus[t] != 2 {
+			continue
+		}
 		si := scoreTrue(skill, t)
 		ti := taskEnd[t] - taskStart[t]
 		error += (si - ti) * (si - ti)
@@ -477,6 +480,9 @@ func calcError2(skill [20]int, member int) int {
 	error := 0
 	for _, t := range memberHistory[member] {
 		//今までに実行した全てのタスクから絶対値誤差を算出
+		if taskStatus[t] != 2 {
+			continue
+		}
 		si := scoreTrue(skill, t)
 		ti := taskEnd[t] - taskStart[t]
 		// error += (si - ti) * (si - ti) / 1000
