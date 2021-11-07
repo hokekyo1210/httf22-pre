@@ -41,6 +41,7 @@ var (
 	taskSize          [1000]int     //タスクの大きさ
 	rank              [1000]int     //タスクの依存関係の深さ
 	rank2             [1000]int     //タスクの依存関係の深さ2
+	rank3             [1000]int     //タスクの依存関係の深さ3
 	sMax              [20]int       //s_kの取りうる上限
 	sortedTasks       []int         //rank順にソートされたタスク
 	tmpScores         [1000]int     //一時計算用のテーブル
@@ -89,13 +90,14 @@ func main() {
 		rank[t] = -1
 	}
 	for t := 0; t < N; t++ {
-		calcRank(t, taskSize[t])
+		calcRank(t, 0)
+		calcRank3(t, taskSize[t])
 		for _, u := range V[t] {
 			rank2[u]++
 		}
 	}
 	for t := 0; t < N; t++ { //rank表を表示
-		fmt.Printf("# %d size = %d, rank = %d, rank2 = %d\n", t, taskSize[t], rank[t], rank2[t])
+		fmt.Printf("# %d size = %d, rank = %d, rank2 = %d, rank3 = %d\n", t, taskSize[t], rank[t], rank2[t], rank3[t])
 	}
 
 	// rankが大きい順にtaskを並べておく(rankが大きい物はボトルネックになる)
@@ -374,7 +376,7 @@ func findTask(member int) int { //最適なタスクを選定する
 				bestRank = rank[t]
 			}
 			//スキルが推定されている場合はrankが同じやつリストを一旦作る
-			if bestRank-1 <= rank[t] {
+			if bestRank <= rank[t] {
 				targets = append(targets, t)
 				tmpScores[t] = scoreTrue(ps[member], t)
 			}
@@ -394,12 +396,12 @@ func findTask(member int) int { //最適なタスクを選定する
 			bestTask = t
 			continue
 		}
-		if rank2[bestTask] == rank2[t] {
+		if rank3[bestTask] == rank3[t] {
 			if tmpScores[t] < tmpScores[bestTask] {
 				bestTask = t
 				continue
 			}
-		} else if rank2[bestTask] < rank2[t] {
+		} else if rank3[bestTask] < rank3[t] {
 			bestTask = t
 		}
 		// if tmpScores[t] == tmpScores[bestTask] {
@@ -407,7 +409,7 @@ func findTask(member int) int { //最適なタスクを選定する
 		// 	// 	bestTask = t
 		// 	// 	continue
 		// 	// }
-		// 	if rank2[bestTask] < rank2[t] { //スコアが同じ場合はrank2が大きいもの
+		// 	if rank3[bestTask] < rank3[t] { //スコアが同じ場合はrank3が大きいもの
 		// 		bestTask = t
 		// 		continue
 		// 	}
@@ -639,16 +641,16 @@ func calcRank(task int, depth int) {
 	}
 }
 
-func calcRank2(task int, cost int) {
-	if cost < rank[task] {
+func calcRank3(task int, cost int) {
+	if cost < rank3[task] {
 		//計算済みのrankの方が上の場合無駄なので省略
 		return
 	}
-	rank[task] = cost
+	rank3[task] = cost
 
 	next := V[task]
 	for _, nextT := range next {
-		calcRank2(nextT, cost+taskSize[nextT])
+		calcRank3(nextT, cost+taskSize[nextT])
 	}
 }
 
