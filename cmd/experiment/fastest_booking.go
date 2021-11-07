@@ -89,7 +89,7 @@ func main() {
 		rank[t] = -1
 	}
 	for t := 0; t < N; t++ {
-		calcRank2(t, taskSize[t])
+		calcRank(t, taskSize[t])
 		for _, u := range V[t] {
 			rank2[u]++
 		}
@@ -161,7 +161,8 @@ func main() {
 		fmt.Printf("#canAssign member=%d, task=%d\n", canAssignMemberNum, canAssignTaskNum)
 
 		// ランク高いやつ上位7個から最適な割り当てを全探索する
-		if estimatedNum == M {
+		// if estimatedNum == M {
+		if false {
 			right := min(5, canAssignTaskNum)
 			dfsTargetTasks = canAssignTasks[:right]
 			dfsBestAssignMembersEndTime = 10000000
@@ -378,7 +379,7 @@ func findTask(member int) int { //最適なタスクを選定する
 		} else {
 			//スキルが推定されていない場合はrankが高い順に処理
 			bestTask = t
-			break
+			return bestTask
 		}
 	}
 
@@ -415,14 +416,58 @@ func findTask(member int) int { //最適なタスクを選定する
 			//自分以外で最適な人がいるか確認
 			score := scoreTrue(ps[i], bestTask)
 			if score < tmpScores[bestTask] {
-				fmt.Printf("#more better %d %d\n", tmpScores[bestTask], score)
+				fmt.Printf("#better %d %d\n", tmpScores[bestTask], score)
 				//いるのでやらない
+				return -1
+			}
+		}
+		bestWaitMember := -1
+		bestWaitTimeDiff := 0
+		for i := 0; i < M; i++ { //workingメンバー用の処理
+			if memberStatus[i] != 1 || i == member {
+				continue
+			}
+			if memberEstimated[i] == 0 {
+				continue
+			}
+			//自分以外で最適な人がいるか確認
+			score := day + calcWaitTime(i) + scoreTrue(ps[i], bestTask)
+			if score < day+tmpScores[bestTask] {
+				diff := day + tmpScores[bestTask] - score
+				if bestWaitTimeDiff < diff {
+					bestWaitMember = i
+					bestWaitTimeDiff = diff
+				}
+				fmt.Printf("#god task = %d, beforeMember = %d, godMember = %d, endDay = %d, before = %d, diff = %d\n", bestTask, member, i, score, day+tmpScores[bestTask], day+tmpScores[bestTask]-score)
+				//いるらしい
+			}
+		}
+		if bestWaitMember != -1 {
+			fmt.Printf("#final god task = %d, beforeMember = %d, godMember = %d, bestDiff = %d\n", bestTask, member, bestWaitMember, bestWaitTimeDiff)
+			if bestWaitTimeDiff > 10 {
+				// かなり良さそうなので予約する
+				memberBookingTask[bestWaitMember] = append(memberBookingTask[bestWaitMember], bestTask)
+				taskIsBookedBy[bestTask] = bestWaitMember
 				return -1
 			}
 		}
 	}
 
 	return bestTask
+}
+
+func calcWaitTime(member int) int { //そのメンバーの再アサインが可能になるまで最短でどれぐらいの時間がかかるか
+	ret := day //いつ終わるか
+	if memberStatus[member] == 1 {
+		working := memberHistory[member][len(memberHistory[member])-1]
+		endTime := taskStart[working] + scoreTrue(ps[member], working) + 3 //上振れも考慮する?
+		ret = endTime
+	}
+	for _, t := range memberBookingTask[member] {
+		endTime := taskStart[t] + scoreTrue(ps[member], t) + 3 //上振れも考慮する?
+		ret += endTime
+	}
+	return ret - day
 }
 
 func canAssign(task int) bool {
