@@ -358,7 +358,7 @@ func estimate(member int) {
 		}
 
 		success = false
-		error = calcError2(now, member)
+		error = calcError(now, member)
 		if bestError == error {
 			if skillSize(now) < skillSize(bestSkill) { //エラーが同じ場合はskillがより小規模なもの
 				success = true
@@ -401,6 +401,9 @@ func estimate(member int) {
 func calcError(skill [20]int, member int) int {
 	error := 0
 	for _, t := range memberHistory[member] {
+		if taskStatus[t] != 2 {
+			continue
+		}
 		//今までに実行した全てのタスクから二乗誤差を算出
 		si := scoreTrue(skill, t)
 		ti := taskEnd[t] - taskStart[t]
