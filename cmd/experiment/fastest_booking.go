@@ -1,4 +1,3 @@
-// rank_est_speed_assign.goをベースに改良
 package main
 
 import (
@@ -14,37 +13,37 @@ import (
 
 const (
 	DEBUG                    = true
-	MIN_ESTIMATE_HISTORY_LEN = 10  //良さそうなのは30
-	HC_LOOP_COUNT            = 100 //増やせばスコアは伸びるか？
+	MIN_ESTIMATE_HISTORY_LEN = 10 //良さそうなのは30
+	HC_LOOP_COUNT            = 50 //増やせばスコアは伸びるか？
 )
 
 var (
-	day             int //現在日時
-	N               int
-	M               int
-	K               int
-	R               int
-	u, v            int
-	d               [1000][20]int
-	V               [1000][]int   //依存関係を管理
-	taskStatus      [1000]int     //タスクステータス管理, 0:not yet, 1:working, 2:done
-	taskIsBooked    [1000]int     //タスクが予約されている場合誰に予約されているか格納する
-	memberStatus    [20]int       //メンバーステータス管理, 0:free, 1:working
-	memberHistory   [20][]int     //タスク実行履歴
-	memberEstimated [20]int       //メンバーのスキル推定がされているかどうか
-	memberIsBooking [20]int       //メンバーがタスクを予約している場合, どのタスクを予約しているか格納する
-	ps              [20][20]int   //メンバーのスキルの推定値
-	psMin           [20][20]int   //メンバーのスキルの推定値の下限
-	sTrue           [20][20]int   //メンバーのスキル(本物)
-	tTrue           [1000][20]int //メンバーがタスクを処理するのにかかる時間(本物)
-	taskStart       [1000]int     //タスクを開始した時刻
-	taskEnd         [1000]int     //タスクを終了した時刻
-	taskSize        [1000]int     //タスクの大きさ
-	rank            [1000]int     //タスクの依存関係の深さ
-	rank2           [1000]int     //タスクの依存関係の深さ2
-	sMax            [20]int       //s_kの取りうる上限
-	sortedTasks     []int         //rank順にソートされたタスク
-	tmpScores       [1000]int     //一時計算用のテーブル
+	day               int //現在日時
+	N                 int
+	M                 int
+	K                 int
+	R                 int
+	u, v              int
+	d                 [1000][20]int
+	V                 [1000][]int   //依存関係を管理
+	taskStatus        [1000]int     //タスクステータス管理, 0:not yet, 1:working, 2:done
+	taskIsBookedBy    [1000]int     //タスクが誰に予約されているか
+	memberStatus      [20]int       //メンバーステータス管理, 0:free, 1:working
+	memberHistory     [20][]int     //タスク実行履歴
+	memberEstimated   [20]int       //メンバーのスキル推定がされているかどうか
+	memberBookingTask [20][]int     //メンバーが予約しているタスク一覧
+	ps                [20][20]int   //メンバーのスキルの推定値
+	psMin             [20][20]int   //メンバーのスキルの推定値の下限
+	sTrue             [20][20]int   //メンバーのスキル(本物)
+	tTrue             [1000][20]int //メンバーがタスクを処理するのにかかる時間(本物)
+	taskStart         [1000]int     //タスクを開始した時刻
+	taskEnd           [1000]int     //タスクを終了した時刻
+	taskSize          [1000]int     //タスクの大きさ
+	rank              [1000]int     //タスクの依存関係の深さ
+	rank2             [1000]int     //タスクの依存関係の深さ2
+	sMax              [20]int       //s_kの取りうる上限
+	sortedTasks       []int         //rank順にソートされたタスク
+	tmpScores         [1000]int     //一時計算用のテーブル
 
 	allTimeEst time.Duration //推定にかかってる時間
 
@@ -58,16 +57,13 @@ func main() {
 			sMax[j] = max(sMax[j], d[i][j])
 		}
 		taskSize[i] = size(i)
-		taskIsBooked[i] = -1
+		taskIsBookedBy[i] = -1
 	}
 	for i := 0; i < R; i++ {
 		fmt.Scanf("%d %d", &u, &v)
 		u -= 1 //indexを0に揃える
 		v -= 1
 		V[v] = append(V[v], u) //タスクvはタスクuに依存している
-	}
-	for i := 0; i < M; i++ {
-		memberIsBooking[i] = -1
 	}
 
 	//デバッグ用, memberの真のスキルを読み込む
@@ -109,9 +105,6 @@ func main() {
 	sort.Slice(sortedTasks, func(i, j int) bool {
 		a := sortedTasks[i]
 		b := sortedTasks[j]
-		if rank[a] == rank[b] {
-			return taskSize[a] > taskSize[b] //ランクが同じ場合は重たいタスク優先
-		}
 		return rank[a] > rank[b]
 	})
 	for _, t := range sortedTasks { //rank表を表示
@@ -137,17 +130,17 @@ func main() {
 
 		// 学習データが溜まったらパラメータを推定する
 		// working中のメンバーであっても計算を行う, 何度も山登りすることで精度が上がる
-		estimatedMembersNum := 0
+		estimatedNum := 0
 		for _, i := range sortedMembers {
 			if len(memberHistory[i]) > MIN_ESTIMATE_HISTORY_LEN {
 				//ここの数値は要調整, ある程度学習データがないと推定がかなり甘くなる
 				estimate(i)
 				memberEstimated[i] = 1
-				estimatedMembersNum++
-				for k := 0; k < K; k++ {
-					ps[i][k] = sTrue[i][k]
-				}
+				estimatedNum++
 			}
+		}
+		if estimatedNum == M {
+			fmt.Printf("#all estimated\n")
 		}
 
 		//そもそもassign可能なタスクとassign可能なメンバーを洗い出す
@@ -159,30 +152,7 @@ func main() {
 				canAssignMemberNum++
 			}
 		}
-		sort.Slice(sortedTasks, func(i, j int) bool {
-			a := sortedTasks[i]
-			b := sortedTasks[j]
-			if rank[a] == rank[b] {
-				return taskSize[a] > taskSize[b] //ランクが同じ場合は重たいタスク優先
-			}
-			return rank[a] > rank[b]
-		})
-
-		if estimatedMembersNum > 0 {
-			//rank計算
-			for t := 0; t < N; t++ { //初期化
-				rank[t] = -1
-			}
-			for t := 0; t < N; t++ {
-				calcRank2(t, 0)
-			}
-			for t := 0; t < N; t++ { //rank表を表示
-				if taskStatus[t] == 0 {
-					fmt.Printf("# %d rank = %d\n", t, rank[t])
-				}
-			}
-		}
-		for _, t := range sortedTasks {
+		for t := 0; t < N; t++ {
 			if canAssign(t) {
 				canAssignTaskNum++
 				canAssignTasks = append(canAssignTasks, t)
@@ -190,70 +160,68 @@ func main() {
 		}
 		fmt.Printf("#canAssign member=%d, task=%d\n", canAssignMemberNum, canAssignTaskNum)
 
-		//推定したスキルを利用してタスクを予約していく
-		if estimatedMembersNum == M {
-			for _, t := range canAssignTasks {
-				bestMember := -1
-				bestScore := 10000000
-				for i := 0; i < M; i++ {
-					if memberEstimated[i] == 0 {
-						continue
-					}
-					if memberIsBooking[i] != -1 {
-						continue
-					}
-					waitTime := 0
-					if memberStatus[i] == 1 { //仕事中の場合は終わるまでの時間がかかる
-						working := memberHistory[i][len(memberHistory[i])-1]
-						startTime := taskStart[working]
-						endTime := startTime + scoreTrue(ps[i], working)
-						workTime := endTime - startTime + 3 //実際に働くであろう時間(上振れも考慮)
-						waitTime += workTime - (day - startTime)
-					}
-					score := waitTime + scoreTrue(ps[i], t)
-					if score == bestScore && bestMember != -1 {
-						if skillSize(ps[i]) < skillSize(ps[bestMember]) { //スコアが同じ場合はよりスキルが貧弱な方を選択する
-							bestMember = i
-							bestScore = score
-						}
-					} else if score < bestScore {
-						bestMember = i
-						bestScore = score
-					}
+		// タスクが極端に少ないときは最適な割り当てを全探索する
+		if estimatedNum == M && canAssignTaskNum < 5 {
+			dfsTargetTasks = canAssignTasks
+			fmt.Printf("#bestAssign score=%d\n", dfsBestAssignMembersEndTime)
+			dfsBestAssignMembersEndTime = 10000000
+			fmt.Printf("#bestAssign score=%d\n", dfsBestAssignMembersEndTime)
+			for idx := range canAssignTasks {
+				dfsAssignMembers[idx] = -1
+				dfsBestAssignMembers[idx] = -1
+			}
+			for i := 0; i < M; i++ {
+				if memberEstimated[i] == 0 {
+					continue
 				}
-				if bestMember != -1 {
-					//タスクを予約する
-					memberIsBooking[bestMember] = t
-					taskIsBooked[t] = bestMember
+				for t := 0; t < N; t++ {
+					dfsTmpScores[i][t] = scoreTrue(ps[i], t)
 				}
+			}
+			dfsFindBestAssignMembers(0)
+			fmt.Printf("#bestAssign score=%d\n", dfsBestAssignMembersEndTime)
+			for i := 0; i < canAssignTaskNum; i++ {
+				fmt.Printf("#bestAssign task=%d, member=%d\n", dfsTargetTasks[i], dfsBestAssignMembers[i])
+				m := dfsBestAssignMembers[i]
+				t := dfsTargetTasks[i]
+				memberBookingTask[m] = append(memberBookingTask[m], t)
+				taskIsBookedBy[t] = m
+			}
+		} else {
+			for _, i := range sortedMembers {
+				if memberStatus[i] == 1 {
+					continue
+				}
+				if len(memberBookingTask[i]) != 0 {
+					//タスク予約中なので飛ばす
+					continue
+				}
+
+				bestTask := findTask(i)
+
+				if bestTask == -1 {
+					continue
+				}
+				memberBookingTask[i] = append(memberBookingTask[i], bestTask)
+				taskIsBookedBy[bestTask] = i
 			}
 		}
 
-		for _, i := range sortedMembers {
-			bestTask := -1
-			if memberStatus[i] == 1 {
+		for m := 0; m < M; m++ {
+			if memberStatus[m] == 1 {
 				continue
 			}
-			if memberIsBooking[i] != -1 {
-				//タスクを予約しているメンバーは暇になり次第実行する
-				bestTask = memberIsBooking[i]
-				memberIsBooking[i] = -1
-				taskIsBooked[bestTask] = -1
-			}
-
-			if bestTask == -1 {
-				bestTask = findTask(i)
-			}
-
-			if bestTask == -1 {
+			if len(memberBookingTask[m]) == 0 {
 				continue
 			}
-			nexta = append(nexta, i)
-			nextb = append(nextb, bestTask)
-			taskStatus[bestTask] = 1
-			memberStatus[i] = 1
-			memberHistory[i] = append(memberHistory[i], bestTask)
-			taskStart[bestTask] = day
+			t := memberBookingTask[m][0]
+			memberBookingTask[m] = memberBookingTask[m][1:] //先頭をpop
+			nexta = append(nexta, m)
+			nextb = append(nextb, t)
+			taskStatus[t] = 1
+			memberStatus[m] = 1
+			memberHistory[m] = append(memberHistory[m], t)
+			taskStart[t] = day
 		}
 
 		fmt.Fprintf(wtr, "%d", len(nexta))
@@ -325,6 +293,63 @@ func main() {
 	}
 }
 
+var dfsTmpScores [20][1000]int
+var dfsTargetTasks []int
+var dfsAssignMembers [10]int
+var dfsBestAssignMembers [10]int
+var dfsBestAssignMembersEndTime int //時間だけだと時間内のタスクのアサインが適当になるかも
+func dfsFindBestAssignMembers(depth int) {
+	if depth == len(dfsTargetTasks) {
+		//計算処理
+		maxScore := day
+		for m := 0; m < M; m++ {
+			if memberEstimated[m] == 0 { //推定されていない場合スキップ
+				continue
+			}
+			score := day
+			if memberStatus[m] == 1 {
+				working := memberHistory[m][len(memberHistory[m])-1]
+				endTime := taskStart[working] + dfsTmpScores[m][working] + 3 //上振れも考慮する?
+				score = endTime
+			}
+			mUse := false
+			for i := 0; i < len(dfsTargetTasks); i++ {
+				m2 := dfsAssignMembers[i]
+				if m != m2 {
+					continue
+				}
+				mUse = true
+				score += dfsTmpScores[m][dfsTargetTasks[i]] + 3 //上振れも考慮する?
+			}
+			if mUse {
+				maxScore = max(maxScore, score)
+			}
+		}
+		if maxScore < dfsBestAssignMembersEndTime {
+			dfsBestAssignMembersEndTime = maxScore
+			for i := 0; i < len(dfsTargetTasks); i++ {
+				dfsBestAssignMembers[i] = dfsAssignMembers[i]
+			}
+		}
+		return
+	}
+	for i := 0; i < M; i++ {
+		if memberEstimated[i] == 0 { //推定されていない場合スキップ
+			continue
+		}
+		if len(memberBookingTask[i]) != 0 {
+			//タスクを予約しているので探索に含めない
+			continue
+		}
+		if dfsBestAssignMembersEndTime < day+dfsTmpScores[i][dfsTargetTasks[depth]]+3 { //上振れも考慮する?
+			continue
+		}
+		dfsAssignMembers[depth] = i
+		dfsFindBestAssignMembers(depth + 1)
+		dfsAssignMembers[depth] = -1
+	}
+}
+
 func findTask(member int) int { //最適なタスクを選定する
 	bestTask := -1
 	bestRank := -1
@@ -339,18 +364,15 @@ func findTask(member int) int { //最適なタスクを選定する
 		}
 		if memberEstimated[member] == 1 {
 			//スキルが推定されている場合はrankが同じやつリストを一旦作る
-			if bestTask == -1 {
-				bestTask = t
-				bestRank = rank[t]
-			}
-			if bestRank-50 <= rank[t] {
+			if bestRank <= rank[t] {
 				targets = append(targets, t)
 				tmpScores[t] = scoreTrue(ps[member], t)
+				bestRank = rank[t]
 			}
 		} else {
 			//スキルが推定されていない場合はrankが高い順に処理
 			bestTask = t
-			return bestTask
+			break
 		}
 	}
 
@@ -399,8 +421,8 @@ func canAssign(task int) bool {
 		//タスクが終わったか誰かやってる
 		return false
 	}
-	if taskIsBooked[task] != -1 {
-		//タスクが予約されている
+	if taskIsBookedBy[task] != -1 {
+		//タスクが予約済み
 		return false
 	}
 
@@ -432,6 +454,7 @@ func estimate(member int) {
 	var add bool
 	var error int
 	var success bool
+	var value int
 	l := 0
 	for {
 		targetK = rand.Intn(K)
@@ -440,15 +463,16 @@ func estimate(member int) {
 			targetK2 = rand.Intn(K)
 		}
 		add = rand.Intn(2) == 0
+		value = rand.Intn(2) + 1
 		if add {
-			now[targetK] = min(sMax[targetK], now[targetK]+1)
+			now[targetK] = min(sMax[targetK], now[targetK]+value)
 			if targetK2 != targetK {
-				now[targetK2] = max(psMin[member][targetK2], now[targetK2]-1)
+				now[targetK2] = max(psMin[member][targetK2], now[targetK2]-value)
 			}
 		} else {
-			now[targetK] = max(psMin[member][targetK], now[targetK]-1)
+			now[targetK] = max(psMin[member][targetK], now[targetK]-value)
 			if targetK2 != targetK {
-				now[targetK2] = min(sMax[targetK2], now[targetK2]+1)
+				now[targetK2] = min(sMax[targetK2], now[targetK2]+value)
 			}
 		}
 
@@ -469,14 +493,14 @@ func estimate(member int) {
 			}
 		} else { //巻き戻す
 			if add {
-				now[targetK] = max(psMin[member][targetK], now[targetK]-1)
+				now[targetK] = max(psMin[member][targetK], now[targetK]-value)
 				if targetK2 != targetK {
-					now[targetK2] = min(sMax[targetK2], now[targetK2]+1)
+					now[targetK2] = min(sMax[targetK2], now[targetK2]+value)
 				}
 			} else {
-				now[targetK] = min(sMax[targetK], now[targetK]+1)
+				now[targetK] = min(sMax[targetK], now[targetK]+value)
 				if targetK2 != targetK {
-					now[targetK2] = max(psMin[member][targetK2], now[targetK2]-1)
+					now[targetK2] = max(psMin[member][targetK2], now[targetK2]-value)
 				}
 			}
 		}
@@ -496,10 +520,10 @@ func estimate(member int) {
 func calcError(skill [20]int, member int) int {
 	error := 0
 	for _, t := range memberHistory[member] {
-		//今までに実行した全てのタスクから二乗誤差を算出
 		if taskStatus[t] != 2 {
 			continue
 		}
+		//今までに実行した全てのタスクから二乗誤差を算出
 		si := scoreTrue(skill, t)
 		ti := taskEnd[t] - taskStart[t]
 		error += (si - ti) * (si - ti)
@@ -510,10 +534,10 @@ func calcError(skill [20]int, member int) int {
 func calcError2(skill [20]int, member int) int {
 	error := 0
 	for _, t := range memberHistory[member] {
-		//今までに実行した全てのタスクから絶対値誤差を算出
 		if taskStatus[t] != 2 {
 			continue
 		}
+		//今までに実行した全てのタスクから絶対値誤差を算出
 		si := scoreTrue(skill, t)
 		ti := taskEnd[t] - taskStart[t]
 		// error += (si - ti) * (si - ti) / 1000
@@ -522,38 +546,16 @@ func calcError2(skill [20]int, member int) int {
 	return error
 }
 
-func calcRank(task int, cost int) {
-	if cost < rank[task] {
+func calcRank(task int, depth int) {
+	if depth < rank[task] {
 		//計算済みのrankの方が上の場合無駄なので省略
 		return
 	}
-	rank[task] = cost
+	rank[task] = depth
 
 	next := V[task]
 	for _, nextT := range next {
-		calcRank(nextT, cost+taskSize[nextT])
-	}
-}
-
-func calcRank2(task int, cost int) {
-	if cost < rank[task] {
-		return
-	}
-	rank[task] = cost
-
-	next := V[task]
-	for _, nextT := range next {
-		miniCost := 10000000
-		for i := 0; i < M; i++ {
-			if memberEstimated[i] == 0 {
-				continue
-			}
-			cost := scoreTrue(ps[i], nextT)
-			if cost < miniCost {
-				miniCost = cost
-			}
-		}
-		calcRank(nextT, cost+miniCost)
+		calcRank(nextT, depth+1)
 	}
 }
 
