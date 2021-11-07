@@ -255,7 +255,7 @@ func findTask(member int) int { //最適なタスクを選定する
 				bestTask = t
 				bestRank = rank[t]
 			}
-			if bestRank-20 <= rank[t] {
+			if bestRank-30 <= rank[t] {
 				targets = append(targets, t)
 				tmpScores[t] = scoreTrue(ps[member], t)
 			}
