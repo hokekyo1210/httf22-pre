@@ -144,6 +144,9 @@ func main() {
 				estimate(i)
 				memberEstimated[i] = 1
 				estimatedMembersNum++
+				for k := 0; k < K; k++ {
+					ps[i][k] = sTrue[i][k]
+				}
 			}
 		}
 
@@ -154,6 +157,29 @@ func main() {
 		for _, i := range sortedMembers {
 			if memberStatus[i] == 0 {
 				canAssignMemberNum++
+			}
+		}
+		sort.Slice(sortedTasks, func(i, j int) bool {
+			a := sortedTasks[i]
+			b := sortedTasks[j]
+			if rank[a] == rank[b] {
+				return taskSize[a] > taskSize[b] //ランクが同じ場合は重たいタスク優先
+			}
+			return rank[a] > rank[b]
+		})
+
+		if estimatedMembersNum == M {
+			//rank計算
+			for t := 0; t < N; t++ { //初期化
+				rank[t] = -1
+			}
+			for t := 0; t < N; t++ {
+				calcRank2(t, 0)
+			}
+			for t := 0; t < N; t++ { //rank表を表示
+				if taskStatus[t] == 0 {
+					fmt.Printf("# %d rank = %d\n", t, rank[t])
+				}
 			}
 		}
 		for _, t := range sortedTasks {
@@ -313,15 +339,18 @@ func findTask(member int) int { //最適なタスクを選定する
 		}
 		if memberEstimated[member] == 1 {
 			//スキルが推定されている場合はrankが同じやつリストを一旦作る
-			if bestRank <= rank[t] {
+			if bestTask == -1 {
+				bestTask = t
+				bestRank = rank[t]
+			}
+			if bestRank-50 <= rank[t] {
 				targets = append(targets, t)
 				tmpScores[t] = scoreTrue(ps[member], t)
-				bestRank = rank[t]
 			}
 		} else {
 			//スキルが推定されていない場合はrankが高い順に処理
 			bestTask = t
-			break
+			return bestTask
 		}
 	}
 
@@ -355,10 +384,9 @@ func findTask(member int) int { //最適なタスクを選定する
 			//自分以外で最適な人がいるか確認
 			score := scoreTrue(ps[i], bestTask)
 			if score < tmpScores[bestTask] {
-				//いるのでやらない
 				fmt.Printf("#more better %d %d\n", tmpScores[bestTask], score)
+				//いるのでやらない
 				return -1
-				// return -1
 			}
 		}
 	}
@@ -494,16 +522,35 @@ func calcError2(skill [20]int, member int) int {
 	return error
 }
 
-func calcRank(task int, depth int) {
-	if depth < rank[task] {
+func calcRank(task int, cost int) {
+	if cost < rank[task] {
 		//計算済みのrankの方が上の場合無駄なので省略
 		return
 	}
-	rank[task] = depth
+	rank[task] = cost
 
 	next := V[task]
 	for _, nextT := range next {
-		calcRank(nextT, depth+1)
+		calcRank(nextT, cost+taskSize[nextT])
+	}
+}
+
+func calcRank2(task int, cost int) {
+	if cost < rank[task] {
+		return
+	}
+	rank[task] = cost
+
+	next := V[task]
+	for _, nextT := range next {
+		miniCost := 10000000
+		for i := 0; i < M; i++ {
+			cost := scoreTrue(ps[i], nextT)
+			if cost < miniCost {
+				miniCost = cost
+			}
+		}
+		calcRank(nextT, cost+miniCost)
 	}
 }
 

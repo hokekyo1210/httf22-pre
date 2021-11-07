@@ -262,7 +262,7 @@ func findTask(member int) int { //最適なタスクを選定する
 		} else {
 			//スキルが推定されていない場合はrankが高い順に処理
 			bestTask = t
-			break
+			return bestTask
 		}
 	}
 
