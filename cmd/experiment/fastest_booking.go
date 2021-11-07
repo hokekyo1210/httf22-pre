@@ -394,18 +394,26 @@ func findTask(member int) int { //最適なタスクを選定する
 			bestTask = t
 			continue
 		}
-		if tmpScores[t] == tmpScores[bestTask] {
-			// if taskSize[bestTask] < taskSize[t] { //スコアが同じ場合はより重たいもの
-			// 	bestTask = t
-			// 	continue
-			// }
-			if rank2[bestTask] < rank2[t] { //スコアが同じ場合はrank2が大きいもの
+		if rank2[bestTask] == rank2[t] {
+			if tmpScores[t] < tmpScores[bestTask] {
 				bestTask = t
 				continue
 			}
-		} else if tmpScores[t] < tmpScores[bestTask] { //スコアが低い方優先
+		} else if rank2[bestTask] < rank2[t] {
 			bestTask = t
 		}
+		// if tmpScores[t] == tmpScores[bestTask] {
+		// 	// if taskSize[bestTask] < taskSize[t] { //スコアが同じ場合はより重たいもの
+		// 	// 	bestTask = t
+		// 	// 	continue
+		// 	// }
+		// 	if rank2[bestTask] < rank2[t] { //スコアが同じ場合はrank2が大きいもの
+		// 		bestTask = t
+		// 		continue
+		// 	}
+		// } else if tmpScores[t] < tmpScores[bestTask] { //スコアが低い方優先
+		// 	bestTask = t
+		// }
 	}
 
 	if bestTask != -1 {
