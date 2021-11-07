@@ -251,10 +251,13 @@ func findTask(member int) int { //最適なタスクを選定する
 		}
 		if memberEstimated[member] == 1 {
 			//スキルが推定されている場合はrankが同じやつリストを一旦作る
-			if bestRank <= rank[t] {
+			if bestTask == -1 {
+				bestTask = t
+				bestRank = rank[t]
+			}
+			if bestRank-10 <= rank[t] {
 				targets = append(targets, t)
 				tmpScores[t] = scoreTrue(ps[member], t)
-				bestRank = rank[t]
 			}
 		} else {
 			//スキルが推定されていない場合はrankが高い順に処理
