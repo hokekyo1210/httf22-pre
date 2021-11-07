@@ -212,7 +212,7 @@ func main() {
 					continue
 				}
 				score := scoreTrue(ps[i], t)
-				if score < 5 {
+				if score < 3 {
 					foundLightest = true
 					memberBookingTask[i] = append(memberBookingTask[i], t)
 					taskIsBookedBy[t] = i
