@@ -460,11 +460,24 @@ func calcWaitTime(member int) int { //そのメンバーの再アサインが可
 	ret := day //いつ終わるか
 	if memberStatus[member] == 1 {
 		working := memberHistory[member][len(memberHistory[member])-1]
-		endTime := taskStart[working] + scoreTrue(ps[member], working) + 3 //上振れも考慮する?
+		tmp := scoreTrue(ps[member], working)
+		var endTime int
+		if tmp == 1 {
+			endTime = taskStart[working] + tmp
+		} else {
+			endTime = taskStart[working] + tmp + 3 //上振れも考慮する?
+		}
+
 		ret = endTime
 	}
 	for _, t := range memberBookingTask[member] {
-		endTime := taskStart[t] + scoreTrue(ps[member], t) + 3 //上振れも考慮する?
+		tmp := scoreTrue(ps[member], t)
+		var endTime int
+		if tmp == 1 {
+			endTime = taskStart[t] + tmp
+		} else {
+			endTime = taskStart[t] + tmp + 3 //上振れも考慮する?
+		}
 		ret += endTime
 	}
 	return ret - day
