@@ -110,8 +110,8 @@ func main() {
 		a := sortedTasks[i]
 		b := sortedTasks[j]
 		if rank[a] == rank[b] {
-			// return rank3[a] > rank3[b] //rankが同じ場合はrank3優先
-			return taskSize[a] > taskSize[b]
+			return rank3[a] > rank3[b] //rankが同じ場合はrank3優先
+			// return taskSize[a] > taskSize[b]
 		}
 		return rank[a] > rank[b]
 	})
@@ -640,7 +640,6 @@ func canAssign(task int, bookingSkip bool) bool {
 }
 
 // 山登り法により推定する
-// 山登り法により推定する
 func estimate(member int) {
 	startTime := time.Now()
 	bestError := 10000000000
@@ -658,6 +657,7 @@ func estimate(member int) {
 	var add bool
 	var error int
 	var success bool
+	var value int
 	l := 0
 	for {
 		targetK = rand.Intn(K)
@@ -666,15 +666,16 @@ func estimate(member int) {
 			targetK2 = rand.Intn(K)
 		}
 		add = rand.Intn(2) == 0
+		value = rand.Intn(2) + 1
 		if add {
-			now[targetK] = min(sMax[targetK], now[targetK]+1)
+			now[targetK] = min(sMax[targetK], now[targetK]+value)
 			if targetK2 != targetK {
-				now[targetK2] = max(psMin[member][targetK2], now[targetK2]-1)
+				now[targetK2] = max(psMin[member][targetK2], now[targetK2]-value)
 			}
 		} else {
-			now[targetK] = max(psMin[member][targetK], now[targetK]-1)
+			now[targetK] = max(psMin[member][targetK], now[targetK]-value)
 			if targetK2 != targetK {
-				now[targetK2] = min(sMax[targetK2], now[targetK2]+1)
+				now[targetK2] = min(sMax[targetK2], now[targetK2]+value)
 			}
 		}
 
@@ -695,14 +696,14 @@ func estimate(member int) {
 			}
 		} else { //巻き戻す
 			if add {
-				now[targetK] = max(psMin[member][targetK], now[targetK]-1)
+				now[targetK] = max(psMin[member][targetK], now[targetK]-value)
 				if targetK2 != targetK {
-					now[targetK2] = min(sMax[targetK2], now[targetK2]+1)
+					now[targetK2] = min(sMax[targetK2], now[targetK2]+value)
 				}
 			} else {
-				now[targetK] = min(sMax[targetK], now[targetK]+1)
+				now[targetK] = min(sMax[targetK], now[targetK]+value)
 				if targetK2 != targetK {
-					now[targetK2] = max(psMin[member][targetK2], now[targetK2]-1)
+					now[targetK2] = max(psMin[member][targetK2], now[targetK2]-value)
 				}
 			}
 		}
