@@ -281,7 +281,8 @@ func main() {
 
 func experiment() {
 	//全タスクに対するscoreの総量を全員分計算してみる
-	skill := sTrue
+	// skill := sTrue
+	skill := ps
 	var scoreAll [20]int
 	var taskScoreMax [1000]int
 	var taskScoreMin [1000]int
