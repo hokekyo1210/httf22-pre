@@ -13,7 +13,7 @@ import (
 
 const (
 	DEBUG                    = true
-	MIN_ESTIMATE_HISTORY_LEN = 0  //良さそうなのは30
+	MIN_ESTIMATE_HISTORY_LEN = 3  //良さそうなのは30
 	HC_LOOP_COUNT            = 50 //増やせばスコアは伸びるか？
 	TIMELIMIT                = 1500
 )
@@ -209,6 +209,12 @@ func main() {
 			memberStatus[m] = 1
 			memberHistory[m] = append(memberHistory[m], t)
 			taskStart[t] = day
+			for i := 0; i < len(sortedTasks); i++ {
+				if sortedTasks[i] == t {
+					sortedTasks = append(sortedTasks[:i], sortedTasks[i+1:]...)
+					break
+				}
+			}
 		}
 
 		fmt.Fprintf(wtr, "%d", len(nexta))
@@ -288,15 +294,12 @@ func experiment() {
 	// skill := sTrue
 	skill := ps
 	var scoreAll [20]int
-	var taskScoreMax [1000]int
 	var taskScoreMin [1000]int
-	var taskScoreAvg [1000]int
 	var taskScoreMinMember [1000]int
 	for t := 0; t < N; t++ {
 		if taskStatus[t] != 0 { //未実行タスクのみを対象
 			continue
 		}
-		taskScoreMax[t] = -1
 		taskScoreMinMember[t] = -1
 		taskScoreMin[t] = 100000000
 	}
@@ -309,9 +312,7 @@ func experiment() {
 			}
 			tmpScores2[m][t] = scoreTrue(skill[m], t)
 			s := tmpScores2[m][t]
-			taskScoreMax[t] = max(taskScoreMax[t], s)
 			taskScoreMin[t] = min(taskScoreMin[t], s)
-			taskScoreAvg[t] += s
 			scoreAll[m] += s
 		}
 	}
@@ -343,7 +344,6 @@ func experiment() {
 		if taskStatus[t] != 0 {
 			continue
 		}
-		taskScoreAvg[t] /= M
 		// fmt.Printf("#task = %d, Max = %d, Avg = %d, Min = %d, who = %d, rank = %d\n", t, taskScoreMax[t], taskScoreAvg[t], taskScoreMin[t], taskScoreMinMember[t], rank[t])
 		m := taskScoreMinMember[t]
 		memberBookingTask[m] = append(memberBookingTask[m], t)
