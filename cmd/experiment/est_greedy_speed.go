@@ -13,9 +13,9 @@ import (
 
 const (
 	DEBUG                    = true
-	MIN_ESTIMATE_HISTORY_LEN = 3  //良さそうなのは30
-	HC_LOOP_COUNT            = 50 //増やせばスコアは伸びるか？
-	TIMELIMIT                = 1500
+	MIN_ESTIMATE_HISTORY_LEN = 0  //良さそうなのは30
+	HC_LOOP_COUNT            = 25 //増やせばスコアは伸びるか？
+	TIMELIMIT                = 3000
 )
 
 var (
@@ -304,13 +304,18 @@ func experiment() {
 		taskScoreMin[t] = 100000000
 	}
 	var membersRanking []int
+	d := d
 	for m := 0; m < M; m++ {
 		membersRanking = append(membersRanking, m)
 		for t := 0; t < N; t++ {
 			if taskStatus[t] != 0 { //未実行タスクのみを対象
 				continue
 			}
-			tmpScores2[m][t] = scoreTrue(skill[m], t)
+			tmpScores2[m][t] = 0
+			for k := 0; k < K; k++ {
+				tmpScores2[m][t] += max(0, d[t][k]-skill[m][k])
+			}
+			tmpScores2[m][t] = max(1, tmpScores2[m][t])
 			s := tmpScores2[m][t]
 			taskScoreMin[t] = min(taskScoreMin[t], s)
 			scoreAll[m] += s
