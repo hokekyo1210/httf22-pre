@@ -111,7 +111,7 @@ func main() {
 		b := sortedTasks[j]
 		if rank[a] == rank[b] {
 			// return rank3[a] > rank3[b] //rankが同じ場合はrank3優先
-			// return taskSize[a] > taskSize[b]
+			return taskSize[a] > taskSize[b]
 		}
 		return rank[a] > rank[b]
 	})
@@ -408,7 +408,7 @@ func experiment() {
 				endTime += calcWaitTime(m)
 				// continue //debug用
 			}
-			if deadline+3 < endTime { //期日までに終わらせられないのでだめ, 上振れ考慮してマージン入れた方が良い
+			if deadline+5 < endTime { //期日までに終わらせられないのでだめ, 上振れ考慮してマージン入れた方が良い
 				continue
 			}
 			// fmt.Printf("#member = %d, endTime = %d\n", m, endTime)
