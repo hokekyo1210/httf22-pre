@@ -341,10 +341,14 @@ func experiment() {
 			continue
 		}
 		taskScoreAvg[t] /= M
-		fmt.Printf("#task = %d, Max = %d, Avg = %d, Min = %d, who = %d\n", t, taskScoreMax[t], taskScoreAvg[t], taskScoreMin[t], taskScoreMinMember[t])
+		fmt.Printf("#task = %d, Max = %d, Avg = %d, Min = %d, who = %d, rank = %d\n", t, taskScoreMax[t], taskScoreAvg[t], taskScoreMin[t], taskScoreMinMember[t], rank[t])
 		m := taskScoreMinMember[t]
 		memberBookingTask[m] = append(memberBookingTask[m], t)
 		taskIsBookedBy[t] = m
+	}
+
+	for m := 0; m < M; m++ {
+		fmt.Printf("#member = %d, memberBookingTask = %v\n", m, memberBookingTask[m])
 	}
 
 	// 次のタスクまでの間が十分長い人の中から、最も早くタスクを終えられる人を探してassign
@@ -382,6 +386,9 @@ func experiment() {
 		bestMember := -1
 		for m := 0; m < M; m++ {
 			if memberIsBooking == m {
+				continue
+			}
+			if !countainMembers(remainMember, m) {
 				continue
 			}
 			freeTime := 1000000000
@@ -427,6 +434,15 @@ func experiment() {
 	}
 }
 
+func countainMembers(members []int, member int) bool {
+	for i := 0; i < len(members); i++ {
+		if members[i] == member {
+			return true
+		}
+	}
+	return false
+}
+
 var memo [1000]int
 
 func minimumWaitTimeCanAssignTask(skill [20][20]int, taskScoreMinMember [1000]int, task int) int { //taskがassign可能になるまでに必要な時間の推定値(各タスクは最も得意な人間が実行するものとする)(メモ化可能)
@@ -437,15 +453,16 @@ func minimumWaitTimeCanAssignTask(skill [20][20]int, taskScoreMinMember [1000]in
 	for k := 0; k < len(V[task]); k++ {
 		nextT := V[task][k]
 		if taskStatus[nextT] != 2 { //完了済みのタスクは無視
-			ret = max(ret, minimumWaitTimeCanAssignTask(skill, taskScoreMinMember, nextT))
+			cost := 0
+			if taskStatus[nextT] == 0 {
+				m := taskScoreMinMember[nextT]
+				cost = scoreTrue(skill[m], nextT) //最も得意な人が実行する想定 上振れも考慮する?
+			} else if taskStatus[nextT] == 1 { //実行中タスク
+				m := taskIsBookedBy[nextT]
+				cost = taskStart[nextT] + scoreTrue(skill[m], nextT) - day
+			}
+			ret = max(ret, minimumWaitTimeCanAssignTask(skill, taskScoreMinMember, nextT)+cost)
 		}
-	}
-	if taskStatus[task] == 0 {
-		m := taskScoreMinMember[task]
-		ret += scoreTrue(skill[m], task) //最も得意な人が実行する想定 上振れも考慮する?
-	} else if taskStatus[task] == 1 { //実行中タスク
-		m := taskIsBookedBy[task]
-		ret += taskStart[task] + scoreTrue(skill[m], task) - day
 	}
 	memo[task] = ret
 	return ret
