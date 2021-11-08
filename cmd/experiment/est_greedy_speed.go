@@ -15,7 +15,7 @@ const (
 	DEBUG                    = true
 	MIN_ESTIMATE_HISTORY_LEN = 0  //良さそうなのは30
 	HC_LOOP_COUNT            = 50 //増やせばスコアは伸びるか？
-	TIMELIMIT                = 2000
+	TIMELIMIT                = 1500
 )
 
 var (
