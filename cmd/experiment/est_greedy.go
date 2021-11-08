@@ -48,10 +48,11 @@ var (
 	tmpScores         [1000]int     //一時計算用のテーブル
 
 	allTimeEst time.Duration //推定にかかってる時間
-
+	allTime    time.Duration //全体にかかっている時間
 )
 
 func main() {
+	startAllTime := time.Now()
 	fmt.Scanf("%d %d %d %d", &N, &M, &K, &R)
 	for i := 0; i < N; i++ {
 		for j := 0; j < K; j++ {
@@ -248,6 +249,8 @@ func main() {
 
 		if DEBUG {
 			fmt.Printf("#allTimeEst = %fs\n", allTimeEst.Seconds())
+			allTime = time.Now().Sub(startAllTime)
+			fmt.Printf("#allTimeEst = %fs\n", allTime.Seconds())
 		}
 
 		fmt.Scanf("%d", &n)
@@ -342,7 +345,7 @@ func experiment() {
 			continue
 		}
 		taskScoreAvg[t] /= M
-		fmt.Printf("#task = %d, Max = %d, Avg = %d, Min = %d, who = %d, rank = %d\n", t, taskScoreMax[t], taskScoreAvg[t], taskScoreMin[t], taskScoreMinMember[t], rank[t])
+		// fmt.Printf("#task = %d, Max = %d, Avg = %d, Min = %d, who = %d, rank = %d\n", t, taskScoreMax[t], taskScoreAvg[t], taskScoreMin[t], taskScoreMinMember[t], rank[t])
 		m := taskScoreMinMember[t]
 		memberBookingTask[m] = append(memberBookingTask[m], t)
 		taskIsBookedBy[t] = m
@@ -381,7 +384,7 @@ func experiment() {
 				break
 			}
 		}
-		fmt.Printf("#task = %d, memberIsBooking = %d, trueEndTime = %d\n", t, memberIsBooking, trueEndTime)
+		// fmt.Printf("#task = %d, memberIsBooking = %d, trueEndTime = %d\n", t, memberIsBooking, trueEndTime)
 
 		bestEndTime := 10000000000
 		bestMember := -1
@@ -405,7 +408,7 @@ func experiment() {
 				endTime += calcWaitTime(m)
 				// continue //debug用
 			}
-			if deadline < endTime { //期日までに終わらせられないのでだめ, 上振れ考慮してマージン入れた方が良い
+			if deadline+5 < endTime { //期日までに終わらせられないのでだめ, 上振れ考慮してマージン入れた方が良い
 				continue
 			}
 			// fmt.Printf("#member = %d, endTime = %d\n", m, endTime)
@@ -419,7 +422,7 @@ func experiment() {
 			if memberStatus[bestMember] == 1 {
 				continue //その人が暇になるまで待つ
 			} else {
-				fmt.Printf("#bestMember = %d, bestEndTime = %d\n", bestMember, bestEndTime)
+				// fmt.Printf("#bestMember = %d, bestEndTime = %d\n", bestMember, bestEndTime)
 				deleteBooking(t)
 				memberBookingTask[bestMember] = append([]int{t}, memberBookingTask[bestMember]...)
 				taskIsBookedBy[t] = bestMember
