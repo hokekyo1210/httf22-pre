@@ -143,7 +143,7 @@ func main() {
 		for _, i := range sortedMembers {
 			if len(memberHistory[i]) > MIN_ESTIMATE_HISTORY_LEN {
 				//ここの数値は要調整, ある程度学習データがないと推定がかなり甘くなる
-				if allTime < time.Microsecond*2400 {
+				if allTime < time.Millisecond*2400 {
 					estimate(i)
 				}
 				memberEstimated[i] = 1
