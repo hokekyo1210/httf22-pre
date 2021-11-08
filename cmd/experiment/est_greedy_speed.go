@@ -14,8 +14,8 @@ import (
 const (
 	DEBUG                    = true
 	MIN_ESTIMATE_HISTORY_LEN = 0  //良さそうなのは30
-	HC_LOOP_COUNT            = 25 //増やせばスコアは伸びるか？
-	TIMELIMIT                = 3000
+	HC_LOOP_COUNT            = 50 //増やせばスコアは伸びるか？
+	TIMELIMIT                = 2000
 )
 
 var (
@@ -139,9 +139,9 @@ func main() {
 		for _, i := range sortedMembers {
 			if len(memberHistory[i]) > MIN_ESTIMATE_HISTORY_LEN {
 				//ここの数値は要調整, ある程度学習データがないと推定がかなり甘くなる
-				if allTime < time.Millisecond*TIMELIMIT {
-					estimate(i)
-				}
+				// if allTime < time.Millisecond*TIMELIMIT {
+				estimate(i)
+				// }
 				memberEstimated[i] = 1
 				estimatedNum++
 			}
@@ -166,10 +166,20 @@ func main() {
 		fmt.Printf("#canAssign member=%d, task=%d\n", canAssignMemberNum, canAssignTaskNum)
 
 		//実験中
-		if estimatedNum == M {
+		if estimatedNum == M && allTime <= time.Millisecond*TIMELIMIT {
 			greedyStartTime := time.Now()
 			experiment()
 			allTimeGreedy += time.Now().Sub(greedyStartTime)
+		} else if !experimented && allTime > time.Millisecond*TIMELIMIT {
+			for m := 0; m < M; m++ {
+				for i := 0; i < len(memberBookingTask[m]); i++ {
+					t := memberBookingTask[m][i]
+					taskIsBookedBy[t] = -1
+				}
+				memberBookingTask[m] = []int{}
+			}
+			fmt.Printf("#kaijo\n")
+			experimented = true
 		}
 
 		//通常の場合
