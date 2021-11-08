@@ -12,10 +12,9 @@ import (
 )
 
 const (
-	DEBUG                    = true
-	MIN_ESTIMATE_HISTORY_LEN = 0  //良さそうなのは30
+	DEBUG                    = false
+	MIN_ESTIMATE_HISTORY_LEN = 10 //良さそうなのは30
 	HC_LOOP_COUNT            = 50 //増やせばスコアは伸びるか？
-	TIMELIMIT                = 3000
 )
 
 var (
@@ -47,11 +46,9 @@ var (
 	sMax              [20]int       //s_kの取りうる上限
 	sortedTasks       []int         //rank順にソートされたタスク
 	tmpScores         [1000]int     //一時計算用のテーブル
-	tmpScores2        [20][1000]int //一時計算用のテーブル
 
-	allTimeEst    time.Duration //推定にかかってる時間
-	allTimeGreedy time.Duration //貪欲法にかかってる時間
-	allTime       time.Duration //全体にかかっている時間
+	allTimeEst time.Duration //推定にかかってる時間
+	allTime    time.Duration //全体にかかっている時間
 )
 
 func main() {
@@ -146,9 +143,7 @@ func main() {
 		for _, i := range sortedMembers {
 			if len(memberHistory[i]) > MIN_ESTIMATE_HISTORY_LEN {
 				//ここの数値は要調整, ある程度学習データがないと推定がかなり甘くなる
-				if allTime < time.Millisecond*TIMELIMIT {
-					estimate(i)
-				}
+				estimate(i)
 				memberEstimated[i] = 1
 				estimatedNum++
 			}
@@ -174,9 +169,7 @@ func main() {
 
 		//実験中
 		if estimatedNum == M {
-			greedyStartTime := time.Now()
 			experiment()
-			allTimeGreedy += time.Now().Sub(greedyStartTime)
 		}
 
 		//通常の場合
@@ -255,10 +248,9 @@ func main() {
 		day++
 
 		if DEBUG {
-			allTime = time.Now().Sub(startAllTime)
-			fmt.Printf("#allTime = %fs\n", allTime.Seconds())
 			fmt.Printf("#allTimeEst = %fs\n", allTimeEst.Seconds())
-			fmt.Printf("#allTimeGreedy = %fs\n", allTimeGreedy.Seconds())
+			allTime = time.Now().Sub(startAllTime)
+			fmt.Printf("#allTimeEst = %fs\n", allTime.Seconds())
 		}
 
 		fmt.Scanf("%d", &n)
@@ -314,8 +306,7 @@ func experiment() {
 			if taskStatus[t] != 0 { //未実行タスクのみを対象
 				continue
 			}
-			tmpScores2[m][t] = scoreTrue(skill[m], t)
-			s := tmpScores2[m][t]
+			s := scoreTrue(skill[m], t)
 			taskScoreMax[t] = max(taskScoreMax[t], s)
 			taskScoreMin[t] = min(taskScoreMin[t], s)
 			taskScoreAvg[t] += s
@@ -337,7 +328,7 @@ func experiment() {
 			if taskStatus[t] != 0 { //未実行タスクのみを対象
 				continue
 			}
-			score := tmpScores2[m][t]
+			score := scoreTrue(skill[m], t)
 			if score == taskScoreMin[t] && taskScoreMinMember[t] == -1 {
 				taskScoreMinMember[t] = m
 			}
@@ -412,12 +403,12 @@ func experiment() {
 			deadline := day + freeTime //この日時までには確実に暇でいる必要がある
 			// fmt.Printf("#member = %d, freeTime = %d, deadline = %d\n", m, freeTime, deadline)
 
-			endTime := day + tmpScores2[m][t]
+			endTime := day + scoreTrue(skill[m], t)
 			if memberStatus[m] == 1 {
 				endTime += calcWaitTime(m)
 				// continue //debug用
 			}
-			if deadline+5 < endTime { //期日までに終わらせられないのでだめ, 上振れ考慮してマージン入れた方が良い
+			if deadline-5 < endTime { //期日までに終わらせられないのでだめ, 上振れ考慮してマージン入れた方が良い
 				continue
 			}
 			// fmt.Printf("#member = %d, endTime = %d\n", m, endTime)
@@ -648,6 +639,7 @@ func canAssign(task int, bookingSkip bool) bool {
 	return canAssign
 }
 
+// 山登り法により推定する
 // 山登り法により推定する
 func estimate(member int) {
 	startTime := time.Now()
