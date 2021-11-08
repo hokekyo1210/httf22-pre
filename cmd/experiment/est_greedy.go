@@ -110,8 +110,8 @@ func main() {
 		a := sortedTasks[i]
 		b := sortedTasks[j]
 		if rank[a] == rank[b] {
-			// return rank3[a] > rank3[b] //rankが同じ場合はrank3優先
-			return taskSize[a] > taskSize[b]
+			return rank3[a] > rank3[b] //rankが同じ場合はrank3優先
+			// return taskSize[a] > taskSize[b]
 		}
 		return rank[a] > rank[b]
 	})
