@@ -15,7 +15,7 @@ const (
 	DEBUG                    = true
 	MIN_ESTIMATE_HISTORY_LEN = 0  //良さそうなのは30
 	HC_LOOP_COUNT            = 50 //増やせばスコアは伸びるか？
-	TIMELIMIT                = 3000
+	TIMELIMIT                = 2000
 )
 
 var (
@@ -101,9 +101,6 @@ func main() {
 			rank2[u]++
 		}
 	}
-	for t := 0; t < N; t++ { //rank表を表示
-		fmt.Printf("# %d size = %d, rank = %d, rank2 = %d, rank3 = %d\n", t, taskSize[t], rank[t], rank2[t], rank3[t])
-	}
 
 	// rankが大きい順にtaskを並べておく(rankが大きい物はボトルネックになる)
 	for t := 0; t < N; t++ {
@@ -118,9 +115,6 @@ func main() {
 		}
 		return rank[a] > rank[b]
 	})
-	for _, t := range sortedTasks { //rank表を表示
-		fmt.Printf("# %d rank = %d, rank2 = %d, size = %d\n", t, rank[t], rank2[t], taskSize[t])
-	}
 
 	var wtr = bufio.NewWriter(os.Stdout)
 	var n int
@@ -134,7 +128,6 @@ func main() {
 		var sortedMembers []int
 		for i := 0; i < M; i++ {
 			sortedMembers = append(sortedMembers, i)
-			fmt.Printf("#member = %d, memberStatus = %d\n", i, memberStatus[i])
 		}
 		sort.Slice(sortedMembers, func(i, j int) bool {
 			return len(memberHistory[sortedMembers[i]]) > len(memberHistory[sortedMembers[j]])
@@ -321,15 +314,12 @@ func experiment() {
 			taskScoreAvg[t] += s
 			scoreAll[m] += s
 		}
-		fmt.Printf("#member = %d, scoreAll = %d\n", m, scoreAll[m])
 	}
 
 	// memberをscoreALL小さい順に並べる
 	sort.Slice(membersRanking, func(i, j int) bool {
 		return scoreAll[membersRanking[i]] < scoreAll[membersRanking[j]]
 	})
-
-	fmt.Printf("#ranking = %v\n", membersRanking)
 
 	for i := len(membersRanking) - 1; i != -1; i-- {
 		m := membersRanking[i]
@@ -358,10 +348,6 @@ func experiment() {
 		m := taskScoreMinMember[t]
 		memberBookingTask[m] = append(memberBookingTask[m], t)
 		taskIsBookedBy[t] = m
-	}
-
-	for m := 0; m < M; m++ {
-		fmt.Printf("#member = %d, memberBookingTask = %v\n", m, memberBookingTask[m])
 	}
 
 	// 次のタスクまでの間が十分長い人の中から、最も早くタスクを終えられる人を探してassign
@@ -588,7 +574,6 @@ func findTask(member int) int { //最適なタスクを選定する
 			//自分以外で最適な人がいるか確認
 			score := scoreTrue(ps[i], bestTask)
 			if score < tmpScores[bestTask] {
-				fmt.Printf("#better %d %d\n", tmpScores[bestTask], score)
 				//いるのでやらない
 				return -1
 			}
@@ -666,6 +651,12 @@ func estimate(member int) {
 	var add bool
 	var error int
 	var success bool
+	sMax := sMax
+	psMin := psMin
+	memberHistory := memberHistory
+	d := d
+	taskStart := taskStart
+	taskEnd := taskEnd
 	l := 0
 	for {
 		targetK = rand.Intn(K)
@@ -687,7 +678,22 @@ func estimate(member int) {
 		}
 
 		success = false
-		error = calcError(now, member)
+
+		error = 0
+		for _, t := range memberHistory[member] {
+			if taskStatus[t] != 2 {
+				continue
+			}
+			//今までに実行した全てのタスクから二乗誤差を算出
+			si := 0
+			for k := 0; k < K; k++ {
+				si += max(0, d[t][k]-now[k])
+			}
+			si = max(1, si)
+			ti := taskEnd[t] - taskStart[t]
+			error += (si - ti) * (si - ti)
+		}
+
 		if bestError == error {
 			if skillSize(now) < skillSize(bestSkill) { //エラーが同じ場合はskillがより小規模なもの
 				success = true
