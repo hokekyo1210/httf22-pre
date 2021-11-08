@@ -13,7 +13,7 @@ import (
 
 const (
 	DEBUG                    = true
-	MIN_ESTIMATE_HISTORY_LEN = 10 //良さそうなのは30
+	MIN_ESTIMATE_HISTORY_LEN = 5  //良さそうなのは30
 	HC_LOOP_COUNT            = 50 //増やせばスコアは伸びるか？
 )
 
@@ -657,7 +657,6 @@ func estimate(member int) {
 	var add bool
 	var error int
 	var success bool
-	var value int
 	l := 0
 	for {
 		targetK = rand.Intn(K)
@@ -666,16 +665,15 @@ func estimate(member int) {
 			targetK2 = rand.Intn(K)
 		}
 		add = rand.Intn(2) == 0
-		value = rand.Intn(2) + 1
 		if add {
-			now[targetK] = min(sMax[targetK], now[targetK]+value)
+			now[targetK] = min(sMax[targetK], now[targetK]+1)
 			if targetK2 != targetK {
-				now[targetK2] = max(psMin[member][targetK2], now[targetK2]-value)
+				now[targetK2] = max(psMin[member][targetK2], now[targetK2]-1)
 			}
 		} else {
-			now[targetK] = max(psMin[member][targetK], now[targetK]-value)
+			now[targetK] = max(psMin[member][targetK], now[targetK]-1)
 			if targetK2 != targetK {
-				now[targetK2] = min(sMax[targetK2], now[targetK2]+value)
+				now[targetK2] = min(sMax[targetK2], now[targetK2]+1)
 			}
 		}
 
@@ -696,14 +694,14 @@ func estimate(member int) {
 			}
 		} else { //巻き戻す
 			if add {
-				now[targetK] = max(psMin[member][targetK], now[targetK]-value)
+				now[targetK] = max(psMin[member][targetK], now[targetK]-1)
 				if targetK2 != targetK {
-					now[targetK2] = min(sMax[targetK2], now[targetK2]+value)
+					now[targetK2] = min(sMax[targetK2], now[targetK2]+1)
 				}
 			} else {
-				now[targetK] = min(sMax[targetK], now[targetK]+value)
+				now[targetK] = min(sMax[targetK], now[targetK]+1)
 				if targetK2 != targetK {
-					now[targetK2] = max(psMin[member][targetK2], now[targetK2]-value)
+					now[targetK2] = max(psMin[member][targetK2], now[targetK2]-1)
 				}
 			}
 		}
