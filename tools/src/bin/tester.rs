@@ -139,7 +139,7 @@ fn exec(command: &str, args: &Vec<String>) {
 			let three_secs = Duration::from_secs(3);
 			eprintln!("elapsed: {:?}", instant2 - instant1);
 			if three_secs < (instant2 - instant1){
-				std::process::exit(1)
+				// std::process::exit(1)
 			}
 
 			let mut file = std::fs::File::create("./score.txt").expect("create failed");
