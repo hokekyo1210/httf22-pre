@@ -130,6 +130,7 @@ func main() {
 		var sortedMembers []int
 		for i := 0; i < M; i++ {
 			sortedMembers = append(sortedMembers, i)
+			fmt.Printf("#member = %d, memberStatus = %d\n", i, memberStatus[i])
 		}
 		sort.Slice(sortedMembers, func(i, j int) bool {
 			return len(memberHistory[sortedMembers[i]]) > len(memberHistory[sortedMembers[j]])
@@ -153,59 +154,21 @@ func main() {
 		//そもそもassign可能なタスクとassign可能なメンバーを洗い出す
 		canAssignMemberNum := 0
 		canAssignTaskNum := 0
-		var canAssignTasks []int
 		for _, i := range sortedMembers {
 			if memberStatus[i] == 0 {
 				canAssignMemberNum++
 			}
 		}
 		for _, t := range sortedTasks {
-			if canAssign(t, true) {
+			if canAssign(t, false) {
 				canAssignTaskNum++
-				canAssignTasks = append(canAssignTasks, t)
 			}
 		}
 		fmt.Printf("#canAssign member=%d, task=%d\n", canAssignMemberNum, canAssignTaskNum)
 
-		// ランク高いやつ上位7個から最適な割り当てを全探索する
-		// if estimatedNum == M {
-		if false {
-			right := min(5, canAssignTaskNum)
-			dfsTargetTasks = canAssignTasks[:right]
-			dfsBestAssignMembersEndTime = 10000000
-			for idx := range dfsTargetTasks {
-				dfsAssignMembers[idx] = -1
-				dfsBestAssignMembers[idx] = -1
-			}
-			for i := 0; i < M; i++ {
-				if memberEstimated[i] == 0 {
-					continue
-				}
-				for t := 0; t < N; t++ {
-					if taskStatus[t] == 2 {
-						continue
-					}
-					dfsTmpScores[i][t] = scoreTrue(ps[i], t)
-				}
-			}
-			dfsFindBestAssignMembers(0)
-			fmt.Printf("#bestAssign score=%d\n", dfsBestAssignMembersEndTime)
-			for i := 0; i < len(dfsTargetTasks); i++ {
-				fmt.Printf("#bestAssign task=%d, member=%d\n", dfsTargetTasks[i], dfsBestAssignMembers[i])
-				m := dfsBestAssignMembers[i]
-				t := dfsTargetTasks[i]
-				if m == -1 {
-					continue
-				}
-				memberBookingTask[m] = append(memberBookingTask[m], t)
-				taskIsBookedBy[t] = m
-			}
-		}
-
 		//実験中
-		if estimatedNum == M && !experimented {
+		if estimatedNum == M {
 			experiment()
-			experimented = true
 		}
 
 		//通常の場合
@@ -316,7 +279,7 @@ func main() {
 	}
 }
 
-func experiment() [1000]int {
+func experiment() {
 	//全タスクに対するscoreの総量を全員分計算してみる
 	skill := sTrue
 	var scoreAll [20]int
@@ -355,20 +318,8 @@ func experiment() [1000]int {
 
 	fmt.Printf("#ranking = %v\n", membersRanking)
 
-	var remainTasks []int
-	var taskAssignTable [1000]int
-	for t := 0; t < N; t++ {
-		if taskStatus[t] != 0 { //未実行タスクのみを対象
-			continue
-		}
-		remainTasks = append(remainTasks, t)
-		taskAssignTable[t] = -1 //初期化
-	}
-	allTaskNum := len(remainTasks)
-
 	for i := len(membersRanking) - 1; i != -1; i-- {
 		m := membersRanking[i]
-		useNum := 0
 		for t := 0; t < N; t++ {
 			if taskStatus[t] != 0 { //未実行タスクのみを対象
 				continue
@@ -377,25 +328,7 @@ func experiment() [1000]int {
 			if score == taskScoreMin[t] && taskScoreMinMember[t] == -1 {
 				taskScoreMinMember[t] = m
 			}
-
-			foundIndex := -1
-			for idx, v := range remainTasks {
-				if v == t {
-					foundIndex = idx
-					break
-				}
-			}
-			if foundIndex == -1 {
-				//remainTaskに無い
-				continue
-			}
-			if score < 7 { //scoreが小さければremainTaskから消す
-				useNum++
-				remainTasks = append(remainTasks[:foundIndex], remainTasks[foundIndex+1:]...)
-				taskAssignTable[t] = m
-			}
 		}
-		fmt.Printf("#member = %d, scoreAll = %d, useNum = %d\n", m, scoreAll[m], useNum)
 	}
 
 	// 一番得意なメンバーをassign
@@ -414,64 +347,141 @@ func experiment() [1000]int {
 		taskIsBookedBy[t] = m
 	}
 
-	fmt.Printf("#len(allTask) = %d, len(remainTasks) = %d\n", allTaskNum, len(remainTasks))
-	return taskAssignTable
-}
-
-var dfsTmpScores [20][1000]int
-var dfsTargetTasks []int
-var dfsAssignMembers [10]int
-var dfsBestAssignMembers [10]int
-var dfsBestAssignMembersEndTime int //時間だけだと時間内のタスクのアサインが適当になるかも
-func dfsFindBestAssignMembers(depth int) {
-	if depth == len(dfsTargetTasks) {
-		//計算処理
-		maxScore := day
-		for m := 0; m < M; m++ {
-			if memberEstimated[m] == 0 { //推定されていない場合スキップ
+	// 次のタスクまでの間が十分長い人の中から、最も早くタスクを終えられる人を探してassign
+	var remainMember []int
+	for m := 0; m < M; m++ {
+		if len(memberBookingTask[m]) != 0 {
+			nextT := memberBookingTask[m][0]
+			if canAssign(nextT, false) { //今すぐにassign出来るタスクを抱えているのでこのメンバーは除外
 				continue
 			}
-			score := day
-			if memberStatus[m] == 1 {
-				working := memberHistory[m][len(memberHistory[m])-1]
-				endTime := taskStart[working] + dfsTmpScores[m][working] + 3 //上振れも考慮する?
-				score = endTime
-			}
-			mUse := false
-			for i := 0; i < len(dfsTargetTasks); i++ {
-				m2 := dfsAssignMembers[i]
-				if m != m2 {
-					continue
-				}
-				mUse = true
-				score += dfsTmpScores[m][dfsTargetTasks[i]] + 3 //上振れも考慮する?
-			}
-			if mUse {
-				maxScore = max(maxScore, score)
-			}
 		}
-		if maxScore < dfsBestAssignMembersEndTime {
-			dfsBestAssignMembersEndTime = maxScore
-			for i := 0; i < len(dfsTargetTasks); i++ {
-				dfsBestAssignMembers[i] = dfsAssignMembers[i]
-			}
-		}
-		return
+		remainMember = append(remainMember, m)
 	}
+	for t := 0; t < N; t++ {
+		memo[t] = -1 //メモを初期化
+	}
+	for _, t := range sortedTasks {
+		if len(remainMember) == 0 { //全員assignされたら一応終わる
+			break
+		}
+		if !canAssign(t, false) { //今すぐにassign出来るタスクのみを対象
+			continue
+		}
+		memberIsBooking := taskIsBookedBy[t]               //タスクを予約している人
+		trueEndTime := day + calcWaitTime(memberIsBooking) //本来このタスクが終わる時間
+		for _, bookedT := range memberBookingTask[memberIsBooking] {
+			trueEndTime += scoreTrue(skill[memberIsBooking], bookedT)
+			if bookedT == t {
+				break
+			}
+		}
+		fmt.Printf("#task = %d, memberIsBooking = %d, trueEndTime = %d\n", t, memberIsBooking, trueEndTime)
+
+		bestEndTime := 10000000000
+		bestMember := -1
+		for m := 0; m < M; m++ {
+			if memberIsBooking == m {
+				continue
+			}
+			freeTime := 1000000000
+			if len(memberBookingTask[m]) != 0 {
+				nextTask := memberBookingTask[m][0] // mメンバーが次にやる予定のタスク
+				freeTime = minimumWaitTimeCanAssignTask(skill, taskScoreMinMember, nextTask)
+			}
+			deadline := day + freeTime //この日時までには確実に暇でいる必要がある
+			// fmt.Printf("#member = %d, freeTime = %d, deadline = %d\n", m, freeTime, deadline)
+
+			endTime := day + scoreTrue(skill[m], t)
+			if memberStatus[m] == 1 {
+				endTime += calcWaitTime(m)
+				// continue //debug用
+			}
+			if deadline < endTime { //期日までに終わらせられないのでだめ, 上振れ考慮してマージン入れた方が良い
+				continue
+			}
+			// fmt.Printf("#member = %d, endTime = %d\n", m, endTime)
+			if endTime < bestEndTime {
+				bestEndTime = endTime
+				bestMember = m
+			}
+		}
+		if bestMember != -1 && bestEndTime < trueEndTime { //暇人の中から良さそうな人発見
+			//次のタスクに確定する
+			if memberStatus[bestMember] == 1 {
+				continue //その人が暇になるまで待つ
+			} else {
+				fmt.Printf("#bestMember = %d, bestEndTime = %d\n", bestMember, bestEndTime)
+				deleteBooking(t)
+				memberBookingTask[bestMember] = append([]int{t}, memberBookingTask[bestMember]...)
+				taskIsBookedBy[t] = bestMember
+			}
+
+			for i := 0; i < len(remainMember); i++ {
+				if remainMember[i] == bestMember {
+					remainMember = append(remainMember[:i], remainMember[i+1:]...)
+					break
+				}
+			}
+		}
+	}
+}
+
+var memo [1000]int
+
+func minimumWaitTimeCanAssignTask(skill [20][20]int, taskScoreMinMember [1000]int, task int) int { //taskがassign可能になるまでに必要な時間の推定値(各タスクは最も得意な人間が実行するものとする)(メモ化可能)
+	if memo[task] != -1 {
+		return memo[task]
+	}
+	ret := 0
+	for k := 0; k < len(V[task]); k++ {
+		nextT := V[task][k]
+		if taskStatus[nextT] != 2 { //完了済みのタスクは無視
+			ret = max(ret, minimumWaitTimeCanAssignTask(skill, taskScoreMinMember, nextT))
+		}
+	}
+	if taskStatus[task] == 0 {
+		m := taskScoreMinMember[task]
+		ret += scoreTrue(skill[m], task) //最も得意な人が実行する想定 上振れも考慮する?
+	} else if taskStatus[task] == 1 { //実行中タスク
+		m := taskIsBookedBy[task]
+		ret += taskStart[task] + scoreTrue(skill[m], task) - day
+	}
+	memo[task] = ret
+	return ret
+}
+
+func calcWaitTime(member int) int { //そのメンバーの再アサインが可能になるまで最短でどれぐらいの時間がかかるか(bookingは考慮しない)
+	ret := day //いつ終わるか
+	if memberStatus[member] == 1 {
+		working := memberHistory[member][len(memberHistory[member])-1]
+		tmp := scoreTrue(ps[member], working)
+		var endTime int
+		if tmp == 1 {
+			endTime = taskStart[working] + tmp
+		} else {
+			endTime = taskStart[working] + tmp + 3 //上振れも考慮する?
+		}
+
+		ret = endTime
+	}
+	return ret - day
+}
+
+func deleteBooking(task int) { //taskの予約を削除する
 	for i := 0; i < M; i++ {
-		if memberEstimated[i] == 0 { //推定されていない場合スキップ
-			continue
+		foundIdx := -1
+		for idx, t := range memberBookingTask[i] {
+			if t == task {
+				foundIdx = idx
+				taskIsBookedBy[t] = -1
+				break
+			}
 		}
-		if len(memberBookingTask[i]) != 0 {
-			//タスクを予約しているので探索に含めない
-			continue
+		if foundIdx != -1 {
+			memberBookingTask[i] = append(memberBookingTask[i][:foundIdx], memberBookingTask[i][foundIdx+1:]...)
+			break
 		}
-		if dfsBestAssignMembersEndTime < day+dfsTmpScores[i][dfsTargetTasks[depth]]+3 { //上振れも考慮する?
-			continue
-		}
-		dfsAssignMembers[depth] = i
-		dfsFindBestAssignMembers(depth + 1)
-		dfsAssignMembers[depth] = -1
 	}
 }
 
@@ -586,33 +596,6 @@ func findTask(member int) int { //最適なタスクを選定する
 	}
 
 	return bestTask
-}
-
-func calcWaitTime(member int) int { //そのメンバーの再アサインが可能になるまで最短でどれぐらいの時間がかかるか
-	ret := day //いつ終わるか
-	if memberStatus[member] == 1 {
-		working := memberHistory[member][len(memberHistory[member])-1]
-		tmp := scoreTrue(ps[member], working)
-		var endTime int
-		if tmp == 1 {
-			endTime = taskStart[working] + tmp
-		} else {
-			endTime = taskStart[working] + tmp + 3 //上振れも考慮する?
-		}
-
-		ret = endTime
-	}
-	for _, t := range memberBookingTask[member] {
-		tmp := scoreTrue(ps[member], t)
-		var endTime int
-		if tmp == 1 {
-			endTime = taskStart[t] + tmp
-		} else {
-			endTime = taskStart[t] + tmp + 3 //上振れも考慮する?
-		}
-		ret += endTime
-	}
-	return ret - day
 }
 
 func canAssign(task int, bookingSkip bool) bool {
