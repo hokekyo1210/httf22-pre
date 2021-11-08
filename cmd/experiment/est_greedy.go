@@ -408,7 +408,7 @@ func experiment() {
 				endTime += calcWaitTime(m)
 				// continue //debug用
 			}
-			if deadline+8 < endTime { //期日までに終わらせられないのでだめ, 上振れ考慮してマージン入れた方が良い
+			if deadline+3 < endTime { //期日までに終わらせられないのでだめ, 上振れ考慮してマージン入れた方が良い
 				continue
 			}
 			// fmt.Printf("#member = %d, endTime = %d\n", m, endTime)
