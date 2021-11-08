@@ -1,5 +1,7 @@
 use std::process::Stdio;
 use std::io::prelude::*;
+use std::time::Instant;
+use std::time::Duration;
 use tools::*;
 
 fn exec(command: &str, args: &Vec<String>) {
@@ -11,6 +13,7 @@ fn exec(command: &str, args: &Vec<String>) {
 		.stdin(Stdio::piped())
 		.stdout(Stdio::piped())
 		.spawn().unwrap_or_else(|e| { eprintln!("failed to execute the command"); eprintln!("{}", e); std::process::exit(1) } );
+	let instant1 = Instant::now();
 	let mut stdin = std::io::BufWriter::new(p.stdin.take().unwrap());
 	let mut stdout = std::io::BufReader::new(p.stdout.take().unwrap());
 	writeln!(stdin, "{} {} {} {}", input.N, input.M, input.K, input.R).unwrap();
@@ -131,6 +134,14 @@ fn exec(command: &str, args: &Vec<String>) {
 				n as i64
 			};
 			eprintln!("Score = {}", score);
+
+			let instant2 = Instant::now();
+			let three_secs = Duration::from_secs(3);
+			eprintln!("elapsed: {:?}", instant2 - instant1);
+			if three_secs < (instant2 - instant1){
+				std::process::exit(1)
+			}
+
 			let mut file = std::fs::File::create("./score.txt").expect("create failed");
 			let stri: String = score.to_string();
 			file.write_all(stri.as_bytes()).expect("write failed");
