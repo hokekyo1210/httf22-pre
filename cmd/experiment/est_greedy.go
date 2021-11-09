@@ -48,8 +48,11 @@ var (
 	sortedTasks       []int         //rank順にソートされたタスク
 	tmpScores         [1000]int     //一時計算用のテーブル
 
-	allTimeEst time.Duration //推定にかかってる時間
-	allTime    time.Duration //全体にかかっている時間
+	allTimeEst         time.Duration //推定にかかってる時間
+	allTimeSearch      time.Duration //探索にかかってる時間
+	allTimeSearchCalc1 time.Duration
+	allTimeSearchCalc2 time.Duration
+	allTime            time.Duration //全体にかかっている時間
 )
 
 func main() {
@@ -173,7 +176,9 @@ func main() {
 
 		//実験中
 		if estimatedNum == M && canAssignMemberNum != 0 {
+			searchStart := time.Now()
 			experiment()
+			allTimeSearch += time.Now().Sub(searchStart)
 		}
 
 		//通常の場合
@@ -195,6 +200,7 @@ func main() {
 			taskIsBookedBy[bestTask] = i
 		}
 
+		// if day < 1000 {
 		for m := 0; m < M; m++ {
 			if memberStatus[m] == 1 {
 				continue
@@ -214,6 +220,7 @@ func main() {
 			memberHistory[m] = append(memberHistory[m], t)
 			taskStart[t] = day
 		}
+		// }
 
 		fmt.Fprintf(wtr, "%d", len(nexta))
 		for i := 0; i < len(nexta); i++ {
@@ -252,9 +259,12 @@ func main() {
 		day++
 
 		if DEBUG {
-			fmt.Printf("#allTimeEst = %fs\n", allTimeEst.Seconds())
 			allTime = time.Now().Sub(startAllTime)
-			fmt.Printf("#allTimeEst = %fs\n", allTime.Seconds())
+			fmt.Printf("#allTime = %fs\n", allTime.Seconds())
+			fmt.Printf("#allTimeEst = %fs\n", allTimeEst.Seconds())
+			fmt.Printf("#allTimeSearch = %fs\n", allTimeSearch.Seconds())
+			fmt.Printf("#allTimeSearchCalc1 = %fs\n", allTimeSearchCalc1.Seconds())
+			fmt.Printf("#allTimeSearchCalc2 = %fs\n", allTimeSearchCalc2.Seconds())
 		}
 
 		fmt.Scanf("%d", &n)
@@ -287,6 +297,7 @@ func main() {
 }
 
 func experiment() {
+	searchCalc1Start := time.Now()
 	//全タスクに対するscoreの総量を全員分計算してみる
 	// skill := sTrue
 	skill := ps
@@ -373,6 +384,10 @@ func experiment() {
 	for t := 0; t < N; t++ {
 		memo[t] = -1 //メモを初期化
 	}
+
+	allTimeSearchCalc1 += time.Now().Sub(searchCalc1Start)
+	searchCalc2Start := time.Now()
+
 	for _, t := range sortedTasks {
 		if len(remainMember) == 0 { //全員assignされたら一応終わる
 			break
@@ -440,6 +455,7 @@ func experiment() {
 			}
 		}
 	}
+	allTimeSearchCalc2 += time.Now().Sub(searchCalc2Start)
 }
 
 func countainMembers(members []int, member int) bool {
