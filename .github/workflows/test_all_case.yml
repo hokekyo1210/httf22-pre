@@ -78,7 +78,7 @@ jobs:
         with:
           go-version: 1.17
       - name: Run tests
-        run: cargo run --manifest-path ./tools/Cargo.toml --release --bin tester go run ./cmd/best.go < ./tools/in/${{matrix.cases}}.txt > ./out.txt
+        run: cargo run --manifest-path ./tools/Cargo.toml --release --bin tester go run ./cmd/experiment/est_greedy.go < ./tools/in/${{matrix.cases}}.txt > ./out.txt
       - name: set-output
         run: echo "::set-output name=SCORE::`cat ./score.txt`"
         id: score
