@@ -14,8 +14,8 @@ import (
 const (
 	DEBUG                    = true
 	MIN_ESTIMATE_HISTORY_LEN = 1  //良さそうなのは30
-	HC_LOOP_COUNT            = 45 //増やせばスコアは伸びるか？
-	FREE_MARGIN              = 3
+	HC_LOOP_COUNT            = 50 //増やせばスコアは伸びるか？
+	FREE_MARGIN              = 4
 )
 
 var (
