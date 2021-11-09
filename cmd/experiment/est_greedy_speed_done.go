@@ -304,7 +304,7 @@ func experiment() {
 	//全タスクに対するscoreの総量を全員分計算してみる
 	// skill := sTrue
 	skill := ps
-	if experimentedNum%2 == 0 {
+	if experimentedNum%1 == 0 {
 		var scoreAll [20]int
 		for t := 0; t < N; t++ {
 			if taskStatus[t] != 0 { //未実行タスクのみを対象
