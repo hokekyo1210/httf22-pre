@@ -12,9 +12,9 @@ import (
 )
 
 const (
-	DEBUG                    = true
+	DEBUG                    = false
 	MIN_ESTIMATE_HISTORY_LEN = 0  //良さそうなのは30
-	HC_LOOP_COUNT            = 40 //増やせばスコアは伸びるか？
+	HC_LOOP_COUNT            = 50 //増やせばスコアは伸びるか？
 	FREE_MARGIN              = 4
 )
 
@@ -100,7 +100,7 @@ func main() {
 	}
 	for t := 0; t < N; t++ {
 		calcRank(t, 0)
-		calcRank3(t, 0)
+		calcRank3(t, taskSize[t])
 		for _, u := range V[t] {
 			rank2[u]++
 		}
@@ -304,7 +304,7 @@ func experiment() {
 	//全タスクに対するscoreの総量を全員分計算してみる
 	// skill := sTrue
 	skill := ps
-	if experimentedNum%4 == 0 {
+	if experimentedNum%1 == 0 {
 		var scoreAll [20]int
 		for t := 0; t < N; t++ {
 			if taskStatus[t] != 0 { //未実行タスクのみを対象
