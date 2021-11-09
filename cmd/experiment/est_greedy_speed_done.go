@@ -664,7 +664,6 @@ func canAssign(task int, bookingSkip bool) bool {
 }
 
 // 山登り法により推定する
-// 山登り法により推定する
 func estimate(member int) {
 	startTime := time.Now()
 	bestError := 10000000000
@@ -675,13 +674,14 @@ func estimate(member int) {
 		now[k] = ps[member][k]
 		bestSkill[k] = ps[member][k]
 	}
-	bestError = calcError2(bestSkill, member)
+	bestError = calcError(bestSkill, member)
 
 	var targetK int
 	var targetK2 int
 	var add bool
 	var error int
 	var success bool
+	var value int
 	l := 0
 	for {
 		targetK = rand.Intn(K)
@@ -690,20 +690,21 @@ func estimate(member int) {
 			targetK2 = rand.Intn(K)
 		}
 		add = rand.Intn(2) == 0
+		value = rand.Intn(2) + 1
 		if add {
-			now[targetK] = min(sMax[targetK], now[targetK]+1)
+			now[targetK] = min(sMax[targetK], now[targetK]+value)
 			if targetK2 != targetK {
-				now[targetK2] = max(psMin[member][targetK2], now[targetK2]-1)
+				now[targetK2] = max(psMin[member][targetK2], now[targetK2]-value)
 			}
 		} else {
-			now[targetK] = max(psMin[member][targetK], now[targetK]-1)
+			now[targetK] = max(psMin[member][targetK], now[targetK]-value)
 			if targetK2 != targetK {
-				now[targetK2] = min(sMax[targetK2], now[targetK2]+1)
+				now[targetK2] = min(sMax[targetK2], now[targetK2]+value)
 			}
 		}
 
 		success = false
-		error = calcError2(now, member)
+		error = calcError(now, member)
 		if bestError == error {
 			if skillSize(now) < skillSize(bestSkill) { //エラーが同じ場合はskillがより小規模なもの
 				success = true
@@ -719,14 +720,14 @@ func estimate(member int) {
 			}
 		} else { //巻き戻す
 			if add {
-				now[targetK] = max(psMin[member][targetK], now[targetK]-1)
+				now[targetK] = max(psMin[member][targetK], now[targetK]-value)
 				if targetK2 != targetK {
-					now[targetK2] = min(sMax[targetK2], now[targetK2]+1)
+					now[targetK2] = min(sMax[targetK2], now[targetK2]+value)
 				}
 			} else {
-				now[targetK] = min(sMax[targetK], now[targetK]+1)
+				now[targetK] = min(sMax[targetK], now[targetK]+value)
 				if targetK2 != targetK {
-					now[targetK2] = max(psMin[member][targetK2], now[targetK2]-1)
+					now[targetK2] = max(psMin[member][targetK2], now[targetK2]-value)
 				}
 			}
 		}
