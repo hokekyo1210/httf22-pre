@@ -14,7 +14,7 @@ import (
 const (
 	DEBUG                    = true
 	MIN_ESTIMATE_HISTORY_LEN = 0  //良さそうなのは30
-	HC_LOOP_COUNT            = 50 //増やせばスコアは伸びるか？
+	HC_LOOP_COUNT            = 40 //増やせばスコアは伸びるか？
 	FREE_MARGIN              = 4
 )
 
@@ -428,7 +428,7 @@ func experiment() {
 			endTime := day + scoreTrue(skill[m], t)
 			if memberStatus[m] == 1 {
 				endTime += calcWaitTime(m)
-				continue //debug用
+				// continue //debug用
 			}
 			if deadline+FREE_MARGIN < endTime { //期日までに終わらせられないのでだめ, 上振れ考慮してマージン入れた方が良い
 				continue
