@@ -113,25 +113,14 @@ func main() {
 	for t := 0; t < N; t++ {
 		sortedTasks = append(sortedTasks, t)
 	}
-	// sort.Slice(sortedTasks, func(i, j int) bool {
-	// 	a := sortedTasks[i]
-	// 	b := sortedTasks[j]
-	// 	if rank[a] == rank[b] {
-	// 		return rank3[a] > rank3[b] //rankが同じ場合はrank3優先
-	// 		// return taskSize[a] > taskSize[b]
-	// 	}
-	// 	return rank[a] > rank[b]
-	// })
 	sort.Slice(sortedTasks, func(i, j int) bool {
 		a := sortedTasks[i]
 		b := sortedTasks[j]
-		if rank3[a] == rank3[b] {
-			if rank[a] == rank[b] {
-				return taskSize[a] > taskSize[b]
-			}
-			return rank[a] > rank[b]
+		if rank[a] == rank[b] {
+			return rank3[a] > rank3[b] //rankが同じ場合はrank3優先
+			// return taskSize[a] > taskSize[b]
 		}
-		return rank3[a] > rank3[b]
+		return rank[a] > rank[b]
 	})
 	for _, t := range sortedTasks { //rank表を表示
 		fmt.Printf("# %d rank = %d, rank2 = %d, size = %d\n", t, rank[t], rank2[t], taskSize[t])
