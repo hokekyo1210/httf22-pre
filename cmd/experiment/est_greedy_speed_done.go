@@ -680,9 +680,23 @@ func estimate(member int) {
 	var targetK2 int
 	var add bool
 	var error int
+	var stV int
+	var ti int
 	var success bool
 	var value int
+	memberHistory := memberHistory
 	l := 0
+	taskStart := taskStart
+	taskEnd := taskEnd
+
+	var st [1000]int
+
+	for _, t := range memberHistory[member] {
+		for k := 0; k < K; k++ {
+			st[t] += stk(now, t, k)
+		}
+	}
+
 	for {
 		targetK = rand.Intn(K)
 		targetK2 = targetK
@@ -691,6 +705,12 @@ func estimate(member int) {
 		}
 		add = rand.Intn(2) == 0
 		value = rand.Intn(2) + 1
+		for _, t := range memberHistory[member] {
+			st[t] -= stk(now, t, targetK)
+			if targetK2 != targetK {
+				st[t] -= stk(now, t, targetK2)
+			}
+		}
 		if add {
 			now[targetK] = min(sMax[targetK], now[targetK]+value)
 			if targetK2 != targetK {
@@ -702,9 +722,26 @@ func estimate(member int) {
 				now[targetK2] = min(sMax[targetK2], now[targetK2]+value)
 			}
 		}
+		for _, t := range memberHistory[member] {
+			st[t] += stk(now, t, targetK)
+			if targetK2 != targetK {
+				st[t] += stk(now, t, targetK2)
+			}
+		}
 
 		success = false
-		error = calcError(now, member)
+
+		error = 0
+		for _, t := range memberHistory[member] {
+			if taskStatus[t] != 2 {
+				continue
+			}
+			//今までに実行した全てのタスクから二乗誤差を算出
+			stV = max(1, st[t])
+			ti = taskEnd[t] - taskStart[t]
+			error += (stV - ti) * (stV - ti)
+		}
+
 		if bestError == error {
 			if skillSize(now) < skillSize(bestSkill) { //エラーが同じ場合はskillがより小規模なもの
 				success = true
@@ -742,6 +779,10 @@ func estimate(member int) {
 		ps[member][k] = bestSkill[k]
 	}
 	allTimeEst += time.Now().Sub(startTime)
+}
+
+func stk(skill [20]int, t int, k int) int {
+	return max(0, d[t][k]-skill[k])
 }
 
 func calcError(skill [20]int, member int) int {
