@@ -15,6 +15,7 @@ const (
 	DEBUG                    = true
 	MIN_ESTIMATE_HISTORY_LEN = 0  //良さそうなのは30
 	HC_LOOP_COUNT            = 50 //増やせばスコアは伸びるか？
+	FREE_MARGIN              = 4
 )
 
 var (
@@ -146,6 +147,9 @@ func main() {
 				estimate(i)
 				memberEstimated[i] = 1
 				estimatedNum++
+				// for k := 0; k < K; k++ {
+				// 	ps[i][k] = sTrue[i][k]
+				// }
 			}
 		}
 		if estimatedNum == M {
@@ -408,7 +412,7 @@ func experiment() {
 				endTime += calcWaitTime(m)
 				// continue //debug用
 			}
-			if deadline+5 < endTime { //期日までに終わらせられないのでだめ, 上振れ考慮してマージン入れた方が良い
+			if deadline+FREE_MARGIN < endTime { //期日までに終わらせられないのでだめ, 上振れ考慮してマージン入れた方が良い
 				continue
 			}
 			// fmt.Printf("#member = %d, endTime = %d\n", m, endTime)
