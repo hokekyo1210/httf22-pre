@@ -688,10 +688,14 @@ func estimate(member int) {
 	l := 0
 	taskStart := taskStart
 	taskEnd := taskEnd
+	taskStatus := taskStatus
 
 	var st [1000]int
 
 	for _, t := range memberHistory[member] {
+		if taskStatus[t] != 2 {
+			continue
+		}
 		for k := 0; k < K; k++ {
 			st[t] += stk(now, t, k)
 		}
