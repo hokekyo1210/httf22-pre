@@ -317,9 +317,9 @@ func experiment() {
 		for m := 0; m < M; m++ {
 			membersRanking = append(membersRanking, m)
 			for t := 0; t < N; t++ {
-				if taskStatus[t] != 0 { //未実行タスクのみを対象
-					continue
-				}
+				// if taskStatus[t] != 0 { //未実行タスクのみを対象
+				// 	continue
+				// }
 				s := scoreTrue(skill[m], t)
 				taskScoreMin[t] = min(taskScoreMin[t], s)
 				scoreAll[m] += s
