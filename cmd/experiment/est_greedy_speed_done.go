@@ -390,10 +390,10 @@ func experiment() {
 			continue
 		}
 		memberIsBooking := taskIsBookedBy[t] //タスクを予約している人
-		// if memberStatus[memberIsBooking] == 0 && memberBookingTask[memberIsBooking][0] == t {
-		// 	// 今日中に実行予定のメンバーがいるのでスキップ
-		// 	continue
-		// }
+		if memberStatus[memberIsBooking] == 0 && memberBookingTask[memberIsBooking][0] == t {
+			// 今日中に実行予定のメンバーがいるのでスキップ
+			continue
+		}
 
 		trueEndTime := day + calcWaitTime(memberIsBooking) //本来このタスクが終わる時間
 		for _, bookedT := range memberBookingTask[memberIsBooking] {
@@ -675,7 +675,7 @@ func estimate(member int) {
 		now[k] = ps[member][k]
 		bestSkill[k] = ps[member][k]
 	}
-	bestError = calcError(bestSkill, member)
+	bestError = calcError2(bestSkill, member)
 
 	var targetK int
 	var targetK2 int
@@ -703,7 +703,7 @@ func estimate(member int) {
 		}
 
 		success = false
-		error = calcError(now, member)
+		error = calcError2(now, member)
 		if bestError == error {
 			if skillSize(now) < skillSize(bestSkill) { //エラーが同じ場合はskillがより小規模なもの
 				success = true
