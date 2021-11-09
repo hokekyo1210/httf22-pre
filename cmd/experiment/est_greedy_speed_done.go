@@ -14,7 +14,7 @@ import (
 const (
 	DEBUG                    = true
 	MIN_ESTIMATE_HISTORY_LEN = 0  //良さそうなのは30
-	HC_LOOP_COUNT            = 45 //増やせばスコアは伸びるか？
+	HC_LOOP_COUNT            = 50 //増やせばスコアは伸びるか？
 	FREE_MARGIN              = 4
 )
 
@@ -304,7 +304,7 @@ func experiment() {
 	//全タスクに対するscoreの総量を全員分計算してみる
 	// skill := sTrue
 	skill := ps
-	if experimentedNum%4 == 0 {
+	if experimentedNum%1 == 0 {
 		var scoreAll [20]int
 		for t := 0; t < N; t++ {
 			if taskStatus[t] != 0 { //未実行タスクのみを対象
@@ -390,10 +390,10 @@ func experiment() {
 			continue
 		}
 		memberIsBooking := taskIsBookedBy[t] //タスクを予約している人
-		if memberStatus[memberIsBooking] == 0 && memberBookingTask[memberIsBooking][0] == t {
-			// 今日中に実行予定のメンバーがいるのでスキップ
-			continue
-		}
+		// if memberStatus[memberIsBooking] == 0 && memberBookingTask[memberIsBooking][0] == t {
+		// 	// 今日中に実行予定のメンバーがいるのでスキップ
+		// 	continue
+		// }
 
 		trueEndTime := day + calcWaitTime(memberIsBooking) //本来このタスクが終わる時間
 		for _, bookedT := range memberBookingTask[memberIsBooking] {
