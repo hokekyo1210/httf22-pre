@@ -13,7 +13,7 @@ import (
 
 const (
 	DEBUG                    = true
-	MIN_ESTIMATE_HISTORY_LEN = 3  //良さそうなのは30
+	MIN_ESTIMATE_HISTORY_LEN = 0  //良さそうなのは30
 	HC_LOOP_COUNT            = 50 //増やせばスコアは伸びるか？
 	FREE_MARGIN              = 4
 )
@@ -172,7 +172,7 @@ func main() {
 		fmt.Printf("#canAssign member=%d, task=%d\n", canAssignMemberNum, canAssignTaskNum)
 
 		//実験中
-		if estimatedNum == M {
+		if estimatedNum == M && canAssignMemberNum != 0 {
 			experiment()
 		}
 
