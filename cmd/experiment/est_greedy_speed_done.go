@@ -766,6 +766,15 @@ func estimate(member int) {
 				bestSkill[k] = now[k]
 			}
 		} else { //巻き戻す
+			for _, t := range memberHistory[member] {
+				if taskStatus[t] != 2 {
+					continue
+				}
+				st[t] -= stk(now, t, targetK)
+				if targetK2 != targetK {
+					st[t] -= stk(now, t, targetK2)
+				}
+			}
 			if add {
 				now[targetK] = max(psMin[member][targetK], now[targetK]-value)
 				if targetK2 != targetK {
@@ -775,6 +784,15 @@ func estimate(member int) {
 				now[targetK] = min(sMax[targetK], now[targetK]+value)
 				if targetK2 != targetK {
 					now[targetK2] = max(psMin[member][targetK2], now[targetK2]-value)
+				}
+			}
+			for _, t := range memberHistory[member] {
+				if taskStatus[t] != 2 {
+					continue
+				}
+				st[t] += stk(now, t, targetK)
+				if targetK2 != targetK {
+					st[t] += stk(now, t, targetK2)
 				}
 			}
 		}
