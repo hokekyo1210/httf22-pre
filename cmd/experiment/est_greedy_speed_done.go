@@ -706,6 +706,9 @@ func estimate(member int) {
 		add = rand.Intn(2) == 0
 		value = rand.Intn(2) + 1
 		for _, t := range memberHistory[member] {
+			if taskStatus[t] != 2 {
+				continue
+			}
 			st[t] -= stk(now, t, targetK)
 			if targetK2 != targetK {
 				st[t] -= stk(now, t, targetK2)
@@ -723,6 +726,9 @@ func estimate(member int) {
 			}
 		}
 		for _, t := range memberHistory[member] {
+			if taskStatus[t] != 2 {
+				continue
+			}
 			st[t] += stk(now, t, targetK)
 			if targetK2 != targetK {
 				st[t] += stk(now, t, targetK2)
