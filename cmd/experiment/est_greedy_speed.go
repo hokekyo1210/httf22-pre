@@ -370,11 +370,8 @@ func experiment() {
 	// 次のタスクまでの間が十分長い人の中から、最も早くタスクを終えられる人を探してassign
 	var remainMember []int
 	for m := 0; m < M; m++ {
-		if len(memberBookingTask[m]) != 0 {
-			nextT := memberBookingTask[m][0]
-			if canAssign(nextT, false) { //今すぐにassign出来るタスクを抱えているのでこのメンバーは除外
-				continue
-			}
+		if memberStatus[m] == 1 {
+			continue
 		}
 		remainMember = append(remainMember, m)
 	}
@@ -400,7 +397,7 @@ func experiment() {
 				break
 			}
 		}
-		// fmt.Printf("#task = %d, memberIsBooking = %d, trueEndTime = %d\n", t, memberIsBooking, trueEndTime)
+		fmt.Printf("#task = %d, memberIsBooking = %d, trueEndTime = %d\n", t, memberIsBooking, trueEndTime)
 
 		bestEndTime := 10000000000
 		bestMember := -1
@@ -408,8 +405,11 @@ func experiment() {
 			if memberIsBooking == m {
 				continue
 			}
-			if !countainMembers(remainMember, m) {
-				continue
+			if len(memberBookingTask[m]) != 0 {
+				nextT := memberBookingTask[m][0]
+				if canAssign(nextT, false) { //今すぐにassign出来るタスクを抱えているのでこのメンバーは除外
+					continue
+				}
 			}
 			freeTime := 1000000000
 			if len(memberBookingTask[m]) != 0 {
@@ -438,7 +438,7 @@ func experiment() {
 			if memberStatus[bestMember] == 1 {
 				continue //その人が暇になるまで待つ
 			} else {
-				// fmt.Printf("#bestMember = %d, bestEndTime = %d\n", bestMember, bestEndTime)
+				fmt.Printf("#bestMember = %d, bestEndTime = %d\n", bestMember, bestEndTime)
 				deleteBooking(t)
 				memberBookingTask[bestMember] = append([]int{t}, memberBookingTask[bestMember]...)
 				taskIsBookedBy[t] = bestMember
