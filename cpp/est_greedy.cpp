@@ -10,10 +10,12 @@ using namespace std;
 
 bool DEBUG = true;
 int MIN_ESTIMATE_LEN = 0;
-int HC_LOOP_COUNT = 500;
+int HC_LOOP_COUNT = 100;
 int BOOKING_MARGIN = 4;
 
 int calcNum = 0;
+int estimateLoopNum = 0;
+int estimateLoopSuccessNum = 0;
 
 int day = 0;  //現在日時
 int N, M, K, R;
@@ -36,6 +38,7 @@ int rank1[1000];
 int rank2[1000];
 int sMax[20];
 vector<int> sortedTasks;
+int memo[1000];
 
 void calcRank1(int task, int depth);
 void calcRank2(int task, int cost);
@@ -48,6 +51,236 @@ int calcError(int skill[20], int member);
 int score(int skill[20], int task);
 int skillSize(int skill[20]);
 void writeScore(int error);
+int calcWaitTime(int member);
+int minimumWaitTimeCanAssignTask(int skill[20][20],
+                                 int taskScoreMinMember[1000], int task);
+void deleteBooking(int task);
+
+// 推定スキルを利用して最適な割当を探索する
+void bestAssign() {
+    int taskScoreMin[1000];
+    int taskScoreMinMember[1000];
+    int scoreAll[20];
+    int scoreMemo[20][1000];
+    vector<pair<int, int> > membersScoreRanking;
+
+    // 初期化
+    for (int m = 0; m < M; m++) {
+        scoreAll[m] = 0;
+    }
+    for (int t = 0; t < N; t++) {
+        taskScoreMin[t] = 100000000;
+        taskScoreMinMember[t] = -1;
+    }
+
+    // 全メンバーの未実行全タスクを仮に実行した場合のスコアをすべて計算する
+    // タスク毎に最も低いスコアを記録しておく
+    int s;
+    for (int m = 0; m < M; m++) {
+        for (int t = 0; t < N; t++) {  //これランク順手前100個ぐらいで良いかも
+            if (taskStatus[t] != 0) {
+                //実行済み, 実行中のタスクは計算しない
+                continue;
+            }
+            scoreMemo[m][t] = score(ps[m], t);
+            taskScoreMin[t] = min(taskScoreMin[t], scoreMemo[m][t]);
+            scoreAll[m] += scoreMemo[m][t];
+        }
+    }
+
+    // memberをscoreALL大きい順に並べる
+    for (int m = 0; m < M; m++) {
+        membersScoreRanking.push_back(make_pair(-scoreAll[m], m));
+    }
+    sort(membersScoreRanking.begin(), membersScoreRanking.end());
+
+    for (size_t i = 0; i < membersScoreRanking.size(); i++) {
+        int s = -membersScoreRanking[i].first;
+        int m = membersScoreRanking[i].second;
+        cout << "# member = " << m << ", s = " << s << endl;
+        for (int t = 0; t < N; t++) {
+            if (taskStatus[t] != 0) {
+                //実行済み, 実行中のタスクは計算しない
+                continue;
+            }
+            if (taskScoreMinMember[t] == -1 &&
+                scoreMemo[m][t] == taskScoreMin[t]) {
+                taskScoreMinMember[t] = m;
+            }
+        }
+    }
+
+    for (int m = 0; m < M; m++) {
+        memberBookingTask[m] = vector<int>();
+    }
+    // taskScoreMinMemberをベースにどんどんassignしていく
+    for (size_t i = 0; i < sortedTasks.size(); i++) {
+        int t = sortedTasks[i];
+        if (taskStatus[t] != 0) {
+            //実行済み, 実行中のタスクは計算しない
+            continue;
+        }
+        int m =
+            taskScoreMinMember[t];  //注意, tを絞り込んだ場合ここが-1になるかも
+        memberBookingTask[m].push_back(t);
+        taskIsBookedBy[t] = m;
+    }
+
+    for (int m = 0; m < M; m++) {
+        cout << "# member = " << m << ", bookingTasks = [";
+        for (size_t i = 0; i < memberBookingTask[m].size(); i++) {
+            cout << memberBookingTask[m][i] << " ";
+        }
+        cout << "]" << endl;
+    }
+
+    // 次のタスクまでの間が十分長い人の中から、最も早くタスクを終えられる人を探してassign
+    bool remainMemberFlag[20];
+    int remainMemberNum = 0;
+    for (int m = 0; m < M; m++) {
+        remainMemberFlag[m] = false;
+        if (memberStatus[m] == 1) {
+            // 作業中のメンバーは対象外
+            continue;
+        }
+        remainMemberFlag[m] = true;
+        remainMemberNum++;
+    }
+    for (int t = 0; t < N; t++) {
+        // DP用のメモテーブルを初期化
+        memo[t] = -1;
+    }
+    for (size_t i = 0; i < sortedTasks.size(); i++) {
+        int t = sortedTasks[i];
+        if (remainMemberNum == 0) {  //全員assignされたら終わる
+            break;
+        }
+        if (!canAssign(t,
+                       false)) {  //今すぐに実行可能なタスクのみを探索対象にする
+            continue;
+        }
+        int memberIsBooking = taskIsBookedBy[t];  //タスクを予約している人
+        if (memberStatus[memberIsBooking] == 0 &&
+            memberBookingTask[memberIsBooking][0] == t) {
+            // 今日中に実行予定のメンバーがいるのでスキップ
+            // 横取りしたほうが良い可能性もある
+            continue;
+        }
+        int trueEndTime =
+            day + calcWaitTime(memberIsBooking);  //本来このタスクが終わる時間
+        for (size_t j = 0; j < memberBookingTask[memberIsBooking].size(); j++) {
+            int bookedT = memberBookingTask[memberIsBooking][j];
+            trueEndTime +=
+                score(ps[memberIsBooking], bookedT);  //平均的なケースを想定
+            if (bookedT == t) {
+                break;
+            }
+        }
+
+        int bestEndTime = 100000000;
+        int bestMember = -1;
+        for (int m = 0; m < M; m++) {
+            if (memberIsBooking == m) {
+                continue;
+            }
+            if (memberBookingTask[m].size() != 0) {
+                int nextT = memberBookingTask[m][0];
+                if (canAssign(nextT, false)) {
+                    // 今すぐに実行可能なタスクを抱えているので考慮不要
+                    continue;
+                }
+            }
+
+            int freeTime = 100000000;
+            if (memberBookingTask[m].size() != 0) {
+                int nextTask =
+                    memberBookingTask[m][0];  // mメンバーが次にやるタスク
+                freeTime = minimumWaitTimeCanAssignTask(ps, taskScoreMinMember,
+                                                        nextTask);
+            }
+            int deadline =
+                day + freeTime;  //この日時までに確実に暇でいる必要がある
+            int endTime = day + score(ps[m], t);
+            if (memberStatus[m] == 1) {
+                endTime += calcWaitTime(m);
+            }
+            if (deadline + BOOKING_MARGIN < endTime) {
+                //期日までに終わらせられないのでだめ
+                continue;
+            }
+            if (trueEndTime <= endTime) {
+                //元より悪化するのでだめ
+                continue;
+            }
+
+            if (endTime < bestEndTime) {
+                bestEndTime = endTime;
+                bestMember = m;
+            }
+        }
+        if (bestMember != -1) {
+            //良さそうな人発見, タスクを横取りする
+            if (memberStatus[bestMember] == 1) {
+                //仕事中なら待つ
+                continue;
+            } else if (remainMemberFlag[bestMember]) {
+                cout << "# bestMember = " << bestMember
+                     << ", bestEndTime = " << bestEndTime << endl;
+                remainMemberFlag[bestMember] = false;
+                remainMemberNum--;
+                deleteBooking(t);
+                memberBookingTask[bestMember].insert(
+                    memberBookingTask[bestMember].begin(), t);
+                taskIsBookedBy[t] = bestMember;
+            }
+        }
+    }
+}
+
+int minimumWaitTimeCanAssignTask(int skill[20][20],
+                                 int taskScoreMinMember[1000], int task) {
+    if (memo[task] != -1) {
+        return memo[task];
+    }
+    int ret = 0;
+    for (size_t i = 0; i < V[task].size(); i++) {
+        int nextT = V[task][i];
+        if (taskStatus[nextT] != 2) {  //完了済みのタスクは無視
+            int cost = 0;
+            if (taskStatus[nextT] == 0) {
+                int m = taskScoreMinMember[nextT];
+                cost = score(
+                    skill[m],
+                    nextT);  //最も得意な人が実行する想定 上振れも考慮する?
+            } else if (taskStatus[nextT] == 1) {  //実行中タスク
+                int m = taskIsBookedBy[nextT];
+                cost = taskStart[nextT] + score(skill[m], nextT) - day;
+            }
+            ret = max(ret, minimumWaitTimeCanAssignTask(
+                               skill, taskScoreMinMember, nextT) +
+                               cost);
+        }
+    }
+    memo[task] = ret;
+    return ret;
+}
+
+//そのメンバーの再アサインが可能になるまで最短でどれぐらいの時間がかかるか(bookingは考慮しない)
+int calcWaitTime(int member) {
+    int ret = day;  //いつ終わるか
+    if (memberStatus[member] == 1) {
+        int working = memberHistory[member][memberHistory[member].size() - 1];
+        int tmp = score(ps[member], working);
+        int endTime;
+        if (tmp == 1) {
+            endTime = taskStart[working] + tmp;
+        } else {
+            endTime = taskStart[working] + tmp + 3;  //上振れも考慮する?
+        }
+        ret = endTime;
+    }
+    return ret - day;
+}
 
 // 山登り法でスキルの推定を行う
 void estimate(int member) {
@@ -67,6 +300,7 @@ void estimate(int member) {
     bool success;
     int l = 0;
     while (true) {
+        estimateLoopNum++;
         targetK = rand() % K;
         targetK2 = targetK;
         if (rand() % 3 == 0) {
@@ -96,6 +330,7 @@ void estimate(int member) {
         }
 
         if (success) {
+            estimateLoopSuccessNum++;
             bestError = error;
             for (int k = 0; k < K; k++) {
                 bestSkill[k] = now[k];
@@ -223,11 +458,21 @@ int main() {
         }
 
         int estimatedMemberNum = 0;
+        int freeMemberNum = 0;
         for (size_t i = 0; i < sortedMembers.size(); i++) {
             int m = sortedMembers[i];
             if (memberEstimated[m] == 1) {
                 estimatedMemberNum++;
             }
+            if (memberStatus[m] == 0) {
+                freeMemberNum++;
+            }
+        }
+
+        // 推定スキルを利用して最適な割当を探索する
+        if (estimatedMemberNum == M && freeMemberNum != 0) {
+            //この条件は再検討する
+            bestAssign();
         }
 
         //貪欲法
@@ -312,6 +557,9 @@ int main() {
                 static_cast<double>(now - startTime) / CLOCKS_PER_SEC * 1000.0;
             cout << "#allTime = " << time << "ms" << endl;
             cout << "#calcNum = " << calcNum << endl;
+            cout << "#estimateLoopNum = " << estimateLoopNum << endl;
+            cout << "#estimateLoopSuccessNum = " << estimateLoopSuccessNum
+                 << endl;
         }
 
         day++;
@@ -413,6 +661,18 @@ bool canAssign(int task, bool bookingSkip) {
         }
     }
     return canAssign;
+}
+
+void deleteBooking(int targetTask) {  // taskの予約を削除する
+    int m = taskIsBookedBy[targetTask];
+    for (size_t i = 0; i < memberBookingTask[m].size(); i++) {
+        int t = memberBookingTask[m][i];
+        if (t != targetTask) {
+            continue;
+        }
+        memberBookingTask[m].erase(memberBookingTask[m].begin() + i);
+        break;
+    }
 }
 
 void calcRank1(int task, int depth) {
