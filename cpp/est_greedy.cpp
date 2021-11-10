@@ -10,7 +10,7 @@ using namespace std;
 
 bool DEBUG = true;
 int MIN_ESTIMATE_LEN = 0;
-int HC_LOOP_COUNT = 100;
+int HC_LOOP_COUNT = 1000;
 int BOOKING_MARGIN = 4;
 
 int calcNum = 0;
