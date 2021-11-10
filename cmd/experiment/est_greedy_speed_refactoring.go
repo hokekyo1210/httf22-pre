@@ -152,9 +152,9 @@ func main() {
 				estimate(i)
 				memberEstimated[i] = 1
 				estimatedNum++
-				// for k := 0; k < K; k++ {
-				// 	ps[i][k] = sTrue[i][k]
-				// }
+				for k := 0; k < K; k++ {
+					ps[i][k] = sTrue[i][k]
+				}
 			}
 		}
 		if estimatedNum == M {
