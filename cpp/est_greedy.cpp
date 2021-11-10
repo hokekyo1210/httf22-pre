@@ -463,7 +463,7 @@ bool memberHistoryLenComp(int memberA, int memberB) {
 void writeScore(int error) {
     std::ofstream writing_file;
     std::string filename = "./estscore.txt";
-    writing_file.open(filename, std::ios::app);
+    writing_file.open(filename, std::ios::out);
     writing_file << error << std::endl;
     writing_file.close();
 }
