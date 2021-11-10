@@ -152,9 +152,9 @@ func main() {
 				estimate(i)
 				memberEstimated[i] = 1
 				estimatedNum++
-				// for k := 0; k < K; k++ {
-				// 	ps[i][k] = sTrue[i][k]
-				// }
+				for k := 0; k < K; k++ {
+					ps[i][k] = sTrue[i][k]
+				}
 			}
 		}
 		if estimatedNum == M {
@@ -459,15 +459,6 @@ func experiment() {
 	experimentedNum++
 }
 
-func countainMembers(members []int, member int) bool {
-	for i := 0; i < len(members); i++ {
-		if members[i] == member {
-			return true
-		}
-	}
-	return false
-}
-
 var memo [1000]int
 
 func minimumWaitTimeCanAssignTask(skill [20][20]int, taskScoreMinMember [1000]int, task int) int { //taskがassign可能になるまでに必要な時間の推定値(各タスクは最も得意な人間が実行するものとする)(メモ化可能)
@@ -528,116 +519,15 @@ func deleteBooking(task int) { //taskの予約を削除する
 }
 
 func findTask(member int) int { //最適なタスクを選定する
-	bestTask := -1
-	bestRank := -1
-
-	var targets []int
-
 	//終了していないタスクの中から最適なタスクにアサインする
 	//rankが高い順に処理されることに注意(sortedTasksが既にrank順でソート済み)
 	for _, t := range sortedTasks {
 		if !canAssign(t, true) {
 			continue
 		}
-		if memberEstimated[member] == 1 {
-			if bestRank == -1 {
-				bestRank = rank[t]
-			}
-			//スキルが推定されている場合はrankが同じやつリストを一旦作る
-			if bestRank <= rank[t] {
-				targets = append(targets, t)
-				tmpScores[t] = scoreTrue(ps[member], t)
-			}
-		} else {
-			//スキルが推定されていない場合はrankが高い順に処理
-			bestTask = t
-			return bestTask
-		}
+		return t
 	}
-
-	if memberEstimated[member] == 1 {
-		fmt.Printf("#len(targets) = %d\n", len(targets))
-	}
-
-	for _, t := range targets {
-		if bestTask == -1 {
-			bestTask = t
-			continue
-		}
-		if rank3[bestTask] == rank3[t] {
-			if tmpScores[t] < tmpScores[bestTask] {
-				bestTask = t
-				continue
-			}
-		} else if rank3[bestTask] < rank3[t] {
-			bestTask = t
-		}
-		// if tmpScores[t] == tmpScores[bestTask] {
-		// 	// if taskSize[bestTask] < taskSize[t] { //スコアが同じ場合はより重たいもの
-		// 	// 	bestTask = t
-		// 	// 	continue
-		// 	// }
-		// 	if rank3[bestTask] < rank3[t] { //スコアが同じ場合はrank3が大きいもの
-		// 		bestTask = t
-		// 		continue
-		// 	}
-		// } else if tmpScores[t] < tmpScores[bestTask] { //スコアが低い方優先
-		// 	bestTask = t
-		// }
-	}
-
-	if bestTask != -1 {
-		for i := 0; i < M; i++ {
-			if memberStatus[i] == 1 || i == member {
-				continue
-			}
-			if memberEstimated[i] == 0 {
-				continue
-			}
-			if len(memberBookingTask[i]) != 0 {
-				continue
-			}
-			//自分以外で最適な人がいるか確認
-			score := scoreTrue(ps[i], bestTask)
-			if score < tmpScores[bestTask] {
-				fmt.Printf("#better %d %d\n", tmpScores[bestTask], score)
-				//いるのでやらない
-				return -1
-			}
-		}
-		// bestWaitMember := -1
-		// bestWaitTimeDiff := 0
-		// for i := 0; i < M; i++ { //workingメンバー用の処理
-		// 	if memberStatus[i] != 1 || i == member {
-		// 		continue
-		// 	}
-		// 	if memberEstimated[i] == 0 {
-		// 		continue
-		// 	}
-		// 	//自分以外で最適な人がいるか確認
-		// 	score := day + calcWaitTime(i) + scoreTrue(ps[i], bestTask)
-		// 	if score < day+tmpScores[bestTask] {
-		// 		diff := day + tmpScores[bestTask] - score
-		// 		if bestWaitTimeDiff < diff {
-		// 			bestWaitMember = i
-		// 			bestWaitTimeDiff = diff
-		// 		}
-		// 		fmt.Printf("#god task = %d, beforeMember = %d, godMember = %d, endDay = %d, before = %d, diff = %d\n", bestTask, member, i, score, day+tmpScores[bestTask], day+tmpScores[bestTask]-score)
-		// 		//いるらしい
-		// 	}
-		// }
-		// if bestWaitMember != -1 {
-		// 	fmt.Printf("#final god task = %d, beforeMember = %d, godMember = %d, bestDiff = %d\n", bestTask, member, bestWaitMember, bestWaitTimeDiff)
-		// 	if bestWaitTimeDiff > 10 {
-		// 		// かなり良さそうなので予約する
-		// 		memberBookingTask[bestWaitMember] = append(memberBookingTask[bestWaitMember], bestTask)
-		// 		taskIsBookedBy[bestTask] = bestWaitMember
-		// 		return -1
-		// 	}
-		// }
-	}
-
-	return bestTask
+	return -1
 }
 
 func canAssign(task int, bookingSkip bool) bool {
@@ -660,7 +550,6 @@ func canAssign(task int, bookingSkip bool) bool {
 	return canAssign
 }
 
-// 山登り法により推定する
 // 山登り法により推定する
 func estimate(member int) {
 	startTime := time.Now()
