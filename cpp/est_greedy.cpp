@@ -10,7 +10,7 @@ using namespace std;
 
 bool DEBUG = true;
 int MIN_ESTIMATE_LEN = 0;
-int HC_LOOP_COUNT = 1000;
+int HC_LOOP_COUNT = 100;
 int BOOKING_MARGIN = 4;
 
 int calcNum = 0;
@@ -473,26 +473,26 @@ int main() {
         if (estimatedMemberNum == M && freeMemberNum != 0) {
             //この条件は再検討する
             bestAssign();
-        }
+        } else {
+            //貪欲法
+            for (size_t idx = 0; idx < sortedMembers.size(); idx++) {
+                int m = sortedMembers[idx];
+                if (memberStatus[m] == 1) {
+                    //作業中のメンバーはskip
+                    continue;
+                }
+                if (memberBookingTask[m].size() != 0) {
+                    //タスク予約中なのでskip
+                    continue;
+                }
 
-        //貪欲法
-        for (size_t idx = 0; idx < sortedMembers.size(); idx++) {
-            int m = sortedMembers[idx];
-            if (memberStatus[m] == 1) {
-                //作業中のメンバーはskip
-                continue;
+                int bestTask = findTaskGreedy();
+                if (bestTask == -1) {
+                    continue;
+                }
+                memberBookingTask[m].push_back(bestTask);
+                taskIsBookedBy[bestTask] = m;
             }
-            if (memberBookingTask[m].size() != 0) {
-                //タスク予約中なのでskip
-                continue;
-            }
-
-            int bestTask = findTaskGreedy();
-            if (bestTask == -1) {
-                continue;
-            }
-            memberBookingTask[m].push_back(bestTask);
-            taskIsBookedBy[bestTask] = m;
         }
 
         //アサイン処理
