@@ -12,7 +12,7 @@ import (
 
 const (
 	DEBUG                    = true
-	MIN_ESTIMATE_HISTORY_LEN = 1  //良さそうなのは30
+	MIN_ESTIMATE_HISTORY_LEN = 0  //良さそうなのは30
 	HC_LOOP_COUNT            = 50 //増やせばスコアは伸びるか？
 	FREE_MARGIN              = 4
 )
@@ -152,9 +152,9 @@ func main() {
 				estimate(i)
 				memberEstimated[i] = 1
 				estimatedNum++
-				for k := 0; k < K; k++ {
-					ps[i][k] = sTrue[i][k]
-				}
+				// for k := 0; k < K; k++ {
+				// 	ps[i][k] = sTrue[i][k]
+				// }
 			}
 		}
 		if estimatedNum == M {
