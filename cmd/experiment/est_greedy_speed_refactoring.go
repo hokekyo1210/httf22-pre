@@ -12,43 +12,37 @@ import (
 
 const (
 	DEBUG                    = true
-	MIN_ESTIMATE_HISTORY_LEN = 0  //良さそうなのは30
-	HC_LOOP_COUNT            = 50 //増やせばスコアは伸びるか？
+	MIN_ESTIMATE_HISTORY_LEN = 999999 //良さそうなのは30
+	HC_LOOP_COUNT            = 50     //増やせばスコアは伸びるか？
 	FREE_MARGIN              = 4
 )
 
 var (
-	experimented       bool = false
-	experimentedNum    int
-	day                int //現在日時
-	N                  int
-	M                  int
-	K                  int
-	R                  int
-	u, v               int
-	d                  [1000][20]int
-	V                  [1000][]int   //依存関係を管理
-	taskStatus         [1000]int     //タスクステータス管理, 0:not yet, 1:working, 2:done
-	taskIsBookedBy     [1000]int     //タスクが誰に予約されているか
-	memberStatus       [20]int       //メンバーステータス管理, 0:free, 1:working
-	memberHistory      [20][]int     //タスク実行履歴
-	memberEstimated    [20]int       //メンバーのスキル推定がされているかどうか
-	memberBookingTask  [20][]int     //メンバーが予約しているタスク一覧
-	ps                 [20][20]int   //メンバーのスキルの推定値
-	psMin              [20][20]int   //メンバーのスキルの推定値の下限
-	sTrue              [20][20]int   //メンバーのスキル(本物)
-	tTrue              [1000][20]int //メンバーがタスクを処理するのにかかる時間(本物)
-	taskStart          [1000]int     //タスクを開始した時刻
-	taskEnd            [1000]int     //タスクを終了した時刻
-	taskSize           [1000]int     //タスクの大きさ
-	rank               [1000]int     //タスクの依存関係の深さ
-	rank2              [1000]int     //タスクの依存関係の深さ2
-	rank3              [1000]int     //タスクの依存関係の深さ3
-	sMax               [20]int       //s_kの取りうる上限
-	sortedTasks        []int         //rank順にソートされたタスク
-	tmpScores          [1000]int     //一時計算用のテーブル
-	taskScoreMin       [1000]int
-	taskScoreMinMember [1000]int
+	day               int //現在日時
+	N                 int
+	M                 int
+	K                 int
+	R                 int
+	u, v              int
+	d                 [1000][20]int
+	V                 [1000][]int   //依存関係を管理
+	taskStatus        [1000]int     //タスクステータス管理, 0:not yet, 1:working, 2:done
+	taskIsBookedBy    [1000]int     //タスクが誰に予約されているか
+	memberStatus      [20]int       //メンバーステータス管理, 0:free, 1:working
+	memberHistory     [20][]int     //タスク実行履歴
+	memberEstimated   [20]int       //メンバーのスキル推定がされているかどうか
+	memberBookingTask [20][]int     //メンバーが予約しているタスク一覧
+	ps                [20][20]int   //メンバーのスキルの推定値
+	psMin             [20][20]int   //メンバーのスキルの推定値の下限
+	sTrue             [20][20]int   //メンバーのスキル(本物)
+	tTrue             [1000][20]int //メンバーがタスクを処理するのにかかる時間(本物)
+	taskStart         [1000]int     //タスクを開始した時刻
+	taskEnd           [1000]int     //タスクを終了した時刻
+	taskSize          [1000]int     //タスクの大きさ
+	rank              [1000]int     //タスクの依存関係の深さ
+	rank2             [1000]int     //タスクの依存関係の深さ2
+	sMax              [20]int       //s_kの取りうる値の上限
+	sortedTasks       []int         //rank順にソートされたタスク
 
 	allTimeEst         time.Duration //推定にかかってる時間
 	allTimeSearch      time.Duration //探索にかかってる時間
@@ -99,13 +93,10 @@ func main() {
 	}
 	for t := 0; t < N; t++ {
 		calcRank(t, 0)
-		calcRank3(t, taskSize[t])
-		for _, u := range V[t] {
-			rank2[u]++
-		}
+		calcRank2(t, taskSize[t])
 	}
 	for t := 0; t < N; t++ { //rank表を表示
-		fmt.Printf("# %d size = %d, rank = %d, rank2 = %d, rank3 = %d\n", t, taskSize[t], rank[t], rank2[t], rank3[t])
+		fmt.Printf("# %d size = %d, rank = %d, rank2 = %d\n", t, taskSize[t], rank[t], rank2[t])
 	}
 
 	// rankが大きい順にtaskを並べておく(rankが大きい物はボトルネックになる)
@@ -116,13 +107,13 @@ func main() {
 		a := sortedTasks[i]
 		b := sortedTasks[j]
 		if rank[a] == rank[b] {
-			return rank3[a] > rank3[b] //rankが同じ場合はrank3優先
+			return rank2[a] > rank2[b] //rankが同じ場合はrank2優先
 			// return taskSize[a] > taskSize[b]
 		}
 		return rank[a] > rank[b]
 	})
 	for _, t := range sortedTasks { //rank表を表示
-		fmt.Printf("# %d rank = %d, rank2 = %d, size = %d\n", t, rank[t], rank2[t], taskSize[t])
+		fmt.Printf("# %d rank = %d, size = %d\n", t, rank[t], taskSize[t])
 	}
 
 	var wtr = bufio.NewWriter(os.Stdout)
@@ -152,9 +143,9 @@ func main() {
 				estimate(i)
 				memberEstimated[i] = 1
 				estimatedNum++
-				for k := 0; k < K; k++ {
-					ps[i][k] = sTrue[i][k]
-				}
+				// for k := 0; k < K; k++ {
+				// 	ps[i][k] = sTrue[i][k]
+				// }
 			}
 		}
 		if estimatedNum == M {
@@ -202,7 +193,6 @@ func main() {
 			taskIsBookedBy[bestTask] = i
 		}
 
-		// if day < 1000 {
 		for m := 0; m < M; m++ {
 			if memberStatus[m] == 1 {
 				continue
@@ -222,7 +212,6 @@ func main() {
 			memberHistory[m] = append(memberHistory[m], t)
 			taskStart[t] = day
 		}
-		// }
 
 		fmt.Fprintf(wtr, "%d", len(nexta))
 		for i := 0; i < len(nexta); i++ {
@@ -303,6 +292,8 @@ func experiment() {
 	//全タスクに対するscoreの総量を全員分計算してみる
 	// skill := sTrue
 	skill := ps
+	var taskScoreMin [1000]int
+	var taskScoreMinMember [1000]int
 	var scoreAll [20]int
 	for t := 0; t < N; t++ {
 		if taskStatus[t] != 0 { //未実行タスクのみを対象
@@ -350,7 +341,6 @@ func experiment() {
 		memberBookingTask[m] = make([]int, 0)
 	}
 	for _, t := range sortedTasks {
-		// for t := 0; t < N; t++ {
 		if taskStatus[t] != 0 {
 			continue
 		}
@@ -456,7 +446,6 @@ func experiment() {
 		}
 	}
 	allTimeSearchCalc2 += time.Now().Sub(searchCalc2Start)
-	experimentedNum++
 }
 
 var memo [1000]int
@@ -656,16 +645,16 @@ func calcRank(task int, depth int) {
 	}
 }
 
-func calcRank3(task int, cost int) {
-	if cost < rank3[task] {
+func calcRank2(task int, cost int) {
+	if cost < rank2[task] {
 		//計算済みのrankの方が上の場合無駄なので省略
 		return
 	}
-	rank3[task] = cost
+	rank2[task] = cost
 
 	next := V[task]
 	for _, nextT := range next {
-		calcRank3(nextT, cost+taskSize[nextT])
+		calcRank2(nextT, cost+taskSize[nextT])
 	}
 }
 
