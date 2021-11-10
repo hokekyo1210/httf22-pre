@@ -47,7 +47,6 @@ var (
 	rank3              [1000]int     //タスクの依存関係の深さ3
 	sMax               [20]int       //s_kの取りうる上限
 	sortedTasks        []int         //rank順にソートされたタスク
-	sortedTasks2       []int         //size順にソートされたタスク
 	tmpScores          [1000]int     //一時計算用のテーブル
 	taskScoreMin       [1000]int
 	taskScoreMinMember [1000]int
@@ -113,7 +112,6 @@ func main() {
 	// rankが大きい順にtaskを並べておく(rankが大きい物はボトルネックになる)
 	for t := 0; t < N; t++ {
 		sortedTasks = append(sortedTasks, t)
-		sortedTasks2 = append(sortedTasks2, t)
 	}
 	sort.Slice(sortedTasks, func(i, j int) bool {
 		a := sortedTasks[i]
@@ -123,14 +121,6 @@ func main() {
 			// return taskSize[a] > taskSize[b]
 		}
 		return rank[a] > rank[b]
-	})
-	sort.Slice(sortedTasks2, func(i, j int) bool {
-		a := sortedTasks2[i]
-		b := sortedTasks2[j]
-		if taskSize[a] == taskSize[b] {
-			return rank[a] > rank[b]
-		}
-		return taskSize[a] < taskSize[b]
 	})
 	for _, t := range sortedTasks { //rank表を表示
 		fmt.Printf("# %d rank = %d, rank2 = %d, size = %d\n", t, rank[t], rank2[t], taskSize[t])
@@ -548,7 +538,7 @@ func findTask(member int) int { //最適なタスクを選定する
 
 	//終了していないタスクの中から最適なタスクにアサインする
 	//rankが高い順に処理されることに注意(sortedTasksが既にrank順でソート済み)
-	for _, t := range sortedTasks2 {
+	for _, t := range sortedTasks {
 		if !canAssign(t, true) {
 			continue
 		}

@@ -3,7 +3,6 @@ package main
 import (
 	"bufio"
 	"fmt"
-	"math"
 	"math/rand"
 	"os"
 	"sort"
@@ -13,8 +12,8 @@ import (
 
 const (
 	DEBUG                    = true
-	MIN_ESTIMATE_HISTORY_LEN = 0  //良さそうなのは30
-	HC_LOOP_COUNT            = 45 //増やせばスコアは伸びるか？
+	MIN_ESTIMATE_HISTORY_LEN = 1  //良さそうなのは30
+	HC_LOOP_COUNT            = 50 //増やせばスコアは伸びるか？
 	FREE_MARGIN              = 4
 )
 
@@ -304,63 +303,61 @@ func experiment() {
 	//全タスクに対するscoreの総量を全員分計算してみる
 	// skill := sTrue
 	skill := ps
-	if experimentedNum%4 == 0 {
-		var scoreAll [20]int
+	var scoreAll [20]int
+	for t := 0; t < N; t++ {
+		if taskStatus[t] != 0 { //未実行タスクのみを対象
+			continue
+		}
+		taskScoreMinMember[t] = -1
+		taskScoreMin[t] = 100000000
+	}
+	var membersRanking []int
+	for m := 0; m < M; m++ {
+		membersRanking = append(membersRanking, m)
 		for t := 0; t < N; t++ {
 			if taskStatus[t] != 0 { //未実行タスクのみを対象
 				continue
 			}
-			taskScoreMinMember[t] = -1
-			taskScoreMin[t] = 100000000
+			s := scoreTrue(skill[m], t)
+			taskScoreMin[t] = min(taskScoreMin[t], s)
+			scoreAll[m] += s
 		}
-		var membersRanking []int
-		for m := 0; m < M; m++ {
-			membersRanking = append(membersRanking, m)
-			for t := 0; t < N; t++ {
-				if taskStatus[t] != 0 { //未実行タスクのみを対象
-					continue
-				}
-				s := scoreTrue(skill[m], t)
-				taskScoreMin[t] = min(taskScoreMin[t], s)
-				scoreAll[m] += s
-			}
-			fmt.Printf("#member = %d, scoreAll = %d\n", m, scoreAll[m])
-		}
+		fmt.Printf("#member = %d, scoreAll = %d\n", m, scoreAll[m])
+	}
 
-		// memberをscoreALL小さい順に並べる
-		sort.Slice(membersRanking, func(i, j int) bool {
-			return scoreAll[membersRanking[i]] < scoreAll[membersRanking[j]]
-		})
+	// memberをscoreALL小さい順に並べる
+	sort.Slice(membersRanking, func(i, j int) bool {
+		return scoreAll[membersRanking[i]] < scoreAll[membersRanking[j]]
+	})
 
-		fmt.Printf("#ranking = %v\n", membersRanking)
+	fmt.Printf("#ranking = %v\n", membersRanking)
 
-		for i := len(membersRanking) - 1; i != -1; i-- {
-			m := membersRanking[i]
-			for t := 0; t < N; t++ {
-				if taskStatus[t] != 0 { //未実行タスクのみを対象
-					continue
-				}
-				score := scoreTrue(skill[m], t)
-				if score == taskScoreMin[t] && taskScoreMinMember[t] == -1 {
-					taskScoreMinMember[t] = m
-				}
-			}
-		}
-
-		// 一番得意なメンバーをassign
-		for m := 0; m < M; m++ {
-			memberBookingTask[m] = make([]int, 0)
-		}
-		for _, t := range sortedTasks {
-			// for t := 0; t < N; t++ {
-			if taskStatus[t] != 0 {
+	for i := len(membersRanking) - 1; i != -1; i-- {
+		m := membersRanking[i]
+		for t := 0; t < N; t++ {
+			if taskStatus[t] != 0 { //未実行タスクのみを対象
 				continue
 			}
-			// fmt.Printf("#task = %d, Max = %d, Avg = %d, Min = %d, who = %d, rank = %d\n", t, taskScoreMax[t], taskScoreAvg[t], taskScoreMin[t], taskScoreMinMember[t], rank[t])
-			m := taskScoreMinMember[t]
-			memberBookingTask[m] = append(memberBookingTask[m], t)
-			taskIsBookedBy[t] = m
+			score := scoreTrue(skill[m], t)
+			if score == taskScoreMin[t] && taskScoreMinMember[t] == -1 {
+				taskScoreMinMember[t] = m
+			}
 		}
+	}
+
+	// 一番得意なメンバーをassign
+	for m := 0; m < M; m++ {
+		memberBookingTask[m] = make([]int, 0)
+	}
+	for _, t := range sortedTasks {
+		// for t := 0; t < N; t++ {
+		if taskStatus[t] != 0 {
+			continue
+		}
+		// fmt.Printf("#task = %d, Max = %d, Avg = %d, Min = %d, who = %d, rank = %d\n", t, taskScoreMax[t], taskScoreAvg[t], taskScoreMin[t], taskScoreMinMember[t], rank[t])
+		m := taskScoreMinMember[t]
+		memberBookingTask[m] = append(memberBookingTask[m], t)
+		taskIsBookedBy[t] = m
 	}
 
 	for m := 0; m < M; m++ {
@@ -753,21 +750,6 @@ func calcError(skill [20]int, member int) int {
 		si := scoreTrue(skill, t)
 		ti := taskEnd[t] - taskStart[t]
 		error += (si - ti) * (si - ti)
-	}
-	return error
-}
-
-func calcError2(skill [20]int, member int) int {
-	error := 0
-	for _, t := range memberHistory[member] {
-		if taskStatus[t] != 2 {
-			continue
-		}
-		//今までに実行した全てのタスクから絶対値誤差を算出
-		si := scoreTrue(skill, t)
-		ti := taskEnd[t] - taskStart[t]
-		// error += (si - ti) * (si - ti) / 1000
-		error += int(math.Abs(float64(si - ti)))
 	}
 	return error
 }
