@@ -13,7 +13,7 @@ import (
 
 const (
 	DEBUG                    = true
-	MIN_ESTIMATE_HISTORY_LEN = 5  //良さそうなのは30
+	MIN_ESTIMATE_HISTORY_LEN = 10 //良さそうなのは30
 	HC_LOOP_COUNT            = 50 //増やせばスコアは伸びるか？
 )
 
@@ -281,7 +281,7 @@ func main() {
 
 func experiment() {
 	//全タスクに対するscoreの総量を全員分計算してみる
-	skill := sTrue
+	skill := ps
 	var scoreAll [20]int
 	var taskScoreMax [1000]int
 	var taskScoreMin [1000]int
