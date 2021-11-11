@@ -303,7 +303,7 @@ func main() {
 			taskStatus[t] = 2 //taskをdoneに
 			taskEnd[t] = day
 
-			if len(memberHistory[f]) == 3 {
+			if len(memberHistory[f]) == 10 {
 				for k := 0; k < K; k++ {
 					ps[i][k] = 0
 				}
