@@ -157,7 +157,7 @@ func main() {
 		// working中のメンバーであっても計算を行う, 何度も山登りすることで精度が上がる
 		estimatedNum := 0
 		for _, i := range sortedMembers {
-			if day == 100 {
+			if day == 200 {
 				for k := 0; k < K; k++ {
 					ps[i][k] = 0
 				}
