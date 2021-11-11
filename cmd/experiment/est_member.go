@@ -157,9 +157,20 @@ func main() {
 		// working中のメンバーであっても計算を行う, 何度も山登りすることで精度が上がる
 		estimatedNum := 0
 		for _, i := range sortedMembers {
-			if day == 200 {
+			if day == 300 {
+				bestError := calcError(ps[i], i)
+				var skill [20]int
 				for k := 0; k < K; k++ {
+					skill[k] = ps[i][k]
 					ps[i][k] = 0
+				}
+				for l := 0; l < 6; l++ {
+					estimate(i)
+				}
+				if !(calcError(ps[i], i) < bestError) { //更新できなかったなら
+					for k := 0; k < K; k++ {
+						ps[i][k] = skill[k]
+					}
 				}
 			}
 			if len(memberHistory[i]) > MIN_ESTIMATE_HISTORY_LEN {
