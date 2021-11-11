@@ -14,7 +14,7 @@ const (
 	DEBUG                    = true
 	MIN_ESTIMATE_HISTORY_LEN = 0  //良さそうなのは30
 	HC_LOOP_COUNT            = 50 //増やせばスコアは伸びるか？
-	FREE_MARGIN              = 7  //a
+	FREE_MARGIN              = 6  //a
 )
 
 var (
@@ -108,11 +108,12 @@ func main() {
 	sort.Slice(sortedTasks, func(i, j int) bool {
 		a := sortedTasks[i]
 		b := sortedTasks[j]
-		if rank[a] == rank[b] {
-			return rank2[a] > rank2[b] //rankが同じ場合はrank2優先
-			// return taskSize[a] < taskSize[b]
-		}
-		return rank[a] > rank[b]
+		return rank2[a] > rank2[b]
+		// if rank[a] == rank[b] {
+		// 	return rank2[a] > rank2[b] //rankが同じ場合はrank2優先
+		// 	// return taskSize[a] < taskSize[b]
+		// }
+		// return rank[a] > rank[b]
 	})
 	if DEBUG {
 		for _, t := range sortedTasks { //rank表を表示
