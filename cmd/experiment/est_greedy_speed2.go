@@ -12,7 +12,7 @@ import (
 
 const (
 	DEBUG                    = true
-	MIN_ESTIMATE_HISTORY_LEN = 7  //良さそうなのは30
+	MIN_ESTIMATE_HISTORY_LEN = 2  //良さそうなのは30
 	HC_LOOP_COUNT            = 50 //増やせばスコアは伸びるか？
 	FREE_MARGIN              = 4
 )
@@ -109,7 +109,7 @@ func main() {
 		a := sortedTasks[i]
 		b := sortedTasks[j]
 		if rank[a] == rank[b] {
-			return rank2[a] > rank2[b] //rankが同じ場合はrank2優先
+			return rank2[a] < rank2[b] //rankが同じ場合はrank2優先
 			// return taskSize[a] > taskSize[b]
 		}
 		return rank[a] > rank[b]
