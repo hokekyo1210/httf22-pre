@@ -81,7 +81,7 @@ jobs:
         run: g++ ./cpp/est_greedy.cpp
       - name: Run tests
         # run: cargo run --manifest-path ./tools/Cargo.toml --release --bin tester ./a.out < ./tools/in/${{matrix.cases}}.txt > ./out.txt
-        run: cargo run --manifest-path ./tools/Cargo.toml --release --bin tester go run ./cmd/experiment/est_greedy_speed_refactoring.go < ./tools/in/${{matrix.cases}}.txt > ./out.txt
+        run: cargo run --manifest-path ./tools/Cargo.toml --release --bin tester go run ./cmd/experiment/est_greedy_speed2.go < ./tools/in/${{matrix.cases}}.txt > ./out.txt
       - name: set-output
         run: echo "::set-output name=SCORE::`cat ./score.txt`"
         id: score

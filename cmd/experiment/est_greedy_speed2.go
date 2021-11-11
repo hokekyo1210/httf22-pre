@@ -172,25 +172,26 @@ func main() {
 			searchStart := time.Now()
 			experiment()
 			allTimeSearch += time.Now().Sub(searchStart)
-		}
+		} else {
 
-		//通常の場合
-		for _, i := range sortedMembers {
-			if memberStatus[i] == 1 {
-				continue
-			}
-			if len(memberBookingTask[i]) != 0 {
-				//タスク予約中なので飛ばす
-				continue
-			}
+			//通常の場合
+			for _, i := range sortedMembers {
+				if memberStatus[i] == 1 {
+					continue
+				}
+				if len(memberBookingTask[i]) != 0 {
+					//タスク予約中なので飛ばす
+					continue
+				}
 
-			bestTask := findTask(i)
+				bestTask := findTask(i)
 
-			if bestTask == -1 {
-				continue
+				if bestTask == -1 {
+					continue
+				}
+				memberBookingTask[i] = append(memberBookingTask[i], bestTask)
+				taskIsBookedBy[bestTask] = i
 			}
-			memberBookingTask[i] = append(memberBookingTask[i], bestTask)
-			taskIsBookedBy[bestTask] = i
 		}
 
 		for m := 0; m < M; m++ {
@@ -292,6 +293,7 @@ func experiment() {
 	//全タスクに対するscoreの総量を全員分計算してみる
 	// skill := sTrue
 	skill := ps
+
 	var taskScoreMin [1000]int
 	var taskScoreMinMember [1000]int
 	var scoreAll [20]int
@@ -346,6 +348,9 @@ func experiment() {
 		}
 		// fmt.Printf("#task = %d, Max = %d, Avg = %d, Min = %d, who = %d, rank = %d\n", t, taskScoreMax[t], taskScoreAvg[t], taskScoreMin[t], taskScoreMinMember[t], rank[t])
 		m := taskScoreMinMember[t]
+		if m == -1 {
+			continue
+		}
 		memberBookingTask[m] = append(memberBookingTask[m], t)
 		taskIsBookedBy[t] = m
 	}
@@ -359,6 +364,13 @@ func experiment() {
 	for m := 0; m < M; m++ {
 		if memberStatus[m] == 1 {
 			continue
+		}
+		if len(memberBookingTask[m]) != 0 {
+			nextT := memberBookingTask[m][0]
+			if canAssign(nextT, false) { //今すぐにassign出来るタスクを抱えているのでこのメンバーは除外
+				// fmt.Printf("#blocked\n")
+				continue
+			}
 		}
 		remainMember = append(remainMember, m)
 	}
@@ -389,7 +401,7 @@ func experiment() {
 				break
 			}
 		}
-		// fmt.Printf("#task = %d, memberIsBooking = %d, trueEndTime = %d\n", t, memberIsBooking, trueEndTime)
+		// fmt.Printf("#task = %d, memberIsBooking = %d, trueEndTime = %d, rank = %d, trueEndTime = %d\n", t, memberIsBooking, trueEndTime, rank[t], trueEndTime)
 
 		bestEndTime := 10000000000
 		bestMember := -1
@@ -410,13 +422,14 @@ func experiment() {
 				freeTime = minimumWaitTimeCanAssignTask(skill, taskScoreMinMember, nextTask)
 			}
 			deadline := day + freeTime //この日時までには確実に暇でいる必要がある
-			// fmt.Printf("#member = %d, freeTime = %d, deadline = %d\n", m, freeTime, deadline)
 
 			endTime := day + scoreTrue(skill[m], t)
 			if memberStatus[m] == 1 {
 				endTime += calcWaitTime(m)
 				// continue //debug用
 			}
+			// fmt.Printf("#member = %d, freeTime = %d, deadline = %d, endTime = %d\n", m, freeTime, deadline, endTime)
+
 			if deadline+FREE_MARGIN < endTime { //期日までに終わらせられないのでだめ, 上振れ考慮してマージン入れた方が良い
 				continue
 			}
