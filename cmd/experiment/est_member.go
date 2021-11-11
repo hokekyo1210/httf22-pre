@@ -58,6 +58,8 @@ var (
 
 type EstimateHistory struct {
 	bestError        int
+	bestError2       int
+	bestTrueError    int
 	trueError        int
 	memberHistoryNum int
 	transitionNum    int
@@ -591,6 +593,7 @@ func estimate(member int) {
 		now[k] = ps[member][k]
 		bestSkill[k] = ps[member][k]
 	}
+
 	bestError = calcError(bestSkill, member)
 
 	var targetK int
@@ -620,6 +623,9 @@ func estimate(member int) {
 	}
 
 	for {
+		if bestError < (len(memberHistory[member])+1)*3 {
+			break
+		}
 		targetK = rand.Intn(K)
 		targetK2 = targetK
 		if rand.Intn(2) == 0 {
@@ -671,9 +677,9 @@ func estimate(member int) {
 		}
 
 		if bestError == error {
-			// if skillSize(now) < skillSize(bestSkill) { //エラーが同じ場合はskillがより小規模なもの
-			// 	success = true
-			// }
+			if skillSize(now) < skillSize(bestSkill) { //エラーが同じ場合はskillがより小規模なもの
+				success = true
+			}
 			// success = true
 		} else if error < bestError {
 			success = true
@@ -739,7 +745,8 @@ func estimate(member int) {
 		for k := 0; k < K; k++ {
 			error += (sTrue[member][k] - ps[member][k]) * (sTrue[member][k] - ps[member][k])
 		}
-		eh := EstimateHistory{bestError: bestError, memberHistoryNum: memberHistoryNum, transitionNum: transitionNum, trueError: error}
+		bestTrueError := calcError(sTrue[member], member)
+		eh := EstimateHistory{bestTrueError: bestTrueError, bestError: bestError, bestError2: calcError2(ps[member], member), memberHistoryNum: memberHistoryNum, transitionNum: transitionNum, trueError: error}
 		estimateHistory[member] = append(estimateHistory[member], eh)
 	}
 }
@@ -757,6 +764,27 @@ func calcError(skill [20]int, member int) int {
 		//今までに実行した全てのタスクから二乗誤差を算出
 		si := scoreTrue(skill, t)
 		ti := taskEnd[t] - taskStart[t]
+		// if abs(si-ti) <= 3 { //上振れ下振れを考慮
+		// 	continue
+		// }
+		error += (si - ti) * (si - ti)
+	}
+	return error
+}
+
+//こちらは上振れ下振れも考慮
+func calcError2(skill [20]int, member int) int {
+	error := 0
+	for _, t := range memberHistory[member] {
+		if taskStatus[t] != 2 {
+			continue
+		}
+		//今までに実行した全てのタスクから二乗誤差を算出
+		si := scoreTrue(skill, t)
+		ti := taskEnd[t] - taskStart[t]
+		if abs(si-ti) <= 3 { //上振れ下振れを考慮
+			continue
+		}
 		error += (si - ti) * (si - ti)
 	}
 	return error
@@ -794,6 +822,13 @@ func scoreTrue(skill [20]int, task int) int {
 		score += max(0, d[task][k]-skill[k])
 	}
 	return max(1, score)
+}
+
+func abs(a int) int {
+	if a < 0 {
+		return -a
+	}
+	return a
 }
 
 func max(a int, b int) int {
@@ -857,6 +892,15 @@ func writeEstError() error {
 }
 
 func writeEstHistory() error {
+
+	// for k := 0; k < K; k++ {
+	// 	ps[6][k] = 0
+	// }
+
+	// for l := 0; l < 100; l++ {
+	// 	estimate(6)
+	// }
+
 	text := ""
 	for i := 0; i < M; i++ {
 		text += fmt.Sprintf("member = %d\n", i)
@@ -865,8 +909,12 @@ func writeEstHistory() error {
 			if eh.memberHistoryNum != before {
 				text += "\n"
 				before++
+				if eh.memberHistoryNum != 0 {
+					t := memberHistory[i][eh.memberHistoryNum-1]
+					text += fmt.Sprintf("t = %d, taskSize = %d, score = %d\n", t, taskSize[t], tTrue[t][i])
+				}
 			}
-			text += fmt.Sprintf("idx = %d, bestError = %d, trueError = %d, memberHistoryNum = %d, transitionNum = %d\n", idx, eh.bestError, eh.trueError, eh.memberHistoryNum, eh.transitionNum)
+			text += fmt.Sprintf("idx = %d, bestTrueError = %d, bestError = %d, bestError2 = %d, trueError = %d, memberHistoryNum = %d, transitionNum = %d\n", idx, eh.bestTrueError, eh.bestError, eh.bestError2, eh.trueError, eh.memberHistoryNum, eh.transitionNum)
 		}
 		text += "\n"
 	}
