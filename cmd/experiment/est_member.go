@@ -307,9 +307,6 @@ func main() {
 				for k := 0; k < K; k++ {
 					ps[i][k] = 0
 				}
-				for l := 0; l < 10; l++ {
-					estimate(i)
-				}
 			}
 
 			//パラメータの下限が確定(下振れを考慮)
