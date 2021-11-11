@@ -157,14 +157,6 @@ func main() {
 		// working中のメンバーであっても計算を行う, 何度も山登りすることで精度が上がる
 		estimatedNum := 0
 		for _, i := range sortedMembers {
-			if day == 300 {
-				for k := 0; k < K; k++ {
-					ps[i][k] = 0
-				}
-				for l := 0; l < 10; l++ {
-					estimate(i)
-				}
-			}
 			if len(memberHistory[i]) > MIN_ESTIMATE_HISTORY_LEN {
 				//ここの数値は要調整, ある程度学習データがないと推定がかなり甘くなる
 				estimate(i)
@@ -310,6 +302,15 @@ func main() {
 			t := memberHistory[f][len(memberHistory[f])-1]
 			taskStatus[t] = 2 //taskをdoneに
 			taskEnd[t] = day
+
+			if len(memberHistory[f]) < 10 {
+				for k := 0; k < K; k++ {
+					ps[i][k] = 0
+				}
+				for l := 0; l < 10; l++ {
+					estimate(i)
+				}
+			}
 
 			//パラメータの下限が確定(下振れを考慮)
 			actDay := taskEnd[t] - taskStart[t]
