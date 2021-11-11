@@ -14,7 +14,7 @@ const (
 	DEBUG                    = true
 	MIN_ESTIMATE_HISTORY_LEN = 0  //良さそうなのは30
 	HC_LOOP_COUNT            = 50 //増やせばスコアは伸びるか？
-	FREE_MARGIN              = 6  //a
+	FREE_MARGIN              = 7  //a
 )
 
 var (
