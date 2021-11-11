@@ -623,7 +623,7 @@ func estimate(member int) {
 	}
 
 	for {
-		if bestError < (len(memberHistory[member]))*3 {
+		if bestError < (len(memberHistory[member])+4)*3 {
 			break
 		}
 		targetK = rand.Intn(K)
@@ -894,11 +894,11 @@ func writeEstError() error {
 func writeEstHistory() error {
 
 	for k := 0; k < K; k++ {
-		ps[2][k] = 0
+		ps[11][k] = 0
 	}
 
 	for l := 0; l < 100; l++ {
-		estimate(2)
+		estimate(11)
 	}
 
 	text := ""
