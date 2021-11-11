@@ -302,11 +302,11 @@ func main() {
 			taskEnd[t] = day
 
 			//パラメータの下限が確定(下振れを考慮)
-			// actDay := taskEnd[t] - taskStart[t]
-			// for k := 0; k < K; k++ {
-			// 	psMin[f][k] = max(psMin[f][k], d[t][k]-actDay-3)
-			// 	ps[f][k] = max(psMin[f][k], ps[f][k])
-			// }
+			actDay := taskEnd[t] - taskStart[t]
+			for k := 0; k < K; k++ {
+				psMin[f][k] = max(psMin[f][k], d[t][k]-actDay-3)
+				ps[f][k] = max(psMin[f][k], ps[f][k])
+			}
 		}
 	}
 }
@@ -671,9 +671,9 @@ func estimate(member int) {
 		}
 
 		if bestError == error {
-			if skillSize(now) < skillSize(bestSkill) { //エラーが同じ場合はskillがより小規模なもの
-				success = true
-			}
+			// if skillSize(now) < skillSize(bestSkill) { //エラーが同じ場合はskillがより小規模なもの
+			// 	success = true
+			// }
 			// success = true
 		} else if error < bestError {
 			success = true
