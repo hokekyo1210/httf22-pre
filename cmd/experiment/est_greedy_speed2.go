@@ -93,7 +93,7 @@ func main() {
 	}
 	for t := 0; t < N; t++ {
 		calcRank(t, 0)
-		calcRank2(t, taskSize[t])
+		calcRank2(t, 0)
 	}
 	if DEBUG {
 		for t := 0; t < N; t++ { //rank表を表示
