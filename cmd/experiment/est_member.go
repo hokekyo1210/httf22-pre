@@ -1,3 +1,6 @@
+// est_greedy_speed2.goをベースにしている.
+// メンバーごとの推定精度の上がり型を確認する。(LEN=6で精度が良い理由も確認する)
+
 package main
 
 import (
@@ -12,9 +15,9 @@ import (
 
 const (
 	DEBUG                    = true
-	MIN_ESTIMATE_HISTORY_LEN = 0    //良さそうなのは30
-	HC_LOOP_COUNT            = 1000 //増やせばスコアは伸びるか？
-	FREE_MARGIN              = 6    //a
+	MIN_ESTIMATE_HISTORY_LEN = 0  //良さそうなのは30
+	HC_LOOP_COUNT            = 50 //増やせばスコアは伸びるか？
+	FREE_MARGIN              = 6  //a
 )
 
 var (
@@ -49,7 +52,16 @@ var (
 	allTimeSearchCalc1 time.Duration
 	allTimeSearchCalc2 time.Duration
 	allTime            time.Duration //全体にかかっている時間
+
+	estimateHistory [20][]EstimateHistory //推定の結果履歴
 )
+
+type EstimateHistory struct {
+	bestError        int
+	trueError        int
+	memberHistoryNum int
+	transitionNum    int
+}
 
 func main() {
 	startAllTime := time.Now()
@@ -272,6 +284,12 @@ func main() {
 					fmt.Printf("error %s\n", err.Error())
 					os.Exit(1)
 				}
+
+				err = writeEstHistory()
+				if err != nil {
+					fmt.Printf("error %s\n", err.Error())
+					os.Exit(1)
+				}
 			}
 			break
 		}
@@ -284,11 +302,11 @@ func main() {
 			taskEnd[t] = day
 
 			//パラメータの下限が確定(下振れを考慮)
-			actDay := taskEnd[t] - taskStart[t]
-			for k := 0; k < K; k++ {
-				psMin[f][k] = max(psMin[f][k], d[t][k]-actDay-3)
-				ps[f][k] = max(psMin[f][k], ps[f][k])
-			}
+			// actDay := taskEnd[t] - taskStart[t]
+			// for k := 0; k < K; k++ {
+			// 	psMin[f][k] = max(psMin[f][k], d[t][k]-actDay-3)
+			// 	ps[f][k] = max(psMin[f][k], ps[f][k])
+			// }
 		}
 	}
 }
@@ -588,6 +606,7 @@ func estimate(member int) {
 	taskStart := taskStart
 	taskEnd := taskEnd
 	taskStatus := taskStatus
+	transitionNum := 0
 
 	var st [1000]int
 
@@ -664,6 +683,7 @@ func estimate(member int) {
 			for k := 0; k < K; k++ {
 				bestSkill[k] = now[k]
 			}
+			transitionNum++
 		} else { //巻き戻す
 			for _, t := range memberHistory[member] {
 				if taskStatus[t] != 2 {
@@ -706,6 +726,22 @@ func estimate(member int) {
 		ps[member][k] = bestSkill[k]
 	}
 	allTimeEst += time.Now().Sub(startTime)
+
+	if DEBUG {
+		memberHistoryNum := 0
+		for _, t := range memberHistory[member] {
+			if taskStatus[t] != 2 {
+				continue
+			}
+			memberHistoryNum++
+		}
+		error := 0
+		for k := 0; k < K; k++ {
+			error += (sTrue[member][k] - ps[member][k]) * (sTrue[member][k] - ps[member][k])
+		}
+		eh := EstimateHistory{bestError: bestError, memberHistoryNum: memberHistoryNum, transitionNum: transitionNum, trueError: error}
+		estimateHistory[member] = append(estimateHistory[member], eh)
+	}
 }
 
 func stk(skill [20]int, t int, k int) int {
@@ -813,6 +849,35 @@ func writeEstError() error {
 	defer file.Close()
 
 	_, err = file.WriteString(strconv.Itoa(error) + "\n")
+	if err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func writeEstHistory() error {
+	text := ""
+	for i := 0; i < M; i++ {
+		text += fmt.Sprintf("member = %d\n", i)
+		before := 0
+		for idx, eh := range estimateHistory[i] {
+			if eh.memberHistoryNum != before {
+				text += "\n"
+				before++
+			}
+			text += fmt.Sprintf("idx = %d, bestError = %d, trueError = %d, memberHistoryNum = %d, transitionNum = %d\n", idx, eh.bestError, eh.trueError, eh.memberHistoryNum, eh.transitionNum)
+		}
+		text += "\n"
+	}
+
+	file, err := os.Create("./esthistory.txt")
+	if err != nil {
+		return err
+	}
+	defer file.Close()
+
+	_, err = file.WriteString(text)
 	if err != nil {
 		return err
 	}
