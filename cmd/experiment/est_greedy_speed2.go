@@ -14,7 +14,7 @@ const (
 	DEBUG                    = true
 	MIN_ESTIMATE_HISTORY_LEN = 0  //良さそうなのは30
 	HC_LOOP_COUNT            = 50 //増やせばスコアは伸びるか？
-	FREE_MARGIN              = 4
+	FREE_MARGIN              = 5
 )
 
 var (
@@ -109,8 +109,8 @@ func main() {
 		a := sortedTasks[i]
 		b := sortedTasks[j]
 		if rank[a] == rank[b] {
-			// return rank2[a] > rank2[b] //rankが同じ場合はrank2優先
-			return taskSize[a] < taskSize[b]
+			return rank2[a] > rank2[b] //rankが同じ場合はrank2優先
+			// return taskSize[a] < taskSize[b]
 		}
 		return rank[a] > rank[b]
 	})
@@ -483,10 +483,10 @@ func minimumWaitTimeCanAssignTask(skill [20][20]int, taskScoreMinMember [1000]in
 			cost := 0
 			if taskStatus[nextT] == 0 {
 				m := taskScoreMinMember[nextT]
-				cost = scoreTrue(skill[m], nextT) //最も得意な人が実行する想定 上振れも考慮する?
+				cost = max(1, scoreTrue(skill[m], nextT)-3) //最も得意な人が実行する想定 上振れも考慮する?
 			} else if taskStatus[nextT] == 1 { //実行中タスク
 				m := taskIsBookedBy[nextT]
-				cost = taskStart[nextT] + scoreTrue(skill[m], nextT) - day
+				cost = taskStart[nextT] + max(1, scoreTrue(skill[m], nextT)-3) - day
 			}
 			ret = max(ret, minimumWaitTimeCanAssignTask(skill, taskScoreMinMember, nextT)+cost)
 		}
