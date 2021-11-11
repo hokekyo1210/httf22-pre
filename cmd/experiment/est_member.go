@@ -15,9 +15,9 @@ import (
 
 const (
 	DEBUG                    = true
-	MIN_ESTIMATE_HISTORY_LEN = 0   //良さそうなのは30
-	HC_LOOP_COUNT            = 600 //増やせばスコアは伸びるか？
-	FREE_MARGIN              = 6   //a
+	MIN_ESTIMATE_HISTORY_LEN = 0  //良さそうなのは30
+	HC_LOOP_COUNT            = 50 //増やせばスコアは伸びるか？
+	FREE_MARGIN              = 6  //a
 )
 
 var (
@@ -157,9 +157,19 @@ func main() {
 		// working中のメンバーであっても計算を行う, 何度も山登りすることで精度が上がる
 		estimatedNum := 0
 		for _, i := range sortedMembers {
+			if day == 100 {
+				for k := 0; k < K; k++ {
+					ps[i][k] = 0
+				}
+			}
 			if len(memberHistory[i]) > MIN_ESTIMATE_HISTORY_LEN {
 				//ここの数値は要調整, ある程度学習データがないと推定がかなり甘くなる
+				estimate(i)
+				memberEstimated[i] = 1
 				estimatedNum++
+				// for k := 0; k < K; k++ {
+				// 	ps[i][k] = sTrue[i][k]
+				// }
 			}
 		}
 		if estimatedNum == M {
@@ -297,18 +307,6 @@ func main() {
 			t := memberHistory[f][len(memberHistory[f])-1]
 			taskStatus[t] = 2 //taskをdoneに
 			taskEnd[t] = day
-
-			if len(memberHistory[f]) > MIN_ESTIMATE_HISTORY_LEN {
-				//ここの数値は要調整, ある程度学習データがないと推定がかなり甘くなる
-				if len(memberHistory[f])%20 == 0 {
-					for k := 0; k < K; k++ {
-						ps[f][k] = 0
-					}
-				}
-				estimate(f)
-				memberEstimated[f] = 1
-				estimatedNum++
-			}
 
 			//パラメータの下限が確定(下振れを考慮)
 			actDay := taskEnd[t] - taskStart[t]
