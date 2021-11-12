@@ -15,9 +15,9 @@ import (
 
 const (
 	DEBUG                    = true
-	MIN_ESTIMATE_HISTORY_LEN = 3  //良さそうなのは30
+	MIN_ESTIMATE_HISTORY_LEN = 6  //良さそうなのは30
 	HC_LOOP_COUNT            = 50 //増やせばスコアは伸びるか？ あまり変える余地ないかも
-	FREE_MARGIN              = 6  //a
+	FREE_MARGIN              = 0  //a
 )
 
 var (
@@ -58,6 +58,8 @@ var (
 	allTime            time.Duration //全体にかかっている時間
 
 	estimateHistory [20][]EstimateHistory //推定の結果履歴
+
+	deadlineMemo [1000]int
 )
 
 type EstimateHistory struct {
@@ -79,6 +81,7 @@ func main() {
 		}
 		taskSize[i] = size(i)
 		taskIsBookedBy[i] = -1
+		deadlineMemo[i] = -1
 	}
 	for i := 0; i < R; i++ {
 		fmt.Scanf("%d %d", &u, &v)
@@ -180,20 +183,12 @@ func main() {
 		// 学習データが溜まったらパラメータを推定する
 		// working中のメンバーであっても計算を行う, 何度も山登りすることで精度が上がる
 		estimatedNum := 0
-		for _, m := range sortedMembers {
-			if memberEstimated[m] == 1 {
-				estimatedNum++
-			}
-		}
 		for _, i := range sortedMembers {
-			if estimatedNum > 17 && memberEstimated[i] == 0 {
-				// 一定以上になったらもう推定しない
-				continue
-			}
 			if len(memberHistory[i]) > MIN_ESTIMATE_HISTORY_LEN {
 				//ここの数値は要調整, ある程度学習データがないと推定がかなり甘くなる
 				estimate(i)
 				memberEstimated[i] = 1
+				estimatedNum++
 				// for k := 0; k < K; k++ {
 				// 	ps[i][k] = sTrue[i][k]
 				// }
@@ -336,18 +331,25 @@ func main() {
 			taskStatus[t] = 2 //taskをdoneに
 			taskEnd[t] = day
 
-			if memberEstimated[f] == 1 {
-				trueDay := taskEnd[t] - taskStart[t]
-				estimateDay := scoreTrue(ps[f], t)
+			trueDay := taskEnd[t] - taskStart[t]
+			estimateDay := scoreTrue(ps[f], t)
 
-				if 100 < day && abs(trueDay-estimateDay) > 10 {
-					fmt.Printf("# check member = %d, task = %d, trueDay = %d, estimateDay = %d\n", f, t, trueDay, estimateDay)
-					for k := 0; k < K; k++ {
-						ps[f][k] = 0
-					}
-					for l := 0; l < 10; l++ {
-						estimate(f)
-					}
+			if 100 < day && abs(trueDay-estimateDay) > 10 {
+				fmt.Printf("# check member = %d, task = %d, trueDay = %d, estimateDay = %d\n", f, t, trueDay, estimateDay)
+				for k := 0; k < K; k++ {
+					ps[f][k] = 0
+				}
+				for l := 0; l < 10; l++ {
+					estimate(f)
+				}
+			}
+
+			if deadlineMemo[t] != -1 {
+				deadline := deadlineMemo[t]
+				if day <= deadline {
+					fmt.Printf("# deadline ok \n")
+				} else {
+					fmt.Printf("# deadline ng , member = %d, deadline = %d, day = %d\n", f, deadline, day)
 				}
 			}
 
@@ -433,7 +435,7 @@ func experiment() {
 		calcRank3second(t, tmpTaskScoreAll[t])
 	}
 
-	// if day > 500 {
+	// if day > 700 {
 	sort.Slice(sortedTasks, func(i, j int) bool {
 		a := sortedTasks[i]
 		b := sortedTasks[j]
@@ -444,12 +446,12 @@ func experiment() {
 	})
 	// }
 
-	for _, t := range sortedTasks { //rank表を表示
-		if taskStatus[t] != 0 {
-			continue
-		}
-		// fmt.Printf("# %d rank = %d, rank2 = %d, rank3 = %d, size = %d, bestScore = %d, canAssign = %v\n", t, rank[t], rank2[t], rank3[t], taskSize[t], tmpScoreAll[taskScoreMinMember[t]][t], canAssign(t, false))
-	}
+	// for _, t := range sortedTasks { //rank表を表示
+	// 	if taskStatus[t] != 0 {
+	// 		continue
+	// 	}
+	// 	fmt.Printf("# %d rank = %d, rank2 = %d, rank3 = %d, size = %d, bestScore = %d, canAssign = %v\n", t, rank[t], rank2[t], rank3[t], taskSize[t], tmpScoreAll[taskScoreMinMember[t]][t], canAssign(t, false))
+	// }
 
 	// 一番得意なメンバーをassign
 	for m := 0; m < M; m++ {
@@ -576,6 +578,7 @@ func experiment() {
 			} else {
 				_ = bestDeadline
 				// fmt.Printf("#bestMember = %d, bestEndTime = %d, deadline = %d\n", bestMember, bestEndTime, bestDeadline)
+				deadlineMemo[t] = bestDeadline
 				deleteBooking(t)
 				memberBookingTask[bestMember] = append([]int{t}, memberBookingTask[bestMember]...)
 				taskIsBookedBy[t] = bestMember
@@ -628,7 +631,7 @@ func calcWaitTime(member int) int { //そのメンバーの再アサインが可
 		if tmp == 1 {
 			endTime = taskStart[working] + tmp
 		} else {
-			endTime = taskStart[working] + tmp //上振れも考慮する?
+			endTime = taskStart[working] + tmp + 3 //上振れも考慮する?
 		}
 
 		ret = endTime
@@ -661,9 +664,9 @@ func findTask(member int) int { //最適なタスクを選定する
 			if !canAssign(t, false) {
 				continue
 			}
-			// fmt.Printf("# task = %d, priority = %d\n", t, priority[t])
+			fmt.Printf("# task = %d, priority = %d\n", t, priority[t])
 			if priority[t] > 100 { //実行が随分あと
-				// fmt.Printf("# member = %d, assign = %d\n", member, t)
+				fmt.Printf("# member = %d, assign = %d\n", member, t)
 				deleteBooking(t)
 				sortedTasks2 = append(sortedTasks2[:idx], sortedTasks2[idx+1:]...)
 				return t
