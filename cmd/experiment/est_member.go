@@ -15,7 +15,7 @@ import (
 
 const (
 	DEBUG                    = true
-	MIN_ESTIMATE_HISTORY_LEN = 0  //良さそうなのは30
+	MIN_ESTIMATE_HISTORY_LEN = 6  //良さそうなのは30
 	HC_LOOP_COUNT            = 50 //増やせばスコアは伸びるか？
 	FREE_MARGIN              = 6  //a
 )
@@ -46,6 +46,7 @@ var (
 	rank2             [1000]int     //タスクの依存関係の深さ2
 	sMax              [20]int       //s_kの取りうる値の上限
 	sortedTasks       []int         //rank順にソートされたタスク
+	sortedTasks2      []int         //tasksize順にソートされたタスク
 
 	allTimeEst         time.Duration //推定にかかってる時間
 	allTimeSearch      time.Duration //探索にかかってる時間
@@ -118,6 +119,7 @@ func main() {
 	// rankが大きい順にtaskを並べておく(rankが大きい物はボトルネックになる)
 	for t := 0; t < N; t++ {
 		sortedTasks = append(sortedTasks, t)
+		sortedTasks2 = append(sortedTasks2, t)
 	}
 	sort.Slice(sortedTasks, func(i, j int) bool {
 		a := sortedTasks[i]
@@ -125,7 +127,17 @@ func main() {
 		return rank2[a] > rank2[b]
 		// if rank[a] == rank[b] {
 		// 	return rank2[a] > rank2[b] //rankが同じ場合はrank2優先
-		// 	// return taskSize[a] < taskSize[b]
+		// return taskSize[a] < taskSize[b]
+		// }
+		// return rank[a] > rank[b]
+	})
+	sort.Slice(sortedTasks2, func(i, j int) bool {
+		a := sortedTasks2[i]
+		b := sortedTasks2[j]
+		// return rank2[a] > rank2[b]
+		// if rank[a] == rank[b] {
+		// 	return rank2[a] > rank2[b] //rankが同じ場合はrank2優先
+		return taskSize[a] < taskSize[b]
 		// }
 		// return rank[a] > rank[b]
 	})
@@ -302,12 +314,6 @@ func main() {
 			t := memberHistory[f][len(memberHistory[f])-1]
 			taskStatus[t] = 2 //taskをdoneに
 			taskEnd[t] = day
-
-			if len(memberHistory[f]) == 10 {
-				for k := 0; k < K; k++ {
-					ps[i][k] = 0
-				}
-			}
 
 			//パラメータの下限が確定(下振れを考慮)
 			actDay := taskEnd[t] - taskStart[t]
@@ -559,7 +565,7 @@ func deleteBooking(task int) { //taskの予約を削除する
 func findTask(member int) int { //最適なタスクを選定する
 	//終了していないタスクの中から最適なタスクにアサインする
 	//rankが高い順に処理されることに注意(sortedTasksが既にrank順でソート済み)
-	for _, t := range sortedTasks {
+	for _, t := range sortedTasks2 {
 		if !canAssign(t, true) {
 			continue
 		}
