@@ -1,3 +1,6 @@
+// est_greedy_speed2.goをベースにしている.
+// メンバーごとの推定精度の上がり型を確認する。(LEN=6で精度が良い理由も確認する)
+
 package main
 
 import (
@@ -13,7 +16,7 @@ import (
 const (
 	DEBUG                    = true
 	MIN_ESTIMATE_HISTORY_LEN = 0  //良さそうなのは30
-	HC_LOOP_COUNT            = 50 //増やせばスコアは伸びるか？
+	HC_LOOP_COUNT            = 50 //増やせばスコアは伸びるか？ あまり変える余地ないかも
 	FREE_MARGIN              = 6  //a
 )
 
@@ -41,15 +44,28 @@ var (
 	taskSize          [1000]int     //タスクの大きさ
 	rank              [1000]int     //タスクの依存関係の深さ
 	rank2             [1000]int     //タスクの依存関係の深さ2
+	rank3             [1000]int     //タスクの依存関係の深さ3
 	sMax              [20]int       //s_kの取りうる値の上限
 	sortedTasks       []int         //rank順にソートされたタスク
+	sortedTasks2      []int         //tasksize順にソートされたタスク
 
 	allTimeEst         time.Duration //推定にかかってる時間
 	allTimeSearch      time.Duration //探索にかかってる時間
 	allTimeSearchCalc1 time.Duration
 	allTimeSearchCalc2 time.Duration
 	allTime            time.Duration //全体にかかっている時間
+
+	estimateHistory [20][]EstimateHistory //推定の結果履歴
 )
+
+type EstimateHistory struct {
+	bestError        int
+	bestError2       int
+	bestTrueError    int
+	trueError        int
+	memberHistoryNum int
+	transitionNum    int
+}
 
 func main() {
 	startAllTime := time.Now()
@@ -104,6 +120,7 @@ func main() {
 	// rankが大きい順にtaskを並べておく(rankが大きい物はボトルネックになる)
 	for t := 0; t < N; t++ {
 		sortedTasks = append(sortedTasks, t)
+		sortedTasks2 = append(sortedTasks2, t)
 	}
 	sort.Slice(sortedTasks, func(i, j int) bool {
 		a := sortedTasks[i]
@@ -111,9 +128,19 @@ func main() {
 		return rank2[a] > rank2[b]
 		// if rank[a] == rank[b] {
 		// 	return rank2[a] > rank2[b] //rankが同じ場合はrank2優先
-		// 	// return taskSize[a] < taskSize[b]
+		// return taskSize[a] < taskSize[b]
 		// }
 		// return rank[a] > rank[b]
+	})
+	sort.Slice(sortedTasks2, func(i, j int) bool {
+		a := sortedTasks2[i]
+		b := sortedTasks2[j]
+		// return rank2[a] > rank2[b]
+		if rank[a] == rank[b] {
+			// 	return rank2[a] > rank2[b] //rankが同じ場合はrank2優先
+			return taskSize[a] < taskSize[b]
+		}
+		return rank[a] > rank[b]
 	})
 	if DEBUG {
 		for _, t := range sortedTasks { //rank表を表示
@@ -133,7 +160,13 @@ func main() {
 		var sortedMembers []int
 		for i := 0; i < M; i++ {
 			sortedMembers = append(sortedMembers, i)
-			fmt.Printf("#member = %d, memberStatus = %d\n", i, memberStatus[i])
+			working := -1
+			if memberStatus[i] == 1 {
+				working = memberHistory[i][len(memberHistory[i])-1]
+			}
+			if DEBUG {
+				fmt.Printf("#member = %d, memberStatus = %d, taskLen = %d, working = %d\n", i, memberStatus[i], len(memberHistory[i]), working)
+			}
 		}
 		sort.Slice(sortedMembers, func(i, j int) bool {
 			return len(memberHistory[sortedMembers[i]]) > len(memberHistory[sortedMembers[j]])
@@ -170,7 +203,9 @@ func main() {
 				canAssignTaskNum++
 			}
 		}
-		fmt.Printf("#canAssign member=%d, task=%d\n", canAssignMemberNum, canAssignTaskNum)
+		if DEBUG {
+			fmt.Printf("#canAssign member=%d, task=%d\n", canAssignMemberNum, canAssignTaskNum)
+		}
 
 		//実験中
 		if estimatedNum == M && canAssignMemberNum != 0 {
@@ -272,6 +307,12 @@ func main() {
 					fmt.Printf("error %s\n", err.Error())
 					os.Exit(1)
 				}
+
+				err = writeEstHistory()
+				if err != nil {
+					fmt.Printf("error %s\n", err.Error())
+					os.Exit(1)
+				}
 			}
 			break
 		}
@@ -282,6 +323,19 @@ func main() {
 			t := memberHistory[f][len(memberHistory[f])-1]
 			taskStatus[t] = 2 //taskをdoneに
 			taskEnd[t] = day
+
+			trueDay := taskEnd[t] - taskStart[t]
+			estimateDay := scoreTrue(ps[f], t)
+
+			if 100 < day && abs(trueDay-estimateDay) > 10 {
+				fmt.Printf("# check member = %d, task = %d, trueDay = %d, estimateDay = %d\n", f, t, trueDay, estimateDay)
+				for k := 0; k < K; k++ {
+					ps[f][k] = 0
+				}
+				for l := 0; l < 10; l++ {
+					estimate(f)
+				}
+			}
 
 			//パラメータの下限が確定(下振れを考慮)
 			actDay := taskEnd[t] - taskStart[t]
@@ -310,6 +364,7 @@ func experiment() {
 		}
 		taskScoreMinMember[t] = -1
 		taskScoreMin[t] = 100000000
+		rank3[t] = -1
 	}
 	var membersRanking []int
 	for m := 0; m < M; m++ {
@@ -339,16 +394,44 @@ func experiment() {
 				continue
 			}
 			score := tmpScoreAll[m][t]
-			if score == taskScoreMin[t] && taskScoreMinMember[t] == -1 {
+			if score <= taskScoreMin[t]+3 && taskScoreMinMember[t] == -1 {
 				taskScoreMinMember[t] = m
 			}
 		}
 	}
 
+	// rank3を計算
+	// for i := len(sortedTasks) - 1; i != 0; i-- {
+	// 	t := sortedTasks[i]
+	// 	if taskStatus[t] != 0 {
+	// 		continue
+	// 	}
+	// 	m := taskScoreMinMember[t]
+	// 	score := max(1, tmpScoreAll[m][t]-3)
+	// 	calcRank3(skill, taskScoreMinMember, t, score)
+	// }
+
+	// sort.Slice(sortedTasks, func(i, j int) bool {
+	// 	a := sortedTasks[i]
+	// 	b := sortedTasks[j]
+	// 	if rank3[a] == rank3[b] {
+	// 		return rank[a] > rank[b]
+	// 	}
+	// 	return rank3[a] > rank3[b]
+	// })
+
+	// for _, t := range sortedTasks { //rank表を表示
+	// 	if taskStatus[t] != 0 {
+	// 		continue
+	// 	}
+	// 	fmt.Printf("# %d rank = %d, rank2 = %d, rank3 = %d, size = %d, bestScore = %d, canAssign = %v\n", t, rank[t], rank2[t], rank3[t], taskSize[t], tmpScoreAll[taskScoreMinMember[t]][t], canAssign(t, false))
+	// }
+
 	// 一番得意なメンバーをassign
 	for m := 0; m < M; m++ {
 		memberBookingTask[m] = make([]int, 0)
 	}
+	var priority [1000]int
 	for _, t := range sortedTasks {
 		if taskStatus[t] != 0 {
 			continue
@@ -356,6 +439,7 @@ func experiment() {
 		// fmt.Printf("#task = %d, Max = %d, Avg = %d, Min = %d, who = %d, rank = %d\n", t, taskScoreMax[t], taskScoreAvg[t], taskScoreMin[t], taskScoreMinMember[t], rank[t])
 		m := taskScoreMinMember[t]
 		if m == -1 {
+			fmt.Printf("# its a bug!\n")
 			continue
 		}
 		memberBookingTask[m] = append(memberBookingTask[m], t)
@@ -363,8 +447,16 @@ func experiment() {
 	}
 
 	for m := 0; m < M; m++ {
-		fmt.Printf("#member = %d, memberBookingTask = %v\n", m, memberBookingTask[m])
+		cost := 0
+		for _, t := range memberBookingTask[m] {
+			cost += max(1, tmpScoreAll[m][t]-3)
+			priority[t] = cost
+		}
 	}
+
+	// for m := 0; m < M; m++ {
+	// 	fmt.Printf("#member = %d, memberBookingTask = %v\n", m, memberBookingTask[m])
+	// }
 
 	// 次のタスクまでの間が十分長い人の中から、最も早くタスクを終えられる人を探してassign
 	var remainMember []int
@@ -427,7 +519,7 @@ func experiment() {
 			freeTime := 1000000000
 			if len(memberBookingTask[m]) != 0 {
 				nextTask := memberBookingTask[m][0] // mメンバーが次にやる予定のタスク
-				freeTime = minimumWaitTimeCanAssignTask(skill, taskScoreMinMember, nextTask)
+				freeTime = minimumWaitTimeCanAssignTask(priority, skill, taskScoreMinMember, nextTask)
 			}
 			deadline := day + freeTime //この日時までには確実に暇でいる必要がある
 
@@ -473,7 +565,7 @@ func experiment() {
 
 var memo [1000]int
 
-func minimumWaitTimeCanAssignTask(skill [20][20]int, taskScoreMinMember [1000]int, task int) int { //taskがassign可能になるまでに必要な時間の推定値(各タスクは最も得意な人間が実行するものとする)(メモ化可能)
+func minimumWaitTimeCanAssignTask(priority [1000]int, skill [20][20]int, taskScoreMinMember [1000]int, task int) int { //taskがassign可能になるまでに必要な時間の推定値(各タスクは最も得意な人間が実行するものとする)(メモ化可能)
 	if memo[task] != -1 {
 		return memo[task]
 	}
@@ -483,13 +575,15 @@ func minimumWaitTimeCanAssignTask(skill [20][20]int, taskScoreMinMember [1000]in
 		if taskStatus[nextT] != 2 { //完了済みのタスクは無視
 			cost := 0
 			if taskStatus[nextT] == 0 {
-				m := taskScoreMinMember[nextT]
-				cost = max(1, scoreTrue(skill[m], nextT)-3) //最も得意な人が実行する想定 上振れも考慮する?
+				//実行されていないものは優先度を考慮する必要がある
+				// m := taskScoreMinMember[nextT]
+				// cost = max(1, scoreTrue(skill[m], nextT)-3) //最も得意な人が実行する想定 上振れも考慮する?
+				cost = priority[nextT]
 			} else if taskStatus[nextT] == 1 { //実行中タスク
 				m := taskIsBookedBy[nextT]
 				cost = taskStart[nextT] + max(1, scoreTrue(skill[m], nextT)-3) - day
 			}
-			ret = max(ret, minimumWaitTimeCanAssignTask(skill, taskScoreMinMember, nextT)+cost)
+			ret = max(ret, minimumWaitTimeCanAssignTask(priority, skill, taskScoreMinMember, nextT)+cost)
 		}
 	}
 	memo[task] = ret
@@ -533,7 +627,7 @@ func deleteBooking(task int) { //taskの予約を削除する
 func findTask(member int) int { //最適なタスクを選定する
 	//終了していないタスクの中から最適なタスクにアサインする
 	//rankが高い順に処理されることに注意(sortedTasksが既にrank順でソート済み)
-	for _, t := range sortedTasks {
+	for _, t := range sortedTasks2 {
 		if !canAssign(t, true) {
 			continue
 		}
@@ -573,6 +667,7 @@ func estimate(member int) {
 		now[k] = ps[member][k]
 		bestSkill[k] = ps[member][k]
 	}
+
 	bestError = calcError(bestSkill, member)
 
 	var targetK int
@@ -588,6 +683,7 @@ func estimate(member int) {
 	taskStart := taskStart
 	taskEnd := taskEnd
 	taskStatus := taskStatus
+	transitionNum := 0
 
 	var st [1000]int
 
@@ -664,6 +760,7 @@ func estimate(member int) {
 			for k := 0; k < K; k++ {
 				bestSkill[k] = now[k]
 			}
+			transitionNum++
 		} else { //巻き戻す
 			for _, t := range memberHistory[member] {
 				if taskStatus[t] != 2 {
@@ -706,6 +803,23 @@ func estimate(member int) {
 		ps[member][k] = bestSkill[k]
 	}
 	allTimeEst += time.Now().Sub(startTime)
+
+	if DEBUG {
+		memberHistoryNum := 0
+		for _, t := range memberHistory[member] {
+			if taskStatus[t] != 2 {
+				continue
+			}
+			memberHistoryNum++
+		}
+		error := 0
+		for k := 0; k < K; k++ {
+			error += (sTrue[member][k] - ps[member][k]) * (sTrue[member][k] - ps[member][k])
+		}
+		bestTrueError := calcError(sTrue[member], member)
+		eh := EstimateHistory{bestTrueError: bestTrueError, bestError: bestError, bestError2: calcError2(ps[member], member), memberHistoryNum: memberHistoryNum, transitionNum: transitionNum, trueError: error}
+		estimateHistory[member] = append(estimateHistory[member], eh)
+	}
 }
 
 func stk(skill [20]int, t int, k int) int {
@@ -721,6 +835,27 @@ func calcError(skill [20]int, member int) int {
 		//今までに実行した全てのタスクから二乗誤差を算出
 		si := scoreTrue(skill, t)
 		ti := taskEnd[t] - taskStart[t]
+		// if abs(si-ti) <= 3 { //上振れ下振れを考慮
+		// 	continue
+		// }
+		error += (si - ti) * (si - ti)
+	}
+	return error
+}
+
+//こちらは上振れ下振れも考慮
+func calcError2(skill [20]int, member int) int {
+	error := 0
+	for _, t := range memberHistory[member] {
+		if taskStatus[t] != 2 {
+			continue
+		}
+		//今までに実行した全てのタスクから二乗誤差を算出
+		si := scoreTrue(skill, t)
+		ti := taskEnd[t] - taskStart[t]
+		if abs(si-ti) <= 3 { //上振れ下振れを考慮
+			continue
+		}
 		error += (si - ti) * (si - ti)
 	}
 	return error
@@ -752,12 +887,42 @@ func calcRank2(task int, cost int) {
 	}
 }
 
+func calcRank3(skill [20][20]int, taskScoreMinMember [1000]int, task int, cost int) {
+	if cost < rank3[task] {
+		//計算済みのrankの方が上の場合無駄なので省略
+		return
+	}
+	rank3[task] = cost
+
+	next := V[task]
+	for _, nextT := range next {
+		if taskStatus[nextT] != 2 { //完了済みのタスクは無視
+			score := 0
+			if taskStatus[nextT] == 0 {
+				m := taskScoreMinMember[nextT]
+				score = max(1, scoreTrue(skill[m], nextT)-3) //最も得意な人が実行する想定 上振れも考慮する?
+			} else if taskStatus[nextT] == 1 { //実行中タスク
+				m := taskIsBookedBy[nextT]
+				score = taskStart[nextT] + max(1, scoreTrue(skill[m], nextT)-3) - day
+			}
+			calcRank3(skill, taskScoreMinMember, nextT, cost+score)
+		}
+	}
+}
+
 func scoreTrue(skill [20]int, task int) int {
 	score := 0
 	for k := 0; k < K; k++ {
 		score += max(0, d[task][k]-skill[k])
 	}
 	return max(1, score)
+}
+
+func abs(a int) int {
+	if a < 0 {
+		return -a
+	}
+	return a
 }
 
 func max(a int, b int) int {
@@ -813,6 +978,48 @@ func writeEstError() error {
 	defer file.Close()
 
 	_, err = file.WriteString(strconv.Itoa(error) + "\n")
+	if err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func writeEstHistory() error {
+
+	for k := 0; k < K; k++ {
+		ps[11][k] = 0
+	}
+
+	for l := 0; l < 100; l++ {
+		estimate(11)
+	}
+
+	text := ""
+	for i := 0; i < M; i++ {
+		text += fmt.Sprintf("member = %d\n", i)
+		before := 0
+		for idx, eh := range estimateHistory[i] {
+			if eh.memberHistoryNum != before {
+				text += "\n"
+				before++
+				if eh.memberHistoryNum != 0 {
+					t := memberHistory[i][eh.memberHistoryNum-1]
+					text += fmt.Sprintf("t = %d, taskSize = %d, score = %d\n", t, taskSize[t], tTrue[t][i])
+				}
+			}
+			text += fmt.Sprintf("idx = %d, bestTrueError = %d, bestError = %d, bestError2 = %d, trueError = %d, memberHistoryNum = %d, transitionNum = %d\n", idx, eh.bestTrueError, eh.bestError, eh.bestError2, eh.trueError, eh.memberHistoryNum, eh.transitionNum)
+		}
+		text += "\n"
+	}
+
+	file, err := os.Create("./esthistory.txt")
+	if err != nil {
+		return err
+	}
+	defer file.Close()
+
+	_, err = file.WriteString(text)
 	if err != nil {
 		return err
 	}

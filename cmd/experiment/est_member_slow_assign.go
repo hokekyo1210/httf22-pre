@@ -15,9 +15,9 @@ import (
 
 const (
 	DEBUG                    = true
-	MIN_ESTIMATE_HISTORY_LEN = 6  //良さそうなのは30
+	MIN_ESTIMATE_HISTORY_LEN = 0  //良さそうなのは30
 	HC_LOOP_COUNT            = 50 //増やせばスコアは伸びるか？ あまり変える余地ないかも
-	FREE_MARGIN              = 0  //a
+	FREE_MARGIN              = 8  //a
 )
 
 var (
@@ -130,25 +130,25 @@ func main() {
 	sort.Slice(sortedTasks, func(i, j int) bool {
 		a := sortedTasks[i]
 		b := sortedTasks[j]
-		return rank2[a] > rank2[b]
-		// if rank[a] == rank[b] {
-		// 	return rank2[a] > rank2[b] //rankが同じ場合はrank2優先
-		// return taskSize[a] < taskSize[b]
-		// }
-		// return rank[a] > rank[b]
+		// return rank2[a] > rank2[b]
+		if rank[a] == rank[b] {
+			return rank2[a] > rank2[b] //rankが同じ場合はrank2優先
+			// return taskSize[a] < taskSize[b]
+		}
+		return rank[a] > rank[b]
 	})
 	sort.Slice(sortedTasks2, func(i, j int) bool {
 		a := sortedTasks2[i]
 		b := sortedTasks2[j]
-		// if taskSize[a] == taskSize[b] {
-		// 	return rank2[a] > rank2[b]
-		// }
-		return rank2[a] > rank2[b]
+		if taskSize[a] == taskSize[b] {
+			return rank2[a] > rank2[b]
+		}
+		// return rank2[a] > rank2[b]
 		// if rank[a] == rank[b] {
 		// return rank2[a] > rank2[b] //rankが同じ場合はrank2優先
 		// return taskSize[a] < taskSize[b]
 		// }
-		// return taskSize[a] < taskSize[b]
+		return taskSize[a] < taskSize[b]
 	})
 	if DEBUG {
 		for _, t := range sortedTasks { //rank表を表示
@@ -370,6 +370,8 @@ func experiment() {
 	skill := ps
 
 	var taskScoreMin [1000]int
+	var taskScoreMax [1000]int
+	var taskScoreAve [1000]int
 	var taskScoreMinMember [1000]int
 	var scoreAll [20]int
 	var tmpScoreAll [20][1000]int
@@ -398,6 +400,8 @@ func experiment() {
 			taskScoreMin[t] = min(taskScoreMin[t], tmpScoreAll[m][t])
 			scoreAll[m] += tmpScoreAll[m][t]
 			tmpTaskScoreAll[t] += tmpScoreAll[m][t]
+			taskScoreMax[t] = max(taskScoreMax[t], tmpScoreAll[m][t])
+			taskScoreAve[t] += tmpScoreAll[m][t]
 		}
 		// fmt.Printf("#member = %d, scoreAll = %d\n", m, scoreAll[m])
 	}
@@ -416,7 +420,7 @@ func experiment() {
 				continue
 			}
 			score := tmpScoreAll[m][t]
-			if score == taskScoreMin[t] && taskScoreMinMember[t] == -1 {
+			if score < taskScoreMin[t]+6 && taskScoreMinMember[t] == -1 { //最良じゃなくても良い
 				taskScoreMinMember[t] = m
 			}
 		}
@@ -450,7 +454,7 @@ func experiment() {
 		if taskStatus[t] != 0 {
 			continue
 		}
-		// fmt.Printf("# %d rank = %d, rank2 = %d, rank3 = %d, size = %d, bestScore = %d, canAssign = %v\n", t, rank[t], rank2[t], rank3[t], taskSize[t], tmpScoreAll[taskScoreMinMember[t]][t], canAssign(t, false))
+		fmt.Printf("# %d rank = %d, rank2 = %d, rank3 = %d, size = %d, bestScore = %d, canAssign = %v\n", t, rank[t], rank2[t], rank3[t], taskSize[t], tmpScoreAll[taskScoreMinMember[t]][t], canAssign(t, false))
 	}
 
 	// 一番得意なメンバーをassign
@@ -469,6 +473,10 @@ func experiment() {
 		}
 		memberBookingTask[m] = append(memberBookingTask[m], t)
 		taskIsBookedBy[t] = m
+
+		scoreMax := taskScoreMax[t]
+		scoreAve := taskScoreAve[t]
+		fmt.Printf("#task = %d, Max = %d, Avg = %d, Min = %d, who = %d\n", t, scoreMax, scoreAve, taskScoreMin[t], m)
 	}
 
 	for m := 0; m < M; m++ {
