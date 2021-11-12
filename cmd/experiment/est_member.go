@@ -495,7 +495,7 @@ func experiment() {
 
 		trueEndTime := day + calcWaitTime(memberIsBooking) //本来このタスクが終わる時間
 		for _, bookedT := range memberBookingTask[memberIsBooking] {
-			trueEndTime += tmpScoreAll[memberIsBooking][bookedT]
+			trueEndTime += max(1, tmpScoreAll[memberIsBooking][bookedT]-3)
 			if bookedT == t {
 				break
 			}
