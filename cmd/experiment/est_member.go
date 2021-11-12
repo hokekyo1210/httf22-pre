@@ -169,6 +169,11 @@ func main() {
 		// working中のメンバーであっても計算を行う, 何度も山登りすることで精度が上がる
 		estimatedNum := 0
 		for _, i := range sortedMembers {
+			if day == 300 {
+				for k := 0; k < K; k++ {
+					ps[i][k] = 0
+				}
+			}
 			if len(memberHistory[i]) > MIN_ESTIMATE_HISTORY_LEN {
 				//ここの数値は要調整, ある程度学習データがないと推定がかなり甘くなる
 				estimate(i)
