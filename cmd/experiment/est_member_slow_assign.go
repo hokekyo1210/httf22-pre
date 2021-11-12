@@ -446,12 +446,12 @@ func experiment() {
 	})
 	// }
 
-	// for _, t := range sortedTasks { //rank表を表示
-	// 	if taskStatus[t] != 0 {
-	// 		continue
-	// 	}
-	// 	fmt.Printf("# %d rank = %d, rank2 = %d, rank3 = %d, size = %d, bestScore = %d, canAssign = %v\n", t, rank[t], rank2[t], rank3[t], taskSize[t], tmpScoreAll[taskScoreMinMember[t]][t], canAssign(t, false))
-	// }
+	for _, t := range sortedTasks { //rank表を表示
+		if taskStatus[t] != 0 {
+			continue
+		}
+		// fmt.Printf("# %d rank = %d, rank2 = %d, rank3 = %d, size = %d, bestScore = %d, canAssign = %v\n", t, rank[t], rank2[t], rank3[t], taskSize[t], tmpScoreAll[taskScoreMinMember[t]][t], canAssign(t, false))
+	}
 
 	// 一番得意なメンバーをassign
 	for m := 0; m < M; m++ {
@@ -479,9 +479,9 @@ func experiment() {
 		}
 	}
 
-	// for m := 0; m < M; m++ {
-	// 	fmt.Printf("#member = %d, memberBookingTask = %v\n", m, memberBookingTask[m])
-	// }
+	for m := 0; m < M; m++ {
+		fmt.Printf("#member = %d, memberBookingTask = %v\n", m, memberBookingTask[m])
+	}
 
 	// 次のタスクまでの間が十分長い人の中から、最も早くタスクを終えられる人を探してassign
 	var remainMember []int
@@ -521,7 +521,7 @@ func experiment() {
 			continue
 		}
 
-		trueEndTime := day + calcWaitTime(memberIsBooking) //本来このタスクが終わる時間(最も早い場合)
+		trueEndTime := day + max(1, calcWaitTime(memberIsBooking)-3) //本来このタスクが終わる時間(最も早い場合)
 		for _, bookedT := range memberBookingTask[memberIsBooking] {
 			trueEndTime += max(1, tmpScoreAll[memberIsBooking][bookedT]-3)
 			if bookedT == t {
@@ -556,7 +556,7 @@ func experiment() {
 
 			endTime := day + tmpScoreAll[m][t]
 			if memberStatus[m] == 1 {
-				endTime += calcWaitTime(m)
+				endTime += calcWaitTime(m) + 3 //上振れ考慮
 				// continue //debug用
 			}
 			// fmt.Printf("#member = %d, freeTime = %d, deadline = %d, endTime = %d\n", m, freeTime, deadline, endTime)
@@ -611,6 +611,9 @@ func minimumWaitTimeCanAssignTask(priority [1000]int, skill [20][20]int, taskSco
 				// m := taskScoreMinMember[nextT]
 				// cost = max(1, scoreTrue(skill[m], nextT)-3) //最も得意な人が実行する想定 上振れも考慮する?
 				cost = priority[nextT]
+				if memberStatus[taskScoreMinMember[nextT]] == 1 {
+					cost += max(1, calcWaitTime(taskScoreMinMember[nextT])-3)
+				}
 			} else if taskStatus[nextT] == 1 { //実行中タスク
 				m := taskIsBookedBy[nextT]
 				cost = taskStart[nextT] + max(1, scoreTrue(skill[m], nextT)-3) - day
@@ -631,7 +634,7 @@ func calcWaitTime(member int) int { //そのメンバーの再アサインが可
 		if tmp == 1 {
 			endTime = taskStart[working] + tmp
 		} else {
-			endTime = taskStart[working] + tmp + 3 //上振れも考慮する?
+			endTime = taskStart[working] + tmp //上振れも考慮する?
 		}
 
 		ret = endTime
