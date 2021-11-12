@@ -948,7 +948,7 @@ func calcRank3second(task int, cost int) {
 
 	next := V[task]
 	for _, nextT := range next {
-		calcRank3second(nextT, cost+taskSize[nextT])
+		calcRank3second(nextT, cost+tmpTaskScoreAll[nextT])
 	}
 }
 
