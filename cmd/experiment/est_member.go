@@ -407,14 +407,14 @@ func experiment() {
 		calcRank3(skill, taskScoreMinMember, t, score)
 	}
 
-	// sort.Slice(sortedTasks, func(i, j int) bool {
-	// 	a := sortedTasks[i]
-	// 	b := sortedTasks[j]
-	// 	if rank3[a] == rank3[b] {
-	// 		return rank[a] > rank[b]
-	// 	}
-	// 	return rank3[a] > rank3[b]
-	// })
+	sort.Slice(sortedTasks, func(i, j int) bool {
+		a := sortedTasks[i]
+		b := sortedTasks[j]
+		if rank3[a] == rank3[b] {
+			return rank[a] > rank[b]
+		}
+		return rank3[a] > rank3[b]
+	})
 
 	for _, t := range sortedTasks { //rank表を表示
 		if taskStatus[t] != 0 {
