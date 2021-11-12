@@ -341,8 +341,8 @@ func main() {
 func experiment() {
 	searchCalc1Start := time.Now()
 	//全タスクに対するscoreの総量を全員分計算してみる
-	// skill := sTrue
-	skill := ps
+	skill := sTrue
+	// skill := ps
 
 	var taskScoreMin [1000]int
 	var taskScoreMinMember [1000]int
