@@ -327,18 +327,18 @@ func main() {
 			taskStatus[t] = 2 //taskをdoneに
 			taskEnd[t] = day
 
-			// trueDay := taskEnd[t] - taskStart[t]
-			// estimateDay := scoreTrue(ps[f], t)
+			trueDay := taskEnd[t] - taskStart[t]
+			estimateDay := scoreTrue(ps[f], t)
 
-			// if 100 < day && abs(trueDay-estimateDay) > 10 {
-			// 	fmt.Printf("# check member = %d, task = %d, trueDay = %d, estimateDay = %d\n", f, t, trueDay, estimateDay)
-			// 	for k := 0; k < K; k++ {
-			// 		ps[f][k] = 0
-			// 	}
-			// 	for l := 0; l < 10; l++ {
-			// 		estimate(f)
-			// 	}
-			// }
+			if 100 < day && abs(trueDay-estimateDay) > 10 {
+				fmt.Printf("# check member = %d, task = %d, trueDay = %d, estimateDay = %d\n", f, t, trueDay, estimateDay)
+				for k := 0; k < K; k++ {
+					ps[f][k] = 0
+				}
+				for l := 0; l < 10; l++ {
+					estimate(f)
+				}
+			}
 
 			//パラメータの下限が確定(下振れを考慮)
 			actDay := taskEnd[t] - taskStart[t]
@@ -408,31 +408,33 @@ func experiment() {
 	}
 
 	// rank3を計算
-	// for i := len(sortedTasks) - 1; i != 0; i-- {
-	// 	t := sortedTasks[i]
-	// 	if taskStatus[t] != 0 {
-	// 		continue
-	// 	}
-	// 	m := taskScoreMinMember[t]
-	// 	score := max(1, tmpScoreAll[m][t]-3)
-	// 	calcRank3(skill, taskScoreMinMember, t, score)
-	// }
+	for i := len(sortedTasks) - 1; i != 0; i-- {
+		t := sortedTasks[i]
+		if taskStatus[t] != 0 {
+			continue
+		}
+		m := taskScoreMinMember[t]
+		score := max(1, tmpScoreAll[m][t]-3)
+		calcRank3(skill, taskScoreMinMember, t, score)
+	}
 
-	// sort.Slice(sortedTasks, func(i, j int) bool {
-	// 	a := sortedTasks[i]
-	// 	b := sortedTasks[j]
-	// 	if rank3[a] == rank3[b] {
-	// 		return rank[a] > rank[b]
-	// 	}
-	// 	return rank3[a] > rank3[b]
-	// })
+	if day > 500 {
+		sort.Slice(sortedTasks, func(i, j int) bool {
+			a := sortedTasks[i]
+			b := sortedTasks[j]
+			if rank3[a] == rank3[b] {
+				return rank2[a] > rank2[b]
+			}
+			return rank3[a] > rank3[b]
+		})
+	}
 
-	// for _, t := range sortedTasks { //rank表を表示
-	// 	if taskStatus[t] != 0 {
-	// 		continue
-	// 	}
-	// 	fmt.Printf("# %d rank = %d, rank2 = %d, rank3 = %d, size = %d, bestScore = %d, canAssign = %v\n", t, rank[t], rank2[t], rank3[t], taskSize[t], tmpScoreAll[taskScoreMinMember[t]][t], canAssign(t, false))
-	// }
+	for _, t := range sortedTasks { //rank表を表示
+		if taskStatus[t] != 0 {
+			continue
+		}
+		fmt.Printf("# %d rank = %d, rank2 = %d, rank3 = %d, size = %d, bestScore = %d, canAssign = %v\n", t, rank[t], rank2[t], rank3[t], taskSize[t], tmpScoreAll[taskScoreMinMember[t]][t], canAssign(t, false))
+	}
 
 	// 一番得意なメンバーをassign
 	for m := 0; m < M; m++ {
