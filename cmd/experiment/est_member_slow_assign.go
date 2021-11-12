@@ -137,11 +137,11 @@ func main() {
 		a := sortedTasks2[i]
 		b := sortedTasks2[j]
 		// return rank2[a] > rank2[b]
-		// if rank[a] == rank[b] {
-		// 	return rank2[a] > rank2[b] //rankが同じ場合はrank2優先
-		return taskSize[a] < taskSize[b]
-		// }
-		// return rank[a] > rank[b]
+		if rank[a] == rank[b] {
+			// 	return rank2[a] > rank2[b] //rankが同じ場合はrank2優先
+			return taskSize[a] < taskSize[b]
+		}
+		return rank[a] > rank[b]
 	})
 	if DEBUG {
 		for _, t := range sortedTasks { //rank表を表示
