@@ -16,7 +16,7 @@ import (
 const (
 	DEBUG                    = true
 	MIN_ESTIMATE_HISTORY_LEN = 0  //良さそうなのは30
-	HC_LOOP_COUNT            = 50 //増やせばスコアは伸びるか？
+	HC_LOOP_COUNT            = 50 //増やせばスコアは伸びるか？ あまり変える余地ないかも
 	FREE_MARGIN              = 6  //a
 )
 
@@ -318,7 +318,7 @@ func main() {
 			trueDay := taskEnd[t] - taskStart[t]
 			estimateDay := scoreTrue(ps[f], t)
 
-			if 100 < day && abs(trueDay-estimateDay) > 10 {
+			if 10 < len(memberHistory[f]) && abs(trueDay-estimateDay) > 10 {
 				fmt.Printf("# check member = %d, task = %d, trueDay = %d, estimateDay = %d\n", f, t, trueDay, estimateDay)
 				for k := 0; k < K; k++ {
 					ps[f][k] = 0
