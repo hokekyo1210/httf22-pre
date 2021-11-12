@@ -1,5 +1,5 @@
-// est_greedy_speed2.goをベースにしている.
-// メンバーごとの推定精度の上がり型を確認する。(LEN=6で精度が良い理由も確認する)
+// est_member.goをベースにしている.
+// 推定が完了したメンバーから少しずつアサインしていく
 
 package main
 
@@ -15,7 +15,7 @@ import (
 
 const (
 	DEBUG                    = true
-	MIN_ESTIMATE_HISTORY_LEN = 0  //良さそうなのは30
+	MIN_ESTIMATE_HISTORY_LEN = 5  //良さそうなのは30
 	HC_LOOP_COUNT            = 50 //増やせばスコアは伸びるか？ あまり変える余地ないかも
 	FREE_MARGIN              = 6  //a
 )
@@ -48,6 +48,7 @@ var (
 	sMax              [20]int       //s_kの取りうる値の上限
 	sortedTasks       []int         //rank順にソートされたタスク
 	sortedTasks2      []int         //tasksize順にソートされたタスク
+	priority          [1000]int
 
 	allTimeEst         time.Duration //推定にかかってる時間
 	allTimeSearch      time.Duration //探索にかかってる時間
@@ -136,11 +137,11 @@ func main() {
 		a := sortedTasks2[i]
 		b := sortedTasks2[j]
 		// return rank2[a] > rank2[b]
-		if rank[a] == rank[b] {
-			// 	return rank2[a] > rank2[b] //rankが同じ場合はrank2優先
-			return taskSize[a] < taskSize[b]
-		}
-		return rank[a] > rank[b]
+		// if rank[a] == rank[b] {
+		// 	return rank2[a] > rank2[b] //rankが同じ場合はrank2優先
+		return taskSize[a] < taskSize[b]
+		// }
+		// return rank[a] > rank[b]
 	})
 	if DEBUG {
 		for _, t := range sortedTasks { //rank表を表示
@@ -208,30 +209,29 @@ func main() {
 		}
 
 		//実験中
-		if estimatedNum == M && canAssignMemberNum != 0 {
+		if estimatedNum != 0 && canAssignMemberNum != 0 {
 			searchStart := time.Now()
 			experiment()
 			allTimeSearch += time.Now().Sub(searchStart)
-		} else {
+		}
 
-			//通常の場合
-			for _, i := range sortedMembers {
-				if memberStatus[i] == 1 {
-					continue
-				}
-				if len(memberBookingTask[i]) != 0 {
-					//タスク予約中なので飛ばす
-					continue
-				}
-
-				bestTask := findTask(i)
-
-				if bestTask == -1 {
-					continue
-				}
-				memberBookingTask[i] = append(memberBookingTask[i], bestTask)
-				taskIsBookedBy[bestTask] = i
+		//通常の場合
+		for _, i := range sortedMembers {
+			if memberStatus[i] == 1 {
+				continue
 			}
+			if len(memberBookingTask[i]) != 0 {
+				//タスク予約中なので飛ばす
+				continue
+			}
+
+			bestTask := findTask(i)
+
+			if bestTask == -1 {
+				continue
+			}
+			memberBookingTask[i] = append(memberBookingTask[i], bestTask)
+			taskIsBookedBy[bestTask] = i
 		}
 
 		for m := 0; m < M; m++ {
@@ -365,9 +365,13 @@ func experiment() {
 		taskScoreMinMember[t] = -1
 		taskScoreMin[t] = 100000000
 		rank3[t] = -1
+		priority[t] = 0
 	}
 	var membersRanking []int
 	for m := 0; m < M; m++ {
+		if memberEstimated[m] == 0 {
+			continue
+		}
 		membersRanking = append(membersRanking, m)
 		for t := 0; t < N; t++ {
 			if taskStatus[t] != 0 { //未実行タスクのみを対象
@@ -431,7 +435,6 @@ func experiment() {
 	for m := 0; m < M; m++ {
 		memberBookingTask[m] = make([]int, 0)
 	}
-	var priority [1000]int
 	for _, t := range sortedTasks {
 		if taskStatus[t] != 0 {
 			continue
@@ -462,6 +465,9 @@ func experiment() {
 	var remainMember []int
 	for m := 0; m < M; m++ {
 		if memberStatus[m] == 1 {
+			continue
+		}
+		if memberEstimated[m] == 0 {
 			continue
 		}
 		if len(memberBookingTask[m]) != 0 {
@@ -506,6 +512,9 @@ func experiment() {
 		bestMember := -1
 		bestDeadline := 10000000000
 		for m := 0; m < M; m++ {
+			if memberEstimated[m] == 0 {
+				continue
+			}
 			if memberIsBooking == m {
 				continue
 			}
@@ -627,8 +636,18 @@ func deleteBooking(task int) { //taskの予約を削除する
 func findTask(member int) int { //最適なタスクを選定する
 	//終了していないタスクの中から最適なタスクにアサインする
 	//rankが高い順に処理されることに注意(sortedTasksが既にrank順でソート済み)
-	for _, t := range sortedTasks2 {
+	for idx, t := range sortedTasks2 {
 		if !canAssign(t, true) {
+			if !canAssign(t, false) {
+				continue
+			}
+			fmt.Printf("# task = %d, priority = %d\n", t, priority[t])
+			if priority[t] > 100 { //実行が随分あと
+				fmt.Printf("# member = %d, assign = %d\n", member, t)
+				deleteBooking(t)
+				sortedTasks2 = append(sortedTasks2[:idx], sortedTasks2[idx+1:]...)
+				return t
+			}
 			continue
 		}
 		return t
