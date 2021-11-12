@@ -418,16 +418,16 @@ func experiment() {
 		calcRank3(skill, taskScoreMinMember, t, score)
 	}
 
-	if day > 500 {
-		sort.Slice(sortedTasks, func(i, j int) bool {
-			a := sortedTasks[i]
-			b := sortedTasks[j]
-			if rank3[a] == rank3[b] {
-				return rank2[a] > rank2[b]
-			}
-			return rank3[a] > rank3[b]
-		})
-	}
+	// if day > 500 {
+	// 	sort.Slice(sortedTasks, func(i, j int) bool {
+	// 		a := sortedTasks[i]
+	// 		b := sortedTasks[j]
+	// 		if rank3[a] == rank3[b] {
+	// 			return rank2[a] > rank2[b]
+	// 		}
+	// 		return rank3[a] > rank3[b]
+	// 	})
+	// }
 
 	for _, t := range sortedTasks { //rank表を表示
 		if taskStatus[t] != 0 {
@@ -504,9 +504,9 @@ func experiment() {
 			continue
 		}
 
-		trueEndTime := day + calcWaitTime(memberIsBooking) //本来このタスクが終わる時間
+		trueEndTime := day + calcWaitTime(memberIsBooking) //本来このタスクが終わる時間(最も早い場合)
 		for _, bookedT := range memberBookingTask[memberIsBooking] {
-			trueEndTime += tmpScoreAll[memberIsBooking][bookedT]
+			trueEndTime += max(1, tmpScoreAll[memberIsBooking][bookedT]-3)
 			if bookedT == t {
 				break
 			}
