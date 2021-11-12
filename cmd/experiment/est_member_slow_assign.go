@@ -49,6 +49,7 @@ var (
 	sortedTasks       []int         //rank順にソートされたタスク
 	sortedTasks2      []int         //tasksize順にソートされたタスク
 	priority          [1000]int
+	tmpTaskScoreAll   [1000]int
 
 	allTimeEst         time.Duration //推定にかかってる時間
 	allTimeSearch      time.Duration //探索にかかってる時間
@@ -360,7 +361,6 @@ func experiment() {
 	var taskScoreMinMember [1000]int
 	var scoreAll [20]int
 	var tmpScoreAll [20][1000]int
-	var tmpTaskScoreAll [1000]int
 
 	for t := 0; t < N; t++ {
 		if taskStatus[t] != 0 { //未実行タスクのみを対象
@@ -370,6 +370,7 @@ func experiment() {
 		taskScoreMin[t] = 100000000
 		rank3[t] = -1
 		priority[t] = 0
+		tmpTaskScoreAll[t] = 0
 	}
 	var membersRanking []int
 	for m := 0; m < M; m++ {
@@ -415,21 +416,22 @@ func experiment() {
 		if taskStatus[t] != 0 {
 			continue
 		}
-		rank3[t] = tmpTaskScoreAll[t]
+		// rank3[t] = tmpTaskScoreAll[t]
 		// m := taskScoreMinMember[t]
 		// score := max(1, tmpScoreAll[m][t]-3)
 		// calcRank3(skill, taskScoreMinMember, t, score)
+		calcRank3second(t, tmpTaskScoreAll[t])
 	}
 
-	// if day > 500 {
-	// 	sort.Slice(sortedTasks, func(i, j int) bool {
-	// 		a := sortedTasks[i]
-	// 		b := sortedTasks[j]
-	// 		if rank3[a] == rank3[b] {
-	// 			return rank2[a] > rank2[b]
-	// 		}
-	// 		return rank3[a] > rank3[b]
-	// 	})
+	// if day > 700 {
+	sort.Slice(sortedTasks, func(i, j int) bool {
+		a := sortedTasks[i]
+		b := sortedTasks[j]
+		if rank3[a] == rank3[b] {
+			return rank2[a] > rank2[b]
+		}
+		return rank3[a] > rank3[b]
+	})
 	// }
 
 	for _, t := range sortedTasks { //rank表を表示
@@ -934,6 +936,19 @@ func calcRank3(skill [20][20]int, taskScoreMinMember [1000]int, task int, cost i
 			}
 			calcRank3(skill, taskScoreMinMember, nextT, cost+score)
 		}
+	}
+}
+
+func calcRank3second(task int, cost int) {
+	if cost < rank3[task] {
+		//計算済みのrankの方が上の場合無駄なので省略
+		return
+	}
+	rank3[task] = cost
+
+	next := V[task]
+	for _, nextT := range next {
+		calcRank3second(nextT, cost+taskSize[nextT])
 	}
 }
 
