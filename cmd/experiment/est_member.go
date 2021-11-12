@@ -15,9 +15,9 @@ import (
 
 const (
 	DEBUG                    = true
-	MIN_ESTIMATE_HISTORY_LEN = 0   //良さそうなのは30
-	HC_LOOP_COUNT            = 200 //増やせばスコアは伸びるか？ あまり変える余地ないかも
-	FREE_MARGIN              = 6   //a
+	MIN_ESTIMATE_HISTORY_LEN = 0  //良さそうなのは30
+	HC_LOOP_COUNT            = 50 //増やせばスコアは伸びるか？ あまり変える余地ないかも
+	FREE_MARGIN              = 6  //a
 )
 
 var (
@@ -623,7 +623,7 @@ func estimate(member int) {
 
 	var targetK int
 	var targetK2 int
-	var option int
+	var add bool
 	var error int
 	var stV int
 	var ti int
@@ -653,7 +653,7 @@ func estimate(member int) {
 		if rand.Intn(2) == 0 {
 			targetK2 = rand.Intn(K)
 		}
-		option = rand.Intn(4)
+		add = rand.Intn(2) == 0
 		value = rand.Intn(2) + 1
 		for _, t := range memberHistory[member] {
 			if taskStatus[t] != 2 {
@@ -664,23 +664,16 @@ func estimate(member int) {
 				st[t] -= stk(now, t, targetK2)
 			}
 		}
-		backup := 0
-		if option == 0 {
+		if add {
 			now[targetK] = min(sMax[targetK], now[targetK]+value)
 			if targetK2 != targetK {
 				now[targetK2] = max(psMin[member][targetK2], now[targetK2]-value)
 			}
-		} else if option == 1 {
+		} else {
 			now[targetK] = max(psMin[member][targetK], now[targetK]-value)
 			if targetK2 != targetK {
 				now[targetK2] = min(sMax[targetK2], now[targetK2]+value)
 			}
-		} else if option == 2 {
-			backup = now[targetK]
-			now[targetK] = min(sMax[targetK], now[targetK]*2)
-		} else {
-			backup = now[targetK]
-			now[targetK] = now[targetK] / 2
 		}
 		for _, t := range memberHistory[member] {
 			if taskStatus[t] != 2 {
@@ -729,20 +722,16 @@ func estimate(member int) {
 					st[t] -= stk(now, t, targetK2)
 				}
 			}
-			if option == 0 {
+			if add {
 				now[targetK] = max(psMin[member][targetK], now[targetK]-value)
 				if targetK2 != targetK {
 					now[targetK2] = min(sMax[targetK2], now[targetK2]+value)
 				}
-			} else if option == 1 {
+			} else {
 				now[targetK] = min(sMax[targetK], now[targetK]+value)
 				if targetK2 != targetK {
 					now[targetK2] = max(psMin[member][targetK2], now[targetK2]-value)
 				}
-			} else if option == 2 {
-				now[targetK] = backup
-			} else {
-				now[targetK] = backup
 			}
 			for _, t := range memberHistory[member] {
 				if taskStatus[t] != 2 {
