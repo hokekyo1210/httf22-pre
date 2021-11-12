@@ -318,12 +318,12 @@ func main() {
 			trueDay := taskEnd[t] - taskStart[t]
 			estimateDay := scoreTrue(ps[f], t)
 
-			if 10 < len(memberHistory[f]) && abs(trueDay-estimateDay) > 10 {
+			if 6 < len(memberHistory[f]) && abs(trueDay-estimateDay) > 10 {
 				fmt.Printf("# check member = %d, task = %d, trueDay = %d, estimateDay = %d\n", f, t, trueDay, estimateDay)
 				for k := 0; k < K; k++ {
 					ps[f][k] = 0
 				}
-				for l := 0; l < 20; l++ {
+				for l := 0; l < 10; l++ {
 					estimate(f)
 				}
 			}
