@@ -124,12 +124,12 @@ func main() {
 	sort.Slice(sortedTasks, func(i, j int) bool {
 		a := sortedTasks[i]
 		b := sortedTasks[j]
-		return rank2[a] > rank2[b]
-		// if rank[a] == rank[b] {
-		// 	return rank2[a] > rank2[b] //rankが同じ場合はrank2優先
-		// return taskSize[a] < taskSize[b]
-		// }
-		// return rank[a] > rank[b]
+		// return rank2[a] > rank2[b]
+		if rank[a] == rank[b] {
+			return rank2[a] > rank2[b] //rankが同じ場合はrank2優先
+			// return taskSize[a] < taskSize[b]
+		}
+		return rank[a] > rank[b]
 	})
 	sort.Slice(sortedTasks2, func(i, j int) bool {
 		a := sortedTasks2[i]
