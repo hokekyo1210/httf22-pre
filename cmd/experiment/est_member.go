@@ -323,7 +323,7 @@ func main() {
 				for k := 0; k < K; k++ {
 					ps[f][k] = 0
 				}
-				for l := 0; l < 10; l++ {
+				for l := 0; l < 20; l++ {
 					estimate(f)
 				}
 			}
