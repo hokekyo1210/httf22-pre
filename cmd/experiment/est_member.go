@@ -17,7 +17,7 @@ const (
 	DEBUG                    = true
 	MIN_ESTIMATE_HISTORY_LEN = 0  //良さそうなのは30
 	HC_LOOP_COUNT            = 50 //増やせばスコアは伸びるか？ あまり変える余地ないかも
-	FREE_MARGIN              = 8  //a
+	FREE_MARGIN              = 6  //a
 )
 
 var (
@@ -164,7 +164,9 @@ func main() {
 			if memberStatus[i] == 1 {
 				working = memberHistory[i][len(memberHistory[i])-1]
 			}
-			fmt.Printf("#member = %d, memberStatus = %d, taskLen = %d, working = %d\n", i, memberStatus[i], len(memberHistory[i]), working)
+			if DEBUG {
+				fmt.Printf("#member = %d, memberStatus = %d, taskLen = %d, working = %d\n", i, memberStatus[i], len(memberHistory[i]), working)
+			}
 		}
 		sort.Slice(sortedMembers, func(i, j int) bool {
 			return len(memberHistory[sortedMembers[i]]) > len(memberHistory[sortedMembers[j]])
@@ -201,7 +203,9 @@ func main() {
 				canAssignTaskNum++
 			}
 		}
-		fmt.Printf("#canAssign member=%d, task=%d\n", canAssignMemberNum, canAssignTaskNum)
+		if DEBUG {
+			fmt.Printf("#canAssign member=%d, task=%d\n", canAssignMemberNum, canAssignTaskNum)
+		}
 
 		//実験中
 		if estimatedNum == M && canAssignMemberNum != 0 {
