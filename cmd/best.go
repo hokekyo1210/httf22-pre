@@ -394,7 +394,7 @@ func experiment() {
 				continue
 			}
 			score := tmpScoreAll[m][t]
-			if score <= taskScoreMin[t]+3 && taskScoreMinMember[t] == -1 {
+			if score <= taskScoreMin[t]+1 && taskScoreMinMember[t] == -1 {
 				taskScoreMinMember[t] = m
 			}
 		}
