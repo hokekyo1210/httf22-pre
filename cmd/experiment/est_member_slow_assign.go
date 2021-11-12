@@ -136,15 +136,15 @@ func main() {
 	sort.Slice(sortedTasks2, func(i, j int) bool {
 		a := sortedTasks2[i]
 		b := sortedTasks2[j]
-		if taskSize[a] == taskSize[b] {
-			return rank2[a] > rank2[b]
-		}
-		// return rank2[a] > rank2[b]
-		// if rank[a] == rank[b] {
-		// 	return rank2[a] > rank2[b] //rankが同じ場合はrank2優先
-		return taskSize[a] < taskSize[b]
+		// if taskSize[a] == taskSize[b] {
+		// 	return rank2[a] > rank2[b]
 		// }
-		// return rank[a] > rank[b]
+		// return rank2[a] > rank2[b]
+		if rank[a] == rank[b] {
+			// return rank2[a] > rank2[b] //rankが同じ場合はrank2優先
+			return taskSize[a] < taskSize[b]
+		}
+		return rank[a] > rank[b]
 	})
 	if DEBUG {
 		for _, t := range sortedTasks { //rank表を表示
@@ -360,6 +360,7 @@ func experiment() {
 	var taskScoreMinMember [1000]int
 	var scoreAll [20]int
 	var tmpScoreAll [20][1000]int
+	var tmpTaskScoreAll [1000]int
 
 	for t := 0; t < N; t++ {
 		if taskStatus[t] != 0 { //未実行タスクのみを対象
@@ -383,6 +384,7 @@ func experiment() {
 			tmpScoreAll[m][t] = scoreTrue(skill[m], t)
 			taskScoreMin[t] = min(taskScoreMin[t], tmpScoreAll[m][t])
 			scoreAll[m] += tmpScoreAll[m][t]
+			tmpTaskScoreAll[t] += tmpScoreAll[m][t]
 		}
 		// fmt.Printf("#member = %d, scoreAll = %d\n", m, scoreAll[m])
 	}
@@ -413,9 +415,10 @@ func experiment() {
 		if taskStatus[t] != 0 {
 			continue
 		}
-		m := taskScoreMinMember[t]
-		score := max(1, tmpScoreAll[m][t]-3)
-		calcRank3(skill, taskScoreMinMember, t, score)
+		rank3[t] = tmpTaskScoreAll[t]
+		// m := taskScoreMinMember[t]
+		// score := max(1, tmpScoreAll[m][t]-3)
+		// calcRank3(skill, taskScoreMinMember, t, score)
 	}
 
 	// if day > 500 {
