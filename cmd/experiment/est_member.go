@@ -17,7 +17,7 @@ const (
 	DEBUG                    = true
 	MIN_ESTIMATE_HISTORY_LEN = 0  //良さそうなのは30
 	HC_LOOP_COUNT            = 50 //増やせばスコアは伸びるか？ あまり変える余地ないかも
-	FREE_MARGIN              = 6  //a
+	FREE_MARGIN              = 8  //a
 )
 
 var (
@@ -397,15 +397,15 @@ func experiment() {
 	}
 
 	// rank3を計算
-	for i := len(sortedTasks) - 1; i != 0; i-- {
-		t := sortedTasks[i]
-		if taskStatus[t] != 0 {
-			continue
-		}
-		m := taskScoreMinMember[t]
-		score := max(1, tmpScoreAll[m][t]-3)
-		calcRank3(skill, taskScoreMinMember, t, score)
-	}
+	// for i := len(sortedTasks) - 1; i != 0; i-- {
+	// 	t := sortedTasks[i]
+	// 	if taskStatus[t] != 0 {
+	// 		continue
+	// 	}
+	// 	m := taskScoreMinMember[t]
+	// 	score := max(1, tmpScoreAll[m][t]-3)
+	// 	calcRank3(skill, taskScoreMinMember, t, score)
+	// }
 
 	// sort.Slice(sortedTasks, func(i, j int) bool {
 	// 	a := sortedTasks[i]
@@ -416,12 +416,12 @@ func experiment() {
 	// 	return rank3[a] > rank3[b]
 	// })
 
-	for _, t := range sortedTasks { //rank表を表示
-		if taskStatus[t] != 0 {
-			continue
-		}
-		fmt.Printf("# %d rank = %d, rank2 = %d, rank3 = %d, size = %d, bestScore = %d, canAssign = %v\n", t, rank[t], rank2[t], rank3[t], taskSize[t], tmpScoreAll[taskScoreMinMember[t]][t], canAssign(t, false))
-	}
+	// for _, t := range sortedTasks { //rank表を表示
+	// 	if taskStatus[t] != 0 {
+	// 		continue
+	// 	}
+	// 	fmt.Printf("# %d rank = %d, rank2 = %d, rank3 = %d, size = %d, bestScore = %d, canAssign = %v\n", t, rank[t], rank2[t], rank3[t], taskSize[t], tmpScoreAll[taskScoreMinMember[t]][t], canAssign(t, false))
+	// }
 
 	// 一番得意なメンバーをassign
 	for m := 0; m < M; m++ {
@@ -450,9 +450,9 @@ func experiment() {
 		}
 	}
 
-	for m := 0; m < M; m++ {
-		fmt.Printf("#member = %d, memberBookingTask = %v\n", m, memberBookingTask[m])
-	}
+	// for m := 0; m < M; m++ {
+	// 	fmt.Printf("#member = %d, memberBookingTask = %v\n", m, memberBookingTask[m])
+	// }
 
 	// 次のタスクまでの間が十分長い人の中から、最も早くタスクを終えられる人を探してassign
 	var remainMember []int
@@ -496,7 +496,7 @@ func experiment() {
 				break
 			}
 		}
-		fmt.Printf("#task = %d, memberIsBooking = %d, trueEndTime = %d, rank = %d, trueEndTime = %d\n", t, memberIsBooking, trueEndTime, rank[t], trueEndTime)
+		// fmt.Printf("#task = %d, memberIsBooking = %d, trueEndTime = %d, rank = %d, trueEndTime = %d\n", t, memberIsBooking, trueEndTime, rank[t], trueEndTime)
 
 		bestEndTime := 10000000000
 		bestMember := -1
@@ -524,7 +524,7 @@ func experiment() {
 				endTime += calcWaitTime(m)
 				// continue //debug用
 			}
-			fmt.Printf("#member = %d, freeTime = %d, deadline = %d, endTime = %d\n", m, freeTime, deadline, endTime)
+			// fmt.Printf("#member = %d, freeTime = %d, deadline = %d, endTime = %d\n", m, freeTime, deadline, endTime)
 
 			if deadline+FREE_MARGIN < endTime { //期日までに終わらせられないのでだめ, 上振れ考慮してマージン入れた方が良い
 				continue
