@@ -17,7 +17,7 @@ const (
 	DEBUG                    = true
 	MIN_ESTIMATE_HISTORY_LEN = 0  //良さそうなのは30
 	HC_LOOP_COUNT            = 50 //増やせばスコアは伸びるか？ あまり変える余地ないかも
-	FREE_MARGIN              = 6  //a
+	FREE_MARGIN              = 12 //a
 )
 
 var (
@@ -44,6 +44,7 @@ var (
 	taskSize          [1000]int     //タスクの大きさ
 	rank              [1000]int     //タスクの依存関係の深さ
 	rank2             [1000]int     //タスクの依存関係の深さ2
+	rank3             [1000]int     //タスクの依存関係の深さ3
 	sMax              [20]int       //s_kの取りうる値の上限
 	sortedTasks       []int         //rank順にソートされたタスク
 	sortedTasks2      []int         //tasksize順にソートされたタスク
@@ -159,7 +160,11 @@ func main() {
 		var sortedMembers []int
 		for i := 0; i < M; i++ {
 			sortedMembers = append(sortedMembers, i)
-			fmt.Printf("#member = %d, memberStatus = %d, taskLen = %d\n", i, memberStatus[i], len(memberHistory[i]))
+			working := -1
+			if memberStatus[i] == 1 {
+				working = memberHistory[i][len(memberHistory[i])-1]
+			}
+			fmt.Printf("#member = %d, memberStatus = %d, taskLen = %d, working = %d\n", i, memberStatus[i], len(memberHistory[i]), working)
 		}
 		sort.Slice(sortedMembers, func(i, j int) bool {
 			return len(memberHistory[sortedMembers[i]]) > len(memberHistory[sortedMembers[j]])
@@ -355,6 +360,7 @@ func experiment() {
 		}
 		taskScoreMinMember[t] = -1
 		taskScoreMin[t] = 100000000
+		rank3[t] = -1
 	}
 	var membersRanking []int
 	for m := 0; m < M; m++ {
@@ -390,6 +396,33 @@ func experiment() {
 		}
 	}
 
+	// rank3を計算
+	for i := len(sortedTasks) - 1; i != 0; i-- {
+		t := sortedTasks[i]
+		if taskStatus[t] != 0 {
+			continue
+		}
+		m := taskScoreMinMember[t]
+		score := max(1, tmpScoreAll[m][t]-3)
+		calcRank3(skill, taskScoreMinMember, t, score)
+	}
+
+	// sort.Slice(sortedTasks, func(i, j int) bool {
+	// 	a := sortedTasks[i]
+	// 	b := sortedTasks[j]
+	// 	if rank3[a] == rank3[b] {
+	// 		return rank[a] > rank[b]
+	// 	}
+	// 	return rank3[a] > rank3[b]
+	// })
+
+	for _, t := range sortedTasks { //rank表を表示
+		if taskStatus[t] != 0 {
+			continue
+		}
+		fmt.Printf("# %d rank = %d, rank2 = %d, rank3 = %d, size = %d, bestScore = %d, canAssign = %v\n", t, rank[t], rank2[t], rank3[t], taskSize[t], tmpScoreAll[taskScoreMinMember[t]][t], canAssign(t, false))
+	}
+
 	// 一番得意なメンバーをassign
 	for m := 0; m < M; m++ {
 		memberBookingTask[m] = make([]int, 0)
@@ -401,6 +434,7 @@ func experiment() {
 		// fmt.Printf("#task = %d, Max = %d, Avg = %d, Min = %d, who = %d, rank = %d\n", t, taskScoreMax[t], taskScoreAvg[t], taskScoreMin[t], taskScoreMinMember[t], rank[t])
 		m := taskScoreMinMember[t]
 		if m == -1 {
+			fmt.Printf("# its a bug!\n")
 			continue
 		}
 		memberBookingTask[m] = append(memberBookingTask[m], t)
@@ -835,6 +869,29 @@ func calcRank2(task int, cost int) {
 	next := V[task]
 	for _, nextT := range next {
 		calcRank2(nextT, cost+taskSize[nextT])
+	}
+}
+
+func calcRank3(skill [20][20]int, taskScoreMinMember [1000]int, task int, cost int) {
+	if cost < rank3[task] {
+		//計算済みのrankの方が上の場合無駄なので省略
+		return
+	}
+	rank3[task] = cost
+
+	next := V[task]
+	for _, nextT := range next {
+		if taskStatus[nextT] != 2 { //完了済みのタスクは無視
+			score := 0
+			if taskStatus[nextT] == 0 {
+				m := taskScoreMinMember[nextT]
+				score = max(1, scoreTrue(skill[m], nextT)-3) //最も得意な人が実行する想定 上振れも考慮する?
+			} else if taskStatus[nextT] == 1 { //実行中タスク
+				m := taskIsBookedBy[nextT]
+				score = taskStart[nextT] + max(1, scoreTrue(skill[m], nextT)-3) - day
+			}
+			calcRank3(skill, taskScoreMinMember, nextT, cost+score)
+		}
 	}
 }
 
