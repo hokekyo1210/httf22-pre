@@ -407,14 +407,14 @@ func experiment() {
 		calcRank3(skill, taskScoreMinMember, t, score)
 	}
 
-	// sort.Slice(sortedTasks, func(i, j int) bool {
-	// 	a := sortedTasks[i]
-	// 	b := sortedTasks[j]
-	// 	if rank3[a] == rank3[b] {
-	// 		return rank[a] > rank[b]
-	// 	}
-	// 	return rank3[a] > rank3[b]
-	// })
+	sort.Slice(sortedTasks, func(i, j int) bool {
+		a := sortedTasks[i]
+		b := sortedTasks[j]
+		if rank3[a] == rank3[b] {
+			return rank[a] > rank[b]
+		}
+		return rank3[a] > rank3[b]
+	})
 
 	for _, t := range sortedTasks { //rank表を表示
 		if taskStatus[t] != 0 {
@@ -427,6 +427,7 @@ func experiment() {
 	for m := 0; m < M; m++ {
 		memberBookingTask[m] = make([]int, 0)
 	}
+	var priority [1000]int
 	for _, t := range sortedTasks {
 		if taskStatus[t] != 0 {
 			continue
@@ -439,6 +440,14 @@ func experiment() {
 		}
 		memberBookingTask[m] = append(memberBookingTask[m], t)
 		taskIsBookedBy[t] = m
+	}
+
+	for m := 0; m < M; m++ {
+		cost := 0
+		for _, t := range memberBookingTask[m] {
+			cost += max(1, tmpScoreAll[m][t]-3)
+			priority[t] = cost
+		}
 	}
 
 	for m := 0; m < M; m++ {
@@ -487,7 +496,7 @@ func experiment() {
 				break
 			}
 		}
-		// fmt.Printf("#task = %d, memberIsBooking = %d, trueEndTime = %d, rank = %d, trueEndTime = %d\n", t, memberIsBooking, trueEndTime, rank[t], trueEndTime)
+		fmt.Printf("#task = %d, memberIsBooking = %d, trueEndTime = %d, rank = %d, trueEndTime = %d\n", t, memberIsBooking, trueEndTime, rank[t], trueEndTime)
 
 		bestEndTime := 10000000000
 		bestMember := -1
@@ -506,7 +515,7 @@ func experiment() {
 			freeTime := 1000000000
 			if len(memberBookingTask[m]) != 0 {
 				nextTask := memberBookingTask[m][0] // mメンバーが次にやる予定のタスク
-				freeTime = minimumWaitTimeCanAssignTask(skill, taskScoreMinMember, nextTask)
+				freeTime = minimumWaitTimeCanAssignTask(priority, skill, taskScoreMinMember, nextTask)
 			}
 			deadline := day + freeTime //この日時までには確実に暇でいる必要がある
 
@@ -515,7 +524,7 @@ func experiment() {
 				endTime += calcWaitTime(m)
 				// continue //debug用
 			}
-			// fmt.Printf("#member = %d, freeTime = %d, deadline = %d, endTime = %d\n", m, freeTime, deadline, endTime)
+			fmt.Printf("#member = %d, freeTime = %d, deadline = %d, endTime = %d\n", m, freeTime, deadline, endTime)
 
 			if deadline+FREE_MARGIN < endTime { //期日までに終わらせられないのでだめ, 上振れ考慮してマージン入れた方が良い
 				continue
@@ -552,7 +561,7 @@ func experiment() {
 
 var memo [1000]int
 
-func minimumWaitTimeCanAssignTask(skill [20][20]int, taskScoreMinMember [1000]int, task int) int { //taskがassign可能になるまでに必要な時間の推定値(各タスクは最も得意な人間が実行するものとする)(メモ化可能)
+func minimumWaitTimeCanAssignTask(priority [1000]int, skill [20][20]int, taskScoreMinMember [1000]int, task int) int { //taskがassign可能になるまでに必要な時間の推定値(各タスクは最も得意な人間が実行するものとする)(メモ化可能)
 	if memo[task] != -1 {
 		return memo[task]
 	}
@@ -562,13 +571,15 @@ func minimumWaitTimeCanAssignTask(skill [20][20]int, taskScoreMinMember [1000]in
 		if taskStatus[nextT] != 2 { //完了済みのタスクは無視
 			cost := 0
 			if taskStatus[nextT] == 0 {
-				m := taskScoreMinMember[nextT]
-				cost = max(1, scoreTrue(skill[m], nextT)-3) //最も得意な人が実行する想定 上振れも考慮する?
+				//実行されていないものは優先度を考慮する必要がある
+				// m := taskScoreMinMember[nextT]
+				// cost = max(1, scoreTrue(skill[m], nextT)-3) //最も得意な人が実行する想定 上振れも考慮する?
+				cost = priority[nextT]
 			} else if taskStatus[nextT] == 1 { //実行中タスク
 				m := taskIsBookedBy[nextT]
 				cost = taskStart[nextT] + max(1, scoreTrue(skill[m], nextT)-3) - day
 			}
-			ret = max(ret, minimumWaitTimeCanAssignTask(skill, taskScoreMinMember, nextT)+cost)
+			ret = max(ret, minimumWaitTimeCanAssignTask(priority, skill, taskScoreMinMember, nextT)+cost)
 		}
 	}
 	memo[task] = ret
