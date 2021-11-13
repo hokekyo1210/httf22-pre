@@ -14,7 +14,7 @@ import (
 )
 
 const (
-	DEBUG                    = true
+	DEBUG                    = false
 	MIN_ESTIMATE_HISTORY_LEN = 0  //良さそうなのは30
 	HC_LOOP_COUNT            = 50 //増やせばスコアは伸びるか？ あまり変える余地ないかも
 	FREE_MARGIN              = 6  //a
@@ -534,11 +534,6 @@ func experiment() {
 				continue
 			}
 			// fmt.Printf("#member = %d, endTime = %d\n", m, endTime)
-			if endTime == bestEndTime && memberStatus[m] == 0 {
-				bestEndTime = endTime
-				bestMember = m
-				bestDeadline = deadline
-			}
 			if endTime < bestEndTime {
 				bestEndTime = endTime
 				bestMember = m
