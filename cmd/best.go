@@ -17,7 +17,7 @@ const (
 	DEBUG                    = true
 	MIN_ESTIMATE_HISTORY_LEN = 0  //良さそうなのは30
 	HC_LOOP_COUNT            = 50 //増やせばスコアは伸びるか？ あまり変える余地ないかも
-	FREE_MARGIN              = 12 //a
+	FREE_MARGIN              = 8  //a
 )
 
 var (
@@ -289,9 +289,8 @@ func main() {
 		}
 
 		day++
-
+		allTime = time.Now().Sub(startAllTime)
 		if DEBUG {
-			allTime = time.Now().Sub(startAllTime)
 			fmt.Printf("#allTime = %fs\n", allTime.Seconds())
 			fmt.Printf("#allTimeEst = %fs\n", allTimeEst.Seconds())
 			fmt.Printf("#allTimeSearch = %fs\n", allTimeSearch.Seconds())
@@ -343,6 +342,21 @@ func main() {
 				psMin[f][k] = max(psMin[f][k], d[t][k]-actDay-3)
 				ps[f][k] = max(psMin[f][k], ps[f][k])
 			}
+		}
+		if !DEBUG && allTime > time.Millisecond*2850 {
+			for {
+				fmt.Fprintf(wtr, "0\n")
+				err := wtr.Flush() //flushしないとだめ
+				if err != nil {
+					fmt.Printf("error %s\n", err.Error())
+					os.Exit(1)
+				}
+				fmt.Scanf("%d", &n)
+				if n == -1 {
+					break
+				}
+			}
+			break
 		}
 	}
 }
