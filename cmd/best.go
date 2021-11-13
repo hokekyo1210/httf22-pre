@@ -17,7 +17,7 @@ const (
 	DEBUG                    = true
 	MIN_ESTIMATE_HISTORY_LEN = 0  //良さそうなのは30
 	HC_LOOP_COUNT            = 50 //増やせばスコアは伸びるか？ あまり変える余地ないかも
-	FREE_MARGIN              = 8  //a
+	FREE_MARGIN              = 4  //a
 )
 
 var (
@@ -68,6 +68,7 @@ type EstimateHistory struct {
 }
 
 func main() {
+	rand.Seed(time.Now().UnixNano())
 	startAllTime := time.Now()
 	fmt.Scanf("%d %d %d %d", &N, &M, &K, &R)
 	for i := 0; i < N; i++ {
@@ -327,7 +328,7 @@ func main() {
 			estimateDay := scoreTrue(ps[f], t)
 
 			if 100 < day && abs(trueDay-estimateDay) > 10 {
-				fmt.Printf("# check member = %d, task = %d, trueDay = %d, estimateDay = %d\n", f, t, trueDay, estimateDay)
+				// fmt.Printf("# check member = %d, task = %d, trueDay = %d, estimateDay = %d\n", f, t, trueDay, estimateDay)
 				for k := 0; k < K; k++ {
 					ps[f][k] = 0
 				}
@@ -343,7 +344,7 @@ func main() {
 				ps[f][k] = max(psMin[f][k], ps[f][k])
 			}
 		}
-		if !DEBUG && allTime > time.Millisecond*2850 {
+		if !DEBUG && allTime > time.Millisecond*2900 {
 			for {
 				fmt.Fprintf(wtr, "0\n")
 				err := wtr.Flush() //flushしないとだめ
